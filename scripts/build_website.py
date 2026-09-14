@@ -615,10 +615,53 @@ def build():
       </div>
     </section>
 
+    <!-- Academic Urban Economics Research Section -->
+    <section class="section-box" style="border: 2px solid #3b82f6; background: linear-gradient(to bottom, #ffffff, #eff6ff);">
+      <div class="section-head" style="border-bottom: 2px solid #bfdbfe; padding-bottom: 14px; margin-bottom: 18px;">
+        <div style="display:inline-block; background:#2563eb; color:white; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">
+          Nghiên Cứu Học Thuật &amp; Bằng Chứng RBA
+        </div>
+        <h2 style="color:#1e3a8a; font-size:22px;">🏛️ Vì Sao Cung Nhà Ngoại Ô Tăng Thì Giá Đất Nội Đô Lại Tăng?</h2>
+        <p style="font-size:13.5px; color:#334155; font-weight:500;">
+          Giải mã nghịch lý kinh tế học đô thị qua <strong>Mô hình Alonso-Muth-Mills</strong>, nghiên cứu của <strong>Ngân hàng Trung ương Úc (RBA RDP 2018-03)</strong> và thực nghiệm thị trường Sydney/Melbourne.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+        <div style="background:white; padding:18px; border-radius:10px; border:1px solid #dbeafe; box-shadow:0 2px 6px rgba(37,99,235,0.05);">
+          <h4 style="color:#1d4ed8; font-size:14.5px; margin-bottom:8px;">📐 1. Mô hình Alonso–Muth–Mills &amp; Độ Dốc Địa Tô (Bid-Rent)</h4>
+          <p style="font-size:12.5px; color:#475569; line-height:1.6;">
+            Khi mở rộng đô thị ra xa (Riverlea 35km, Concordia 45km), bán kính đô thị tăng gấp đôi, làm thời gian và chi phí đi lại của cư dân ngoại ô tăng vọt. Theo công thức <code>R(d) = R(b) + t × (b - d)</code>, <strong>giá trị tiết kiệm thời gian (Accessibility Premium)</strong> của đất nội đô (Myrtle Bank, Burnside cách trung tâm 3-5km) bắt buộc phải tăng vọt để cân bằng trạng thái hữu dụng.
+          </p>
+        </div>
+
+        <div style="background:white; padding:18px; border-radius:10px; border:1px solid #dbeafe; box-shadow:0 2px 6px rgba(37,99,235,0.05);">
+          <h4 style="color:#1d4ed8; font-size:14.5px; margin-bottom:8px;">🏦 2. Nghiên cứu RBA (Kendall &amp; Tulip, 2018)</h4>
+          <p style="font-size:12.5px; color:#475569; line-height:1.6;">
+            Ngân hàng Trung ương Úc chứng minh: Đất ở rìa xa có thặng dư khan hiếm gần như bằng 0, trong khi tại các quận nội đô &lt; 10km, <strong>thặng dư khan hiếm quy hoạch (Zoning Shadow Price) chiếm tới 42% - 73% giá trị nhà</strong>. Càng nhiều nhà giá rẻ ở ngoại ô, tầng lớp có tích lũy tài sản càng đổ xô về tranh mua quỹ đất hữu hạn tại các quận an toàn nội đô.
+          </p>
+        </div>
+
+        <div style="background:white; padding:18px; border-radius:10px; border:1px solid #dbeafe; box-shadow:0 2px 6px rgba(37,99,235,0.05);">
+          <h4 style="color:#1d4ed8; font-size:14.5px; margin-bottom:8px;">🏫 3. Hàng Hóa Thay Thế Kém (Imperfect Substitutes)</h4>
+          <p style="font-size:12.5px; color:#475569; line-height:1.6;">
+            Suất học trường công điểm Tier 1 (Glenunga International High, Unley High) có ranh giới địa lý cố định không thể nhân bản. Người mua $1.1M tại Myrtle Bank và người mua $600k ở vùng rìa 40km thuộc hai phân khúc khách hàng hoàn toàn độc lập, không làm triệt tiêu sức cầu của nhau.
+          </p>
+        </div>
+
+        <div style="background:white; padding:18px; border-radius:10px; border:1px solid #dbeafe; box-shadow:0 2px 6px rgba(37,99,235,0.05);">
+          <h4 style="color:#1d4ed8; font-size:14.5px; margin-bottom:8px;">🏙️ 4. Bằng Chứng Lịch Sử Sydney &amp; Melbourne (2014-2021)</h4>
+          <p style="font-size:12.5px; color:#475569; line-height:1.6;">
+            Khi Tây Sydney bung hàng trăm ngàn lô đất mới, giá nhà vùng ven chỉ tăng chậm (+15% đến +25%) do dư cung. Ngược lại, giá nhà đất tại các quận nội đô và ven biển Sydney tăng vọt <strong>+80% đến +110%</strong>, nới rộng biên độ chênh lệch giá trị lên mức kỷ lục.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Articles & Guide Section -->
     <section class="section-box">
       <div class="section-head">
-        <h2>💡 Cẩm Nang Thực Chiến: Pháp Lý, Phí Strata & Điện Mặt Trời Solar</h2>
+        <h2>💡 Cẩm Nang Thực Chiến: Pháp Lý, Phí Strata &amp; Điện Mặt Trời Solar</h2>
         <p style="font-size:12.5px; color:var(--slate-600);">Những kiến thức thực tế bắt buộc phải biết khi mua nhà tại Nam Úc.</p>
       </div>
 

@@ -45,6 +45,7 @@ def prepare_html():
         'chart3_housing_supply_distribution.png',
         'chart4_immigration_impact_analysis.png',
         'chart5_safety_index_comparison.png',
+        'chart5_safety_index_comparison_v2.png',
         'chart6_regional_value_matrix.png',
         'chart7_property_type_cost_comparison.png'
     ]
@@ -296,6 +297,10 @@ async def generate_pdf(html_path):
         )
         await browser.close()
     print(f"Expanded PDF Successfully generated at: {target_pdf}")
+    import shutil
+    target_v2 = str(BASE_DIR / 'reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf')
+    shutil.copyfile(target_pdf, target_v2)
+    print(f"Copied PDF to: {target_v2}")
 
 def main():
     html_path = prepare_html()

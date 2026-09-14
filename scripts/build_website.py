@@ -17,7 +17,9 @@ def get_rendered_report_html():
     with open(MD_REPORT, 'r', encoding='utf-8') as f:
         md_text = f.read()
 
-    # Replace relative chart links to point to reports/charts/
+    # Replace relative chart links to point to reports/charts/ with cache buster
+    ts = int(datetime.datetime.now().timestamp())
+    md_text = re.sub(r'\(charts/([a-zA-Z0-9_]+)\.png\)', rf'(reports/charts/\1.png?v={ts})', md_text)
     md_text = md_text.replace('(charts/', '(reports/charts/')
 
     md = MarkdownIt('gfm-like', {'html': True, 'linkify': False})
@@ -1141,14 +1143,15 @@ def build():
     const allProps = {properties_json_str};
     let currentRegion = 'all';
 
+    const cacheBuster = Date.now();
     const chartMap = {{
-      1: 'reports/charts/chart1_median_prices.png',
-      2: 'reports/charts/chart2_distance_vs_price.png',
-      3: 'reports/charts/chart3_housing_supply_distribution.png',
-      4: 'reports/charts/chart4_immigration_impact_analysis.png',
-      5: 'reports/charts/chart5_safety_index_comparison.png',
-      6: 'reports/charts/chart6_regional_value_matrix.png',
-      7: 'reports/charts/chart7_property_type_cost_comparison.png'
+      1: 'reports/charts/chart1_median_prices.png?v=' + cacheBuster,
+      2: 'reports/charts/chart2_distance_vs_price.png?v=' + cacheBuster,
+      3: 'reports/charts/chart3_housing_supply_distribution.png?v=' + cacheBuster,
+      4: 'reports/charts/chart4_immigration_impact_analysis.png?v=' + cacheBuster,
+      5: 'reports/charts/chart5_safety_index_comparison_v2.png?v=' + cacheBuster,
+      6: 'reports/charts/chart6_regional_value_matrix.png?v=' + cacheBuster,
+      7: 'reports/charts/chart7_property_type_cost_comparison.png?v=' + cacheBuster
     }};
 
     function switchChart(id, btn) {{

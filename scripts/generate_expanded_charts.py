@@ -77,9 +77,11 @@ ax.legend(handles=legend_elements, loc='lower right', frameon=True, framealpha=0
 
 plt.tight_layout()
 chart5_path = str(BASE_DIR / 'reports/charts/chart5_safety_index_comparison.png')
+chart5_v2_path = str(BASE_DIR / 'reports/charts/chart5_safety_index_comparison_v2.png')
 plt.savefig(chart5_path)
+plt.savefig(chart5_v2_path)
 plt.close()
-print(f'Saved Chart 5: {chart5_path}')
+print(f'Saved Chart 5: {chart5_path} and {chart5_v2_path}')
 
 
 # -------------------------------------------------------------

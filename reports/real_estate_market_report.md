@@ -96,7 +96,7 @@ Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh 1B Wilgena Av
 ![Chart 4: Immigration Impact Analysis](charts/chart4_immigration_impact_analysis.png)
 
 ### 📊 Biểu đồ 5: Thước Đo Tỷ Lệ Tội Phạm SAPOL (Khu Vực Chọn vs Vùng Bị Loại Trừ)
-![Chart 5: Safety Index Comparison](charts/chart5_safety_index_comparison.png)
+![Chart 5: Safety Index Comparison](charts/chart5_safety_index_comparison_v2.png)
 
 ### 📊 Biểu đồ 6: Ma Trận Cân Bằng Giá vs Đất vs Lối Sống Trên Các Hội Đồng An Toàn
 ![Chart 6: Regional Value Matrix](charts/chart6_regional_value_matrix.png)

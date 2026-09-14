@@ -266,6 +266,19 @@ def parse_listing(url, region_hint):
                 assigned_region = reg_name
                 break
 
+        # Year Built extraction or suburb era estimation
+        m_year = re.search(r'(?:built\s+in|year\s+built|circa|built\s+c\.?|built\s+around|constructed\s+in)\s*(\d{4})', html, re.I)
+        if m_year:
+            year_built = m_year.group(1)
+        elif 'character' in html[:4000].lower() or 'cottage' in html[:4000].lower() or sub_lower in ['unley', 'colonel light gardens']:
+            year_built = "c.1925 (Character)"
+        elif prop_type == 'Townhouse':
+            year_built = "c.2005 - 2018 (Modern)"
+        elif prop_type == 'Unit / Villa':
+            year_built = "c.1975 - 1990 (Solid Brick)"
+        else:
+            year_built = "c.1965 - 1985 (Established)"
+
         # Construct Domain.com.au direct and search links
         clean_addr = f"{street} {suburb} SA {postcode}"
         slug = clean_addr.lower().replace('/', '-').replace(',', '').replace('.', '')
@@ -291,6 +304,7 @@ def parse_listing(url, region_hint):
             'distance_km_from_wilgena': dist,
             'school_zone': school_zone,
             'safety_rating': safety,
+            'year_built': year_built,
             'url': domain_direct,
             'domain_url': domain_direct,
             'domain_search_url': domain_search,

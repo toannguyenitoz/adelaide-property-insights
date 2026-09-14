@@ -741,6 +741,10 @@ def build():
                 <span class="tag-label">Loại hình:</span>
                 <span>${{p.property_type}}</span>
               </div>
+              <div class="tag-row">
+                <span class="tag-label">Năm xây dựng:</span>
+                <span style="color:var(--emerald); font-weight:700;">🔨 ${{p.year_built || 'Chưa rõ'}}</span>
+              </div>
             </div>
           </div>
           <div class="card-foot">

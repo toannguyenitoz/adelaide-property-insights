@@ -279,13 +279,12 @@ def parse_listing(url, region_hint):
         else:
             year_built = "c.1965 - 1985 (Established)"
 
-        # Construct Domain.com.au direct and search links
-        clean_addr = f"{street} {suburb} SA {postcode}"
-        slug = clean_addr.lower().replace('/', '-').replace(',', '').replace('.', '')
-        slug = re.sub(r'[^a-z0-9\-]+', '-', slug)
-        slug = re.sub(r'-+', '-', slug).strip('-')
-        domain_direct = f"https://www.domain.com.au/{slug}"
-        domain_search = f"https://www.domain.com.au/sale/?street={urllib.parse.quote_plus(street)}&suburb={urllib.parse.quote_plus(suburb)}&state=SA&postcode={postcode}"
+        # Construct Domain.com.au search links (Avoid 404 on slug-based URLs)
+        clean_addr = f"{street}, {suburb} SA {postcode}"
+        sub_slug = suburb.lower().replace(' ', '-')
+        domain_terms_url = f"https://www.domain.com.au/sale/?terms={urllib.parse.quote_plus(clean_addr)}"
+        domain_suburb_url = f"https://www.domain.com.au/sale/{sub_slug}-sa-{postcode}/?bedrooms=3-3&price=0-1200000"
+        google_domain_url = f"https://www.google.com/search?q={urllib.parse.quote_plus(clean_addr + ' site:domain.com.au')}"
 
         return {
             'address': full_address,
@@ -305,9 +304,10 @@ def parse_listing(url, region_hint):
             'school_zone': school_zone,
             'safety_rating': safety,
             'year_built': year_built,
-            'url': domain_direct,
-            'domain_url': domain_direct,
-            'domain_search_url': domain_search,
+            'url': domain_terms_url,
+            'domain_url': domain_terms_url,
+            'domain_suburb_url': domain_suburb_url,
+            'google_domain_url': google_domain_url,
             'homely_url': url
         }
     except Exception:

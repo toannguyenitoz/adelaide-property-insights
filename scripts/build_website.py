@@ -750,11 +750,11 @@ def build():
           <div class="card-foot">
             <span class="card-dist">📍 Cách bạn: ${{p.distance_km_from_wilgena}} km</span>
             <div class="btn-group-foot">
-              <a href="${{p.domain_url || p.url}}" target="_blank" rel="noopener noreferrer" class="btn-domain" title="Xem bài đăng trên Domain.com.au">
+              <a href="${{p.domain_url || p.url}}" target="_blank" rel="noopener noreferrer" class="btn-domain" title="Tìm trực tiếp địa chỉ căn nhà trên Domain.com.au">
                 Domain.com.au &rarr;
               </a>
               ${{p.homely_url ? `
-                <a href="${{p.homely_url}}" target="_blank" rel="noopener noreferrer" class="btn-homely" title="Xem bài đăng dự phòng trên Homely">
+                <a href="${{p.homely_url}}" target="_blank" rel="noopener noreferrer" class="btn-homely" title="Xem bài đăng gốc trên Homely">
                   Homely
                 </a>
               ` : ''}}

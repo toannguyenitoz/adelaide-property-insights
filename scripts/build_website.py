@@ -365,16 +365,46 @@ def build():
       font-weight: 700;
       color: var(--primary);
     }}
-    .btn-view {{
-      background: var(--slate-900);
+    .btn-group-foot {{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+    .btn-domain {{
+      background: #00875a;
       color: white;
-      padding: 6px 12px;
+      padding: 6px 11px;
       border-radius: 6px;
       font-size: 11.5px;
       font-weight: 700;
-      transition: background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s;
     }}
-    .btn-view:hover {{ background: var(--accent); }}
+    .btn-domain:hover {{
+      background: #006644;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,135,90,0.3);
+    }}
+    .btn-homely {{
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      padding: 5px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.15s;
+    }}
+    .btn-homely:hover {{
+      background: #f1f5f9;
+      color: #0f172a;
+      border-color: #94a3b8;
+    }}
     
     /* Analytics & Charts Section */
     .section-box {{
@@ -714,8 +744,17 @@ def build():
             </div>
           </div>
           <div class="card-foot">
-            <span class="card-dist">📍 Cách nhà bạn: ${{p.distance_km_from_wilgena}} km</span>
-            <a href="${{p.url}}" target="_blank" rel="noopener noreferrer" class="btn-view">Xem Tin Đăng &rarr;</a>
+            <span class="card-dist">📍 Cách bạn: ${{p.distance_km_from_wilgena}} km</span>
+            <div class="btn-group-foot">
+              <a href="${{p.domain_url || p.url}}" target="_blank" rel="noopener noreferrer" class="btn-domain" title="Xem bài đăng trên Domain.com.au">
+                Domain.com.au &rarr;
+              </a>
+              ${{p.homely_url ? `
+                <a href="${{p.homely_url}}" target="_blank" rel="noopener noreferrer" class="btn-homely" title="Xem bài đăng dự phòng trên Homely">
+                  Homely
+                </a>
+              ` : ''}}
+            </div>
           </div>
         </div>
       `).join('');

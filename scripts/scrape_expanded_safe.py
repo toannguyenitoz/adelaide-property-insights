@@ -266,6 +266,14 @@ def parse_listing(url, region_hint):
                 assigned_region = reg_name
                 break
 
+        # Construct Domain.com.au direct and search links
+        clean_addr = f"{street} {suburb} SA {postcode}"
+        slug = clean_addr.lower().replace('/', '-').replace(',', '').replace('.', '')
+        slug = re.sub(r'[^a-z0-9\-]+', '-', slug)
+        slug = re.sub(r'-+', '-', slug).strip('-')
+        domain_direct = f"https://www.domain.com.au/{slug}"
+        domain_search = f"https://www.domain.com.au/sale/?street={urllib.parse.quote_plus(street)}&suburb={urllib.parse.quote_plus(suburb)}&state=SA&postcode={postcode}"
+
         return {
             'address': full_address,
             'street': street,
@@ -283,7 +291,10 @@ def parse_listing(url, region_hint):
             'distance_km_from_wilgena': dist,
             'school_zone': school_zone,
             'safety_rating': safety,
-            'url': url
+            'url': domain_direct,
+            'domain_url': domain_direct,
+            'domain_search_url': domain_search,
+            'homely_url': url
         }
     except Exception:
         return None

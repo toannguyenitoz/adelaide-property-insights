@@ -562,11 +562,12 @@ def build():
         <span style="font-size:12px; font-weight:700; color:var(--slate-900);">Hành Lang Đô Thị:</span>
         <div class="region-pills" id="regionPills">
           <button class="pill-btn active" onclick="setRegion('all', this)">Tất cả ({total_listings})</button>
-          <button class="pill-btn" onclick="setRegion('Inner East & South (Core)', this)">Inner East/South (GIHS)</button>
-          <button class="pill-btn" onclick="setRegion('Eastern Suburbs & Foothills', this)">Phía Đông (Norwood High)</button>
-          <button class="pill-btn" onclick="setRegion('Western Coastal & Beachside', this)">Ven Biển (Henley/Brighton)</button>
-          <button class="pill-btn" onclick="setRegion('Adelaide Hills & Mitcham Foothills', this)">Adelaide Hills (Safest)</button>
-          <button class="pill-btn" onclick="setRegion('North-East Safe Family Haven', this)">Đông Bắc (Golden Grove)</button>
+          <button class="pill-btn" onclick="setRegion('City of Burnside & Core East', this)">Burnside & Toorak Gdns</button>
+          <button class="pill-btn" onclick="setRegion('City of Unley & Prestige South', this)">Unley & Unley Park</button>
+          <button class="pill-btn" onclick="setRegion('City of Mitcham & Foothills', this)">Mitcham & Foothills</button>
+          <button class="pill-btn" onclick="setRegion('Norwood, Campbelltown & North-East Core', this)">Norwood & Campbelltown</button>
+          <button class="pill-btn" onclick="setRegion('Western Coastal & Beachside', this)">Ven Biển Henley/Brighton</button>
+          <button class="pill-btn" onclick="setRegion('Adelaide Hills & North-East Enclaves', this)">Adelaide Hills & Golden Grove</button>
         </div>
       </div>
       <div class="filter-inputs">

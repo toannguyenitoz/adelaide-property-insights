@@ -1,3 +1,5 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import base64
 import os
 import re
@@ -5,10 +7,10 @@ import asyncio
 from markdown_it import MarkdownIt
 from playwright.async_api import async_playwright
 
-MD_PATH = 'd:/Looking for a home/reports/real_estate_market_report.md'
-CHARTS_DIR = 'd:/Looking for a home/reports/charts'
-OUTPUT_HTML = 'd:/Looking for a home/reports/report_preview.html'
-OUTPUT_PDF = 'd:/Looking for a home/reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ.pdf'
+MD_PATH = str(BASE_DIR / 'reports/real_estate_market_report.md')
+CHARTS_DIR = str(BASE_DIR / 'reports/charts')
+OUTPUT_HTML = str(BASE_DIR / 'reports/report_preview.html')
+OUTPUT_PDF = str(BASE_DIR / 'reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ.pdf')
 
 def image_to_base64(img_path):
     if os.path.exists(img_path):
@@ -276,7 +278,7 @@ async def generate_pdf(html_path):
             with open(target_pdf, 'ab') as test_f:
                 pass
         except PermissionError:
-            target_pdf = 'd:/Looking for a home/reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf'
+            target_pdf = str(BASE_DIR / 'reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf')
 
         await page.pdf(
             path=target_pdf,

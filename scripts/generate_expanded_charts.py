@@ -1,3 +1,5 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -6,7 +8,7 @@ plt.style.use('seaborn-v0_8-whitegrid' if 'seaborn-v0_8-whitegrid' in plt.style.
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica']
 
-os.makedirs('d:/Looking for a home/reports/charts', exist_ok=True)
+os.makedirs(str(BASE_DIR / 'reports/charts'), exist_ok=True)
 
 # -------------------------------------------------------------
 # CHART 5: Safety Index & Crime Rate Comparison (SAPOL Offenses per 1,000 Residents)
@@ -69,7 +71,7 @@ legend_elements = [
 ax.legend(handles=legend_elements, loc='lower right', frameon=True, framealpha=0.95, facecolor='white', edgecolor='#e5e7eb', fontsize=10)
 
 plt.tight_layout()
-chart5_path = 'd:/Looking for a home/reports/charts/chart5_safety_index_comparison.png'
+chart5_path = str(BASE_DIR / 'reports/charts/chart5_safety_index_comparison.png')
 plt.savefig(chart5_path)
 plt.close()
 print(f'Saved Chart 5: {chart5_path}')
@@ -122,7 +124,7 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper right', frameon=True, facecolor='white', framealpha=0.95)
 
 plt.tight_layout()
-chart6_path = 'd:/Looking for a home/reports/charts/chart6_regional_value_matrix.png'
+chart6_path = str(BASE_DIR / 'reports/charts/chart6_regional_value_matrix.png')
 plt.savefig(chart6_path)
 plt.close()
 print(f'Saved Chart 6: {chart6_path}')

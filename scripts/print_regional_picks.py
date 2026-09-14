@@ -1,6 +1,8 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import json
 
-with open('d:/Looking for a home/data/expanded_safe_listings_under_1.2m.json', encoding='utf-8') as f:
+with open(str(BASE_DIR / 'data/expanded_safe_listings_under_1.2m.json'), encoding='utf-8') as f:
     props = json.load(f)
 
 regions = {}

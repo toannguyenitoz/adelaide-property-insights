@@ -1,10 +1,12 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import json
 import statistics
 
-with open('d:/Looking for a home/data/active_listings_under_1.2m.json', encoding='utf-8') as f:
+with open(str(BASE_DIR / 'data/active_listings_under_1.2m.json'), encoding='utf-8') as f:
     active = json.load(f)
 
-with open('d:/Looking for a home/data/historical_sales_analysis.json', encoding='utf-8') as f:
+with open(str(BASE_DIR / 'data/historical_sales_analysis.json'), encoding='utf-8') as f:
     historical = json.load(f)
 
 print(f"=== ACTIVE LISTINGS ANALYSIS ({len(active)} properties) ===")

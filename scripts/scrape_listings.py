@@ -1,3 +1,5 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
@@ -339,11 +341,11 @@ def main():
     matched.sort(key=lambda x: (x['distance_km_from_wilgena'], x['price_min'] if x['price_min'] else 9999999))
     print(f"\nCompleted! Total matching 3-bedroom properties under $1.2M: {len(matched)}", flush=True)
 
-    json_path = 'd:/Looking for a home/data/active_listings_under_1.2m.json'
+    json_path = str(BASE_DIR / 'data/active_listings_under_1.2m.json')
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(matched, f, ensure_ascii=False, indent=2)
 
-    csv_path = 'd:/Looking for a home/data/active_listings_under_1.2m.csv'
+    csv_path = str(BASE_DIR / 'data/active_listings_under_1.2m.csv')
     with open(csv_path, 'w', newline='', encoding='utf-8-sig') as f:
         fieldnames = [
             'address', 'suburb', 'postcode', 'price_raw', 'property_type',

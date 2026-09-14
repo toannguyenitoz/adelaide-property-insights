@@ -1,3 +1,5 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -6,7 +8,7 @@ plt.style.use('seaborn-v0_8-whitegrid' if 'seaborn-v0_8-whitegrid' in plt.style.
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica']
 
-os.makedirs('d:/Looking for a home/reports/charts', exist_ok=True)
+os.makedirs(str(BASE_DIR / 'reports/charts'), exist_ok=True)
 
 # -------------------------------------------------------------
 # CHART 7: Annual Operating & Holding Cost Breakdown: House vs Townhouse vs Unit vs Apartment
@@ -74,7 +76,7 @@ ax2.set_ylim(0, 1050)
 ax2.legend(loc='upper right', frameon=True, facecolor='white', framealpha=0.95, fontsize=8.5)
 
 plt.tight_layout()
-chart7_path = 'd:/Looking for a home/reports/charts/chart7_property_type_cost_comparison.png'
+chart7_path = str(BASE_DIR / 'reports/charts/chart7_property_type_cost_comparison.png')
 plt.savefig(chart7_path)
 plt.close()
 print(f'Saved Chart 7: {chart7_path}')

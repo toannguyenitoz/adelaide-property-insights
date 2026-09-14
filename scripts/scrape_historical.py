@@ -1,3 +1,5 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
@@ -151,11 +153,11 @@ def main():
 
     print(f"\nTotal 3-bedroom sold properties parsed: {len(sold_data)}", flush=True)
     
-    json_path = 'd:/Looking for a home/data/historical_sales_analysis.json'
+    json_path = str(BASE_DIR / 'data/historical_sales_analysis.json')
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(sold_data, f, ensure_ascii=False, indent=2)
 
-    csv_path = 'd:/Looking for a home/data/historical_sales_analysis.csv'
+    csv_path = str(BASE_DIR / 'data/historical_sales_analysis.csv')
     with open(csv_path, 'w', newline='', encoding='utf-8-sig') as f:
         fieldnames = ['address', 'suburb', 'postcode', 'sold_price_text', 'sold_price_num', 'sold_date', 'bedrooms', 'bathrooms', 'car_spaces', 'land_size', 'url']
         writer = csv.DictWriter(f, fieldnames=fieldnames)

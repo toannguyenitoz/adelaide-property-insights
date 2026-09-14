@@ -1,3 +1,5 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import json
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
@@ -11,7 +13,7 @@ plt.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Arial', 'Helvetica']
 plt.rcParams['axes.edgecolor'] = '#cccccc'
 plt.rcParams['axes.linewidth'] = 0.8
 
-os.makedirs('d:/Looking for a home/reports/charts', exist_ok=True)
+os.makedirs(str(BASE_DIR / 'reports/charts'), exist_ok=True)
 
 # -------------------------------------------------------------
 # CHART 1: 3-Bedroom Median Sold Prices By Suburb vs $1.2M Budget
@@ -68,7 +70,7 @@ legend_elements = [
 ax.legend(handles=legend_elements, loc='lower right', frameon=True, framealpha=0.95, facecolor='white', edgecolor='#e5e7eb', fontsize=10)
 
 plt.tight_layout()
-chart1_path = 'd:/Looking for a home/reports/charts/chart1_median_prices.png'
+chart1_path = str(BASE_DIR / 'reports/charts/chart1_median_prices.png')
 plt.savefig(chart1_path)
 plt.close()
 print(f'Saved Chart 1: {chart1_path}')
@@ -77,7 +79,7 @@ print(f'Saved Chart 1: {chart1_path}')
 # -------------------------------------------------------------
 # CHART 2: Active Properties - Distance vs Price Guide
 # -------------------------------------------------------------
-with open('d:/Looking for a home/data/active_listings_under_1.2m.json', encoding='utf-8') as f:
+with open(str(BASE_DIR / 'data/active_listings_under_1.2m.json'), encoding='utf-8') as f:
     active_props = json.load(f)
 
 dists = []
@@ -137,7 +139,7 @@ ax.set_xlim(0.5, 5.5)
 ax.legend(loc='lower right', frameon=True, framealpha=0.95, facecolor='white', edgecolor='#e5e7eb', fontsize=9.5)
 
 plt.tight_layout()
-chart2_path = 'd:/Looking for a home/reports/charts/chart2_distance_vs_price.png'
+chart2_path = str(BASE_DIR / 'reports/charts/chart2_distance_vs_price.png')
 plt.savefig(chart2_path)
 plt.close()
 print(f'Saved Chart 2: {chart2_path}')
@@ -170,7 +172,7 @@ ax.set_title('Geographic Distribution of Adelaide\'s Upcoming Housing Supply\n(W
              fontsize=12.5, fontweight='bold', pad=15)
 
 plt.tight_layout()
-chart3_path = 'd:/Looking for a home/reports/charts/chart3_housing_supply_distribution.png'
+chart3_path = str(BASE_DIR / 'reports/charts/chart3_housing_supply_distribution.png')
 plt.savefig(chart3_path)
 plt.close()
 print(f'Saved Chart 3: {chart3_path}')
@@ -208,7 +210,7 @@ for bar in bars:
     ax.text(w + offset, bar.get_y() + bar.get_height()/2, txt, va='center', ha=ha, fontsize=9.5, fontweight='bold')
 
 plt.tight_layout()
-chart4_path = 'd:/Looking for a home/reports/charts/chart4_immigration_impact_analysis.png'
+chart4_path = str(BASE_DIR / 'reports/charts/chart4_immigration_impact_analysis.png')
 plt.savefig(chart4_path)
 plt.close()
 print(f'Saved Chart 4: {chart4_path}')

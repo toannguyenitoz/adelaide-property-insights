@@ -1,9 +1,11 @@
+import pathlib
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import json
 import os
 import datetime
 
-DATA_JSON = 'd:/Looking for a home/data/expanded_safe_listings_under_1.2m.json'
-OUTPUT_INDEX = 'd:/Looking for a home/index.html'
+DATA_JSON = str(BASE_DIR / 'data/expanded_safe_listings_under_1.2m.json')
+OUTPUT_INDEX = str(BASE_DIR / 'index.html')
 
 def build():
     with open(DATA_JSON, 'r', encoding='utf-8') as f:

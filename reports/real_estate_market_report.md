@@ -24,7 +24,7 @@
 
 Nhằm đảm bảo **tính toàn vẹn tuyệt đối và không bỏ sót bất kỳ vùng ngoại ô nào**, hệ thống phân tích của **Toan Nguyen IT OZ** đã mở rộng quy mô quét lên **1,297 tin đăng** chào bán thực tế, bao phủ toàn diện **139 vùng ngoại ô** thuộc tất cả các Hội đồng danh giá nhất Greater Adelaide:
 
-- **Tổng số bất động sản 3 phòng ngủ an toàn dưới .2M AUD được thẩm định:** **375 căn nhà**.
+- **Tổng số bất động sản 3 phòng ngủ an toàn dưới $1.2M AUD được thẩm định:** **375 căn nhà**.
 - **Độ phủ địa lý phân theo 6 phân vùng hành chính:**
   1. 🏛️ **City of Burnside & Core East:** 18 căn (Toorak Gardens, Tusmore, Dulwich, Glenunga, Myrtle Bank, Linden Park, Hazelwood Park, Beulah Park, Erindale, Leabrook, Wattle Park, St Georges).
   2. 👑 **City of Unley & Prestige South:** 36 căn (Unley, Unley Park, Malvern, Hyde Park, Millswood, Kings Park, Goodwood, Wayville, Parkside, Fullarton, Highgate, Clarence Park, Black Forest).
@@ -41,15 +41,15 @@ Nhằm đảm bảo **tính toàn vẹn tuyệt đối và không bỏ sót bấ
 
 ## 2. LÝ GIẢI BỨC TRANH NGUỒN HÀNG TẠI CÁC SUBURB THƯỢNG LƯU (UNLEY PARK, TOORAK GARDENS, MALVERN)
 
-Một phát hiện thị trường vô cùng quan trọng khi mở rộng quét dữ liệu là: **Tại sao các khu vực như Unley Park, Toorak Gardens, Malvern hay Hyde Park lại có số lượng tin đăng dưới .2M rất khiêm tốn?**
+Một phát hiện thị trường vô cùng quan trọng khi mở rộng quét dữ liệu là: **Tại sao các khu vực như Unley Park, Toorak Gardens, Malvern hay Hyde Park lại có số lượng tin đăng dưới $1.2M rất khiêm tốn?**
 
 1. **Đẳng cấp định giá "Blue-Chip" siêu sang:**
-   - **Unley Park & Malvern:** Giá trung vị (Median Price) của nhà riêng tại đây hiện dao động từ **.85M - .8M AUD**. 
-   - Đa số các căn nhà chào bán tại Unley Park, Malvern và Hyde Park là biệt thự đá cổ (Sandstone Return Verandah Villa / Tudor) diện tích đất lớn 700m² - 1,500m² với mức giá từ .2M đến hơn .5M AUD.
-2. **Cơ hội vàng cho phân khúc dưới .2M tại Unley Park:**
-   - Trong dữ liệu mới nhất, hệ thống đã săn tìm được dự án hiếm hoi: **8 & 11/392-394 Unley Road, Unley Park SA 5061** (3 phòng ngủ mới xây, chào bán trong khoảng **.1M - .2M**). Đây là cơ hội hiếm thấy để gia đình sở hữu một địa chỉ Unley Park danh giá với ngân sách chuẩn.
+   - **Unley Park & Malvern:** Giá trung vị (Median Price) của nhà riêng tại đây hiện dao động từ **$1.85M - $2.8M AUD**. 
+   - Đa số các căn nhà chào bán tại Unley Park, Malvern và Hyde Park là biệt thự đá cổ (Sandstone Return Verandah Villa / Tudor) diện tích đất lớn 700m² - 1,500m² với mức giá từ $1.2M đến hơn $2.5M AUD.
+2. **Cơ hội vàng cho phân khúc dưới $1.2M tại Unley Park:**
+   - Trong dữ liệu mới nhất, hệ thống đã săn tìm được dự án hiếm hoi: **8 & 11/392-394 Unley Road, Unley Park SA 5061** (3 phòng ngủ mới xây, chào bán trong khoảng **$1.1M - $1.2M**). Đây là cơ hội hiếm thấy để gia đình sở hữu một địa chỉ Unley Park danh giá với ngân sách chuẩn.
 3. **Khu vực Toorak Gardens & Tusmore:**
-   - Toorak Gardens là vùng ngoại ô có giá đất đắt đỏ bậc nhất City of Burnside (trung vị .8M). Các căn 3 phòng ngủ dưới .2M tại đây chủ yếu là Unit/Townhouse cao cấp nhưng tỷ lệ sang nhượng cực thấp (chủ nhà giữ nhà lâu dài cho con học GIHS).
+   - Toorak Gardens là vùng ngoại ô có giá đất đắt đỏ bậc nhất City of Burnside (trung vị $1.8M). Các căn 3 phòng ngủ dưới $1.2M tại đây chủ yếu là Unit/Townhouse cao cấp nhưng tỷ lệ sang nhượng cực thấp (chủ nhà giữ nhà lâu dài cho con học GIHS).
 
 ---
 
@@ -81,8 +81,8 @@ Tiêu chí bảo vệ gia đình luôn được đặt lên hàng đầu. Hệ t
 
 Bộ 7 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
 
-### 📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách .2M (Bao gồm Unley Park & Toorak Gardens)
-So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách .2M AUD:
+### 📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park & Toorak Gardens)
+So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
 ![Chart 1: Median Prices by Suburb](charts/chart1_median_prices.png)
 
 ### 📊 Biểu đồ 2: Tương Quan Khoảng Cách Tới Myrtle Bank vs Giá Bán (375 BĐS Toàn Vùng)
@@ -193,13 +193,13 @@ Dưới góc nhìn kinh tế học vi mô đơn giản (thị trường đồng 
    - **Torrens Title:** Sở hữu toàn bộ thửa đất và căn nhà, toàn quyền quyết định đập đi xây lại.
    - **Strata Title:** Sở hữu vĩnh viễn không gian bên trong; đất và vỏ công trình bên ngoài thuộc sở hữu chung của tập thể.
 2. **Các loại phí thường niên bắt buộc (Holding Costs):**
-   - **Council Rates:** ,600 - ,600/năm (trả theo quý cho Hội đồng địa phương).
-   - **SA Water:** ,000 - ,600/năm (cấp nước, thoát nước và tiền nước sử dụng thực tế).
-   - **Emergency Services Levy (ESL):**  - /năm cho ngân sách cứu hỏa và cứu nạn Nam Úc.
-   - **Land Tax:** ** MIỄN PHÍ 100%** đối với nhà ở chính (Principal Place of Residence - PPOR).
+   - **Council Rates:** $1,600 - $2,600/năm (trả theo quý cho Hội đồng địa phương).
+   - **SA Water:** $1,000 - $1,600/năm (cấp nước, thoát nước và tiền nước sử dụng thực tế).
+   - **Emergency Services Levy (ESL):** $180 - $300/năm cho ngân sách cứu hỏa và cứu nạn Nam Úc.
+   - **Land Tax:** **$0 MIỄN PHÍ 100%** đối với nhà ở chính (Principal Place of Residence - PPOR).
 3. **Bài toán kinh tế Điện Mặt Trời (Solar PV):**
-   - Lắp đặt gói **6.6kW Solar Inverter 5kW** (chi phí ~,500 - ,500 sau trợ giá STC).
-   - Tiết kiệm ngay **,500 - ,200 tiền điện mỗi năm**. Thời gian hoàn vốn thực tế chỉ **2.5 đến 3.5 năm**.
+   - Lắp đặt gói **6.6kW Solar Inverter 5kW** (chi phí ~$4,500 - $6,500 sau trợ giá STC).
+   - Tiết kiệm ngay **$1,500 - $2,200 tiền điện mỗi năm**. Thời gian hoàn vốn thực tế chỉ **2.5 đến 3.5 năm**.
 
 ---
 
@@ -208,8 +208,8 @@ Dưới góc nhìn kinh tế học vi mô đơn giản (thị trường đồng 
 ### 🎯 KHUYẾN NGHỊ TỪ CHUYÊN GIA TOAN NGUYEN IT OZ: 👉 **NÊN MUA NGAY.**
 
 1. **Lãi suất đang tạo cơ hội đàm phán tốt nhất:** Lãi suất hiện tại đang ở mức đỉnh chu kỳ, hạn chế sự tham gia ồ ạt của các nhà đầu tư đầu cơ, tạo điều kiện cho người mua ở thực có thời gian chọn lọc và đàm phán giá hợp lý với người bán.
-2. **Kỳ vọng cắt giảm lãi suất của RBA:** Dự kiến vào cuối năm 2026 / đầu 2027 khi RBA bắt đầu lộ trình nới lỏng tiền tệ, dòng tiền sẽ đổ dồn vào các khu vực an toàn, đẩy giá vượt ngưỡng .2M hiện tại.
-3. **Khả năng tiếp cận nhà nội đô sẽ ngày càng hẹp lại:** Nếu chờ đợi thêm 6-12 tháng, với cùng ngân sách .2M, bạn sẽ buộc phải mua xa hơn 15 - 20km hoặc chuyển sang căn hộ 2 phòng ngủ.
+2. **Kỳ vọng cắt giảm lãi suất của RBA:** Dự kiến vào cuối năm 2026 / đầu 2027 khi RBA bắt đầu lộ trình nới lỏng tiền tệ, dòng tiền sẽ đổ dồn vào các khu vực an toàn, đẩy giá vượt ngưỡng $1.2M hiện tại.
+3. **Khả năng tiếp cận nhà nội đô sẽ ngày càng hẹp lại:** Nếu chờ đợi thêm 6-12 tháng, với cùng ngân sách $1.2M, bạn sẽ buộc phải mua xa hơn 15 - 20km hoặc chuyển sang căn hộ 2 phòng ngủ.
 
 ---
 
@@ -217,25 +217,25 @@ Dưới góc nhìn kinh tế học vi mô đơn giản (thị trường đồng 
 
 ### 🌟 Top 5 Bất Động Sản Nổi Bật Nhất Toàn Vùng:
 1. **[8 & 11/392-394 Unley Road, Unley Park SA 5061](https://www.homely.com.au/homes/8--11-392-394-unley-road-unley-park-sa-5061/13444001)**  
-   - *Giá:* **Brand New Luxury (~.1M - .2M)** | 3PN • 2WC • 2Xe
+   - *Giá:* **Brand New Luxury (~$1.1M - $1.2M)** | 3PN • 2WC • 2Xe
    - *Vị trí:* **Unley Park siêu sang** (cách Myrtle Bank chỉ **2.78 km**).
    - *Trường học:* **Unley High School Prestigious Zone**.
 2. **[3/40 Windsor Road, Glenunga SA 5064](https://www.homely.com.au/homes/3-40-windsor-road-glenunga-sa-5064/13354639)**  
-   - *Giá:* **,050,000 - ,100,000** | 3PN • 2WC • 1Xe (Villa Trệt)
+   - *Giá:* **$1,050,000 - $1,100,000** | 3PN • 2WC • 1Xe (Villa Trệt)
    - *Trường học:* **100% Zoned Glenunga International High (GIHS)** | Cự ly: **1.24 km**.
 3. **[6/2 Cross Street, Fullarton SA 5063](https://www.homely.com.au/homes/6-2-cross-street-fullarton-sa-5063/13455168)**  
-   - *Giá:* **,000 - ,000** | 3PN • 1WC • 1Xe (Courtyard Home)
+   - *Giá:* **$850,000 - $920,000** | 3PN • 1WC • 1Xe (Courtyard Home)
    - *Trường học:* Dual Zone GIHS / Unley High | Cự ly: **1.24 km**.
 4. **[2 Pitfour Road, Lower Mitcham SA 5062](https://www.homely.com.au/homes/2-pitfour-road-lower-mitcham-sa-5062/13496099)**  
-   - *Giá:* **,000,000 - ,100,000** | 3PN • 2WC • 2Xe (**Nhà riêng biệt lập, Đất 492 m²**)
+   - *Giá:* **$1,000,000 - $1,100,000** | 3PN • 2WC • 2Xe (**Nhà riêng biệt lập, Đất 492 m²**)
    - *Trường học:* Unley High School Zone | Cự ly: **2.68 km**.
 5. **[515 Tapleys Hill Road, Fulham Gardens SA 5024](https://www.homely.com.au/homes/515-tapleys-hill-road-fulham-gardens-sa-5024/13264747)**  
-   - *Giá:* **,000 - ,000** | 3PN • 1WC • 2Xe (**Nhà riêng có đất 360 m²**)
+   - *Giá:* **$795,000 - $815,000** | 3PN • 1WC • 2Xe (**Nhà riêng có đất 360 m²**)
    - *Trường học:* **Henley High School Zone** (cách biển Henley Beach 4 phút).
 
 ### 📋 Chiến Thuật Pháp Lý Form 1 Cần Lưu Ý:
 - **Lệnh kiểm tra quy hoạch:** Đảm bảo thửa đất không thuộc diện bảo tồn di sản cấp bang nghiêm ngặt (State Heritage Overlay) nếu có ý định cải tạo lớn.
-- **Ranh giới trường học:** Luôn tra cứu chính xác địa chỉ từng căn tại cổng thông tin ducation.sa.gov.au trước khi đặt cọc (Cooling-off 2 ngày làm việc theo luật Nam Úc).
+- **Ranh giới trường học:** Luôn tra cứu chính xác địa chỉ từng căn tại cổng thông tin education.sa.gov.au trước khi đặt cọc (Cooling-off 2 ngày làm việc theo luật Nam Úc).
 
 ---
 *Báo cáo được hoàn thiện và bảo chứng độc quyền bởi Toan Nguyen IT OZ (toannguyenitoz@gmail.com).*

@@ -3,9 +3,64 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 import json
 import os
 import datetime
+import re
+from markdown_it import MarkdownIt
 
 DATA_JSON = str(BASE_DIR / 'data/expanded_safe_listings_under_1.2m.json')
+MD_REPORT = str(BASE_DIR / 'reports/real_estate_market_report.md')
 OUTPUT_INDEX = str(BASE_DIR / 'index.html')
+
+def get_rendered_report_html():
+    if not os.path.exists(MD_REPORT):
+        return "<p>Báo cáo chưa sẵn sàng.</p>"
+
+    with open(MD_REPORT, 'r', encoding='utf-8') as f:
+        md_text = f.read()
+
+    # Replace relative chart links to point to reports/charts/
+    md_text = md_text.replace('(charts/', '(reports/charts/')
+
+    md = MarkdownIt('gfm-like', {'html': True, 'linkify': False})
+    rendered_html = md.render(md_text)
+
+    # Slugs for each chapter
+    slug_map = {
+        '1': 'chuong-1-tong-quan',
+        '2': 'chuong-2-suburb-thuong-luu',
+        '3': 'chuong-3-bo-loc-an-ninh-sapol',
+        '4': 'chuong-4-he-thong-7-bieu-do',
+        '5': 'chuong-5-phan-bien-kinh-te-do-thi',
+        '6': 'chuong-6-phan-tich-6-hanh-lang',
+        '7': 'chuong-7-so-sanh-chi-phi-house-townhouse-unit',
+        '8': 'chuong-8-huong-dan-thuc-chien-phap-ly-solar',
+        '9': 'chuong-9-danh-gia-chien-luoc-mua-hay-doi',
+        '10': 'chuong-10-top-bat-dong-san-form-1'
+    }
+
+    # Add id and styling to H2 elements
+    def replace_h2(match):
+        num = match.group(1)
+        title = match.group(2)
+        slug = slug_map.get(num, f'chuong-{num}')
+        return f'<h2 id="{slug}" class="report-h2"><span class="report-chap-badge">Chương {num}</span> {title}</h2>'
+
+    rendered_html = re.sub(r'<h2>(\d+)\.\s*(.*?)</h2>', replace_h2, rendered_html)
+
+    # Wrap tables in responsive wrapper
+    rendered_html = re.sub(
+        r'(<table>[\s\S]*?</table>)',
+        r'<div class="report-table-wrapper">\1</div>',
+        rendered_html
+    )
+
+    # Enhance math formula presentation
+    rendered_html = re.sub(
+        r'\$\$([\s\S]*?)\$\$',
+        r'<div class="report-math-box"><code>\1</code></div>',
+        rendered_html
+    )
+
+    return rendered_html
 
 def build():
     with open(DATA_JSON, 'r', encoding='utf-8') as f:
@@ -21,6 +76,7 @@ def build():
     now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
 
     properties_json_str = json.dumps(properties, ensure_ascii=False)
+    report_html = get_rendered_report_html()
 
     html_content = f"""<!DOCTYPE html>
 <html lang="vi">
@@ -482,6 +538,305 @@ def build():
       margin-bottom: 8px;
     }}
     
+    /* Full Report Styling (10 Chapters) */
+    .full-report-container {{
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      margin-top: 40px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }}
+    .report-hero-head {{
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 70%, #1d4ed8 100%);
+      color: white;
+      padding: 36px 32px;
+      position: relative;
+    }}
+    .report-badge-top {{
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }}
+    .report-hero-head h2 {{
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }}
+    .report-hero-head p {{
+      font-size: 13.5px;
+      color: #cbd5e1;
+      max-width: 850px;
+      margin-bottom: 18px;
+    }}
+    .report-meta-row {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 14px;
+    }}
+    .report-meta-item strong {{
+      color: white;
+    }}
+    .report-head-btns {{
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+    }}
+    .report-action-btn {{
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      transition: all 0.2s;
+    }}
+    .report-btn-pdf {{
+      background: #059669;
+      color: white;
+    }}
+    .report-btn-pdf:hover {{
+      background: #047857;
+      color: white;
+    }}
+    .report-btn-print {{
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }}
+    .report-btn-print:hover {{
+      background: rgba(255,255,255,0.25);
+    }}
+    .chapter-nav-bar {{
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--slate-200);
+      padding: 10px 20px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+    }}
+    .chap-nav-pill {{
+      padding: 6px 12px;
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--slate-700);
+      text-decoration: none;
+      transition: all 0.15s;
+    }}
+    .chap-nav-pill:hover {{
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }}
+    .report-article-body {{
+      padding: 36px 32px;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--slate-700);
+    }}
+    .report-article-body p {{
+      margin-bottom: 14px;
+    }}
+    .report-article-body ul, .report-article-body ol {{
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }}
+    .report-article-body li {{
+      margin-bottom: 6px;
+    }}
+    .report-h2 {{
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--slate-900);
+      border-bottom: 2px solid var(--slate-200);
+      padding-bottom: 8px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      scroll-margin-top: 120px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }}
+    .report-chap-badge {{
+      background: var(--primary);
+      color: white;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }}
+    .report-article-body h3 {{
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 24px;
+      margin-bottom: 10px;
+      scroll-margin-top: 120px;
+    }}
+    .report-article-body h4 {{
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }}
+    .report-article-body hr {{
+      border: none;
+      border-top: 1px dashed var(--slate-200);
+      margin: 36px 0;
+    }}
+    .report-article-body strong {{
+      color: var(--slate-900);
+      font-weight: 700;
+    }}
+    .report-article-body code {{
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      font-weight: 600;
+    }}
+    .report-math-box {{
+      background: #f8fafc;
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+    }}
+    .report-math-box code {{
+      background: transparent;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+    }}
+    .report-table-wrapper {{
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 8px;
+      border: 1px solid var(--slate-200);
+    }}
+    .report-article-body table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }}
+    .report-article-body th {{
+      background: var(--primary);
+      color: white;
+      padding: 10px 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }}
+    .report-article-body td {{
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--slate-100);
+    }}
+    .report-article-body tr:nth-child(even) {{
+      background: var(--slate-50);
+    }}
+    .report-article-body tr:hover {{
+      background: #eff6ff;
+    }}
+    .report-article-body img {{
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--slate-200);
+      margin: 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }}
+    .nav-links {{
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }}
+    .nav-link {{
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }}
+    .nav-link:hover {{
+      color: white;
+      background: rgba(255,255,255,0.1);
+    }}
+    .nav-link-highlight {{
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }}
+    .hero-buttons {{
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }}
+    .hero-btn {{
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }}
+    .hero-btn-primary {{
+      background: #38bdf8;
+      color: #0f172a;
+    }}
+    .hero-btn-primary:hover {{
+      background: #7dd3fc;
+      transform: translateY(-2px);
+      color: #0f172a;
+    }}
+    .hero-btn-secondary {{
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }}
+    .hero-btn-secondary:hover {{
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+      color: white;
+    }}
+    
     /* Footer */
     footer {{
       background: var(--slate-900);
@@ -493,21 +848,35 @@ def build():
       border-top: 1px solid rgba(255,255,255,0.1);
     }}
     footer strong {{ color: white; }}
+
+    @media (max-width: 768px) {{
+      .nav-links {{ display: none; }}
+      .report-hero-head h2 {{ font-size: 20px; }}
+      .report-article-body {{ padding: 20px 14px; }}
+      .report-head-btns {{ width: 100%; margin-top: 10px; }}
+      .hero h1 {{ font-size: 24px; }}
+    }}
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="nav-brand">
+    <a href="#" class="nav-brand" style="text-decoration:none;">
       <div>
         <span class="brand-title">TOAN NGUYEN IT OZ</span>
         <span class="brand-sub">Adelaide Real Estate Intelligence &bull; Daily Automated Updates @ 6:00 AM ACST</span>
       </div>
+    </a>
+    <div class="nav-links">
+      <a href="#propertySection" class="nav-link">🏡 Tìm Nhà ({total_listings})</a>
+      <a href="#analyticsSection" class="nav-link">📊 7 Biểu Đồ</a>
+      <a href="#economicsSection" class="nav-link">🏛️ Kinh Tế Đô Thị</a>
+      <a href="#fullReportSection" class="nav-link nav-link-highlight">📖 Toàn Văn Báo Cáo (10 Chương)</a>
     </div>
     <div class="nav-actions">
       <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf">
-        📥 Tải Báo Cáo PDF (17 Trang)
+        📥 Tải Báo Cáo PDF (18 Trang)
       </a>
     </div>
   </nav>
@@ -518,7 +887,15 @@ def build():
       🛡️ Dữ Liệu Thực Tế Tuyển Chọn &bull; Loại Trừ Vùng Tội Phạm &bull; Cập nhật lúc {now_str}
     </div>
     <h1>CỔNG PHÂN TÍCH BẤT ĐỘNG SẢN AN TOÀN GREATER ADELAIDE</h1>
-    <p>Hệ thống tự động quét và thẩm định nhà 3 phòng ngủ có giá dưới $1.2M AUD, đối soát ranh giới trường công lập danh tiếng và chỉ số an ninh cảnh sát SAPOL.</p>
+    <p>Hệ thống tự động quét và thẩm định {total_listings} nhà 3 phòng ngủ có giá dưới $1.2M AUD, đối soát ranh giới trường công lập danh tiếng và chỉ số an ninh cảnh sát SAPOL.</p>
+    <div class="hero-buttons">
+      <a href="#propertySection" class="hero-btn hero-btn-primary">
+        🔍 Khảo Sát {total_listings} Nhà Đang Bán
+      </a>
+      <a href="#fullReportSection" class="hero-btn hero-btn-secondary">
+        📖 Đọc Toàn Văn Báo Cáo (10 Chương)
+      </a>
+    </div>
   </header>
 
   <!-- Stats -->
@@ -556,45 +933,48 @@ def build():
   <!-- Main Content -->
   <main class="main-wrapper">
 
-    <!-- Filters -->
-    <div class="filter-card">
-      <div class="filter-row">
-        <span style="font-size:12px; font-weight:700; color:var(--slate-900);">Hành Lang Đô Thị:</span>
-        <div class="region-pills" id="regionPills">
-          <button class="pill-btn active" onclick="setRegion('all', this)">Tất cả ({total_listings})</button>
-          <button class="pill-btn" onclick="setRegion('City of Burnside & Core East', this)">Burnside & Toorak Gdns</button>
-          <button class="pill-btn" onclick="setRegion('City of Unley & Prestige South', this)">Unley & Unley Park</button>
-          <button class="pill-btn" onclick="setRegion('City of Mitcham & Foothills', this)">Mitcham & Foothills</button>
-          <button class="pill-btn" onclick="setRegion('Norwood, Campbelltown & North-East Core', this)">Norwood & Campbelltown</button>
-          <button class="pill-btn" onclick="setRegion('Western Coastal & Beachside', this)">Ven Biển Henley/Brighton</button>
-          <button class="pill-btn" onclick="setRegion('Adelaide Hills & North-East Enclaves', this)">Adelaide Hills & Golden Grove</button>
+    <!-- Property Section -->
+    <section id="propertySection">
+      <!-- Filters -->
+      <div class="filter-card">
+        <div class="filter-row">
+          <span style="font-size:12px; font-weight:700; color:var(--slate-900);">Hành Lang Đô Thị:</span>
+          <div class="region-pills" id="regionPills">
+            <button class="pill-btn active" onclick="setRegion('all', this)">Tất cả ({total_listings})</button>
+            <button class="pill-btn" onclick="setRegion('City of Burnside & Core East', this)">Burnside & Toorak Gdns</button>
+            <button class="pill-btn" onclick="setRegion('City of Unley & Prestige South', this)">Unley & Unley Park</button>
+            <button class="pill-btn" onclick="setRegion('City of Mitcham & Foothills', this)">Mitcham & Foothills</button>
+            <button class="pill-btn" onclick="setRegion('Norwood, Campbelltown & North-East Core', this)">Norwood & Campbelltown</button>
+            <button class="pill-btn" onclick="setRegion('Western Coastal & Beachside', this)">Ven Biển Henley/Brighton</button>
+            <button class="pill-btn" onclick="setRegion('Adelaide Hills & North-East Enclaves', this)">Adelaide Hills & Golden Grove</button>
+          </div>
+        </div>
+        <div class="filter-inputs">
+          <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tìm kiếm địa chỉ, vùng ngoại ô (suburb), trường học..." oninput="renderProperties()">
+          <select id="typeFilter" class="select-input" onchange="renderProperties()">
+            <option value="all">Mọi loại hình</option>
+            <option value="House">Freestanding House</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Unit">Unit / Villa Trệt</option>
+          </select>
+          <select id="sortFilter" class="select-input" onchange="renderProperties()">
+            <option value="dist">Gần 1B Wilgena Ave nhất</option>
+            <option value="price_asc">Giá: Thấp đến Cao</option>
+            <option value="price_desc">Giá: Cao đến Thấp</option>
+          </select>
         </div>
       </div>
-      <div class="filter-inputs">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tìm kiếm địa chỉ, vùng ngoại ô (suburb), trường học..." oninput="renderProperties()">
-        <select id="typeFilter" class="select-input" onchange="renderProperties()">
-          <option value="all">Mọi loại hình</option>
-          <option value="House">Freestanding House</option>
-          <option value="Townhouse">Townhouse</option>
-          <option value="Unit">Unit / Villa Trệt</option>
-        </select>
-        <select id="sortFilter" class="select-input" onchange="renderProperties()">
-          <option value="dist">Gần 1B Wilgena Ave nhất</option>
-          <option value="price_asc">Giá: Thấp đến Cao</option>
-          <option value="price_desc">Giá: Cao đến Thấp</option>
-        </select>
-      </div>
-    </div>
 
-    <!-- Properties Grid -->
-    <div class="grid-header">
-      <div class="grid-title">Danh Sách Bất Động Sản An Toàn (<span id="matchCount">{total_listings}</span> căn phù hợp)</div>
-      <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: 1B Wilgena Ave, Myrtle Bank SA 5064</div>
-    </div>
-    <div class="property-grid" id="propertyGrid"></div>
+      <!-- Properties Grid -->
+      <div class="grid-header">
+        <div class="grid-title">Danh Sách Bất Động Sản An Toàn (<span id="matchCount">{total_listings}</span> căn phù hợp)</div>
+        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: 1B Wilgena Ave, Myrtle Bank SA 5064</div>
+      </div>
+      <div class="property-grid" id="propertyGrid"></div>
+    </section>
 
     <!-- Analytics Section -->
-    <section class="section-box">
+    <section id="analyticsSection" class="section-box">
       <div class="section-head">
         <h2>📊 Hệ Thống Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
         <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
@@ -616,7 +996,7 @@ def build():
     </section>
 
     <!-- Academic Urban Economics Research Section -->
-    <section class="section-box" style="border: 2px solid #3b82f6; background: linear-gradient(to bottom, #ffffff, #eff6ff);">
+    <section id="economicsSection" class="section-box" style="border: 2px solid #3b82f6; background: linear-gradient(to bottom, #ffffff, #eff6ff);">
       <div class="section-head" style="border-bottom: 2px solid #bfdbfe; padding-bottom: 14px; margin-bottom: 18px;">
         <div style="display:inline-block; background:#2563eb; color:white; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">
           Nghiên Cứu Học Thuật &amp; Bằng Chứng RBA
@@ -691,6 +1071,60 @@ def build():
           <p><strong>Mô hình Alonso-Muth-Mills & RBA Research (Kendall & Tulip):</strong> Cung nhà ở rìa xa (Riverlea 35km, Concordia 45km) làm dãn bán kính đô thị, khiến giá trị tiết kiệm thời gian di chuyển của đất nội đô (Myrtle Bank, Burnside 3-5km) tăng vọt theo <em>Đường dốc địa tô (Bid-Rent Gradient)</em>.</p>
           <p><strong>Hàng hóa thay thế kém:</strong> Suất học trường công lập danh tiếng (GIHS, Unley High) có ranh giới cố định, không thể nhân bản ra ngoại ô. Càng nhiều nhà ngoại ô mọc lên, thặng dư khan hiếm (Zoning Scarcity Premium) tại các quận nội đô an toàn càng bị đẩy lên cao.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         DEDICATED FULL-TEXT MARKET REPORT SECTION (10 CHAPTERS)
+         ======================================================== -->
+    <section id="fullReportSection" class="full-report-container">
+      <div class="report-hero-head">
+        <div class="report-badge-top">📖 Báo Cáo Nghiên Cứu &amp; Thẩm Định Toàn Văn</div>
+        <h2>BÁO CÁO PHÂN TÍCH THỊ TRƯỜNG BẤT ĐỘNG SẢN GREATER ADELAIDE 2026</h2>
+        <p>
+          Khảo sát toàn diện 140+ Suburb &bull; Bổ sung phân tích chuyên sâu Unley Park, Toorak Gardens, Malvern &bull; Lọc sạch 100% rủi ro tội phạm SAPOL &bull; Nghiên cứu kinh tế đô thị RBA.
+        </p>
+        <div class="report-meta-row">
+          <div class="report-meta-item">
+            <span>✍️ Tác giả:</span> <strong>TOAN NGUYEN IT OZ</strong>
+          </div>
+          <div class="report-meta-item">
+            <span>📅 Cập nhật:</span> <strong>{now_str}</strong>
+          </div>
+          <div class="report-meta-item">
+            <span>⏱️ Thời lượng đọc:</span> <strong>~18 phút (10 Chương)</strong>
+          </div>
+          <div class="report-meta-item">
+            <span>🛡️ Độ tin cậy:</span> <strong>100% Thẩm định thực tế</strong>
+          </div>
+          <div class="report-head-btns">
+            <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="report-action-btn report-btn-pdf">
+              📥 Tải File PDF (18 Trang)
+            </a>
+            <button onclick="window.print()" class="report-action-btn report-btn-print">
+              🖨️ In Báo Cáo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Navigation Pill Bar -->
+      <div class="chapter-nav-bar">
+        <a href="#chuong-1-tong-quan" class="chap-nav-pill">1. Tổng Quan 140+ Suburb</a>
+        <a href="#chuong-2-suburb-thuong-luu" class="chap-nav-pill">2. Unley Park &amp; Toorak Gdns</a>
+        <a href="#chuong-3-bo-loc-an-ninh-sapol" class="chap-nav-pill">3. Lọc An Ninh SAPOL</a>
+        <a href="#chuong-4-he-thong-7-bieu-do" class="chap-nav-pill">4. Bộ 7 Biểu Đồ</a>
+        <a href="#chuong-5-phan-bien-kinh-te-do-thi" class="chap-nav-pill">5. Kinh Tế Đô Thị (RBA)</a>
+        <a href="#chuong-6-phan-tich-6-hanh-lang" class="chap-nav-pill">6. 6 Hành Lang An Toàn</a>
+        <a href="#chuong-7-so-sanh-chi-phi-house-townhouse-unit" class="chap-nav-pill">7. House vs Unit vs Townhouse</a>
+        <a href="#chuong-8-huong-dan-thuc-chien-phap-ly-solar" class="chap-nav-pill">8. Pháp Lý &amp; Solar</a>
+        <a href="#chuong-9-danh-gia-chien-luoc-mua-hay-doi" class="chap-nav-pill">9. Mua Ngay Hay Đợi?</a>
+        <a href="#chuong-10-top-bat-dong-san-form-1" class="chap-nav-pill">10. Top BĐS &amp; Form 1</a>
+      </div>
+
+      <!-- Rendered Article Body -->
+      <div class="report-article-body">
+        {report_html}
       </div>
     </section>
 

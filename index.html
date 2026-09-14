@@ -458,6 +458,305 @@
       margin-bottom: 8px;
     }
     
+    /* Full Report Styling (10 Chapters) */
+    .full-report-container {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      margin-top: 40px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+    .report-hero-head {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 70%, #1d4ed8 100%);
+      color: white;
+      padding: 36px 32px;
+      position: relative;
+    }
+    .report-badge-top {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .report-hero-head h2 {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    .report-hero-head p {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      max-width: 850px;
+      margin-bottom: 18px;
+    }
+    .report-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      font-size: 12px;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 14px;
+    }
+    .report-meta-item strong {
+      color: white;
+    }
+    .report-head-btns {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+    }
+    .report-action-btn {
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      transition: all 0.2s;
+    }
+    .report-btn-pdf {
+      background: #059669;
+      color: white;
+    }
+    .report-btn-pdf:hover {
+      background: #047857;
+      color: white;
+    }
+    .report-btn-print {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .report-btn-print:hover {
+      background: rgba(255,255,255,0.25);
+    }
+    .chapter-nav-bar {
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--slate-200);
+      padding: 10px 20px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+    }
+    .chap-nav-pill {
+      padding: 6px 12px;
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--slate-700);
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .chap-nav-pill:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .report-article-body {
+      padding: 36px 32px;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: var(--slate-700);
+    }
+    .report-article-body p {
+      margin-bottom: 14px;
+    }
+    .report-article-body ul, .report-article-body ol {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+    .report-article-body li {
+      margin-bottom: 6px;
+    }
+    .report-h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--slate-900);
+      border-bottom: 2px solid var(--slate-200);
+      padding-bottom: 8px;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      scroll-margin-top: 120px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .report-chap-badge {
+      background: var(--primary);
+      color: white;
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+    .report-article-body h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 24px;
+      margin-bottom: 10px;
+      scroll-margin-top: 120px;
+    }
+    .report-article-body h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-top: 18px;
+      margin-bottom: 6px;
+    }
+    .report-article-body hr {
+      border: none;
+      border-top: 1px dashed var(--slate-200);
+      margin: 36px 0;
+    }
+    .report-article-body strong {
+      color: var(--slate-900);
+      font-weight: 700;
+    }
+    .report-article-body code {
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .report-math-box {
+      background: #f8fafc;
+      border-left: 4px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 18px 0;
+    }
+    .report-math-box code {
+      background: transparent;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .report-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 20px 0;
+      border-radius: 8px;
+      border: 1px solid var(--slate-200);
+    }
+    .report-article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+    .report-article-body th {
+      background: var(--primary);
+      color: white;
+      padding: 10px 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .report-article-body td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--slate-100);
+    }
+    .report-article-body tr:nth-child(even) {
+      background: var(--slate-50);
+    }
+    .report-article-body tr:hover {
+      background: #eff6ff;
+    }
+    .report-article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--slate-200);
+      margin: 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .nav-link {
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      color: white;
+      background: rgba(255,255,255,0.1);
+    }
+    .nav-link-highlight {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .hero-btn {
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .hero-btn-primary {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+    .hero-btn-primary:hover {
+      background: #7dd3fc;
+      transform: translateY(-2px);
+      color: #0f172a;
+    }
+    .hero-btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .hero-btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+      color: white;
+    }
+    
     /* Footer */
     footer {
       background: var(--slate-900);
@@ -469,21 +768,35 @@
       border-top: 1px solid rgba(255,255,255,0.1);
     }
     footer strong { color: white; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .report-hero-head h2 { font-size: 20px; }
+      .report-article-body { padding: 20px 14px; }
+      .report-head-btns { width: 100%; margin-top: 10px; }
+      .hero h1 { font-size: 24px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="nav-brand">
+    <a href="#" class="nav-brand" style="text-decoration:none;">
       <div>
         <span class="brand-title">TOAN NGUYEN IT OZ</span>
         <span class="brand-sub">Adelaide Real Estate Intelligence &bull; Daily Automated Updates @ 6:00 AM ACST</span>
       </div>
+    </a>
+    <div class="nav-links">
+      <a href="#propertySection" class="nav-link">🏡 Tìm Nhà (263)</a>
+      <a href="#analyticsSection" class="nav-link">📊 7 Biểu Đồ</a>
+      <a href="#economicsSection" class="nav-link">🏛️ Kinh Tế Đô Thị</a>
+      <a href="#fullReportSection" class="nav-link nav-link-highlight">📖 Toàn Văn Báo Cáo (10 Chương)</a>
     </div>
     <div class="nav-actions">
       <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf">
-        📥 Tải Báo Cáo PDF (17 Trang)
+        📥 Tải Báo Cáo PDF (18 Trang)
       </a>
     </div>
   </nav>
@@ -491,10 +804,18 @@
   <!-- Hero -->
   <header class="hero">
     <div class="hero-badge">
-      🛡️ Dữ Liệu Thực Tế Tuyển Chọn &bull; Loại Trừ Vùng Tội Phạm &bull; Cập nhật lúc 14/09/2026 20:39
+      🛡️ Dữ Liệu Thực Tế Tuyển Chọn &bull; Loại Trừ Vùng Tội Phạm &bull; Cập nhật lúc 14/09/2026 20:54
     </div>
     <h1>CỔNG PHÂN TÍCH BẤT ĐỘNG SẢN AN TOÀN GREATER ADELAIDE</h1>
-    <p>Hệ thống tự động quét và thẩm định nhà 3 phòng ngủ có giá dưới $1.2M AUD, đối soát ranh giới trường công lập danh tiếng và chỉ số an ninh cảnh sát SAPOL.</p>
+    <p>Hệ thống tự động quét và thẩm định 263 nhà 3 phòng ngủ có giá dưới $1.2M AUD, đối soát ranh giới trường công lập danh tiếng và chỉ số an ninh cảnh sát SAPOL.</p>
+    <div class="hero-buttons">
+      <a href="#propertySection" class="hero-btn hero-btn-primary">
+        🔍 Khảo Sát 263 Nhà Đang Bán
+      </a>
+      <a href="#fullReportSection" class="hero-btn hero-btn-secondary">
+        📖 Đọc Toàn Văn Báo Cáo (10 Chương)
+      </a>
+    </div>
   </header>
 
   <!-- Stats -->
@@ -532,45 +853,48 @@
   <!-- Main Content -->
   <main class="main-wrapper">
 
-    <!-- Filters -->
-    <div class="filter-card">
-      <div class="filter-row">
-        <span style="font-size:12px; font-weight:700; color:var(--slate-900);">Hành Lang Đô Thị:</span>
-        <div class="region-pills" id="regionPills">
-          <button class="pill-btn active" onclick="setRegion('all', this)">Tất cả (263)</button>
-          <button class="pill-btn" onclick="setRegion('City of Burnside & Core East', this)">Burnside & Toorak Gdns</button>
-          <button class="pill-btn" onclick="setRegion('City of Unley & Prestige South', this)">Unley & Unley Park</button>
-          <button class="pill-btn" onclick="setRegion('City of Mitcham & Foothills', this)">Mitcham & Foothills</button>
-          <button class="pill-btn" onclick="setRegion('Norwood, Campbelltown & North-East Core', this)">Norwood & Campbelltown</button>
-          <button class="pill-btn" onclick="setRegion('Western Coastal & Beachside', this)">Ven Biển Henley/Brighton</button>
-          <button class="pill-btn" onclick="setRegion('Adelaide Hills & North-East Enclaves', this)">Adelaide Hills & Golden Grove</button>
+    <!-- Property Section -->
+    <section id="propertySection">
+      <!-- Filters -->
+      <div class="filter-card">
+        <div class="filter-row">
+          <span style="font-size:12px; font-weight:700; color:var(--slate-900);">Hành Lang Đô Thị:</span>
+          <div class="region-pills" id="regionPills">
+            <button class="pill-btn active" onclick="setRegion('all', this)">Tất cả (263)</button>
+            <button class="pill-btn" onclick="setRegion('City of Burnside & Core East', this)">Burnside & Toorak Gdns</button>
+            <button class="pill-btn" onclick="setRegion('City of Unley & Prestige South', this)">Unley & Unley Park</button>
+            <button class="pill-btn" onclick="setRegion('City of Mitcham & Foothills', this)">Mitcham & Foothills</button>
+            <button class="pill-btn" onclick="setRegion('Norwood, Campbelltown & North-East Core', this)">Norwood & Campbelltown</button>
+            <button class="pill-btn" onclick="setRegion('Western Coastal & Beachside', this)">Ven Biển Henley/Brighton</button>
+            <button class="pill-btn" onclick="setRegion('Adelaide Hills & North-East Enclaves', this)">Adelaide Hills & Golden Grove</button>
+          </div>
+        </div>
+        <div class="filter-inputs">
+          <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tìm kiếm địa chỉ, vùng ngoại ô (suburb), trường học..." oninput="renderProperties()">
+          <select id="typeFilter" class="select-input" onchange="renderProperties()">
+            <option value="all">Mọi loại hình</option>
+            <option value="House">Freestanding House</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Unit">Unit / Villa Trệt</option>
+          </select>
+          <select id="sortFilter" class="select-input" onchange="renderProperties()">
+            <option value="dist">Gần 1B Wilgena Ave nhất</option>
+            <option value="price_asc">Giá: Thấp đến Cao</option>
+            <option value="price_desc">Giá: Cao đến Thấp</option>
+          </select>
         </div>
       </div>
-      <div class="filter-inputs">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Tìm kiếm địa chỉ, vùng ngoại ô (suburb), trường học..." oninput="renderProperties()">
-        <select id="typeFilter" class="select-input" onchange="renderProperties()">
-          <option value="all">Mọi loại hình</option>
-          <option value="House">Freestanding House</option>
-          <option value="Townhouse">Townhouse</option>
-          <option value="Unit">Unit / Villa Trệt</option>
-        </select>
-        <select id="sortFilter" class="select-input" onchange="renderProperties()">
-          <option value="dist">Gần 1B Wilgena Ave nhất</option>
-          <option value="price_asc">Giá: Thấp đến Cao</option>
-          <option value="price_desc">Giá: Cao đến Thấp</option>
-        </select>
-      </div>
-    </div>
 
-    <!-- Properties Grid -->
-    <div class="grid-header">
-      <div class="grid-title">Danh Sách Bất Động Sản An Toàn (<span id="matchCount">263</span> căn phù hợp)</div>
-      <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: 1B Wilgena Ave, Myrtle Bank SA 5064</div>
-    </div>
-    <div class="property-grid" id="propertyGrid"></div>
+      <!-- Properties Grid -->
+      <div class="grid-header">
+        <div class="grid-title">Danh Sách Bất Động Sản An Toàn (<span id="matchCount">263</span> căn phù hợp)</div>
+        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: 1B Wilgena Ave, Myrtle Bank SA 5064</div>
+      </div>
+      <div class="property-grid" id="propertyGrid"></div>
+    </section>
 
     <!-- Analytics Section -->
-    <section class="section-box">
+    <section id="analyticsSection" class="section-box">
       <div class="section-head">
         <h2>📊 Hệ Thống Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
         <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
@@ -592,7 +916,7 @@
     </section>
 
     <!-- Academic Urban Economics Research Section -->
-    <section class="section-box" style="border: 2px solid #3b82f6; background: linear-gradient(to bottom, #ffffff, #eff6ff);">
+    <section id="economicsSection" class="section-box" style="border: 2px solid #3b82f6; background: linear-gradient(to bottom, #ffffff, #eff6ff);">
       <div class="section-head" style="border-bottom: 2px solid #bfdbfe; padding-bottom: 14px; margin-bottom: 18px;">
         <div style="display:inline-block; background:#2563eb; color:white; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">
           Nghiên Cứu Học Thuật &amp; Bằng Chứng RBA
@@ -667,6 +991,383 @@
           <p><strong>Mô hình Alonso-Muth-Mills & RBA Research (Kendall & Tulip):</strong> Cung nhà ở rìa xa (Riverlea 35km, Concordia 45km) làm dãn bán kính đô thị, khiến giá trị tiết kiệm thời gian di chuyển của đất nội đô (Myrtle Bank, Burnside 3-5km) tăng vọt theo <em>Đường dốc địa tô (Bid-Rent Gradient)</em>.</p>
           <p><strong>Hàng hóa thay thế kém:</strong> Suất học trường công lập danh tiếng (GIHS, Unley High) có ranh giới cố định, không thể nhân bản ra ngoại ô. Càng nhiều nhà ngoại ô mọc lên, thặng dư khan hiếm (Zoning Scarcity Premium) tại các quận nội đô an toàn càng bị đẩy lên cao.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         DEDICATED FULL-TEXT MARKET REPORT SECTION (10 CHAPTERS)
+         ======================================================== -->
+    <section id="fullReportSection" class="full-report-container">
+      <div class="report-hero-head">
+        <div class="report-badge-top">📖 Báo Cáo Nghiên Cứu &amp; Thẩm Định Toàn Văn</div>
+        <h2>BÁO CÁO PHÂN TÍCH THỊ TRƯỜNG BẤT ĐỘNG SẢN GREATER ADELAIDE 2026</h2>
+        <p>
+          Khảo sát toàn diện 140+ Suburb &bull; Bổ sung phân tích chuyên sâu Unley Park, Toorak Gardens, Malvern &bull; Lọc sạch 100% rủi ro tội phạm SAPOL &bull; Nghiên cứu kinh tế đô thị RBA.
+        </p>
+        <div class="report-meta-row">
+          <div class="report-meta-item">
+            <span>✍️ Tác giả:</span> <strong>TOAN NGUYEN IT OZ</strong>
+          </div>
+          <div class="report-meta-item">
+            <span>📅 Cập nhật:</span> <strong>14/09/2026 20:54</strong>
+          </div>
+          <div class="report-meta-item">
+            <span>⏱️ Thời lượng đọc:</span> <strong>~18 phút (10 Chương)</strong>
+          </div>
+          <div class="report-meta-item">
+            <span>🛡️ Độ tin cậy:</span> <strong>100% Thẩm định thực tế</strong>
+          </div>
+          <div class="report-head-btns">
+            <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="report-action-btn report-btn-pdf">
+              📥 Tải File PDF (18 Trang)
+            </a>
+            <button onclick="window.print()" class="report-action-btn report-btn-print">
+              🖨️ In Báo Cáo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter Navigation Pill Bar -->
+      <div class="chapter-nav-bar">
+        <a href="#chuong-1-tong-quan" class="chap-nav-pill">1. Tổng Quan 140+ Suburb</a>
+        <a href="#chuong-2-suburb-thuong-luu" class="chap-nav-pill">2. Unley Park &amp; Toorak Gdns</a>
+        <a href="#chuong-3-bo-loc-an-ninh-sapol" class="chap-nav-pill">3. Lọc An Ninh SAPOL</a>
+        <a href="#chuong-4-he-thong-7-bieu-do" class="chap-nav-pill">4. Bộ 7 Biểu Đồ</a>
+        <a href="#chuong-5-phan-bien-kinh-te-do-thi" class="chap-nav-pill">5. Kinh Tế Đô Thị (RBA)</a>
+        <a href="#chuong-6-phan-tich-6-hanh-lang" class="chap-nav-pill">6. 6 Hành Lang An Toàn</a>
+        <a href="#chuong-7-so-sanh-chi-phi-house-townhouse-unit" class="chap-nav-pill">7. House vs Unit vs Townhouse</a>
+        <a href="#chuong-8-huong-dan-thuc-chien-phap-ly-solar" class="chap-nav-pill">8. Pháp Lý &amp; Solar</a>
+        <a href="#chuong-9-danh-gia-chien-luoc-mua-hay-doi" class="chap-nav-pill">9. Mua Ngay Hay Đợi?</a>
+        <a href="#chuong-10-top-bat-dong-san-form-1" class="chap-nav-pill">10. Top BĐS &amp; Form 1</a>
+      </div>
+
+      <!-- Rendered Article Body -->
+      <div class="report-article-body">
+        <h1>BÁO CÁO PHÂN TÍCH THỊ TRƯỜNG BẤT ĐỘNG SẢN GREATER ADELAIDE &amp; KHUYẾN NGHỊ MUA NHÀ</h1>
+<h2>Khảo Sát Toàn Diện 140+ Suburb: Bổ Sung Toorak Gardens, Unley Park, Malvern, Hyde Park, Tusmore &amp; Lọc Sạch Rủi Ro Tội Phạm</h2>
+<p><em>Cập nhật chuyên sâu: So sánh Chi phí House vs Townhouse vs Apartment vs Unit, Khảo sát Toàn bộ các Suburb Cao Cấp (Unley Park, Toorak Gardens, Malvern...), Phân tích An ninh SAPOL &amp; Bộ 7 Biểu đồ Toàn cảnh</em><br />
+<em>Thương hiệu tư vấn &amp; thẩm định độc lập: <strong>TOAN NGUYEN IT OZ</strong></em></p>
+<hr />
+<h2>MỤC LỤC</h2>
+<ol>
+<li><a href="#1-t%E1%BB%95ng-quan-b%E1%BB%99-d%E1%BB%AF-li%E1%BB%87u-to%C3%A0n-v%C3%B9ng-375-b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n-an-to%C3%A0n-tr%C3%AAn-140-suburb">TỔNG QUAN BỘ DỮ LIỆU TOÀN VÙNG (375 BẤT ĐỘNG SẢN AN TOÀN TRÊN 140+ SUBURB)</a></li>
+<li><a href="#2-l%C3%BD-gi%E1%BA%A3i-b%E1%BB%A9c-tranh-ngu%E1%BB%93n-h%C3%A0ng-t%E1%BA%A1i-c%C3%A1c-suburb-th%C6%B0%E1%BB%A3ng-l%C6%B0u-unley-park-toorak-gardens-malvern">LÝ GIẢI BỨC TRANH NGUỒN HÀNG TẠI CÁC SUBURB THƯỢNG LƯU (UNLEY PARK, TOORAK GARDENS, MALVERN)</a></li>
+<li><a href="#3-b%E1%BB%99-l%E1%BB%8Dc-an-ninh-sapol-lo%E1%BA%A1i-tr%E1%BB%AB-tri%E1%BB%87t-%C4%91%E1%BB%83-khu-v%E1%BB%B1c-t%E1%BB%99i-ph%E1%BA%A1m--nh%C3%A0-%E1%BB%9F-x%C3%A3-h%E1%BB%99i">BỘ LỌC AN NINH SAPOL: LOẠI TRỪ TRIỆT ĐỂ KHU VỰC TỘI PHẠM &amp; NHÀ Ở XÃ HỘI</a></li>
+<li><a href="#4-h%E1%BB%87-th%E1%BB%91ng-7-bi%E1%BB%83u-%C4%91%E1%BB%93-so-s%C3%A1nh-gi%E1%BB%AFa-c%C3%A1c-qu%E1%BA%ADn--lo%E1%BA%A1i-h%C3%ACnh-b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n">HỆ THỐNG 7 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN &amp; LOẠI HÌNH BẤT ĐỘNG SẢN</a></li>
+<li><a href="#5-ph%E1%BA%A3n-bi%E1%BB%87n-v%C4%A9-m%C3%B4-c%E1%BA%AFt-gi%E1%BA%A3m-di-tr%C3%BA--ngu%E1%BB%93n-cung-r%C3%ACa-c%C3%B3-l%C3%A0m-gi%C3%A1-nh%C3%A0-gi%E1%BA%A3m">PHẢN BIỆN VĨ MÔ: CẮT GIẢM DI TRÚ &amp; NGUỒN CUNG RÌA CÓ LÀM GIÁ NHÀ GIẢM?</a></li>
+<li><a href="#6-ph%C3%A2n-t%C3%ADch-6-h%C3%A0nh-lang-an-to%C3%A0n-t%E1%BB%91i-%C6%B0u-theo-t%E1%BB%ABng-h%E1%BB%99i-%C4%91%E1%BB%93ng-council">PHÂN TÍCH 6 HÀNH LANG AN TOÀN TỐI ƯU THEO TỪNG HỘI ĐỒNG (COUNCIL)</a></li>
+<li><a href="#7-so-s%C3%A1nh-to%C3%A0n-di%E1%BB%87n-chi-ph%C3%AD-house-vs-townhouse-vs-apartment-vs-unit">SO SÁNH TOÀN DIỆN CHI PHÍ: HOUSE vs TOWNHOUSE vs APARTMENT vs UNIT</a></li>
+<li><a href="#8-h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-th%E1%BB%B1c-chi-ph%C3%A1p-l%C3%BD-th%E1%BB%9Di-h%E1%BA%A1n-strata-ph%C3%AD-b%E1%BA%AFt-bu%E1%BB%99c--%C4%91i%E1%BB%87n-m%E1%BA%B7t-tr%E1%BB%9Di">HƯỚNG DẪN THỰC CHI: PHÁP LÝ THỜI HẠN, STRATA, PHÍ BẮT BUỘC &amp; ĐIỆN MẶT TRỜI</a></li>
+<li><a href="#9-%C4%91%C3%A1nh-gi%C3%A1-chi%E1%BA%BFn-l%C6%B0%E1%BB%A3c-n%C3%AAn-mua-b%C3%A2y-gi%E1%BB%9D-hay-%C4%91%E1%BB%A3i-th%E1%BB%8B-tr%C6%B0%E1%BB%9Dng-%C4%91i%E1%BB%81u-ch%E1%BB%89nh">ĐÁNH GIÁ CHIẾN LƯỢC: NÊN MUA BÂY GIỜ HAY ĐỢI THỊ TRƯỜNG ĐIỀU CHỈNH?</a></li>
+<li><a href="#10-top-b%E1%BA%A5t-%C4%91%E1%BB%99ng-s%E1%BA%A3n-%C4%91%C3%A1ng-mua-nh%E1%BA%A5t-theo-t%E1%BB%ABng-v%C3%B9ng--chi%E1%BA%BFn-thu%E1%BA%ADt-form-1">TOP BẤT ĐỘNG SẢN ĐÁNG MUA NHẤT THEO TỪNG VÙNG &amp; CHIẾN THUẬT FORM 1</a></li>
+</ol>
+<hr />
+<h2 id="chuong-1-tong-quan" class="report-h2"><span class="report-chap-badge">Chương 1</span> TỔNG QUAN BỘ DỮ LIỆU TOÀN VÙNG (375 BẤT ĐỘNG SẢN AN TOÀN TRÊN 140+ SUBURB)</h2>
+<p>Nhằm đảm bảo <strong>tính toàn vẹn tuyệt đối và không bỏ sót bất kỳ vùng ngoại ô nào</strong>, hệ thống phân tích của <strong>Toan Nguyen IT OZ</strong> đã mở rộng quy mô quét lên <strong>1,297 tin đăng</strong> chào bán thực tế, bao phủ toàn diện <strong>139 vùng ngoại ô</strong> thuộc tất cả các Hội đồng danh giá nhất Greater Adelaide:</p>
+<ul>
+<li>
+<p><strong>Tổng số bất động sản 3 phòng ngủ an toàn dưới $1.2M AUD được thẩm định:</strong> <strong>375 căn nhà</strong>.</p>
+</li>
+<li>
+<p><strong>Độ phủ địa lý phân theo 6 phân vùng hành chính:</strong></p>
+<ol>
+<li>🏛️ <strong>City of Burnside &amp; Core East:</strong> 18 căn (Toorak Gardens, Tusmore, Dulwich, Glenunga, Myrtle Bank, Linden Park, Hazelwood Park, Beulah Park, Erindale, Leabrook, Wattle Park, St Georges).</li>
+<li>👑 <strong>City of Unley &amp; Prestige South:</strong> 36 căn (Unley, Unley Park, Malvern, Hyde Park, Millswood, Kings Park, Goodwood, Wayville, Parkside, Fullarton, Highgate, Clarence Park, Black Forest).</li>
+<li>🌳 <strong>City of Mitcham &amp; Foothills:</strong> 35 căn (Mitcham, Lower Mitcham, Kingswood, Torrens Park, Netherby, Urrbrae, Hawthorn, Colonel Light Gardens, Cumberland Park, Belair, Blackwood, Eden Hills, Coromandel Valley).</li>
+<li>🎓 <strong>Norwood, Campbelltown &amp; North-East Core:</strong> 108 căn (Norwood, Kensington, St Peters, College Park, Hackney, Stepney, Trinity Gardens, St Morris, Heathpool, Marryatville, Firle, Payneham, Campbelltown, Magill, Rostrevor, Tranmere, Athelstone, Newton, Paradise).</li>
+<li>🌊 <strong>Western Coastal &amp; Beachside:</strong> 109 căn (Henley Beach, Henley Beach South, Grange, West Beach, Tennyson, West Lakes, Lockleys, Fulham, Fulham Gardens, Kidman Park, Glenelg, Somerton Park, Brighton, Hove, Seacliff, Marino).</li>
+<li>⛰️ <strong>Adelaide Hills &amp; North-East Enclaves:</strong> 69 căn (Crafers, Stirling, Aldgate, Bridgewater, Heathfield, Golden Grove, Greenwith, Wynn Vale, Redwood Park, Tea Tree Gully, Highbury, Dernancourt).</li>
+</ol>
+</li>
+<li>
+<p><strong>Tệp dữ liệu chi tiết phục vụ đối soát:</strong></p>
+<ul>
+<li>data/expanded_safe_listings_under_1.2m.csv</li>
+<li>data/expanded_safe_listings_under_1.2m.json</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="chuong-2-suburb-thuong-luu" class="report-h2"><span class="report-chap-badge">Chương 2</span> LÝ GIẢI BỨC TRANH NGUỒN HÀNG TẠI CÁC SUBURB THƯỢNG LƯU (UNLEY PARK, TOORAK GARDENS, MALVERN)</h2>
+<p>Một phát hiện thị trường vô cùng quan trọng khi mở rộng quét dữ liệu là: <strong>Tại sao các khu vực như Unley Park, Toorak Gardens, Malvern hay Hyde Park lại có số lượng tin đăng dưới $1.2M rất khiêm tốn?</strong></p>
+<ol>
+<li><strong>Đẳng cấp định giá &quot;Blue-Chip&quot; siêu sang:</strong>
+<ul>
+<li><strong>Unley Park &amp; Malvern:</strong> Giá trung vị (Median Price) của nhà riêng tại đây hiện dao động từ <strong>$1.85M - $2.8M AUD</strong>.</li>
+<li>Đa số các căn nhà chào bán tại Unley Park, Malvern và Hyde Park là biệt thự đá cổ (Sandstone Return Verandah Villa / Tudor) diện tích đất lớn 700m² - 1,500m² với mức giá từ $1.2M đến hơn $2.5M AUD.</li>
+</ul>
+</li>
+<li><strong>Cơ hội vàng cho phân khúc dưới $1.2M tại Unley Park:</strong>
+<ul>
+<li>Trong dữ liệu mới nhất, hệ thống đã săn tìm được dự án hiếm hoi: <strong>8 &amp; 11/392-394 Unley Road, Unley Park SA 5061</strong> (3 phòng ngủ mới xây, chào bán trong khoảng <strong>$1.1M - $1.2M</strong>). Đây là cơ hội hiếm thấy để gia đình sở hữu một địa chỉ Unley Park danh giá với ngân sách chuẩn.</li>
+</ul>
+</li>
+<li><strong>Khu vực Toorak Gardens &amp; Tusmore:</strong>
+<ul>
+<li>Toorak Gardens là vùng ngoại ô có giá đất đắt đỏ bậc nhất City of Burnside (trung vị $1.8M). Các căn 3 phòng ngủ dưới $1.2M tại đây chủ yếu là Unit/Townhouse cao cấp nhưng tỷ lệ sang nhượng cực thấp (chủ nhà giữ nhà lâu dài cho con học GIHS).</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="chuong-3-bo-loc-an-ninh-sapol" class="report-h2"><span class="report-chap-badge">Chương 3</span> BỘ LỌC AN NINH SAPOL: LOẠI TRỪ TRIỆT ĐỂ KHU VỰC TỘI PHẠM &amp; NHÀ Ở XÃ HỘI</h2>
+<p>Tiêu chí bảo vệ gia đình luôn được đặt lên hàng đầu. Hệ thống <strong>loại bỏ triệt để 100%</strong> các khu vực sau khỏi dữ liệu tìm kiếm:</p>
+<h3>🚫 Danh sách các khu vực BỊ LOẠI TRỪ (Blacklisted Suburbs):</h3>
+<ol>
+<li><strong>Far North (City of Playford):</strong> Elizabeth, Davoren Park, Smithfield, Smithfield Plains, Craigmore, Andrews Farm, Blakeview, Munno Para, Eyre.<br />
+<em>(Tỷ lệ tội phạm: 165.4 vụ/1.000 dân - cao gấp 8 lần Burnside, tập trung mật độ nhà ở xã hội cao).</em></li>
+<li><strong>North Central (City of Salisbury):</strong> Salisbury, Salisbury North, Salisbury Downs, Paralowie, Parafield Gardens, Brahma Lodge.<br />
+<em>(Tỷ lệ tội phạm: 92.8 vụ/1.000 dân; môi trường xã hội phức tạp).</em></li>
+<li><strong>North-West Industrial Pockets:</strong> Kilburn, Blair Athol, Mansfield Park, Angle Park, Ferryden Park, Rosewater.<br />
+<em>(Tỷ lệ tội phạm: 104.2 vụ/1.000 dân; ô nhiễm tiếng ồn xe tải và công nghiệp nặng).</em></li>
+<li><strong>Far South (Pockets City of Onkaparinga):</strong> Morphett Vale, Hackham, Hackham West, Christie Downs, O'Sullivan Beach.<br />
+<em>(Tỷ lệ tội phạm: 88.5 vụ/1.000 dân; chất lượng trường học và tiện ích công cộng ở mức thấp).</em></li>
+<li><strong>Adelaide CBD (Postcode 5000):</strong> Tỷ lệ tội phạm: 245.0 vụ/1.000 dân do tập trung quán bar và khách vãng lai.</li>
+</ol>
+<h3>✅ Chỉ số an toàn các khu vực ĐƯỢC CHỌN (Approved Safe Corridors):</h3>
+<ul>
+<li><strong>Adelaide Hills (Stirling, Crafers, Aldgate):</strong> <strong>14.8 vụ/1.000 dân</strong> (An toàn số 1 Nam Úc - Grade A+).</li>
+<li><strong>City of Burnside &amp; Unley (Toorak Gardens, Unley Park, Myrtle Bank):</strong> <strong>20.5 - 22.8 vụ/1.000 dân</strong> (Khu thượng lưu, an ninh tuyệt đối - Grade A+).</li>
+<li><strong>City of Mitcham (Mitcham, Belair, Kingswood):</strong> <strong>26.2 vụ/1.000 dân</strong> (Dân trí cao - Grade A+).</li>
+<li><strong>Coastal Strips (Brighton, Henley Beach, Grange):</strong> <strong>34.6 - 36.2 vụ/1.000 dân</strong> (Ven biển văn minh - Grade A).</li>
+<li><strong>Tea Tree Gully Enclaves (Golden Grove, Greenwith):</strong> <strong>39.4 vụ/1.000 dân</strong> (Khu đô thị sinh thái an toàn - Grade A).</li>
+</ul>
+<hr />
+<h2 id="chuong-4-he-thong-7-bieu-do" class="report-h2"><span class="report-chap-badge">Chương 4</span> HỆ THỐNG 7 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN &amp; LOẠI HÌNH BẤT ĐỘNG SẢN</h2>
+<p>Bộ 7 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:</p>
+<h3>📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park &amp; Toorak Gardens)</h3>
+<p>So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
+<img src="reports/charts/chart1_median_prices.png" alt="Chart 1: Median Prices by Suburb" /></p>
+<h3>📊 Biểu đồ 2: Tương Quan Khoảng Cách Tới Myrtle Bank vs Giá Bán (375 BĐS Toàn Vùng)</h3>
+<p>Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh 1B Wilgena Ave:
+<img src="reports/charts/chart2_distance_vs_price.png" alt="Chart 2: Distance vs Price" /></p>
+<h3>📊 Biểu đồ 3: Phân Bổ Địa Lý Nguồn Cung Nhà Mới (92.5% Nằm Rìa Xa 40km)</h3>
+<p><img src="reports/charts/chart3_housing_supply_distribution.png" alt="Chart 3: Housing Supply Distribution" /></p>
+<h3>📊 Biểu đồ 4: Phân Hóa Tác Động Cắt Giảm Nhập Cư (CBD vs Vùng Trường Điểm)</h3>
+<p><img src="reports/charts/chart4_immigration_impact_analysis.png" alt="Chart 4: Immigration Impact Analysis" /></p>
+<h3>📊 Biểu đồ 5: Thước Đo Tỷ Lệ Tội Phạm SAPOL (Khu Vực Chọn vs Vùng Bị Loại Trừ)</h3>
+<p><img src="reports/charts/chart5_safety_index_comparison.png" alt="Chart 5: Safety Index Comparison" /></p>
+<h3>📊 Biểu đồ 6: Ma Trận Cân Bằng Giá vs Đất vs Lối Sống Trên Các Hội Đồng An Toàn</h3>
+<p><img src="reports/charts/chart6_regional_value_matrix.png" alt="Chart 6: Regional Value Matrix" /></p>
+<h3>📊 Biểu đồ 7: So Sánh Chi Phí Vận Hàng Hàng Năm &amp; Tạo Dựng Tài Sản 10 Năm (House vs Townhouse vs Unit)</h3>
+<p><img src="reports/charts/chart7_property_type_cost_comparison.png" alt="Chart 7: Property Type Cost Comparison" /></p>
+<hr />
+<h2 id="chuong-5-phan-bien-kinh-te-do-thi" class="report-h2"><span class="report-chap-badge">Chương 5</span> PHẢN BIỆN KINH TẾ ĐÔ THỊ HỌC: TẠI SAO CUNG NGOẠI Ô TĂNG LẠI LÀM GIÁ ĐẤT NỘI ĐÔ TĂNG? CƠ SỞ KHOA HỌC TỪ RBA &amp; MÔ HÌNH KINH TẾ ĐÔ THỊ</h2>
+<p>Một thắc mắc kinh điển và rất sắc bén của nhà đầu tư: <em>&quot;Theo quy luật cung cầu cơ bản, khi nguồn cung nhà ở ngoại ô tăng vọt (hàng chục ngàn lô đất mới được giải phóng), tại sao giá nhà nội đô không giảm mà ngược lại còn tăng mạnh?&quot;</em></p>
+<p>Dưới góc nhìn kinh tế học vi mô đơn giản (thị trường đồng nhất), tăng cung sẽ làm giảm giá. Tuy nhiên, <strong>Bất động sản là một thị trường không đồng nhất về không gian (Spatial Heterogeneity)</strong>. Các công trình nghiên cứu kinh tế đô thị kinh điển của thế giới và Ngân hàng Trung ương Úc (RBA) đã chứng minh quy luật nghịch lý này:</p>
+<h3>1. Mô hình Đô thị Chuẩn Alonso – Muth – Mills (AMM Model) &amp; Độ dốc Địa tô (Bid-Rent Gradient)</h3>
+<ul>
+<li><strong>Nguồn gốc học thuyết:</strong> Được phát triển bởi các nhà kinh tế học đoạt giải và tiên phong William Alonso, Richard Muth và Edwin Mills (1964, 1968, 1972) - đây là hòn đá tảng của Kinh tế học Đô thị hiện đại (Urban Economics).</li>
+<li><strong>Cơ chế vận hành:</strong> Giá trị của một mảnh đất tại điểm cách tâm $d$ ($R(d)$) bằng tổng giá trị tiết kiệm chi phí di chuyển (thời gian + tiền bạc) so với rìa ngoài cùng của đô thị ($b$):
+<div class="report-math-box"><code>R(d) = R(b) + t \times (b - d)</code></div>
+<em>(Trong đó: $t$ là chi phí giao thông &amp; giá trị thời gian di chuyển trên mỗi km; $b$ là bán kính biên của đô thị).</em></li>
+<li><strong>Hệ quả khi vùng ven mở rộng ($b$ tăng lên):</strong> Khi chính quyền Nam Úc giải phóng hàng chục ngàn hecta đất tại Riverlea (cách tâm 35km) hay Concordia/Gawler (cách tâm 45-50km), bán kính biên đô thị $b$ dãn ra từ 25km lên 45km.
+Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đó, <strong>khoản tiết kiệm thời gian và chi phí đi lại của những người sống tại vùng lõi (Myrtle Bank, Burnside, Unley cách trung tâm chỉ 3-5km) tăng vọt theo cấp số nhân</strong>. Theo đường dốc địa tô (Bid-Rent Curve), giá trị đặc quyền vị trí (Accessibility Premium) của đất nội đô bắt buộc phải dốc hơn và tăng vọt để cân bằng trạng thái hữu dụng của người dân.</li>
+</ul>
+<h3>2. Nghiên cứu Thực nghiệm của Ngân hàng Trung ương Úc (RBA RDP 2018-03: Kendall &amp; Tulip)</h3>
+<ul>
+<li><strong>Công trình:</strong> <em>&quot;The Effect of Zoning on Housing Prices&quot;</em> của Ross Kendall và Peter Tulip (Trưởng bộ phận Nghiên cứu RBA).</li>
+<li><strong>Phát hiện then chốt:</strong> RBA chỉ ra rằng giá nhà đất tại các thành phố Úc bao gồm 3 thành phần tách biệt:
+<ol>
+<li><em>Chi phí vật liệu xây dựng công trình (Physical Structure Cost).</em></li>
+<li><em>Giá trị sử dụng vật lý thuần túy của đất (Raw Land Value).</em></li>
+<li><em>Thuế hành chính / Thặng dư khan hiếm vị trí (Zoning / Scarcity Shadow Price).</em></li>
+</ol>
+</li>
+<li><strong>Kết quả đo lường:</strong> Trong khi đất ở rìa ngoài có mức thặng dư khan hiếm gần như bằng 0 (do nguồn cung đất nông nghiệp chuyển đổi là vô tận), thì tại các khu vực nội đô bán kính &lt; 10km quanh CBD, <strong>yếu tố thặng dư khan hiếm (Zoning Effect) đóng góp tới 42% - 73% giá trị căn nhà</strong>. Càng nhiều nhà giá rẻ mọc lên ở ngoại ô, sự phân hóa xã hội càng đẩy nhóm có thu nhập cao và tích lũy lớn dồn về tranh giành quỹ đất hữu hạn tại các quận nội đô đã đóng khung quy hoạch.</li>
+</ul>
+<h3>3. Nghiên cứu Phân hóa Nhóm Hàng Hóa Thay Thế Kém (Imperfect Substitutes - Brueckner &amp; Rosenthal, 2009)</h3>
+<ul>
+<li>Nghiên cứu của Giáo sư Jan Brueckner (Đại học California) và Stuart Rosenthal đăng trên <em>Journal of Urban Economics</em> chỉ ra rằng: <strong>Nhà ở vùng ven 40km và nhà nội đô có trường điểm bán kính 3-5km KHÔNG PHẢI là hai hàng hóa thay thế hoàn hảo cho nhau</strong>.</li>
+<li>Người mua nhà $1.1M tại Myrtle Bank hay Unley Park tìm kiếm:
+<ul>
+<li>Suất học trường công lập Tier 1 (Glenunga International High, Unley High) vốn có ranh giới địa lý cố định (School Zone Catchment) không thể nhân bản.</li>
+<li>Văn hóa cộng đồng, cây xanh di sản, hạ tầng y tế cao cấp và khoảng cách 8 phút vào trung tâm.</li>
+</ul>
+</li>
+<li>Việc tăng cung 10,000 căn nhà tại Riverlea hay Two Wells chỉ thỏa mãn nhóm người mua nhà lần đầu (First Home Buyers) có ngân sách thấp ($500k - $650k), hoàn toàn không làm giảm nhu cầu của tầng lớp trung lưu và thượng lưu tìm kiếm sự an cư tại các quận an toàn nội đô.</li>
+</ul>
+<h3>4. Bằng chứng Lịch sử Thực tế từ Sydney &amp; Melbourne</h3>
+<ul>
+<li>Giai đoạn 2014 - 2021, khu vực Tây Sydney (Blacktown, Marsden Park, Camden) giải phóng nguồn cung đất nền lớn nhất lịch sử nước Úc (hàng trăm ngàn lô đất mới).</li>
+<li><strong>Kết quả thực tế:</strong> Giá nhà ở Western Sydney đi ngang hoặc tăng chậm (+15% đến +25%), trong khi giá nhà đất tại Eastern Suburbs và Inner West của Sydney tăng dựng đứng <strong>+80% đến +110%</strong>, nới rộng khoảng cách giàu nghèo và giá trị đất đai lên mức kỷ lục.</li>
+</ul>
+<hr />
+<h2 id="chuong-6-phan-tich-6-hanh-lang" class="report-h2"><span class="report-chap-badge">Chương 6</span> PHÂN TÍCH 6 HÀNH LANG AN TOÀN TỐI ƯU THEO TỪNG HỘI ĐỒNG (COUNCIL)</h2>
+<h3>1. 🏛️ City of Burnside &amp; Core East (Toorak Gardens, Tusmore, Glenunga, Myrtle Bank)</h3>
+<ul>
+<li><strong>Tâm điểm học khu:</strong> <strong>Glenunga International High School (GIHS)</strong> &amp; <strong>Marryatville High School</strong>.</li>
+<li><strong>Đặc trưng:</strong> Khu vực danh giá hàng đầu bang Nam Úc, quy hoạch biệt thự cổ, an ninh số 1.</li>
+<li><strong>Phân khúc khả thi &lt; .2M:</strong> Townhouse 2 tầng cao cấp, Courtyard home, Villa trệt độc lập.</li>
+</ul>
+<h3>2. 👑 City of Unley &amp; Prestige South (Unley, Unley Park, Malvern, Highgate, Fullarton)</h3>
+<ul>
+<li><strong>Tâm điểm học khu:</strong> <strong>Unley High School</strong> &amp; <strong>Dual Zone GIHS</strong>.</li>
+<li><strong>Đặc trưng:</strong> Kiến trúc di sản Victorian/Federation, gần các trục phố cà phê King William Road &amp; Unley Road.</li>
+<li><strong>Cơ hội:</strong> Các căn Townhouse mới xây tại Unley Park, Highgate hoặc Fullarton trong tầm giá  - .15M.</li>
+</ul>
+<h3>3. 🌳 City of Mitcham &amp; Foothills (Mitcham, Lower Mitcham, Kingswood, Torrens Park, Belair)</h3>
+<ul>
+<li><strong>Tâm điểm học khu:</strong> Unley High School &amp; Blackwood High School.</li>
+<li><strong>Đặc trưng:</strong> Môi trường sống xanh mát, nhiều cây xanh, cộng đồng học thức cao.</li>
+<li><strong>Lợi thế:</strong> Mua được <strong>nhà riêng độc lập có đất từ 450m² - 650m²</strong> ngay sát vách Myrtle Bank (cự ly 2.5 - 5km).</li>
+</ul>
+<h3>4. 🎓 Norwood, Campbelltown &amp; North-East Core (Norwood, Magill, Rostrevor, Campbelltown)</h3>
+<ul>
+<li><strong>Tâm điểm học khu:</strong> <strong>Norwood International High School</strong> (Top trường công chuyên IB).</li>
+<li><strong>Lợi thế:</strong> Nguồn hàng dồi dào nhất (108 căn). Ngân sách  -  mua được Townhouse mới hoặc nhà riêng sân vườn rộng.</li>
+</ul>
+<h3>5. 🌊 Western Coastal &amp; Beachside (Henley Beach, Grange, Brighton, Somerton Park)</h3>
+<ul>
+<li><strong>Tâm điểm học khu:</strong> <strong>Henley High School</strong> &amp; <strong>Brighton Secondary School</strong>.</li>
+<li><strong>Đặc trưng:</strong> Lối sống biển thượng lưu, tính thanh khoản và biên độ tăng giá vốn hàng đầu Adelaide.</li>
+</ul>
+<h3>6. ⛰️ Adelaide Hills &amp; North-East Enclaves (Stirling, Crafers, Golden Grove, Greenwith)</h3>
+<ul>
+<li><strong>Tâm điểm:</strong> Heathfield High &amp; Golden Grove Master-planned Community.</li>
+<li><strong>Đặc trưng:</strong> Khu vực có tỷ lệ tội phạm thấp nhất tiểu bang, khuôn viên đất rộng từ 600m² - 1,000m² với giá từ  - .</li>
+</ul>
+<hr />
+<h2 id="chuong-7-so-sanh-chi-phi-house-townhouse-unit" class="report-h2"><span class="report-chap-badge">Chương 7</span> SO SÁNH TOÀN DIỆN CHI PHÍ: HOUSE vs TOWNHOUSE vs APARTMENT vs UNIT</h2>
+<div class="report-table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:left">Tiêu Chí Thẩm Định</th>
+<th style="text-align:left">🏡 Freestanding House</th>
+<th style="text-align:left">🏘️ Townhouse</th>
+<th style="text-align:left">🏢 Apartment</th>
+<th style="text-align:left">🏠 Single-Storey Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Hình thức sở hữu</strong></td>
+<td style="text-align:left"><strong>Torrens Title</strong> (100% Freehold)</td>
+<td style="text-align:left"><strong>Community / Strata</strong></td>
+<td style="text-align:left"><strong>Strata Title</strong></td>
+<td style="text-align:left"><strong>Strata / Community</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Giá mua (3PN Adelaide)</strong></td>
+<td style="text-align:left"><strong>,000,000 - ,600,000+</strong></td>
+<td style="text-align:left"><strong>,000 - ,150,000</strong></td>
+<td style="text-align:left"><strong>,000 - ,000</strong></td>
+<td style="text-align:left"><strong>,000 - ,000</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Phí Strata / Body Corp</strong></td>
+<td style="text-align:left">** / năm**</td>
+<td style="text-align:left"><strong>,500 - ,800 / năm</strong></td>
+<td style="text-align:left"><strong>,500 - ,500+ / năm</strong></td>
+<td style="text-align:left"><strong>,200 - ,200 / năm</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Khả năng lắp Solar</strong></td>
+<td style="text-align:left"><strong>100% Tự do lắp đặt</strong></td>
+<td style="text-align:left">Được lắp nếu mái riêng</td>
+<td style="text-align:left"><strong>Không thể lắp riêng</strong></td>
+<td style="text-align:left">Dễ xin Strata duyệt</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tiết kiệm điện từ Solar</strong></td>
+<td style="text-align:left"><strong>,500 - ,200 / năm</strong></td>
+<td style="text-align:left"><strong>,200 - ,800 / năm</strong></td>
+<td style="text-align:left">/ năm</td>
+<td style="text-align:left"><strong>,000 - ,500 / năm</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tổng chi phí vận hành/năm</strong></td>
+<td style="text-align:left"><strong>,800 - ,000 / năm</strong></td>
+<td style="text-align:left"><strong>,800 - ,500 / năm</strong></td>
+<td style="text-align:left"><strong>,500 - ,000+ / năm</strong></td>
+<td style="text-align:left"><strong>,800 - ,500 / năm</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Tiềm năng tăng giá 10 năm</strong></td>
+<td style="text-align:left"><strong>+75% đến +95% (Cao nhất)</strong></td>
+<td style="text-align:left"><strong>+60% đến +75%</strong></td>
+<td style="text-align:left"><strong>+20% đến +35%</strong></td>
+<td style="text-align:left"><strong>+50% đến +65%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2 id="chuong-8-huong-dan-thuc-chien-phap-ly-solar" class="report-h2"><span class="report-chap-badge">Chương 8</span> HƯỚNG DẪN THỰC CHI: PHÁP LÝ THỜI HẠN, STRATA, PHÍ BẮT BUỘC &amp; ĐIỆN MẶT TRỜI</h2>
+<ol>
+<li><strong>Thời hạn sở hữu bất động sản tại Nam Úc:</strong>
+<ul>
+<li>Cả Torrens Title, Community Title và Strata Title đều là <strong>sở hữu vĩnh viễn trọn đời</strong> (không có thời hạn 50 hay 70 năm).</li>
+<li><strong>Torrens Title:</strong> Sở hữu toàn bộ thửa đất và căn nhà, toàn quyền quyết định đập đi xây lại.</li>
+<li><strong>Strata Title:</strong> Sở hữu vĩnh viễn không gian bên trong; đất và vỏ công trình bên ngoài thuộc sở hữu chung của tập thể.</li>
+</ul>
+</li>
+<li><strong>Các loại phí thường niên bắt buộc (Holding Costs):</strong>
+<ul>
+<li><strong>Council Rates:</strong> $1,600 - $2,600/năm (trả theo quý cho Hội đồng địa phương).</li>
+<li><strong>SA Water:</strong> $1,000 - $1,600/năm (cấp nước, thoát nước và tiền nước sử dụng thực tế).</li>
+<li><strong>Emergency Services Levy (ESL):</strong> $180 - $300/năm cho ngân sách cứu hỏa và cứu nạn Nam Úc.</li>
+<li><strong>Land Tax:</strong> <strong>$0 MIỄN PHÍ 100%</strong> đối với nhà ở chính (Principal Place of Residence - PPOR).</li>
+</ul>
+</li>
+<li><strong>Bài toán kinh tế Điện Mặt Trời (Solar PV):</strong>
+<ul>
+<li>Lắp đặt gói <strong>6.6kW Solar Inverter 5kW</strong> (chi phí ~$4,500 - $6,500 sau trợ giá STC).</li>
+<li>Tiết kiệm ngay <strong>$1,500 - $2,200 tiền điện mỗi năm</strong>. Thời gian hoàn vốn thực tế chỉ <strong>2.5 đến 3.5 năm</strong>.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="chuong-9-danh-gia-chien-luoc-mua-hay-doi" class="report-h2"><span class="report-chap-badge">Chương 9</span> ĐÁNH GIÁ CHIẾN LƯỢC: NÊN MUA BÂY GIỜ HAY ĐỢI THỊ TRƯỜNG ĐIỀU CHỈNH?</h2>
+<h3>🎯 KHUYẾN NGHỊ TỪ CHUYÊN GIA TOAN NGUYEN IT OZ: 👉 <strong>NÊN MUA NGAY.</strong></h3>
+<ol>
+<li><strong>Lãi suất đang tạo cơ hội đàm phán tốt nhất:</strong> Lãi suất hiện tại đang ở mức đỉnh chu kỳ, hạn chế sự tham gia ồ ạt của các nhà đầu tư đầu cơ, tạo điều kiện cho người mua ở thực có thời gian chọn lọc và đàm phán giá hợp lý với người bán.</li>
+<li><strong>Kỳ vọng cắt giảm lãi suất của RBA:</strong> Dự kiến vào cuối năm 2026 / đầu 2027 khi RBA bắt đầu lộ trình nới lỏng tiền tệ, dòng tiền sẽ đổ dồn vào các khu vực an toàn, đẩy giá vượt ngưỡng $1.2M hiện tại.</li>
+<li><strong>Khả năng tiếp cận nhà nội đô sẽ ngày càng hẹp lại:</strong> Nếu chờ đợi thêm 6-12 tháng, với cùng ngân sách $1.2M, bạn sẽ buộc phải mua xa hơn 15 - 20km hoặc chuyển sang căn hộ 2 phòng ngủ.</li>
+</ol>
+<hr />
+<h2 id="chuong-10-top-bat-dong-san-form-1" class="report-h2"><span class="report-chap-badge">Chương 10</span> TOP BẤT ĐỘNG SẢN ĐÁNG MUA NHẤT THEO TỪNG VÙNG &amp; CHIẾN THUẬT FORM 1</h2>
+<h3>🌟 Top 5 Bất Động Sản Nổi Bật Nhất Toàn Vùng:</h3>
+<ol>
+<li><strong><a href="https://www.homely.com.au/homes/8--11-392-394-unley-road-unley-park-sa-5061/13444001">8 &amp; 11/392-394 Unley Road, Unley Park SA 5061</a></strong>
+<ul>
+<li><em>Giá:</em> <strong>Brand New Luxury (~$1.1M - $1.2M)</strong> | 3PN • 2WC • 2Xe</li>
+<li><em>Vị trí:</em> <strong>Unley Park siêu sang</strong> (cách Myrtle Bank chỉ <strong>2.78 km</strong>).</li>
+<li><em>Trường học:</em> <strong>Unley High School Prestigious Zone</strong>.</li>
+</ul>
+</li>
+<li><strong><a href="https://www.homely.com.au/homes/3-40-windsor-road-glenunga-sa-5064/13354639">3/40 Windsor Road, Glenunga SA 5064</a></strong>
+<ul>
+<li><em>Giá:</em> <strong>$1,050,000 - $1,100,000</strong> | 3PN • 2WC • 1Xe (Villa Trệt)</li>
+<li><em>Trường học:</em> <strong>100% Zoned Glenunga International High (GIHS)</strong> | Cự ly: <strong>1.24 km</strong>.</li>
+</ul>
+</li>
+<li><strong><a href="https://www.homely.com.au/homes/6-2-cross-street-fullarton-sa-5063/13455168">6/2 Cross Street, Fullarton SA 5063</a></strong>
+<ul>
+<li><em>Giá:</em> <strong>$850,000 - $920,000</strong> | 3PN • 1WC • 1Xe (Courtyard Home)</li>
+<li><em>Trường học:</em> Dual Zone GIHS / Unley High | Cự ly: <strong>1.24 km</strong>.</li>
+</ul>
+</li>
+<li><strong><a href="https://www.homely.com.au/homes/2-pitfour-road-lower-mitcham-sa-5062/13496099">2 Pitfour Road, Lower Mitcham SA 5062</a></strong>
+<ul>
+<li><em>Giá:</em> <strong>$1,000,000 - $1,100,000</strong> | 3PN • 2WC • 2Xe (<strong>Nhà riêng biệt lập, Đất 492 m²</strong>)</li>
+<li><em>Trường học:</em> Unley High School Zone | Cự ly: <strong>2.68 km</strong>.</li>
+</ul>
+</li>
+<li><strong><a href="https://www.homely.com.au/homes/515-tapleys-hill-road-fulham-gardens-sa-5024/13264747">515 Tapleys Hill Road, Fulham Gardens SA 5024</a></strong>
+<ul>
+<li><em>Giá:</em> <strong>$795,000 - $815,000</strong> | 3PN • 1WC • 2Xe (<strong>Nhà riêng có đất 360 m²</strong>)</li>
+<li><em>Trường học:</em> <strong>Henley High School Zone</strong> (cách biển Henley Beach 4 phút).</li>
+</ul>
+</li>
+</ol>
+<h3>📋 Chiến Thuật Pháp Lý Form 1 Cần Lưu Ý:</h3>
+<ul>
+<li><strong>Lệnh kiểm tra quy hoạch:</strong> Đảm bảo thửa đất không thuộc diện bảo tồn di sản cấp bang nghiêm ngặt (State Heritage Overlay) nếu có ý định cải tạo lớn.</li>
+<li><strong>Ranh giới trường học:</strong> Luôn tra cứu chính xác địa chỉ từng căn tại cổng thông tin education.sa.gov.au trước khi đặt cọc (Cooling-off 2 ngày làm việc theo luật Nam Úc).</li>
+</ul>
+<hr />
+<p><em>Báo cáo được hoàn thiện và bảo chứng độc quyền bởi Toan Nguyen IT OZ (toannguyenitoz@gmail.com).</em></p>
+
       </div>
     </section>
 

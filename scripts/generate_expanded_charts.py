@@ -13,62 +13,67 @@ os.makedirs(str(BASE_DIR / 'reports/charts'), exist_ok=True)
 # -------------------------------------------------------------
 # CHART 5: Safety Index & Crime Rate Comparison (SAPOL Offenses per 1,000 Residents)
 # -------------------------------------------------------------
-suburbs = [
-    'Adelaide Hills (Stirling/Crafers/Aldgate)',
-    'Burnside (Myrtle Bank/Glenunga)',
-    'Mitcham & Foothills (Belair/Kingswood)',
-    'Holdfast Bay Coast (Brighton/Somerton)',
-    'Charles Sturt Coast (Henley/Grange)',
-    'Unley (Fullarton/Highgate)',
-    'Tea Tree Gully (Golden Grove/Greenwith)',
-    'Campbelltown (Magill/Rostrevor)',
-    '--- EXCLUDED UNSAFE AREAS ---',
-    'Morphett Vale / Hackham (South Pocket)',
-    'Salisbury / Paralowie (North Central)',
-    'Kilburn / Mansfield Park (North-West)',
-    'Elizabeth / Davoren Park (Far North)',
-    'Adelaide CBD (Postcode 5000)'
+# Ordered strictly from bottom (y=0: highest crime) to top (y=max: lowest crime/safest)
+data_chart5 = [
+    # EXCLUDED HIGH-CRIME AREAS (Red / Danger)
+    {'name': 'Adelaide CBD (Postcode 5000)', 'rate': 245.0, 'safe': False, 'color': '#7f1d1d'},
+    {'name': 'City of Playford (Elizabeth / Davoren Park)', 'rate': 165.4, 'safe': False, 'color': '#991b1b'},
+    {'name': 'North-West Industrial (Kilburn / Mansfield Park)', 'rate': 104.2, 'safe': False, 'color': '#b91c1c'},
+    {'name': 'City of Salisbury (Salisbury / Paralowie)', 'rate': 92.8, 'safe': False, 'color': '#dc2626'},
+    {'name': 'South Pocket (Morphett Vale / Hackham)', 'rate': 88.5, 'safe': False, 'color': '#ef4444'},
+    # APPROVED SAFE RESIDENTIAL CORRIDORS (Green / Safe)
+    {'name': 'Campbelltown (Magill / Rostrevor)', 'rate': 41.8, 'safe': True, 'color': '#10b981'},
+    {'name': 'Tea Tree Gully (Golden Grove / Greenwith)', 'rate': 39.4, 'safe': True, 'color': '#10b981'},
+    {'name': 'City of Unley (Fullarton / Highgate / Malvern)', 'rate': 38.0, 'safe': True, 'color': '#059669'},
+    {'name': 'Charles Sturt Coast (Henley Beach / Grange)', 'rate': 36.2, 'safe': True, 'color': '#059669'},
+    {'name': 'Holdfast Bay Coast (Brighton / Somerton)', 'rate': 34.6, 'safe': True, 'color': '#059669'},
+    {'name': 'City of Mitcham (Belair / Kingswood / Hawthorn)', 'rate': 26.2, 'safe': True, 'color': '#047857'},
+    {'name': 'City of Burnside (Myrtle Bank / Glenunga / Toorak Gdns)', 'rate': 21.5, 'safe': True, 'color': '#047857'},
+    {'name': 'Adelaide Hills (Stirling / Crafers / Aldgate)', 'rate': 14.8, 'safe': True, 'color': '#064e3b'},
 ]
 
-crime_rates = [
-    14.8, 21.5, 26.2, 34.6, 36.2, 38.0, 39.4, 41.8,
-    0, # separator
-    88.5, 92.8, 104.2, 165.4, 245.0
-]
+suburbs = [d['name'] for d in data_chart5]
+crime_rates = [d['rate'] for d in data_chart5]
+colors = [d['color'] for d in data_chart5]
 
-colors = [
-    '#059669', '#059669', '#10b981', '#10b981', '#10b981', '#10b981', '#34d399', '#34d399',
-    '#ffffff',
-    '#ef4444', '#dc2626', '#b91c1c', '#991b1b', '#7f1d1d'
-]
-
-fig, ax = plt.subplots(figsize=(12, 7.5), dpi=300)
+fig, ax = plt.subplots(figsize=(13, 8), dpi=300)
 y_pos = np.arange(len(suburbs))
-bars = ax.barh(y_pos[::-1], crime_rates[::-1], color=colors[::-1], alpha=0.9, height=0.65)
+bars = ax.barh(y_pos, crime_rates, color=colors, alpha=0.9, height=0.68)
 
-ax.set_yticks(y_pos[::-1])
+ax.set_yticks(y_pos)
 ax.set_yticklabels(suburbs, fontsize=10, fontweight='bold')
 ax.set_xlabel('Annual Offences per 1,000 Residents (SAPOL Official Crime Statistics)', fontsize=11, fontweight='bold', labelpad=10)
-ax.set_title('Adelaide Safety Benchmark: Included Safe Corridors vs Excluded High-Crime Suburbs\n(Strict Security Filtering for 3-Bedroom Property Search)', 
+ax.set_title('Adelaide Safety Benchmark: Included Safe Corridors vs Excluded High-Crime Suburbs\n(Strict Security Filtering for 3-Bedroom Family Home Search)', 
              fontsize=12.5, fontweight='bold', pad=15)
 
-# Annotate bars
-for bar, rate in zip(bars, crime_rates[::-1]):
-    if rate > 0:
-        label = f'{rate:.1f} / 1k'
-        tag = ' [SAFE / APPROVED]' if rate < 50 else ' [EXCLUDED / UNSAFE]'
-        ax.text(rate + 2, bar.get_y() + bar.get_height()/2, label + tag, 
-                va='center', ha='left', fontsize=8.5, fontweight='bold', 
-                color='#059669' if rate < 50 else '#991b1b')
+# Add SAPOL High-Risk threshold line at 50 offences / 1,000
+ax.axvline(x=50, color='#dc2626', linestyle='--', linewidth=1.8, alpha=0.85, label='SAPOL Safety Benchmark (<50 per 1,000)')
 
-ax.set_xlim(0, 290)
+# Add horizontal dividing line between excluded and approved
+ax.axhline(y=4.5, color='#94a3b8', linestyle=':', linewidth=1.5)
+ax.text(180, 4.5, '--- KHU VUC BI LOAI TRU VI AN NINH (EXCLUDED REGIONS) ---', 
+        color='#991b1b', fontsize=8.5, fontweight='bold', va='center', ha='center',
+        bbox=dict(boxstyle='round,pad=0.25', facecolor='#fee2e2', edgecolor='#ef4444', alpha=0.9))
+
+# Annotate bars
+for bar, d in zip(bars, data_chart5):
+    rate = d['rate']
+    label = f'{rate:.1f} / 1k'
+    tag = ' [DUYET - AN TOAN]' if d['safe'] else ' [LOAI TRU - NGUY CO CAO]'
+    txt_color = '#047857' if d['safe'] else '#991b1b'
+    ax.text(rate + 3, bar.get_y() + bar.get_height()/2, f'{label}{tag}', 
+            va='center', ha='left', fontsize=8.5, fontweight='bold', 
+            color=txt_color)
+
+ax.set_xlim(0, 355)
 
 from matplotlib.patches import Patch
 legend_elements = [
-    Patch(facecolor='#059669', label='Selected Safe Regions (Grade A / A+ Safety)'),
-    Patch(facecolor='#dc2626', label='Excluded High-Crime / Social Housing Pockets (Filtered Out)')
+    Patch(facecolor='#047857', label='Duyệt: Khu vực An toàn Cao cấp (Rate < 50 / 1k)'),
+    Patch(facecolor='#dc2626', label='Loại trừ: Khu vực Phức tạp / Tội phạm cao (Rate > 50 / 1k)'),
+    plt.Line2D([0], [0], color='#dc2626', linestyle='--', linewidth=1.8, label='Ngưỡng An toàn SAPOL (< 50 offences / 1k)')
 ]
-ax.legend(handles=legend_elements, loc='lower right', frameon=True, framealpha=0.95, facecolor='white', edgecolor='#e5e7eb', fontsize=10)
+ax.legend(handles=legend_elements, loc='lower right', frameon=True, framealpha=0.95, facecolor='white', edgecolor='#e5e7eb', fontsize=9.5)
 
 plt.tight_layout()
 chart5_path = str(BASE_DIR / 'reports/charts/chart5_safety_index_comparison.png')

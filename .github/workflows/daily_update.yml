@@ -42,6 +42,7 @@ jobs:
 
       - name: Generate Analytical Charts
         run: |
+          python scripts/generate_charts.py
           python scripts/generate_expanded_charts.py
           python scripts/generate_chart7.py
 

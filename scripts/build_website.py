@@ -370,10 +370,10 @@ def build():
       align-items: center;
       gap: 6px;
     }}
-    .btn-domain {{
-      background: #00875a;
+    .btn-homely {{
+      background: #0ea5e9;
       color: white;
-      padding: 6px 11px;
+      padding: 6px 12px;
       border-radius: 6px;
       font-size: 11.5px;
       font-weight: 700;
@@ -382,28 +382,28 @@ def build():
       gap: 4px;
       transition: all 0.15s;
     }}
-    .btn-domain:hover {{
-      background: #006644;
+    .btn-homely:hover {{
+      background: #0284c7;
       color: white;
-      box-shadow: 0 2px 6px rgba(0,135,90,0.3);
+      box-shadow: 0 2px 6px rgba(14,165,233,0.35);
     }}
-    .btn-homely {{
-      background: #ffffff;
-      color: #334155;
-      border: 1px solid #cbd5e1;
-      padding: 5px 9px;
+    .btn-domain {{
+      background: #f8fafc;
+      color: #00875a;
+      border: 1px solid #86efac;
+      padding: 5px 10px;
       border-radius: 6px;
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 3px;
       transition: all 0.15s;
     }}
-    .btn-homely:hover {{
-      background: #f1f5f9;
-      color: #0f172a;
-      border-color: #94a3b8;
+    .btn-domain:hover {{
+      background: #ecfdf5;
+      color: #006644;
+      border-color: #00875a;
     }}
     
     /* Analytics & Charts Section */
@@ -750,14 +750,14 @@ def build():
           <div class="card-foot">
             <span class="card-dist">📍 Cách bạn: ${{p.distance_km_from_wilgena}} km</span>
             <div class="btn-group-foot">
-              <a href="${{p.domain_url || p.url}}" target="_blank" rel="noopener noreferrer" class="btn-domain" title="Tìm trực tiếp địa chỉ căn nhà trên Domain.com.au">
-                Domain.com.au &rarr;
-              </a>
               ${{p.homely_url ? `
-                <a href="${{p.homely_url}}" target="_blank" rel="noopener noreferrer" class="btn-homely" title="Xem bài đăng gốc trên Homely">
-                  Homely
+                <a href="${{p.homely_url}}" target="_blank" rel="noopener noreferrer" class="btn-homely" title="Xem ảnh & chi tiết bài đăng gốc 100% chính xác">
+                  Xem Chi Tiết &rarr;
                 </a>
               ` : ''}}
+              <a href="${{p.google_domain_url || ('https://www.google.com/search?q=' + encodeURIComponent(p.address + ' domain.com.au'))}}" target="_blank" rel="noopener noreferrer" class="btn-domain" title="Tìm bài đăng căn nhà này trên sàn Domain.com.au qua Google">
+                Domain.com.au
+              </a>
             </div>
           </div>
         </div>

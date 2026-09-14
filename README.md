@@ -19,7 +19,7 @@ Hệ thống thu thập, phân tích và giám sát thị trường bất độn
 
 ## 🚀 Xem Trực Tiếp (Live Demo)
 Dashboard web tương tác:
-👉 **[https://<username>.github.io/<repo-name>/](https://<username>.github.io/<repo-name>/)**
+👉 **[https://toannguyenitoz.github.io/adelaide-property-insights/](https://toannguyenitoz.github.io/adelaide-property-insights/)**
 
 Tải báo cáo PDF hoàn chỉnh:
 📄 **[Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf](reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf)**

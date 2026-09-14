@@ -642,6 +642,12 @@ def build():
           <p>Nam Úc có giá điện lưới đắt bậc nhất nước Úc (~40c/kWh). Lắp hệ thống <strong>6.6kW Solar</strong> (~$4,500-$6,500) giúp tiết kiệm <strong>$1,500 - $2,200 tiền điện/năm</strong>.</p>
           <p><strong>Thời gian hoàn vốn:</strong> Chỉ từ 2.5 - 3.5 năm. Nhà riêng lắp tự do; nhà Strata cần xin phép ban quản trị (90% được duyệt).</p>
         </div>
+
+        <div class="article-card">
+          <h3>📈 Nghiên Cứu: Tại Sao Cung Ngoại Ô Tăng Thì Giá Nội Đô Lại Tăng?</h3>
+          <p><strong>Mô hình Alonso-Muth-Mills & RBA Research (Kendall & Tulip):</strong> Cung nhà ở rìa xa (Riverlea 35km, Concordia 45km) làm dãn bán kính đô thị, khiến giá trị tiết kiệm thời gian di chuyển của đất nội đô (Myrtle Bank, Burnside 3-5km) tăng vọt theo <em>Đường dốc địa tô (Bid-Rent Gradient)</em>.</p>
+          <p><strong>Hàng hóa thay thế kém:</strong> Suất học trường công lập danh tiếng (GIHS, Unley High) có ranh giới cố định, không thể nhân bản ra ngoại ô. Càng nhiều nhà ngoại ô mọc lên, thặng dư khan hiếm (Zoning Scarcity Premium) tại các quận nội đô an toàn càng bị đẩy lên cao.</p>
+        </div>
       </div>
     </section>
 

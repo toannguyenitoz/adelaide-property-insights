@@ -456,21 +456,22 @@ def main():
         print("Dry run completed successfully.")
         return
 
-    # 1. Try Resend API first if key provided
+    # 1. Try Gmail/SMTP first if credentials provided (supports delivering to all 3 recipients directly)
+    if smtp_user and smtp_pass:
+        print("Dispatching email digest via SMTP...")
+        try:
+            send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_user, smtp_pass)
+            return
+        except Exception as e:
+            print(f"Failed to dispatch email via SMTP: {e}", file=sys.stderr)
+            print("Attempting fallback to Resend API...")
+
+    # 2. Fallback to Resend API
     if resend_api_key:
         print("Dispatching email digest via Resend API...")
         resend_ok = send_via_resend(subject, html_content, recipients, resend_api_key, resend_from)
         if resend_ok:
             return
-        print("Resend failed or partially failed, falling back to SMTP if configured...")
-
-    # 2. Fallback to SMTP
-    if smtp_user and smtp_pass:
-        try:
-            send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_user, smtp_pass)
-        except Exception as e:
-            print(f"Failed to dispatch email via SMTP: {e}", file=sys.stderr)
-            sys.exit(0)
 
 if __name__ == '__main__':
     main()

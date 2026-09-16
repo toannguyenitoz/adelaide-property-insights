@@ -54,6 +54,16 @@ jobs:
         run: |
           python scripts/generate_pdf.py
 
+      - name: Send Daily Top Properties Email Digest
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER || 'smtp.gmail.com' }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT || '587' }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS || 'Theodorenguyensa@gmail.com, nguyenha.hanhlinh@gmail.com, nancyha.au@gmail.com' }}
+        run: |
+          python scripts/send_daily_email.py
+
       - name: Commit and Push Updated Data & Reports
         run: |
           git config --local user.name "Toan Nguyen IT OZ (Bot)"

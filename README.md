@@ -16,6 +16,18 @@ Hệ thống thu thập, phân tích và giám sát thị trường bất độn
    - Pháp lý quyền sở hữu (Torrens Title vs Community vs Strata)
    - Phân tích lắp đặt Solar PV & bài toán House vs Townhouse vs Unit/Apartment.
 5. **Cập nhật tự động 6:00 AM ACST hàng ngày**: GitHub Actions tự động kích hoạt, cào dữ liệu mới, vẽ biểu đồ, cập nhật Dashboard web (index.html) và xuất bản báo cáo PDF.
+6. **Bản Tin Email Tự Động Hàng Ngày**: Tự động lọc ra 5 - 10 căn nhà đang bán ổn nhất (ưu tiên trường điểm GIHS/Unley, cự ly gần Myrtle Bank, an toàn tuyệt đối SAPOL) và gửi email định kỳ đến:
+   - `Theodorenguyensa@gmail.com`
+   - `nguyenha.hanhlinh@gmail.com`
+   - `nancyha.au@gmail.com`
+
+## 📧 Cấu Hình Gửi Email (GitHub Secrets)
+Để kích hoạt gửi email tự động mỗi sáng qua GitHub Actions:
+1. Vào GitHub repo: `Settings -> Secrets and variables -> Actions -> New repository secret`.
+2. Thêm 2 secret:
+   - `SMTP_USERNAME`: Địa chỉ Gmail của bạn (ví dụ: `toannguyenitoz@gmail.com`).
+   - `SMTP_PASSWORD`: Mật khẩu ứng dụng 16 ký tự (**Google App Password** - tạo tại `myaccount.google.com/apppasswords`).
+*(Nếu chưa cấu hình, hệ thống sẽ tự động chuyển sang chế độ Dry-Run an toàn mà không làm gián đoạn việc deploy trang web hàng ngày).*
 
 ## 🚀 Xem Trực Tiếp (Live Demo)
 Dashboard web tương tác:

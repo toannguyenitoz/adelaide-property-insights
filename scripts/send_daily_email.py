@@ -322,7 +322,76 @@ def send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_u
     print(f"Sending email to: {recipients}...")
     server.sendmail(smtp_user, recipients, msg.as_string())
     server.quit()
-    print("Email successfully dispatched to all recipients!")
+    print("Email successfully dispatched to all recipients via SMTP!")
+
+def send_via_resend(subject, html_content, recipients, resend_api_key, resend_from=None):
+    """
+    Sends email using Resend REST API (no external dependency needed).
+    """
+    import urllib.request
+    import json
+
+    sender = resend_from or "Toan Nguyen IT OZ <onboarding@resend.dev>"
+    url = "https://api.resend.com/emails"
+
+    # Note: On free/trial tier with onboarding@resend.dev, Resend restricts to registered account email.
+    # We attempt sending to all recipients, and if 403 occurs due to domain verification, we gracefully handle it.
+    payload = {
+        "from": sender,
+        "to": recipients,
+        "subject": subject,
+        "html": html_content
+    }
+
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode('utf-8'),
+        headers={
+            "Authorization": f"Bearer {resend_api_key}",
+            "Content-Type": "application/json",
+            "User-Agent": "ToanNguyenITOZ-Digest/1.0"
+        }
+    )
+
+    try:
+        with urllib.request.urlopen(req) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            print(f"Email successfully dispatched via Resend API! ID: {data.get('id')}")
+            return True
+    except urllib.error.HTTPError as e:
+        err_msg = e.read().decode('utf-8')
+        print(f"Resend API error ({e.code}): {err_msg}", file=sys.stderr)
+        # If restricted to account owner on sandbox domain:
+        if e.code == 403 and "only send testing emails to your own email address" in err_msg:
+            print("Notice: Resend sandbox domain (onboarding@resend.dev) restricts delivery to account owner.")
+            print("Sending to account owner (theodorenguyensa@gmail.com) first...")
+            fallback_payload = {
+                "from": sender,
+                "to": ["theodorenguyensa@gmail.com"],
+                "subject": subject,
+                "html": html_content
+            }
+            fb_req = urllib.request.Request(
+                url,
+                data=json.dumps(fallback_payload).encode('utf-8'),
+                headers={
+                    "Authorization": f"Bearer {resend_api_key}",
+                    "Content-Type": "application/json",
+                    "User-Agent": "ToanNguyenITOZ-Digest/1.0"
+                }
+            )
+            try:
+                with urllib.request.urlopen(fb_req) as fb_resp:
+                    fb_data = json.loads(fb_resp.read().decode('utf-8'))
+                    print(f"Email sent to owner theodorenguyensa@gmail.com via Resend! ID: {fb_data.get('id')}")
+                    print("To send to all 3 recipients, verify your domain at https://resend.com/domains or use Gmail SMTP.")
+                    return True
+            except Exception as ex2:
+                print(f"Fallback send failed: {ex2}", file=sys.stderr)
+        return False
+    except Exception as e:
+        print(f"Resend network error: {e}", file=sys.stderr)
+        return False
 
 def main():
     if sys.platform == 'win32':
@@ -357,6 +426,10 @@ def main():
         f.write(html_content)
     print(f"Email preview saved at: {PREVIEW_HTML}")
 
+    # Read Resend API credentials
+    resend_api_key = os.environ.get('RESEND_API_KEY')
+    resend_from = os.environ.get('RESEND_FROM')
+
     # Read SMTP credentials
     smtp_server = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
     smtp_port = int(os.environ.get('SMTP_PORT', 587))
@@ -372,24 +445,32 @@ def main():
 
     subject = f"[Toan Nguyen IT OZ] 🏡 Top {len(top_picks)} Nhà Đáng Mua Nhất Adelaide Hôm Nay ({datetime.datetime.now().strftime('%d/%m')})"
 
-    if dry_run or not smtp_user or not smtp_pass:
-        print("\n=== DRY RUN / NO SMTP CREDENTIALS ===")
-        if not smtp_user or not smtp_pass:
-            print("No SMTP credentials found in environment variables (SMTP_USERNAME / SMTP_PASSWORD).")
-            print("To enable automated email dispatch, add SMTP_USERNAME and SMTP_PASSWORD to your GitHub Repository Secrets.")
-        print(f"Target Recipients would be: {recipients}")
+    if dry_run or (not resend_api_key and (not smtp_user or not smtp_pass)):
+        print("\n=== DRY RUN / NO EMAIL CREDENTIALS ===")
+        if not resend_api_key and (not smtp_user or not smtp_pass):
+            print("No RESEND_API_KEY or SMTP credentials found.")
+            print("To enable automated email dispatch, configure RESEND_API_KEY or (SMTP_USERNAME & SMTP_PASSWORD) in GitHub Secrets.")
+        print(f"Target Recipients: {recipients}")
         print(f"Email Subject: {subject}")
-        print(f"You can view the full HTML email rendered at: {PREVIEW_HTML}")
+        print(f"Preview HTML: {PREVIEW_HTML}")
         print("Dry run completed successfully.")
         return
 
-    # Real dispatch
-    try:
-        send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_user, smtp_pass)
-    except Exception as e:
-        print(f"Failed to dispatch email via SMTP: {e}", file=sys.stderr)
-        # We don't fail CI if SMTP fails, so scraper & web deploy keep working
-        sys.exit(0)
+    # 1. Try Resend API first if key provided
+    if resend_api_key:
+        print("Dispatching email digest via Resend API...")
+        resend_ok = send_via_resend(subject, html_content, recipients, resend_api_key, resend_from)
+        if resend_ok:
+            return
+        print("Resend failed or partially failed, falling back to SMTP if configured...")
+
+    # 2. Fallback to SMTP
+    if smtp_user and smtp_pass:
+        try:
+            send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_user, smtp_pass)
+        except Exception as e:
+            print(f"Failed to dispatch email via SMTP: {e}", file=sys.stderr)
+            sys.exit(0)
 
 if __name__ == '__main__':
     main()

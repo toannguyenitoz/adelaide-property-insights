@@ -199,6 +199,7 @@ def generate_email_html(top_picks, total_scanned, now_str):
             <div>🏗️ <strong>Loại hình & Pháp lý:</strong> <span>{p.get('property_type', 'House')}</span></div>
             <div>🔨 <strong>Năm xây dựng:</strong> <span style="color:#059669; font-weight:700;">{p.get('year_built', 'Chưa rõ')}</span></div>
             <div>📍 <strong>Cự ly:</strong> <span>Cách 1B Wilgena Ave Myrtle Bank ~<strong>{p.get('distance_km_from_wilgena', 'N/A')} km</strong></span></div>
+            <div>📅 <strong>Ngày lên website:</strong> <span style="color:#0284c7; font-weight:700;">{p.get('listed_date', '14/09/2026')}</span></div>
           </div>
 
           <!-- Why Recommended -->

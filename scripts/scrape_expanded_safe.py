@@ -443,6 +443,24 @@ def main():
     print(f"\nCompleted! Total matching 3-bedroom properties across comprehensive safe areas: {len(matched)}", flush=True)
 
     json_path = str(BASE_DIR / 'data/expanded_safe_listings_under_1.2m.json')
+    
+    # Track original first-listed date across daily runs
+    existing_dates = {}
+    if os.path.exists(json_path):
+        try:
+            with open(json_path, 'r', encoding='utf-8') as f_old:
+                old_props = json.load(f_old)
+                for op in old_props:
+                    if op.get('address') and op.get('listed_date'):
+                        existing_dates[op['address']] = op['listed_date']
+        except Exception:
+            pass
+
+    today_str = time.strftime('%d/%m/%Y')
+    for p in matched:
+        addr = p.get('address')
+        p['listed_date'] = existing_dates.get(addr, today_str)
+
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(matched, f, ensure_ascii=False, indent=2)
 
@@ -451,14 +469,14 @@ def main():
         fieldnames = [
             'address', 'suburb', 'postcode', 'region', 'price_raw', 'property_type',
             'bedrooms', 'bathrooms', 'car_spaces', 'land_size',
-            'distance_km_from_wilgena', 'school_zone', 'safety_rating', 'year_built', 'url'
+            'distance_km_from_wilgena', 'school_zone', 'safety_rating', 'year_built', 'listed_date', 'url'
         ]
         writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
         for p in matched:
             writer.writerow(p)
 
-    print("Data saved successfully to comprehensive JSON and CSV!", flush=True)
+    print("Data saved successfully to comprehensive JSON and CSV with listed_date preserved!", flush=True)
 
 if __name__ == '__main__':
     main()

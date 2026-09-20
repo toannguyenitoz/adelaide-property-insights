@@ -1232,6 +1232,10 @@ def build():
                 <span class="tag-label">Năm xây dựng:</span>
                 <span style="color:var(--emerald); font-weight:700;">🔨 ${{p.year_built || 'Chưa rõ'}}</span>
               </div>
+              <div class="tag-row">
+                <span class="tag-label">Ngày lên web:</span>
+                <span style="color:#0284c7; font-weight:700;">📅 ${{p.listed_date || '14/09/2026'}}</span>
+              </div>
             </div>
           </div>
           <div class="card-foot">

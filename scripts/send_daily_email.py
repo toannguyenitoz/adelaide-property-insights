@@ -299,15 +299,6 @@ def send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_u
     """
     Sends the HTML email via SMTP with STARTTLS.
     """
-    msg = MIMEMultipart('alternative')
-    msg['Subject'] = subject
-    msg['From'] = f"Toan Nguyen IT OZ <{smtp_user}>"
-    msg['To'] = ", ".join(recipients)
-
-    # Attach HTML part
-    part = MIMEText(html_content, 'html', 'utf-8')
-    msg.attach(part)
-
     print(f"Connecting to SMTP server {smtp_server}:{smtp_port}...")
     if int(smtp_port) == 465:
         server = smtplib.SMTP_SSL(smtp_server, smtp_port, timeout=30)
@@ -320,10 +311,24 @@ def send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_u
     print(f"Logging in as {smtp_user}...")
     server.login(smtp_user, smtp_pass)
     
-    print(f"Sending email to: {recipients}...")
-    server.sendmail(smtp_user, recipients, msg.as_string())
+    # Send individually to ensure 100% inbox delivery and avoid email client spam-filtering group sends
+    for r in recipients:
+        try:
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = subject
+            msg['From'] = f"Toan Nguyen IT OZ <{smtp_user}>"
+            msg['To'] = r
+            part = MIMEText(html_content, 'html', 'utf-8')
+            msg.attach(part)
+
+            print(f"Sending email to: {r}...")
+            server.sendmail(smtp_user, [r], msg.as_string())
+            print(f"  -> Delivered successfully to {r}")
+        except Exception as err:
+            print(f"  -> Error sending to {r}: {err}", file=sys.stderr)
+            
     server.quit()
-    print("Email successfully dispatched to all recipients via SMTP!")
+    print("Email processing completed for all recipients via SMTP!")
 
 def send_via_resend(subject, html_content, recipients, resend_api_key, resend_from=None):
     """

@@ -9,6 +9,7 @@ import csv
 import time
 import math
 import sys
+import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 BASE_LAT = -34.9574204

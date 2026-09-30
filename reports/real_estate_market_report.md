@@ -77,9 +77,9 @@ Tiêu chí bảo vệ gia đình luôn được đặt lên hàng đầu. Hệ t
 
 ---
 
-## 4. HỆ THỐNG 7 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN & LOẠI HÌNH BẤT ĐỘNG SẢN
+## 4. HỆ THỐNG 8 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG ĐẤU GIÁ HÀNG TUẦN
 
-Bộ 7 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
+Bộ 8 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
 
 ### 📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park & Toorak Gardens)
 So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
@@ -103,6 +103,10 @@ Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh 1B Wilgena Av
 
 ### 📊 Biểu đồ 7: So Sánh Chi Phí Vận Hàng Hàng Năm & Tạo Dựng Tài Sản 10 Năm (House vs Townhouse vs Unit)
 ![Chart 7: Property Type Cost Comparison](charts/chart7_property_type_cost_comparison.png)
+
+### 📊 Biểu đồ 8: Xu Hướng Giá Rao Bán & Tình Hình Đấu Giá Hàng Tuần (Domain Weekly Clearance Rate)
+Biểu đồ theo dõi giá trung vị qua các tuần và tỷ lệ chốt thành công tại các phiên đấu giá chính thức của Domain tại Adelaide:
+![Chart 8: Weekly Price Trends and Domain Auction Clearance](charts/chart8_weekly_price_trends.png)
 
 ---
 

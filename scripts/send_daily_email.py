@@ -9,6 +9,7 @@ from email.mime.text import MIMEText
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 DATA_JSON = BASE_DIR / 'data/expanded_safe_listings_under_1.2m.json'
+AUCTION_JSON = BASE_DIR / 'data/domain_weekly_auction_results.json'
 PREVIEW_HTML = BASE_DIR / 'reports/email_preview.html'
 
 DEFAULT_RECIPIENTS = [
@@ -144,10 +145,47 @@ def select_top_properties(properties, count=8):
     # Return top N
     return scored[:count]
 
-def generate_email_html(top_picks, total_scanned, now_str):
+def generate_email_html(top_picks, total_scanned, now_str, auction_data=None):
     """
     Generates a high-conversion, responsive, beautifully styled HTML email.
     """
+    auction_box_html = ""
+    if auction_data and auction_data.get('summary'):
+        summ = auction_data.get('summary', {})
+        clr_rate = summ.get('adjClearanceRate', 0.392) * 100
+        auc_med = summ.get('median', 917750)
+        auc_sold = summ.get('numberSold', 31)
+        auc_listed = summ.get('numberListedForAuction', 103)
+        auc_box_html = f"""
+        <div style="background:#ffffff; border:1px solid #bae6fd; border-radius:10px; padding:16px; margin-bottom:20px; box-shadow:0 2px 6px rgba(2,132,199,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <span style="background:#0284c7; color:#ffffff; font-size:10.5px; font-weight:800; padding:3px 8px; border-radius:4px; text-transform:uppercase; letter-spacing:0.5px;">
+              🔨 BÁO CÁO ĐẤU GIÁ TUẦN NÀY (DOMAIN ADELAIDE)
+            </span>
+            <a href="https://toannguyenitoz.github.io/adelaide-property-insights/#auctionSection" target="_blank" style="color:#0284c7; font-size:11px; font-weight:700; text-decoration:none;">
+              Xem chi tiết bảng &rarr;
+            </a>
+          </div>
+          <div style="display:flex; justify-content:space-around; text-align:center; font-size:12px;">
+            <div>
+              <div style="color:#64748b; font-size:10.5px; text-transform:uppercase;">Tỷ Lệ Chốt</div>
+              <div style="color:#0284c7; font-size:17px; font-weight:800; margin-top:2px;">{clr_rate:.1f}%</div>
+            </div>
+            <div style="border-left:1px solid #e2e8f0; height:32px;"></div>
+            <div>
+              <div style="color:#64748b; font-size:10.5px; text-transform:uppercase;">Giá Trung Vị Đấu Giá</div>
+              <div style="color:#059669; font-size:17px; font-weight:800; margin-top:2px;">${auc_med/1000:,.0f}k</div>
+            </div>
+            <div style="border-left:1px solid #e2e8f0; height:32px;"></div>
+            <div>
+              <div style="color:#64748b; font-size:10.5px; text-transform:uppercase;">Đã Bán / Đưa Ra Sàn</div>
+              <div style="color:#1e3a8a; font-size:17px; font-weight:800; margin-top:2px;">{auc_sold} / {auc_listed}</div>
+            </div>
+          </div>
+        </div>
+        """
+        auction_box_html = auc_box_html
+
     cards_html = ""
     for idx, (score, highlights, p) in enumerate(top_picks, 1):
         # Badge color based on rank
@@ -258,6 +296,9 @@ def generate_email_html(top_picks, total_scanned, now_str):
         <span style="background:#fef3c7; color:#b45309; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px;">💰 Ngân sách an toàn &lt; $1.2M</span>
       </div>
     </div>
+
+    <!-- Domain Weekly Auction Intelligence Box -->
+    {auction_box_html}
 
     <!-- Listings Section -->
     <div style="margin-bottom:24px;">
@@ -425,7 +466,16 @@ def main():
     for idx, (score, hl, p) in enumerate(top_picks, 1):
         print(f"  #{idx} (Score: {score}) - {p.get('address')} | {p.get('price_raw')} | {p.get('school_zone')}")
 
-    html_content = generate_email_html(top_picks, total_scanned, now_str)
+    # Read auction data
+    auction_data = None
+    if os.path.exists(AUCTION_JSON):
+        try:
+            with open(AUCTION_JSON, 'r', encoding='utf-8') as f_auc:
+                auction_data = json.load(f_auc)
+        except Exception:
+            pass
+
+    html_content = generate_email_html(top_picks, total_scanned, now_str, auction_data)
 
     # Always save preview
     with open(PREVIEW_HTML, 'w', encoding='utf-8') as f:

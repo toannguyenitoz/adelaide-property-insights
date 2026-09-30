@@ -7,6 +7,7 @@ import re
 from markdown_it import MarkdownIt
 
 DATA_JSON = str(BASE_DIR / 'data/expanded_safe_listings_under_1.2m.json')
+AUCTION_JSON = str(BASE_DIR / 'data/domain_weekly_auction_results.json')
 MD_REPORT = str(BASE_DIR / 'reports/real_estate_market_report.md')
 OUTPUT_INDEX = str(BASE_DIR / 'index.html')
 
@@ -30,7 +31,7 @@ def get_rendered_report_html():
         '1': 'chuong-1-tong-quan',
         '2': 'chuong-2-suburb-thuong-luu',
         '3': 'chuong-3-bo-loc-an-ninh-sapol',
-        '4': 'chuong-4-he-thong-7-bieu-do',
+        '4': 'chuong-4-he-thong-8-bieu-do',
         '5': 'chuong-5-phan-bien-kinh-te-do-thi',
         '6': 'chuong-6-phan-tich-6-hanh-lang',
         '7': 'chuong-7-so-sanh-chi-phi-house-townhouse-unit',
@@ -77,7 +78,33 @@ def build():
 
     now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
 
+    # Load Domain Auction Data
+    auction_data = {}
+    if os.path.exists(AUCTION_JSON):
+        try:
+            with open(AUCTION_JSON, 'r', encoding='utf-8') as f_auc:
+                auction_data = json.load(f_auc)
+        except Exception:
+            pass
+
+    auc_summary = auction_data.get('summary', {})
+    auc_listings = auction_data.get('listings', [])
+    auc_clearance = auc_summary.get('adjClearanceRate', 0.392) * 100
+    auc_last_year = auc_summary.get('lastYearClearanceRate', 0.477) * 100
+    auc_median = auc_summary.get('median', 917750)
+    auc_total_sales = auc_summary.get('totalSales', 21721500)
+    auc_listed = auc_summary.get('numberListedForAuction', 103)
+    auc_sold = auc_summary.get('numberSold', 31)
+    auc_passed_in = auc_summary.get('numberPassedIn', 40)
+    auc_withdrawn = auc_summary.get('numberWithdrawn', 8)
+    auc_date_raw = auction_data.get('auction_date', '2026-09-26')
+    try:
+        auc_date_str = datetime.datetime.fromisoformat(auc_date_raw.replace('Z', '')).strftime('%d/%m/%Y')
+    except Exception:
+        auc_date_str = '26/09/2026'
+
     properties_json_str = json.dumps(properties, ensure_ascii=False)
+    auction_listings_json_str = json.dumps(auc_listings, ensure_ascii=False)
     report_html = get_rendered_report_html()
 
     html_content = f"""<!DOCTYPE html>
@@ -628,6 +655,114 @@ def build():
     .report-btn-print:hover {{
       background: rgba(255,255,255,0.25);
     }}
+
+    /* Weekly Auction Section Styles */
+    .auction-kpi-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }}
+    .auction-kpi-card {{
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }}
+    .auction-kpi-val {{
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }}
+    .auction-kpi-lbl {{
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }}
+    .auction-kpi-sub {{
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
+    }}
+    .badge-ausd {{
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }}
+    .badge-ausp {{
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }}
+    .badge-aupi {{
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }}
+    .badge-auw {{
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }}
+    .auction-table-scroll {{
+      max-height: 520px;
+      overflow-y: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      background: white;
+    }}
+    .auction-table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }}
+    .auction-table th {{
+      position: sticky;
+      top: 0;
+      background: #0f172a;
+      color: white;
+      padding: 10px 12px;
+      font-weight: 700;
+      z-index: 10;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }}
+    .auction-table td {{
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--slate-100);
+    }}
+    .auction-table tr:hover {{
+      background: #f8fafc;
+    }}
+
     .chapter-nav-bar {{
       background: #f1f5f9;
       border-bottom: 1px solid var(--slate-200);
@@ -872,7 +1007,8 @@ def build():
     </a>
     <div class="nav-links">
       <a href="#propertySection" class="nav-link">🏡 Tìm Nhà ({total_listings})</a>
-      <a href="#analyticsSection" class="nav-link">📊 7 Biểu Đồ</a>
+      <a href="#auctionSection" class="nav-link" style="color:#38bdf8;">🔨 Đấu Giá Tuần ({len(auc_listings)})</a>
+      <a href="#analyticsSection" class="nav-link">📊 8 Biểu Đồ</a>
       <a href="#economicsSection" class="nav-link">🏛️ Kinh Tế Đô Thị</a>
       <a href="#fullReportSection" class="nav-link nav-link-highlight">📖 Toàn Văn Báo Cáo (10 Chương)</a>
     </div>
@@ -975,21 +1111,107 @@ def build():
       <div class="property-grid" id="propertyGrid"></div>
     </section>
 
+    <!-- Domain Weekly Auction Intelligence Section -->
+    <section id="auctionSection" class="section-box" style="border: 2px solid #0284c7; background: #ffffff;">
+      <div class="section-head" style="border-bottom: 2px solid #e0f2fe; padding-bottom: 14px; margin-bottom: 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="display:inline-block; background:#0284c7; color:white; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">
+              Dữ Liệu Đấu Giá Chính Thức Từ Domain.com.au &bull; Adelaide
+            </div>
+            <h2 style="color:#0f172a; font-size:22px; margin-top:2px;">🔨 Báo Cáo Tình Hình Đấu Giá Tuần Này ({auc_date_str})</h2>
+            <p style="font-size:13px; color:#475569;">
+              Theo dõi sát sao áp lực thị trường qua tỷ lệ chốt thành công (Clearance Rate) và danh sách chi tiết các căn nhà bán tại sàn đấu giá.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.domain.com.au/auction-results/adelaide/" target="_blank" rel="noopener noreferrer" style="background:#0284c7; color:white; font-size:12px; font-weight:700; padding:8px 16px; border-radius:6px; display:inline-flex; align-items:center; gap:6px;">
+              Xem trang gốc trên Domain.com.au &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auction KPI Grid -->
+      <div class="auction-kpi-grid">
+        <div class="auction-kpi-card" style="border-left:4px solid #0284c7;">
+          <div class="auction-kpi-val" style="color:#0284c7;">{auc_clearance:.1f}%</div>
+          <div class="auction-kpi-lbl">Tỷ Lệ Chốt Thành Công</div>
+          <div class="auction-kpi-sub">Cùng kỳ năm trước: {auc_last_year:.1f}%</div>
+        </div>
+        <div class="auction-kpi-card" style="border-left:4px solid #059669;">
+          <div class="auction-kpi-val" style="color:#059669;">${auc_median/1000:,.0f}k AUD</div>
+          <div class="auction-kpi-lbl">Giá Trung Vị Đấu Giá</div>
+          <div class="auction-kpi-sub">Tổng DS: ${auc_total_sales/1000000:,.1f}M AUD</div>
+        </div>
+        <div class="auction-kpi-card" style="border-left:4px solid #2563eb;">
+          <div class="auction-kpi-val" style="color:#2563eb;">{auc_sold} / {auc_listed}</div>
+          <div class="auction-kpi-lbl">Căn Đã Bán / Đưa Ra Đấu Giá</div>
+          <div class="auction-kpi-sub">Bán trước + Bán tại sàn</div>
+        </div>
+        <div class="auction-kpi-card" style="border-left:4px solid #d97706;">
+          <div class="auction-kpi-val" style="color:#d97706;">{auc_passed_in} Căn</div>
+          <div class="auction-kpi-lbl">Không Đạt Giá Kỳ Vọng (Passed In)</div>
+          <div class="auction-kpi-sub">Rút lui (Withdrawn): {auc_withdrawn} căn</div>
+        </div>
+      </div>
+
+      <!-- Auction Table Search & Filters -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+        <div style="font-size:13.5px; font-weight:800; color:#0f172a;">
+          Danh Sách {len(auc_listings)} Bất Động Sản Trong Phiên Đấu Giá Vừa Qua:
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <input type="text" id="auctionSearch" class="search-input" style="padding:6px 12px; font-size:12px; width:220px;" placeholder="Tìm theo suburb, đường..." oninput="filterAuctionTable()">
+          <select id="auctionFilterResult" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterAuctionTable()">
+            <option value="all">Tất cả kết quả</option>
+            <option value="AUSD">Đã bán tại sàn (AUSD)</option>
+            <option value="AUSP">Đã bán trước (AUSP)</option>
+            <option value="AUPI">Không bán được (AUPI)</option>
+            <option value="AUW">Rút khỏi đấu giá (AUW)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Scrollable Auction Table -->
+      <div class="auction-table-scroll">
+        <table class="auction-table">
+          <thead>
+            <tr>
+              <th>Địa chỉ &amp; Suburb</th>
+              <th>Loại hình / Phòng</th>
+              <th>Kết quả đấu giá</th>
+              <th>Mức giá chốt</th>
+              <th>Đại lý (Agency)</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="auctionTableBody">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:11.5px; color:#64748b; margin-top:8px; text-align:right;">
+        * Dữ liệu sơ bộ được cung cấp bởi Domain Group. Cập nhật vào ngày {auc_date_str}.
+      </div>
+    </section>
+
     <!-- Analytics Section -->
     <section id="analyticsSection" class="section-box">
       <div class="section-head">
-        <h2>📊 Hệ Thống Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
-        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
+        <h2>📊 Hệ Thống 8 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
+        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, xu hướng giá tuần và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
       </div>
 
       <div class="chart-tabs">
         <button class="chart-tab-btn active" onclick="switchChart(1, this)">1. Giá Trung Vị Theo Vùng</button>
-        <button class="chart-tab-btn" onclick="switchChart(2, this)">2. Tương Quan Cự Ly & Giá</button>
+        <button class="chart-tab-btn" onclick="switchChart(2, this)">2. Tương Quan Cự Ly &amp; Giá</button>
         <button class="chart-tab-btn" onclick="switchChart(3, this)">3. Bản Đồ Nguồn Cung Mới</button>
         <button class="chart-tab-btn" onclick="switchChart(4, this)">4. Phân Hóa Cắt Giảm Di Trú</button>
         <button class="chart-tab-btn" onclick="switchChart(5, this)">5. Thước Đo An Toàn SAPOL</button>
         <button class="chart-tab-btn" onclick="switchChart(6, this)">6. Ma Trận Giá vs Đất vs Lối Sống</button>
         <button class="chart-tab-btn" onclick="switchChart(7, this)">7. Chi Phí House vs Townhouse vs Unit</button>
+        <button class="chart-tab-btn" onclick="switchChart(8, this)" style="border: 2px solid #0284c7; font-weight:800; color:#0284c7;">8. Xu Hướng Giá &amp; Đấu Giá Tuần MỚI</button>
       </div>
 
       <div class="chart-display">
@@ -1151,13 +1373,66 @@ def build():
       4: 'reports/charts/chart4_immigration_impact_analysis.png?v=' + cacheBuster,
       5: 'reports/charts/chart5_safety_index_comparison_v2.png?v=' + cacheBuster,
       6: 'reports/charts/chart6_regional_value_matrix.png?v=' + cacheBuster,
-      7: 'reports/charts/chart7_property_type_cost_comparison.png?v=' + cacheBuster
+      7: 'reports/charts/chart7_property_type_cost_comparison.png?v=' + cacheBuster,
+      8: 'reports/charts/chart8_weekly_price_trends.png?v=' + cacheBuster
     }};
 
     function switchChart(id, btn) {{
       document.getElementById('activeChartImg').src = chartMap[id];
       document.querySelectorAll('.chart-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+    }}
+
+    // Auction Listings Data & Render
+    const auctionListings = {auction_listings_json_str};
+
+    function filterAuctionTable() {{
+      const q = (document.getElementById('auctionSearch').value || '').toLowerCase().trim();
+      const codeFilter = document.getElementById('auctionFilterResult').value;
+      const tbody = document.getElementById('auctionTableBody');
+
+      const filtered = auctionListings.filter(item => {{
+        if (codeFilter !== 'all' && item.result_code !== codeFilter) return false;
+        if (q) {{
+          const str = (item.address + ' ' + item.suburb + ' ' + (item.agency || '')).toLowerCase();
+          if (!str.includes(q)) return false;
+        }}
+        return true;
+      }});
+
+      if (filtered.length === 0) {{
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#64748b;">Không tìm thấy kết quả đấu giá nào phù hợp.</td></tr>';
+        return;
+      }}
+
+      tbody.innerHTML = filtered.map(item => {{
+        let badgeClass = 'badge-aupi';
+        if (item.result_code === 'AUSD') badgeClass = 'badge-ausd';
+        else if (item.result_code === 'AUSP') badgeClass = 'badge-ausp';
+        else if (item.result_code === 'AUW') badgeClass = 'badge-auw';
+
+        const priceStr = item.price ? ('$' + Number(item.price).toLocaleString('en-US')) : '<span style="color:#94a3b8; font-style:italic;">Không tiết lộ</span>';
+        const specStr = `${{item.property_type || 'House'}} • ${{item.bedrooms || '-'}}PN ${{item.bathrooms || '-'}}WC ${{item.carspaces || '-'}}Xe`;
+
+        return `
+          <tr>
+            <td>
+              <strong style="color:#0f172a;">${{item.address}}</strong>
+            </td>
+            <td style="color:#475569; font-weight:600;">${{specStr}}</td>
+            <td><span class="${{badgeClass}}">${{item.result_label}}</span></td>
+            <td style="font-weight:800; color:#1e3a8a; font-size:13.5px;">${{priceStr}}</td>
+            <td style="color:#64748b; font-size:12px;">${{item.agency || 'N/A'}}</td>
+            <td>
+              ${{item.domain_url ? `
+                <a href="${{item.domain_url}}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#0284c7; padding:4px 8px; border-radius:4px; font-weight:700; font-size:11px; white-space:nowrap;">
+                  Chi tiết Domain &rarr;
+                </a>
+              ` : '-'}}
+            </td>
+          </tr>
+        `;
+      }}).join('');
     }}
 
     function setRegion(reg, btn) {{
@@ -1257,6 +1532,7 @@ def build():
 
     // Initial render
     renderProperties();
+    filterAuctionTable();
   </script>
 </body>
 </html>

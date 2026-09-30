@@ -40,11 +40,16 @@ jobs:
         run: |
           python scripts/scrape_expanded_safe.py
 
+      - name: Scrape Domain Adelaide Weekly Auction Results
+        run: |
+          python scripts/scrape_domain_auction.py
+
       - name: Generate Analytical Charts
         run: |
           python scripts/generate_charts.py
           python scripts/generate_expanded_charts.py
           python scripts/generate_chart7.py
+          python scripts/generate_chart8_weekly_trends.py
 
       - name: Build Web Dashboard (index.html)
         run: |

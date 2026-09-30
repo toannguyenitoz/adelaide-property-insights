@@ -47,7 +47,8 @@ def prepare_html():
         'chart5_safety_index_comparison.png',
         'chart5_safety_index_comparison_v2.png',
         'chart6_regional_value_matrix.png',
-        'chart7_property_type_cost_comparison.png'
+        'chart7_property_type_cost_comparison.png',
+        'chart8_weekly_price_trends.png'
     ]
 
     for c_file in chart_files:

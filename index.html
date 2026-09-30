@@ -546,6 +546,114 @@
     .report-btn-print:hover {
       background: rgba(255,255,255,0.25);
     }
+
+    /* Weekly Auction Section Styles */
+    .auction-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .auction-kpi-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .auction-kpi-val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+    .auction-kpi-lbl {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .auction-kpi-sub {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    .badge-ausd {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }
+    .badge-ausp {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }
+    .badge-aupi {
+      background: #fffbeb;
+      color: #b45309;
+      border: 1px solid #fde68a;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }
+    .badge-auw {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      display: inline-block;
+    }
+    .auction-table-scroll {
+      max-height: 520px;
+      overflow-y: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      background: white;
+    }
+    .auction-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+    .auction-table th {
+      position: sticky;
+      top: 0;
+      background: #0f172a;
+      color: white;
+      padding: 10px 12px;
+      font-weight: 700;
+      z-index: 10;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .auction-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--slate-100);
+    }
+    .auction-table tr:hover {
+      background: #f8fafc;
+    }
+
     .chapter-nav-bar {
       background: #f1f5f9;
       border-bottom: 1px solid var(--slate-200);
@@ -790,7 +898,8 @@
     </a>
     <div class="nav-links">
       <a href="#propertySection" class="nav-link">🏡 Tìm Nhà (324)</a>
-      <a href="#analyticsSection" class="nav-link">📊 7 Biểu Đồ</a>
+      <a href="#auctionSection" class="nav-link" style="color:#38bdf8;">🔨 Đấu Giá Tuần (88)</a>
+      <a href="#analyticsSection" class="nav-link">📊 8 Biểu Đồ</a>
       <a href="#economicsSection" class="nav-link">🏛️ Kinh Tế Đô Thị</a>
       <a href="#fullReportSection" class="nav-link nav-link-highlight">📖 Toàn Văn Báo Cáo (10 Chương)</a>
     </div>
@@ -804,7 +913,7 @@
   <!-- Hero -->
   <header class="hero">
     <div class="hero-badge">
-      🛡️ Dữ Liệu Thực Tế Tuyển Chọn &bull; Loại Trừ Vùng Tội Phạm &bull; Cập nhật lúc 29/09/2026 23:55
+      🛡️ Dữ Liệu Thực Tế Tuyển Chọn &bull; Loại Trừ Vùng Tội Phạm &bull; Cập nhật lúc 01/10/2026 07:39
     </div>
     <h1>CỔNG PHÂN TÍCH BẤT ĐỘNG SẢN AN TOÀN GREATER ADELAIDE</h1>
     <p>Hệ thống tự động quét và thẩm định 324 nhà 3 phòng ngủ có giá dưới $1.2M AUD, đối soát ranh giới trường công lập danh tiếng và chỉ số an ninh cảnh sát SAPOL.</p>
@@ -893,21 +1002,107 @@
       <div class="property-grid" id="propertyGrid"></div>
     </section>
 
+    <!-- Domain Weekly Auction Intelligence Section -->
+    <section id="auctionSection" class="section-box" style="border: 2px solid #0284c7; background: #ffffff;">
+      <div class="section-head" style="border-bottom: 2px solid #e0f2fe; padding-bottom: 14px; margin-bottom: 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="display:inline-block; background:#0284c7; color:white; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">
+              Dữ Liệu Đấu Giá Chính Thức Từ Domain.com.au &bull; Adelaide
+            </div>
+            <h2 style="color:#0f172a; font-size:22px; margin-top:2px;">🔨 Báo Cáo Tình Hình Đấu Giá Tuần Này (26/09/2026)</h2>
+            <p style="font-size:13px; color:#475569;">
+              Theo dõi sát sao áp lực thị trường qua tỷ lệ chốt thành công (Clearance Rate) và danh sách chi tiết các căn nhà bán tại sàn đấu giá.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.domain.com.au/auction-results/adelaide/" target="_blank" rel="noopener noreferrer" style="background:#0284c7; color:white; font-size:12px; font-weight:700; padding:8px 16px; border-radius:6px; display:inline-flex; align-items:center; gap:6px;">
+              Xem trang gốc trên Domain.com.au &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auction KPI Grid -->
+      <div class="auction-kpi-grid">
+        <div class="auction-kpi-card" style="border-left:4px solid #0284c7;">
+          <div class="auction-kpi-val" style="color:#0284c7;">39.2%</div>
+          <div class="auction-kpi-lbl">Tỷ Lệ Chốt Thành Công</div>
+          <div class="auction-kpi-sub">Cùng kỳ năm trước: 47.7%</div>
+        </div>
+        <div class="auction-kpi-card" style="border-left:4px solid #059669;">
+          <div class="auction-kpi-val" style="color:#059669;">$918k AUD</div>
+          <div class="auction-kpi-lbl">Giá Trung Vị Đấu Giá</div>
+          <div class="auction-kpi-sub">Tổng DS: $21.7M AUD</div>
+        </div>
+        <div class="auction-kpi-card" style="border-left:4px solid #2563eb;">
+          <div class="auction-kpi-val" style="color:#2563eb;">31 / 103</div>
+          <div class="auction-kpi-lbl">Căn Đã Bán / Đưa Ra Đấu Giá</div>
+          <div class="auction-kpi-sub">Bán trước + Bán tại sàn</div>
+        </div>
+        <div class="auction-kpi-card" style="border-left:4px solid #d97706;">
+          <div class="auction-kpi-val" style="color:#d97706;">40 Căn</div>
+          <div class="auction-kpi-lbl">Không Đạt Giá Kỳ Vọng (Passed In)</div>
+          <div class="auction-kpi-sub">Rút lui (Withdrawn): 8 căn</div>
+        </div>
+      </div>
+
+      <!-- Auction Table Search & Filters -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+        <div style="font-size:13.5px; font-weight:800; color:#0f172a;">
+          Danh Sách 88 Bất Động Sản Trong Phiên Đấu Giá Vừa Qua:
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <input type="text" id="auctionSearch" class="search-input" style="padding:6px 12px; font-size:12px; width:220px;" placeholder="Tìm theo suburb, đường..." oninput="filterAuctionTable()">
+          <select id="auctionFilterResult" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterAuctionTable()">
+            <option value="all">Tất cả kết quả</option>
+            <option value="AUSD">Đã bán tại sàn (AUSD)</option>
+            <option value="AUSP">Đã bán trước (AUSP)</option>
+            <option value="AUPI">Không bán được (AUPI)</option>
+            <option value="AUW">Rút khỏi đấu giá (AUW)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Scrollable Auction Table -->
+      <div class="auction-table-scroll">
+        <table class="auction-table">
+          <thead>
+            <tr>
+              <th>Địa chỉ &amp; Suburb</th>
+              <th>Loại hình / Phòng</th>
+              <th>Kết quả đấu giá</th>
+              <th>Mức giá chốt</th>
+              <th>Đại lý (Agency)</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="auctionTableBody">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size:11.5px; color:#64748b; margin-top:8px; text-align:right;">
+        * Dữ liệu sơ bộ được cung cấp bởi Domain Group. Cập nhật vào ngày 26/09/2026.
+      </div>
+    </section>
+
     <!-- Analytics Section -->
     <section id="analyticsSection" class="section-box">
       <div class="section-head">
-        <h2>📊 Hệ Thống Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
-        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
+        <h2>📊 Hệ Thống 8 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
+        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, xu hướng giá tuần và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
       </div>
 
       <div class="chart-tabs">
         <button class="chart-tab-btn active" onclick="switchChart(1, this)">1. Giá Trung Vị Theo Vùng</button>
-        <button class="chart-tab-btn" onclick="switchChart(2, this)">2. Tương Quan Cự Ly & Giá</button>
+        <button class="chart-tab-btn" onclick="switchChart(2, this)">2. Tương Quan Cự Ly &amp; Giá</button>
         <button class="chart-tab-btn" onclick="switchChart(3, this)">3. Bản Đồ Nguồn Cung Mới</button>
         <button class="chart-tab-btn" onclick="switchChart(4, this)">4. Phân Hóa Cắt Giảm Di Trú</button>
         <button class="chart-tab-btn" onclick="switchChart(5, this)">5. Thước Đo An Toàn SAPOL</button>
         <button class="chart-tab-btn" onclick="switchChart(6, this)">6. Ma Trận Giá vs Đất vs Lối Sống</button>
         <button class="chart-tab-btn" onclick="switchChart(7, this)">7. Chi Phí House vs Townhouse vs Unit</button>
+        <button class="chart-tab-btn" onclick="switchChart(8, this)" style="border: 2px solid #0284c7; font-weight:800; color:#0284c7;">8. Xu Hướng Giá &amp; Đấu Giá Tuần MỚI</button>
       </div>
 
       <div class="chart-display">
@@ -1009,7 +1204,7 @@
             <span>✍️ Tác giả:</span> <strong>TOAN NGUYEN IT OZ</strong>
           </div>
           <div class="report-meta-item">
-            <span>📅 Cập nhật:</span> <strong>29/09/2026 23:55</strong>
+            <span>📅 Cập nhật:</span> <strong>01/10/2026 07:39</strong>
           </div>
           <div class="report-meta-item">
             <span>⏱️ Thời lượng đọc:</span> <strong>~18 phút (10 Chương)</strong>
@@ -1133,24 +1328,27 @@
 <li><strong>Tea Tree Gully Enclaves (Golden Grove, Greenwith):</strong> <strong>39.4 vụ/1.000 dân</strong> (Khu đô thị sinh thái an toàn - Grade A).</li>
 </ul>
 <hr />
-<h2 id="chuong-4-he-thong-7-bieu-do" class="report-h2"><span class="report-chap-badge">Chương 4</span> HỆ THỐNG 7 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN &amp; LOẠI HÌNH BẤT ĐỘNG SẢN</h2>
-<p>Bộ 7 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:</p>
+<h2 id="chuong-4-he-thong-8-bieu-do" class="report-h2"><span class="report-chap-badge">Chương 4</span> HỆ THỐNG 8 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH &amp; XU HƯỚNG ĐẤU GIÁ HÀNG TUẦN</h2>
+<p>Bộ 8 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:</p>
 <h3>📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park &amp; Toorak Gardens)</h3>
 <p>So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
-<img src="reports/charts/chart1_median_prices.png?v=1790726105" alt="Chart 1: Median Prices by Suburb" /></p>
+<img src="reports/charts/chart1_median_prices.png?v=1790806152" alt="Chart 1: Median Prices by Suburb" /></p>
 <h3>📊 Biểu đồ 2: Tương Quan Khoảng Cách Tới Myrtle Bank vs Giá Bán (375 BĐS Toàn Vùng)</h3>
 <p>Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh 1B Wilgena Ave:
-<img src="reports/charts/chart2_distance_vs_price.png?v=1790726105" alt="Chart 2: Distance vs Price" /></p>
+<img src="reports/charts/chart2_distance_vs_price.png?v=1790806152" alt="Chart 2: Distance vs Price" /></p>
 <h3>📊 Biểu đồ 3: Phân Bổ Địa Lý Nguồn Cung Nhà Mới (92.5% Nằm Rìa Xa 40km)</h3>
-<p><img src="reports/charts/chart3_housing_supply_distribution.png?v=1790726105" alt="Chart 3: Housing Supply Distribution" /></p>
+<p><img src="reports/charts/chart3_housing_supply_distribution.png?v=1790806152" alt="Chart 3: Housing Supply Distribution" /></p>
 <h3>📊 Biểu đồ 4: Phân Hóa Tác Động Cắt Giảm Nhập Cư (CBD vs Vùng Trường Điểm)</h3>
-<p><img src="reports/charts/chart4_immigration_impact_analysis.png?v=1790726105" alt="Chart 4: Immigration Impact Analysis" /></p>
+<p><img src="reports/charts/chart4_immigration_impact_analysis.png?v=1790806152" alt="Chart 4: Immigration Impact Analysis" /></p>
 <h3>📊 Biểu đồ 5: Thước Đo Tỷ Lệ Tội Phạm SAPOL (Khu Vực Chọn vs Vùng Bị Loại Trừ)</h3>
-<p><img src="reports/charts/chart5_safety_index_comparison_v2.png?v=1790726105" alt="Chart 5: Safety Index Comparison" /></p>
+<p><img src="reports/charts/chart5_safety_index_comparison_v2.png?v=1790806152" alt="Chart 5: Safety Index Comparison" /></p>
 <h3>📊 Biểu đồ 6: Ma Trận Cân Bằng Giá vs Đất vs Lối Sống Trên Các Hội Đồng An Toàn</h3>
-<p><img src="reports/charts/chart6_regional_value_matrix.png?v=1790726105" alt="Chart 6: Regional Value Matrix" /></p>
+<p><img src="reports/charts/chart6_regional_value_matrix.png?v=1790806152" alt="Chart 6: Regional Value Matrix" /></p>
 <h3>📊 Biểu đồ 7: So Sánh Chi Phí Vận Hàng Hàng Năm &amp; Tạo Dựng Tài Sản 10 Năm (House vs Townhouse vs Unit)</h3>
-<p><img src="reports/charts/chart7_property_type_cost_comparison.png?v=1790726105" alt="Chart 7: Property Type Cost Comparison" /></p>
+<p><img src="reports/charts/chart7_property_type_cost_comparison.png?v=1790806152" alt="Chart 7: Property Type Cost Comparison" /></p>
+<h3>📊 Biểu đồ 8: Xu Hướng Giá Rao Bán &amp; Tình Hình Đấu Giá Hàng Tuần (Domain Weekly Clearance Rate)</h3>
+<p>Biểu đồ theo dõi giá trung vị qua các tuần và tỷ lệ chốt thành công tại các phiên đấu giá chính thức của Domain tại Adelaide:
+<img src="reports/charts/chart8_weekly_price_trends.png?v=1790806152" alt="Chart 8: Weekly Price Trends and Domain Auction Clearance" /></p>
 <hr />
 <h2 id="chuong-5-phan-bien-kinh-te-do-thi" class="report-h2"><span class="report-chap-badge">Chương 5</span> PHẢN BIỆN KINH TẾ ĐÔ THỊ HỌC: TẠI SAO CUNG NGOẠI Ô TĂNG LẠI LÀM GIÁ ĐẤT NỘI ĐÔ TĂNG? CƠ SỞ KHOA HỌC TỪ RBA &amp; MÔ HÌNH KINH TẾ ĐÔ THỊ</h2>
 <p>Một thắc mắc kinh điển và rất sắc bén của nhà đầu tư: <em>&quot;Theo quy luật cung cầu cơ bản, khi nguồn cung nhà ở ngoại ô tăng vọt (hàng chục ngàn lô đất mới được giải phóng), tại sao giá nhà nội đô không giảm mà ngược lại còn tăng mạnh?&quot;</em></p>
@@ -1392,13 +1590,66 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
       4: 'reports/charts/chart4_immigration_impact_analysis.png?v=' + cacheBuster,
       5: 'reports/charts/chart5_safety_index_comparison_v2.png?v=' + cacheBuster,
       6: 'reports/charts/chart6_regional_value_matrix.png?v=' + cacheBuster,
-      7: 'reports/charts/chart7_property_type_cost_comparison.png?v=' + cacheBuster
+      7: 'reports/charts/chart7_property_type_cost_comparison.png?v=' + cacheBuster,
+      8: 'reports/charts/chart8_weekly_price_trends.png?v=' + cacheBuster
     };
 
     function switchChart(id, btn) {
       document.getElementById('activeChartImg').src = chartMap[id];
       document.querySelectorAll('.chart-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+    }
+
+    // Auction Listings Data & Render
+    const auctionListings = [{"address": "302A Lower Athelstone Rd, Athelstone SA 5076", "suburb": "Athelstone", "postcode": "5076", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": 994000, "result_code": "AUSP", "result_label": "Sold Prior to Auction (Đã bán trước đấu giá)", "agency": "NOAKES NICKOLAS PTY LTD", "domain_url": "https://www.domain.com.au/302a-lower-athelstone-road-athelstone-sa-5076-2021100580"}, {"address": "2 Clare Av, Athelstone SA 5076", "suburb": "Athelstone", "postcode": "5076", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 2, "price": 850000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "NOAKES NICKOLAS PTY LTD", "domain_url": "https://www.domain.com.au/2-clare-avenue-athelstone-sa-5076-2021140030"}, {"address": "22 Coulls Rd, Banksia Park SA 5091", "suburb": "Banksia Park", "postcode": "5091", "property_type": "House", "bedrooms": 5, "bathrooms": 2, "carspaces": 6, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "DOMAN & CO", "domain_url": "https://www.domain.com.au/22-coulls-road-banksia-park-sa-5091-2021106032"}, {"address": "75 Victoria Rd, Birkenhead SA 5015", "suburb": "Birkenhead", "postcode": "5015", "property_type": "House", "bedrooms": 2, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Grange", "domain_url": "https://www.domain.com.au/75-victoria-road-birkenhead-sa-5015-2021141274"}, {"address": "87 The Strand, Brahma Lodge SA 5109", "suburb": "Brahma Lodge", "postcode": "5109", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 3, "price": 675000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": " Harris Real Estate - North RLA 330069", "domain_url": "https://www.domain.com.au/87-the-strand-brahma-lodge-sa-5109-2021145329"}, {"address": "4/38 Carlisle St, Camden Park SA 5038", "suburb": "Camden Park", "postcode": "5038", "property_type": "Unit", "bedrooms": 2, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Glenelg", "domain_url": "https://www.domain.com.au/4-38-carlisle-street-camden-park-sa-5038-2021140746"}, {"address": "2 Rowney Av, Campbelltown SA 5074", "suburb": "Campbelltown", "postcode": "5074", "property_type": "House", "bedrooms": 7, "bathrooms": 3, "carspaces": 3, "price": 2050000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Prospect", "domain_url": "https://www.domain.com.au/2-rowney-avenue-campbelltown-sa-5074-2021113952"}, {"address": "7 William St, Clarence Park SA 5034", "suburb": "Clarence Park", "postcode": "5034", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Ray White Norwood", "domain_url": "https://www.domain.com.au/7-william-street-clarence-park-sa-5034-2021123358"}, {"address": "25 Guildford St, Clearview SA 5085", "suburb": "Clearview", "postcode": "5085", "property_type": "House", "bedrooms": 5, "bathrooms": 1, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Norwood", "domain_url": "https://www.domain.com.au/25-guildford-street-clearview-sa-5085-2021123402"}, {"address": "35 Clearview Cr, Clearview SA 5085", "suburb": "Clearview", "postcode": "5085", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "All Adelaide City Edge", "domain_url": "https://www.domain.com.au/35-clearview-crescent-clearview-sa-5085-2021136168"}, {"address": "36 Uley Rd, Craigmore SA 5114", "suburb": "Craigmore", "postcode": "5114", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 4, "price": 585000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Grange", "domain_url": "https://www.domain.com.au/36-uley-road-craigmore-sa-5114-2021127474"}, {"address": "89A Whitington Rd, Davoren Park SA 5113", "suburb": "Davoren Park", "postcode": "5113", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Para Hills", "domain_url": "https://www.domain.com.au/89a-whitington-road-davoren-park-sa-5113-2021130377"}, {"address": "1 Young St, Dudley Park SA 5008", "suburb": "Dudley Park", "postcode": "5008", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 2, "price": 860000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "LJ Hooker Kensington | Unley", "domain_url": "https://www.domain.com.au/1-young-street-dudley-park-sa-5008-2021141054"}, {"address": "106 Mckenzie Rd, Elizabeth Downs SA 5113", "suburb": "Elizabeth Downs", "postcode": "5113", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Grange", "domain_url": "https://www.domain.com.au/106-mckenzie-road-elizabeth-downs-sa-5113-2021154365"}, {"address": "18 Worthington Rd, Elizabeth East SA 5112", "suburb": "Elizabeth East", "postcode": "5112", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 0, "price": null, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "LJ Hooker Property Specialists Gawler | Barossa", "domain_url": "https://www.domain.com.au/18-worthington-road-elizabeth-east-sa-5112-2020940598"}, {"address": "12B-14 Old Sarum Rd, Elizabeth North SA 5113", "suburb": "Elizabeth North", "postcode": "5113", "property_type": "House", "bedrooms": 6, "bathrooms": 2, "carspaces": 3, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "Raine & Horne Unley", "domain_url": "https://www.domain.com.au/12b-14-old-sarum-road-elizabeth-north-sa-5113-2021148515"}, {"address": "1/2 Leron Av, Enfield SA 5085", "suburb": "Enfield", "postcode": "5085", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": " Ray White Campbelltown", "domain_url": "https://www.domain.com.au/1-2-leron-avenue-enfield-sa-5085-2021140199"}, {"address": "1/2 Leron Av, Enfield SA ", "suburb": "Enfield", "postcode": "", "property_type": "House", "bedrooms": 3, "bathrooms": null, "carspaces": null, "price": 835000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "", "domain_url": "https://www.domain.com.au/property-profile/lots-1-2-kents-road-delungra-nsw-2403"}, {"address": "2 Crossley St, Erindale SA 5066", "suburb": "Erindale", "postcode": "5066", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "CARTER PARTNERS PTY LTD", "domain_url": "https://www.domain.com.au/2-crossley-st-erindale-sa-5066-2021096996"}, {"address": "28 Mary St, Ethelton SA 5015", "suburb": "Ethelton", "postcode": "5015", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 4, "price": 1231500, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White (Port Adelaide)", "domain_url": "https://www.domain.com.au/28-mary-street-ethelton-sa-5015-2021142934"}, {"address": "1 Gerlach Gr, Evanston Park SA 5116", "suburb": "Evanston Park", "postcode": "5116", "property_type": "House", "bedrooms": 5, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/1-gerlach-grove-evanston-park-sa-5116-2021124629"}, {"address": "14 Bellavista Rd, Flagstaff Hill SA 5159", "suburb": "Flagstaff Hill", "postcode": "5159", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 4, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "OC", "domain_url": "https://www.domain.com.au/14-bellavista-road-flagstaff-hill-sa-5159-2021122772"}, {"address": "16 Glenalvon Dr, Flagstaff Hill SA 5159", "suburb": "Flagstaff Hill", "postcode": "5159", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Flagstaff Hill", "domain_url": "https://www.domain.com.au/16-glenalvon-drive-flagstaff-hill-sa-5159-2021141924"}, {"address": "33 Greville Av, Flinders Park SA 5025", "suburb": "Flinders Park", "postcode": "5025", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Grange", "domain_url": "https://www.domain.com.au/33-greville-avenue-flinders-park-sa-5025-2021121587"}, {"address": "53 Barker Av, Flinders Park SA 5025", "suburb": "Flinders Park", "postcode": "5025", "property_type": "House", "bedrooms": 2, "bathrooms": 1, "carspaces": 2, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Crawford Doran", "domain_url": "https://www.domain.com.au/53-barker-avenue-flinders-park-sa-5025-2021036181"}, {"address": "15 Main Av, Frewville SA 5063", "suburb": "Frewville", "postcode": "5063", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUVB", "result_label": "AUVB", "agency": " Ray White Campbelltown", "domain_url": "https://www.domain.com.au/15-main-avenue-frewville-sa-5063-2021137461"}, {"address": "139B Calton Rd, Gawler East SA 5118", "suburb": "Gawler East", "postcode": "5118", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 5, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/139b-calton-road-gawler-east-sa-5118-2021120523"}, {"address": "6/42-44 Second St, Gawler South SA 5118", "suburb": "Gawler South", "postcode": "5118", "property_type": "House", "bedrooms": 2, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/6-42-44-second-street-gawler-south-sa-5118-2021046803"}, {"address": "24 Mellor Rd, Glanville SA 5015", "suburb": "Glanville", "postcode": "5015", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 3, "price": 745000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White (Semaphore)", "domain_url": "https://www.domain.com.au/24-mellor-road-glanville-sa-5015-2021128769"}, {"address": "17-17A Augusta St, Glenelg SA 5045", "suburb": "Glenelg", "postcode": "5045", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "Williams Real Estate RLA 247163", "domain_url": "https://www.domain.com.au/17-17a-augusta-street-glenelg-sa-5045-2021123080"}, {"address": "21 Floriedale Rd, Greenacres SA 5086", "suburb": "Greenacres", "postcode": "5086", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Prospect", "domain_url": "https://www.domain.com.au/21-floriedale-road-greenacres-sa-5086-2021134146"}, {"address": "31 Hectorville Rd, Hectorville SA 5073", "suburb": "Hectorville", "postcode": "5073", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 10, "price": 1050000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Salisbury", "domain_url": "https://www.domain.com.au/31-hectorville-road-hectorville-sa-5073-2021124807"}, {"address": "55 Christine Av, Hillbank SA 5112", "suburb": "Hillbank", "postcode": "5112", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 3, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Gawler East & Angle Vale", "domain_url": "https://www.domain.com.au/55-christine-avenue-hillbank-sa-5112-2021138085"}, {"address": "23A Oxford St, Hillcrest SA 5086", "suburb": "Hillcrest", "postcode": "5086", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Grange", "domain_url": "https://www.domain.com.au/23a-oxford-street-hillcrest-sa-5086-2021141041"}, {"address": "15 Boronia Dr, Hope Valley SA 5090", "suburb": "Hope Valley", "postcode": "5090", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 5, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "DOMAN & CO", "domain_url": "https://www.domain.com.au/15-boronia-drive-hope-valley-sa-5090-2021107993"}, {"address": "17 Fashoda St, Hyde Park SA 5061", "suburb": "Hyde Park", "postcode": "5061", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 2, "price": null, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "OC", "domain_url": "https://www.domain.com.au/17-fashoda-street-hyde-park-sa-5061-2021123538"}, {"address": "3 Toowong Av, Kensington Park SA 5068", "suburb": "Kensington Park", "postcode": "5068", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": " Harris Real Estate - Kent Town RLA 226409", "domain_url": "https://www.domain.com.au/3-toowong-avenue-kensington-park-sa-5068-2021142109"}, {"address": "8 Nelson St, Kilburn SA 5084", "suburb": "Kilburn", "postcode": "5084", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 4, "price": 1015000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Belle Property Mawson Lakes-RL336109", "domain_url": "https://www.domain.com.au/8-nelson-street-kilburn-sa-5084-2021125324"}, {"address": "4/3 Strickland Rd, Kingston Park SA 5049", "suburb": "Kingston Park", "postcode": "5049", "property_type": "Unit", "bedrooms": 2, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Harris Real Estate - Glenelg RLA 343664", "domain_url": "https://www.domain.com.au/4-3-strickland-road-kingston-park-sa-5049-2021141072"}, {"address": "2/22 Garfield St, Klemzig SA 5087", "suburb": "Klemzig", "postcode": "5087", "property_type": "Unit", "bedrooms": 2, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Grange", "domain_url": "https://www.domain.com.au/2-22-garfield-street-klemzig-sa-5087-2021120846"}, {"address": "19 Ormsby Rd, Kudla SA 5115", "suburb": "Kudla", "postcode": "5115", "property_type": "House", "bedrooms": 4, "bathrooms": 3, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/19-ormsby-road-kudla-sa-5115-2021129697"}, {"address": "99 Jetty Rd, Largs Bay SA 5016", "suburb": "Largs Bay", "postcode": "5016", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 3, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White (Semaphore)", "domain_url": "https://www.domain.com.au/99-jetty-road-largs-bay-sa-5016-2021124538"}, {"address": "25 Wandilla St, Largs North SA 5016", "suburb": "Largs North", "postcode": "5016", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 3, "price": null, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White (Semaphore)", "domain_url": "https://www.domain.com.au/25-wandilla-street-largs-north-sa-5016-2021126374"}, {"address": "5 Cannizzaro Rd, Lewiston SA 5501", "suburb": "Lewiston", "postcode": "5501", "property_type": "House", "bedrooms": 5, "bathrooms": 2, "carspaces": 3, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/5-cannizzaro-road-lewiston-sa-5501-2021129079"}, {"address": "14 Grandview Gr, Magill SA 5072", "suburb": "Magill", "postcode": "5072", "property_type": "House", "bedrooms": 5, "bathrooms": 2, "carspaces": 6, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Harris Real Estate - Daw Park RLA 333839", "domain_url": "https://www.domain.com.au/14-grandview-grove-magill-sa-5072-2021136354"}, {"address": "36C Adelaide St, Magill SA 5072", "suburb": "Magill", "postcode": "5072", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "NOAKES NICKOLAS PTY LTD", "domain_url": "https://www.domain.com.au/36c-adelaide-street-magill-sa-5072-2021139314"}, {"address": "7 Victoria Wy, Mansfield Park SA 5012", "suburb": "Mansfield Park", "postcode": "5012", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Wemark Real Estate", "domain_url": "https://www.domain.com.au/7-victoria-way-mansfield-park-sa-5012-2021086981"}, {"address": "19 Township Rd, Marion SA 5043", "suburb": "Marion", "postcode": "5043", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 3, "price": null, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Marion", "domain_url": "https://www.domain.com.au/19-township-road-marion-sa-5043-2021141134"}, {"address": "2 Clyde St, Marion SA 5043", "suburb": "Marion", "postcode": "5043", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 4, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Marion", "domain_url": "https://www.domain.com.au/2-clyde-street-marion-sa-5043-2021143263"}, {"address": "2 Heron Wk, Mawson Lakes SA 5095", "suburb": "Mawson Lakes", "postcode": "5095", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": 1545000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "WHITEFOX Real Estate - Adelaide", "domain_url": "https://www.domain.com.au/2-heron-walk-mawson-lakes-sa-5095-2021138255"}, {"address": "23 Macquarie Pde, Meadows SA 5201", "suburb": "Meadows", "postcode": "5201", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "Ray White Woodside", "domain_url": "https://www.domain.com.au/23-macquarie-parade-meadows-sa-5201-2021126358"}, {"address": "154 Kelly Rd, Modbury North SA 5092", "suburb": "Modbury North", "postcode": "5092", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 4, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "LJ Hooker Property Specialists", "domain_url": "https://www.domain.com.au/154-kelly-road-modbury-north-sa-5092-2021140575"}, {"address": "75 Hurling Dr, Mount Barker SA 5251", "suburb": "Mount Barker", "postcode": "5251", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": " Ray White Mount Barker", "domain_url": "https://www.domain.com.au/75-hurling-drive-mount-barker-sa-5251-2021070426"}, {"address": "14 Mcinness Pl, Munno Para SA 5115", "suburb": "Munno Para", "postcode": "5115", "property_type": "House", "bedrooms": 2, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/14-mcinness-place-munno-para-sa-5115-2021126119"}, {"address": "4 Ramsey St, Netley SA 5037", "suburb": "Netley", "postcode": "5037", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Ray White Norwood", "domain_url": "https://www.domain.com.au/4-ramsey-street-netley-sa-5037-2021124732"}, {"address": "11 Filmer Av, Para Hills SA 5096", "suburb": "Para Hills", "postcode": "5096", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 2, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "Eclipse Real Estate", "domain_url": "https://www.domain.com.au/11-filmer-avenue-para-hills-sa-5096-2021122657"}, {"address": "7 Duke St, Paralowie SA 5108", "suburb": "Paralowie", "postcode": "5108", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 3, "price": 947000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Edge Realty - RLA 256385", "domain_url": "https://www.domain.com.au/7-duke-street-paralowie-sa-5108-2021121234"}, {"address": "13 Matthew Ct, Paralowie SA 5108", "suburb": "Paralowie", "postcode": "5108", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Prospect", "domain_url": "https://www.domain.com.au/13-matthew-court-paralowie-sa-5108-2021134984"}, {"address": "1 Melanie Ct, Paralowie SA 5108", "suburb": "Paralowie", "postcode": "5108", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 3, "price": 815000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": " Ray White Campbelltown", "domain_url": "https://www.domain.com.au/1-melanie-court-paralowie-sa-5108-2021143234"}, {"address": "44 Cungena Av, Park Holme SA 5043", "suburb": "Park Holme", "postcode": "5043", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 2, "price": 1218000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "LJ Hooker Kensington | Unley", "domain_url": "https://www.domain.com.au/44-cungena-avenue-park-holme-sa-5043-2021139931"}, {"address": "19B Jaffrey St, Parkside SA 5063", "suburb": "Parkside", "postcode": "5063", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "OC", "domain_url": "https://www.domain.com.au/19b-jaffrey-street-parkside-sa-5063-2021103469"}, {"address": "16 Albert St, Pooraka SA 5095", "suburb": "Pooraka", "postcode": "5095", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 2, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "Harcourts Port Adelaide | Largs Bay", "domain_url": "https://www.domain.com.au/16-albert-street-pooraka-sa-5095-2021128117"}, {"address": "2 Nalpa St, Pooraka SA 5095", "suburb": "Pooraka", "postcode": "5095", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 1, "price": null, "result_code": "AUWD", "result_label": "AUWD", "agency": "LANDS REAL ESTATE", "domain_url": "https://www.domain.com.au/2-nalpa-street-pooraka-sa-5095-2021140585"}, {"address": "52 Cronulla Dr, Redwood Park SA 5097", "suburb": "Redwood Park", "postcode": "5097", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White (Semaphore)", "domain_url": "https://www.domain.com.au/52-cronulla-drive-redwood-park-sa-5097-2021148009"}, {"address": "12D Lucas St, Richmond SA 5033", "suburb": "Richmond", "postcode": "5033", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPP", "result_label": "AUPP", "agency": "LJ Hooker Mile End", "domain_url": "https://www.domain.com.au/12d-lucas-street-richmond-sa-5033-2021126207"}, {"address": "4 Starr St, Rosewater SA 5013", "suburb": "Rosewater", "postcode": "5013", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": 830000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White (Semaphore)", "domain_url": "https://www.domain.com.au/4-starr-street-rosewater-sa-5013-2021147315"}, {"address": "1 & 2/155 St Bernards Rd, Rostrevor SA 5073", "suburb": "Rostrevor", "postcode": "5073", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUSP", "result_label": "Sold Prior to Auction (Đã bán trước đấu giá)", "agency": "NOAKES NICKOLAS PTY LTD", "domain_url": "https://www.domain.com.au/1-2-155-st-bernards-road-rostrevor-sa-5073-2021121802"}, {"address": "25B Maurice Av, Rostrevor SA 5073", "suburb": "Rostrevor", "postcode": "5073", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Prospect", "domain_url": "https://www.domain.com.au/property-profile/25b-maurice-avenue-rostrevor-sa-5073"}, {"address": "12 Trevor Av, Rostrevor SA 5073", "suburb": "Rostrevor", "postcode": "5073", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 4, "price": 1154000, "result_code": "AUSA", "result_label": "Sold After Auction (Đã bán sau đấu giá)", "agency": "Ray White Prospect", "domain_url": "https://www.domain.com.au/12-trevor-avenue-rostrevor-sa-5073-2021141338"}, {"address": "125 Cedar Av, Royal Park SA 5014", "suburb": "Royal Park", "postcode": "5014", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 2, "price": 867500, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Boffo Real Estate", "domain_url": "https://www.domain.com.au/125-cedar-avenue-royal-park-sa-5014-2021140920"}, {"address": "4 Bilo Ct, Salisbury North SA 5108", "suburb": "Salisbury North", "postcode": "5108", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 4, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White (Semaphore)", "domain_url": "https://www.domain.com.au/4-bilo-court-salisbury-north-sa-5108-2021147334"}, {"address": "1B Moonya Av, Seacombe Gardens SA 5047", "suburb": "Seacombe Gardens", "postcode": "5047", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 1, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Glenelg", "domain_url": "https://www.domain.com.au/1b-moonya-avenue-seacombe-gardens-sa-5047-2021145654"}, {"address": "37 Braeside Av, Seacombe Heights SA 5047", "suburb": "Seacombe Heights", "postcode": "5047", "property_type": "House", "bedrooms": 4, "bathrooms": 3, "carspaces": 2, "price": 1155000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Glenelg", "domain_url": "https://www.domain.com.au/37-braeside-avenue-seacombe-heights-sa-5047-2021121111"}, {"address": "8/453 Grange Rd, Seaton SA 5023", "suburb": "Seaton", "postcode": "5023", "property_type": "Unit", "bedrooms": 2, "bathrooms": 1, "carspaces": 2, "price": 510000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Grange", "domain_url": "https://www.domain.com.au/8-453-grange-road-seaton-sa-5023-2021117226"}, {"address": "6 Sunnyside Gr, Semaphore Park SA 5019", "suburb": "Semaphore Park", "postcode": "5019", "property_type": "House", "bedrooms": 4, "bathrooms": 1, "carspaces": 4, "price": 1100000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Pilgrim", "domain_url": "https://www.domain.com.au/6-sunnyside-grove-semaphore-park-sa-5019-2021123740"}, {"address": "35 Fraser Av, St Agnes SA 5097", "suburb": "St Agnes", "postcode": "5097", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 1, "price": 955000, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Boffo Real Estate", "domain_url": "https://www.domain.com.au/35-fraser-avenue-st-agnes-sa-5097-2021140910"}, {"address": "71 Casuarina Av, Surrey Downs SA 5126", "suburb": "Surrey Downs", "postcode": "5126", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 4, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": " Ray White Campbelltown", "domain_url": "https://www.domain.com.au/71-casuarina-avenue-surrey-downs-sa-5126-2021044382"}, {"address": "24 Ormiston Ct, Taperoo SA 5017", "suburb": "Taperoo", "postcode": "5017", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Glenelg", "domain_url": "https://www.domain.com.au/property-profile/24-ormiston-court-taperoo-sa-5017"}, {"address": "40a Perseverance Rd, Tea Tree Gully SA 5091", "suburb": "Tea Tree Gully", "postcode": "5091", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 5, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "DOMAN & CO", "domain_url": "https://www.domain.com.au/40a-perseverance-road-tea-tree-gully-sa-5091-2021125971"}, {"address": "31-33 Germantown Rd, Two Wells SA 5501", "suburb": "Two Wells", "postcode": "5501", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/31-33-germantown-road-two-wells-sa-5501-2021114158"}, {"address": "45-47 Dawkins Rd, Two Wells SA 5501", "suburb": "Two Wells", "postcode": "5501", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/45-47-dawkins-road-two-wells-sa-5501-2021115306"}, {"address": "90 Nelson Rd, Valley View SA 5093", "suburb": "Valley View", "postcode": "5093", "property_type": "House", "bedrooms": 5, "bathrooms": 3, "carspaces": 2, "price": 888500, "result_code": "AUSD", "result_label": "Sold at Auction (Đã bán tại đấu giá)", "agency": "Ray White Para Hills", "domain_url": "https://www.domain.com.au/90-nelson-road-valley-view-sa-5093-2021135284"}, {"address": "106D Brougham Dr, Valley View SA 5093", "suburb": "Valley View", "postcode": "5093", "property_type": "House", "bedrooms": 3, "bathrooms": 2, "carspaces": 2, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "All Adelaide City Edge", "domain_url": "https://www.domain.com.au/106d-brougham-drive-valley-view-sa-5093-2021136127"}, {"address": "49 Haines Rd, Willaston SA 5118", "suburb": "Willaston", "postcode": "5118", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 1, "price": null, "result_code": "AUSP", "result_label": "Sold Prior to Auction (Đã bán trước đấu giá)", "agency": "Ray White Barossa Valley/ Two Wells", "domain_url": "https://www.domain.com.au/49-haines-road-willaston-sa-5118-2021121641"}, {"address": "15 Penley Av, Wingfield SA ", "suburb": "Wingfield", "postcode": "", "property_type": "House", "bedrooms": 4, "bathrooms": null, "carspaces": null, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "", "domain_url": "https://www.domain.com.au/property-profile/15-penley-avenue-wingfield-sa-5013"}, {"address": "37 Stanley St, Woodville Park SA 5011", "suburb": "Woodville Park", "postcode": "5011", "property_type": "House", "bedrooms": 3, "bathrooms": 1, "carspaces": 4, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Century 21 Western/Coastal", "domain_url": "https://www.domain.com.au/37-stanley-street-woodville-park-sa-5011-2021122919"}, {"address": "27 Frontignac Ct, Wynn Vale SA 5127", "suburb": "Wynn Vale", "postcode": "5127", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 2, "price": 995000, "result_code": "AUSA", "result_label": "Sold After Auction (Đã bán sau đấu giá)", "agency": "Ray White Prospect", "domain_url": "https://www.domain.com.au/27-frontignac-court-wynn-vale-sa-5127-2021138804"}, {"address": "23 Longview Pl, Wynn Vale SA 5127", "suburb": "Wynn Vale", "postcode": "5127", "property_type": "House", "bedrooms": 4, "bathrooms": 2, "carspaces": 4, "price": null, "result_code": "AUPI", "result_label": "Passed In (Không đạt giá kỳ vọng / Không bán được)", "agency": "Ray White Prospect", "domain_url": "https://www.domain.com.au/23-longview-place-wynn-vale-sa-5127-2021139979"}];
+
+    function filterAuctionTable() {
+      const q = (document.getElementById('auctionSearch').value || '').toLowerCase().trim();
+      const codeFilter = document.getElementById('auctionFilterResult').value;
+      const tbody = document.getElementById('auctionTableBody');
+
+      const filtered = auctionListings.filter(item => {
+        if (codeFilter !== 'all' && item.result_code !== codeFilter) return false;
+        if (q) {
+          const str = (item.address + ' ' + item.suburb + ' ' + (item.agency || '')).toLowerCase();
+          if (!str.includes(q)) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:24px; color:#64748b;">Không tìm thấy kết quả đấu giá nào phù hợp.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(item => {
+        let badgeClass = 'badge-aupi';
+        if (item.result_code === 'AUSD') badgeClass = 'badge-ausd';
+        else if (item.result_code === 'AUSP') badgeClass = 'badge-ausp';
+        else if (item.result_code === 'AUW') badgeClass = 'badge-auw';
+
+        const priceStr = item.price ? ('$' + Number(item.price).toLocaleString('en-US')) : '<span style="color:#94a3b8; font-style:italic;">Không tiết lộ</span>';
+        const specStr = `${item.property_type || 'House'} • ${item.bedrooms || '-'}PN ${item.bathrooms || '-'}WC ${item.carspaces || '-'}Xe`;
+
+        return `
+          <tr>
+            <td>
+              <strong style="color:#0f172a;">${item.address}</strong>
+            </td>
+            <td style="color:#475569; font-weight:600;">${specStr}</td>
+            <td><span class="${badgeClass}">${item.result_label}</span></td>
+            <td style="font-weight:800; color:#1e3a8a; font-size:13.5px;">${priceStr}</td>
+            <td style="color:#64748b; font-size:12px;">${item.agency || 'N/A'}</td>
+            <td>
+              ${item.domain_url ? `
+                <a href="${item.domain_url}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#0284c7; padding:4px 8px; border-radius:4px; font-weight:700; font-size:11px; white-space:nowrap;">
+                  Chi tiết Domain &rarr;
+                </a>
+              ` : '-'}
+            </td>
+          </tr>
+        `;
+      }).join('');
     }
 
     function setRegion(reg, btn) {
@@ -1498,6 +1749,7 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
 
     // Initial render
     renderProperties();
+    filterAuctionTable();
   </script>
 </body>
 </html>

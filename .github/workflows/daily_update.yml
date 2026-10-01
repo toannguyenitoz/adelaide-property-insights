@@ -4,6 +4,12 @@ on:
   schedule:
     # 6:00 AM ACST (Adelaide UTC+9:30) is 20:30 UTC previous day
     - cron: '30 20 * * *'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
   workflow_dispatch:
 
 permissions:

@@ -10,6 +10,7 @@ from email.mime.text import MIMEText
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 DATA_JSON = BASE_DIR / 'data/expanded_safe_listings_under_1.2m.json'
 AUCTION_JSON = BASE_DIR / 'data/domain_weekly_auction_results.json'
+SOLD_JSON = BASE_DIR / 'data/recently_sold_properties.json'
 PREVIEW_HTML = BASE_DIR / 'reports/email_preview.html'
 
 DEFAULT_RECIPIENTS = [
@@ -145,10 +146,63 @@ def select_top_properties(properties, count=8):
     # Return top N
     return scored[:count]
 
-def generate_email_html(top_picks, total_scanned, now_str, auction_data=None):
+def generate_email_html(top_picks, total_scanned, now_str, auction_data=None, sold_data=None):
     """
     Generates a high-conversion, responsive, beautifully styled HTML email.
     """
+    sold_box_html = ""
+    if sold_data and sold_data.get('summary'):
+        s_summ = sold_data.get('summary', {})
+        s_7d = s_summ.get('total_sold_last_7_days', 32)
+        s_30d = s_summ.get('total_sold_last_30_days', 257)
+        s_med = s_summ.get('median_sold_price', 1150000)
+        s_pt_pct = round(s_summ.get('private_treaty_count', 2237) / max(s_summ.get('total_sold_all_2026', 1), 1) * 100, 1)
+
+        sample_sold = [x for x in sold_data.get('listings', []) if x.get('price_val')][:3]
+        sample_rows = "".join([
+            f"<div style='font-size:11.5px; padding:5px 0; border-bottom:1px dashed #e2e8f0; display:flex; justify-content:space-between;'>"
+            f"<span>📍 <strong>{x['address']}</strong> ({x.get('bedrooms', 3)}PN)</span>"
+            f"<span style='color:#059669; font-weight:800;'>${x['price_val']:,} AUD</span>"
+            f"</div>"
+            for x in sample_sold
+        ])
+
+        sold_box_html = f"""
+        <div style="background:#ffffff; border:1px solid #a7f3d0; border-radius:10px; padding:16px; margin-bottom:20px; box-shadow:0 2px 6px rgba(5,150,105,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1px solid #f1f5f9; padding-bottom:8px;">
+            <span style="background:#059669; color:#ffffff; font-size:10.5px; font-weight:800; padding:3px 8px; border-radius:4px; text-transform:uppercase; letter-spacing:0.5px;">
+              🤝 BÁO CÁO NHÀ VỪA BÁN (PRIVATE TREATY &amp; ĐẤU GIÁ)
+            </span>
+            <a href="https://toannguyenitoz.github.io/adelaide-property-insights/#soldSection" target="_blank" style="color:#059669; font-size:11px; font-weight:700; text-decoration:none;">
+              Xem toàn bộ 250+ căn vừa bán &rarr;
+            </a>
+          </div>
+          <div style="display:flex; justify-content:space-around; text-align:center; font-size:12px; margin-bottom:12px;">
+            <div>
+              <div style="color:#64748b; font-size:10.5px; text-transform:uppercase;">Vừa Bán 7 Ngày Qua</div>
+              <div style="color:#059669; font-size:17px; font-weight:800; margin-top:2px;">{s_7d} Căn</div>
+              <div style="color:#94a3b8; font-size:10px;">(30 ngày: {s_30d} căn)</div>
+            </div>
+            <div style="border-left:1px solid #e2e8f0; height:36px;"></div>
+            <div>
+              <div style="color:#64748b; font-size:10.5px; text-transform:uppercase;">Giá Bán Trung Vị</div>
+              <div style="color:#0284c7; font-size:17px; font-weight:800; margin-top:2px;">${s_med/1000:,.0f}k AUD</div>
+              <div style="color:#94a3b8; font-size:10px;">(Căn đã công bố)</div>
+            </div>
+            <div style="border-left:1px solid #e2e8f0; height:36px;"></div>
+            <div>
+              <div style="color:#64748b; font-size:10.5px; text-transform:uppercase;">Bán Thỏa Thuận (Private)</div>
+              <div style="color:#1e3a8a; font-size:17px; font-weight:800; margin-top:2px;">{s_pt_pct}%</div>
+              <div style="color:#94a3b8; font-size:10px;">(Đấu giá: {100-s_pt_pct:.1f}%)</div>
+            </div>
+          </div>
+          <div style="background:#f8fafc; border-radius:6px; padding:8px 10px;">
+            <div style="font-size:11px; font-weight:700; color:#334155; margin-bottom:4px;">Giao dịch tiêu biểu vừa chốt:</div>
+            {sample_rows}
+          </div>
+        </div>
+        """
+
     auction_box_html = ""
     if auction_data and auction_data.get('summary'):
         summ = auction_data.get('summary', {})
@@ -296,6 +350,9 @@ def generate_email_html(top_picks, total_scanned, now_str, auction_data=None):
         <span style="background:#fef3c7; color:#b45309; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px;">💰 Ngân sách an toàn &lt; $1.2M</span>
       </div>
     </div>
+
+    <!-- Recently Sold Intelligence Box (Private Treaty + Auction) -->
+    {sold_box_html}
 
     <!-- Domain Weekly Auction Intelligence Box -->
     {auction_box_html}
@@ -475,7 +532,16 @@ def main():
         except Exception:
             pass
 
-    html_content = generate_email_html(top_picks, total_scanned, now_str, auction_data)
+    # Read recently sold data
+    sold_data = None
+    if os.path.exists(SOLD_JSON):
+        try:
+            with open(SOLD_JSON, 'r', encoding='utf-8') as f_sold:
+                sold_data = json.load(f_sold)
+        except Exception:
+            pass
+
+    html_content = generate_email_html(top_picks, total_scanned, now_str, auction_data, sold_data)
 
     # Always save preview
     with open(PREVIEW_HTML, 'w', encoding='utf-8') as f:

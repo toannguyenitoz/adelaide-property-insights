@@ -50,6 +50,10 @@ jobs:
         run: |
           python scripts/scrape_domain_auction.py
 
+      - name: Scrape All Recently Sold Properties (Private Treaty & Auction)
+        run: |
+          python scripts/scrape_sold_properties.py
+
       - name: Generate Analytical Charts
         run: |
           python scripts/generate_charts.py

@@ -1207,6 +1207,20 @@ def build():
         </div>
       </div>
 
+      <!-- Callout to Chart 9 (2-Year Weekly Sales & Price Cycles) -->
+      <div style="background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%); border: 1.5px solid #a7f3d0; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-size:26px;">📈</span>
+          <div>
+            <div style="font-weight:800; color:#065f46; font-size:13.5px;">Phân Tích Dữ Liệu 2 Năm: Chu Kỳ Lượng Nhà Bán &amp; Giá Bán Từng Tuần (7,000+ Căn)</div>
+            <div style="font-size:12px; color:#047857; margin-top:2px;">Khám phá đỉnh thanh khoản mùa xuân (~105 căn/tuần), đáy lễ Giáng Sinh và đường xu hướng tăng trưởng giá chốt +5.8% trong 105 tuần qua.</div>
+          </div>
+        </div>
+        <a href="#analyticsSection" onclick="switchChart(9, document.querySelectorAll('.chart-tab-btn')[8])" style="background:#059669; color:white; font-size:12px; font-weight:700; padding:8px 16px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(5,150,105,0.25);">
+          📊 Xem Biểu Đồ 9 Chi Tiết &rarr;
+        </a>
+      </div>
+
       <!-- Sold Filters & Search -->
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
         <div style="font-size:13.5px; font-weight:800; color:#0f172a;">
@@ -1350,8 +1364,8 @@ def build():
     <!-- Analytics Section -->
     <section id="analyticsSection" class="section-box">
       <div class="section-head">
-        <h2>📊 Hệ Thống 8 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
-        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, xu hướng giá tuần và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
+        <h2>📊 Hệ Thống 9 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
+        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, xu hướng giá tuần, chu kỳ bán 2 năm và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
       </div>
 
       <div class="chart-tabs">
@@ -1363,6 +1377,7 @@ def build():
         <button class="chart-tab-btn" onclick="switchChart(6, this)">6. Ma Trận Giá vs Đất vs Lối Sống</button>
         <button class="chart-tab-btn" onclick="switchChart(7, this)">7. Chi Phí House vs Townhouse vs Unit</button>
         <button class="chart-tab-btn" onclick="switchChart(8, this)" style="border: 2px solid #0284c7; font-weight:800; color:#0284c7;">8. Xu Hướng Giá &amp; Đấu Giá Tuần MỚI</button>
+        <button class="chart-tab-btn" onclick="switchChart(9, this)" style="border: 2px solid #059669; font-weight:800; color:#059669;">9. Chu Kỳ Nhà Bán &amp; Giá 2 Năm (7,000+ Căn) MỚI</button>
       </div>
 
       <div class="chart-display">
@@ -1488,7 +1503,7 @@ def build():
         <a href="#chuong-1-tong-quan" class="chap-nav-pill">1. Tổng Quan 140+ Suburb</a>
         <a href="#chuong-2-suburb-thuong-luu" class="chap-nav-pill">2. Unley Park &amp; Toorak Gdns</a>
         <a href="#chuong-3-bo-loc-an-ninh-sapol" class="chap-nav-pill">3. Lọc An Ninh SAPOL</a>
-        <a href="#chuong-4-he-thong-7-bieu-do" class="chap-nav-pill">4. Bộ 7 Biểu Đồ</a>
+        <a href="#chuong-4-he-thong-7-bieu-do" class="chap-nav-pill">4. Bộ 9 Biểu Đồ</a>
         <a href="#chuong-5-phan-bien-kinh-te-do-thi" class="chap-nav-pill">5. Kinh Tế Đô Thị (RBA)</a>
         <a href="#chuong-6-phan-tich-6-hanh-lang" class="chap-nav-pill">6. 6 Hành Lang An Toàn</a>
         <a href="#chuong-7-so-sanh-chi-phi-house-townhouse-unit" class="chap-nav-pill">7. House vs Unit vs Townhouse</a>
@@ -1525,7 +1540,8 @@ def build():
       5: 'reports/charts/chart5_safety_index_comparison_v2.png?v=' + cacheBuster,
       6: 'reports/charts/chart6_regional_value_matrix.png?v=' + cacheBuster,
       7: 'reports/charts/chart7_property_type_cost_comparison.png?v=' + cacheBuster,
-      8: 'reports/charts/chart8_weekly_price_trends.png?v=' + cacheBuster
+      8: 'reports/charts/chart8_weekly_price_trends.png?v=' + cacheBuster,
+      9: 'reports/charts/chart9_2year_weekly_sales_volume_price.png?v=' + cacheBuster
     }};
 
     function switchChart(id, btn) {{

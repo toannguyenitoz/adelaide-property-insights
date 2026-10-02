@@ -200,109 +200,118 @@ def load_known_auctions():
     return known_auctions
 
 def scrape_suburb_sold(slug, region_name):
-    url = f'https://www.homely.com.au/sold-properties/{slug}?sort=newest'
     listings = []
-    try:
-        req = urllib.request.Request(url, headers=HEADERS)
-        html = urllib.request.urlopen(req, timeout=9).read().decode('utf-8')
-        soup = BeautifulSoup(html, 'html.parser')
-        
-        seen_urls = set()
+    seen_urls = set()
+    for page in [1, 2, 3]:
+        p_str = '' if page == 1 else f'/page-{page}'
+        url = f'https://www.homely.com.au/sold-properties/{slug}{p_str}?sort=newest'
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            html = urllib.request.urlopen(req, timeout=9).read().decode('utf-8')
+            soup = BeautifulSoup(html, 'html.parser')
+        except Exception:
+            break
+            
+        cards_found = 0
         for a in soup.find_all('a', href=re.compile(r'^/homes/')):
-            href = a['href']
-            if href in seen_urls: continue
-            seen_urls.add(href)
-            
-            card = a
-            for _ in range(5):
-                if card.parent and len(card.parent.find_all('a', href=re.compile(r'^/homes/'))) == 1:
-                    card = card.parent
-                else:
-                    break
-            
-            chunks = list(card.stripped_strings)
-            
-            sold_chunk_idx = -1
-            for i, c in enumerate(chunks):
-                if 'sold on' in c.lower():
-                    sold_chunk_idx = i
-                    break
-            
-            if sold_chunk_idx == -1:
+            try:
+                href = a['href']
+                if href in seen_urls: continue
+                seen_urls.add(href)
+                cards_found += 1
+                
+                card = a
+                for _ in range(5):
+                    if card.parent and len(card.parent.find_all('a', href=re.compile(r'^/homes/'))) == 1:
+                        card = card.parent
+                    else:
+                        break
+                
+                chunks = list(card.stripped_strings)
+                
+                sold_chunk_idx = -1
+                for i, c in enumerate(chunks):
+                    if 'sold on' in c.lower():
+                        sold_chunk_idx = i
+                        break
+                
+                if sold_chunk_idx == -1:
+                    continue
+                    
+                sold_date_str = chunks[sold_chunk_idx]
+                sold_date_obj = parse_sold_date(sold_date_str)
+                if not sold_date_obj or sold_date_obj.year < 2024:
+                    continue
+                
+                # Price
+                price_str = 'Price Undisclosed'
+                price_val = None
+                price_status = 'Undisclosed'
+                for c in chunks[sold_chunk_idx:sold_chunk_idx+5]:
+                    if '$' in c:
+                        price_str = c
+                        num_m = re.sub(r'[^\d]', '', c)
+                        if num_m:
+                            price_val = int(num_m)
+                            price_status = 'Disclosed'
+                        break
+                    elif 'undisclosed' in c.lower() or 'contact agent' in c.lower():
+                        price_str = 'Price Undisclosed'
+                        price_status = 'Undisclosed'
+                        break
+                
+                # Address & Suburb
+                addr_chunks = [c for c in chunks if 'SA 50' in c or 'SA 51' in c or 'SA 52' in c]
+                full_addr = addr_chunks[0] if addr_chunks else ''
+                if full_addr:
+                    idx = chunks.index(full_addr)
+                    if idx > 0 and not any(k in chunks[idx-1].lower() for k in ['sold', '$', 'undisclosed', 'rated', 'contact']):
+                        full_addr = f"{chunks[idx-1]} {full_addr}"
+                
+                if not full_addr:
+                    continue
+                    
+                suburb_raw = slug.split('-sa-')[0].replace('-', ' ').title()
+                
+                # Specs: beds, baths, cars, land
+                beds, baths, cars, land = None, None, None, ''
+                spec_candidates = []
+                for c in chunks:
+                    if re.match(r'^\d+$', c) and len(c) <= 2:
+                        spec_candidates.append(int(c))
+                    elif 'm²' in c or 'm\xb2' in c or 'm2' in c:
+                        land = c
+                
+                if len(spec_candidates) >= 1: beds = spec_candidates[0]
+                if len(spec_candidates) >= 2: baths = spec_candidates[1]
+                if len(spec_candidates) >= 3: cars = spec_candidates[2]
+                
+                dist = get_distance(suburb_raw.lower())
+                
+                listings.append({
+                    'id': href.split('/')[-1],
+                    'address': full_addr,
+                    'suburb': suburb_raw,
+                    'region': region_name,
+                    'sold_date': str(sold_date_obj),
+                    'sold_date_formatted': sold_date_obj.strftime("%d/%m/%Y"),
+                    'price_val': price_val,
+                    'price_str': price_str,
+                    'price_status': price_status,
+                    'sale_type': 'Private Treaty',  # Will cross-reference with auctions
+                    'bedrooms': beds or 3,
+                    'bathrooms': baths or 1,
+                    'carspaces': cars or 1,
+                    'land_size': land or 'N/A',
+                    'distance_km_from_wilgena': dist,
+                    'homely_url': f'https://www.homely.com.au{href}'
+                })
+            except Exception:
                 continue
                 
-            sold_date_str = chunks[sold_chunk_idx]
-            sold_date_obj = parse_sold_date(sold_date_str)
-            if not sold_date_obj or sold_date_obj.year < 2026:
-                continue
+        if cards_found == 0:
+            break
             
-            # Price
-            price_str = 'Price Undisclosed'
-            price_val = None
-            price_status = 'Undisclosed'
-            for c in chunks[sold_chunk_idx:sold_chunk_idx+5]:
-                if '$' in c:
-                    price_str = c
-                    num_m = re.sub(r'[^\d]', '', c)
-                    if num_m:
-                        price_val = int(num_m)
-                        price_status = 'Disclosed'
-                    break
-                elif 'undisclosed' in c.lower() or 'contact agent' in c.lower():
-                    price_str = 'Price Undisclosed'
-                    price_status = 'Undisclosed'
-                    break
-            
-            # Address & Suburb
-            addr_chunks = [c for c in chunks if 'SA 50' in c or 'SA 51' in c or 'SA 52' in c]
-            full_addr = addr_chunks[0] if addr_chunks else ''
-            if full_addr:
-                idx = chunks.index(full_addr)
-                if idx > 0 and not any(k in chunks[idx-1].lower() for k in ['sold', '$', 'undisclosed', 'rated', 'contact']):
-                    full_addr = f"{chunks[idx-1]} {full_addr}"
-            
-            if not full_addr:
-                continue
-                
-            # Extract suburb name from slug
-            suburb_raw = slug.split('-sa-')[0].replace('-', ' ').title()
-            
-            # Specs: beds, baths, cars, land
-            beds, baths, cars, land = None, None, None, ''
-            spec_candidates = []
-            for c in chunks:
-                if re.match(r'^\d+$', c) and len(c) <= 2:
-                    spec_candidates.append(int(c))
-                elif 'm²' in c or 'm\xb2' in c or 'm2' in c:
-                    land = c
-            
-            if len(spec_candidates) >= 1: beds = spec_candidates[0]
-            if len(spec_candidates) >= 2: baths = spec_candidates[1]
-            if len(spec_candidates) >= 3: cars = spec_candidates[2]
-            
-            dist = get_distance(suburb_raw.lower())
-            
-            listings.append({
-                'id': href.split('/')[-1],
-                'address': full_addr,
-                'suburb': suburb_raw,
-                'region': region_name,
-                'sold_date': str(sold_date_obj),
-                'sold_date_formatted': sold_date_obj.strftime("%d/%m/%Y"),
-                'price_val': price_val,
-                'price_str': price_str,
-                'price_status': price_status,
-                'sale_type': 'Private Treaty',  # Will cross-reference with auctions
-                'bedrooms': beds or 3,
-                'bathrooms': baths or 1,
-                'carspaces': cars or 1,
-                'land_size': land or 'N/A',
-                'distance_km_from_wilgena': dist,
-                'homely_url': f'https://www.homely.com.au{href}'
-            })
-    except Exception as e:
-        # Ignore individual timeout/connection error
-        pass
     return listings
 
 def main():

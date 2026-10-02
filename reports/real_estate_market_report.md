@@ -10,7 +10,7 @@
 1. [TỔNG QUAN BỘ DỮ LIỆU TOÀN VÙNG (375 BẤT ĐỘNG SẢN AN TOÀN TRÊN 140+ SUBURB)](#1-tổng-quan-bộ-dữ-liệu-toàn-vùng-375-bất-động-sản-an-toàn-trên-140-suburb)
 2. [LÝ GIẢI BỨC TRANH NGUỒN HÀNG TẠI CÁC SUBURB THƯỢNG LƯU (UNLEY PARK, TOORAK GARDENS, MALVERN)](#2-lý-giải-bức-tranh-nguồn-hàng-tại-các-suburb-thượng-lưu-unley-park-toorak-gardens-malvern)
 3. [BỘ LỌC AN NINH SAPOL: LOẠI TRỪ TRIỆT ĐỂ KHU VỰC TỘI PHẠM & NHÀ Ở XÃ HỘI](#3-bộ-lọc-an-ninh-sapol-loại-trừ-triệt-để-khu-vực-tội-phạm--nhà-ở-xã-hội)
-4. [HỆ THỐNG 7 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN & LOẠI HÌNH BẤT ĐỘNG SẢN](#4-hệ-thống-7-biểu-đồ-so-sánh-giữa-các-quận--loại-hình-bất-động-sản)
+4. [HỆ THỐNG 9 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM](#4-hệ-thống-9-biểu-đồ-so-sánh-giữa-các-quận-loại-hình--xu-hướng-bán-thực-tế-2-năm)
 5. [PHẢN BIỆN VĨ MÔ: CẮT GIẢM DI TRÚ & NGUỒN CUNG RÌA CÓ LÀM GIÁ NHÀ GIẢM?](#5-phản-biện-vĩ-mô-cắt-giảm-di-trú--nguồn-cung-rìa-có-làm-giá-nhà-giảm)
 6. [PHÂN TÍCH 6 HÀNH LANG AN TOÀN TỐI ƯU THEO TỪNG HỘI ĐỒNG (COUNCIL)](#6-phân-tích-6-hành-lang-an-toàn-tối-ưu-theo-từng-hội-đồng-council)
 7. [SO SÁNH TOÀN DIỆN CHI PHÍ: HOUSE vs TOWNHOUSE vs APARTMENT vs UNIT](#7-so-sánh-toàn-diện-chi-phí-house-vs-townhouse-vs-apartment-vs-unit)
@@ -77,9 +77,9 @@ Tiêu chí bảo vệ gia đình luôn được đặt lên hàng đầu. Hệ t
 
 ---
 
-## 4. HỆ THỐNG 8 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG ĐẤU GIÁ HÀNG TUẦN
+## 4. HỆ THỐNG 9 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM
 
-Bộ 8 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
+Bộ 9 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
 
 ### 📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park & Toorak Gardens)
 So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
@@ -107,6 +107,13 @@ Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh 1B Wilgena Av
 ### 📊 Biểu đồ 8: Xu Hướng Giá Rao Bán & Tình Hình Đấu Giá Hàng Tuần (Domain Weekly Clearance Rate)
 Biểu đồ theo dõi giá trung vị qua các tuần và tỷ lệ chốt thành công tại các phiên đấu giá chính thức của Domain tại Adelaide:
 ![Chart 8: Weekly Price Trends and Domain Auction Clearance](charts/chart8_weekly_price_trends.png)
+
+### 📊 Biểu đồ 9: Lịch Sử Lượng Nhà Bán & Giá Bán Từng Tuần Suốt 2 Năm (2024 - 2026) Trên 137 Suburb An Toàn
+Phân tích toàn diện hơn 7,000 giao dịch thực tế đã chốt (Bao gồm cả Bán thỏa thuận Private Treaty và Đấu giá Auction) qua 105 tuần liên tục:
+- **Khối lượng bán theo tuần (Weekly Sales Volume):** Thể hiện rõ nét tính chu kỳ mùa vụ của bất động sản Adelaide. Đỉnh điểm thanh khoản rơi vào Mùa Xuân (tháng 10 - 11 hàng năm đạt ~100 - 105 căn/tuần), chạm đáy vào kỳ nghỉ lễ Giáng Sinh & Tết Dương Lịch (~20 - 30 căn/tuần), và giữ ổn định ở mức 70 - 80 căn/tuần xuyên suốt năm 2026.
+- **Biến động giá bán chốt thực tế (Weekly Median Sold Price):** Mức giá chốt trung vị dao động trong khoảng $1.08M - $1.15M AUD, với biên độ liên phần tư IQR 25% - 75% tập trung từ $800k đến $1.45M. Đường xu hướng tuyến tính 2 năm khẳng định mức tăng trưởng tích cực +5.8% (từ ~$1,077k lên ~$1,139k), chứng minh nội lực bền bỉ của các vùng an toàn.
+
+![Chart 9: 2-Year Weekly Sales Volume and Sold Price History](charts/chart9_2year_weekly_sales_volume_price.png)
 
 ---
 

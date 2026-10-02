@@ -60,6 +60,7 @@ jobs:
           python scripts/generate_expanded_charts.py
           python scripts/generate_chart7.py
           python scripts/generate_chart8_weekly_trends.py
+          python scripts/generate_chart9_weekly_sales_history.py
 
       - name: Build Web Dashboard (index.html)
         run: |

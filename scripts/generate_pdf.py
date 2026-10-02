@@ -49,7 +49,9 @@ def prepare_html():
         'chart6_regional_value_matrix.png',
         'chart7_property_type_cost_comparison.png',
         'chart8_weekly_price_trends.png',
-        'chart9_2year_weekly_sales_volume_price.png'
+        'chart9_2year_weekly_sales_volume_price.png',
+        'chart10_sold_by_type_and_bedrooms.png',
+        'chart11_sold_by_region.png'
     ]
 
     for c_file in chart_files:

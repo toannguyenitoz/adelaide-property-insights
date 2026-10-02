@@ -1207,18 +1207,26 @@ def build():
         </div>
       </div>
 
-      <!-- Callout to Chart 9 (2-Year Weekly Sales & Price Cycles) -->
+      <!-- Callout to Charts 9, 10 & 11 (Sold Analytics) -->
       <div style="background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%); border: 1.5px solid #a7f3d0; border-radius: 8px; padding: 14px 18px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
         <div style="display:flex; align-items:center; gap:12px;">
-          <span style="font-size:26px;">📈</span>
+          <span style="font-size:28px;">📊</span>
           <div>
-            <div style="font-weight:800; color:#065f46; font-size:13.5px;">Phân Tích Dữ Liệu 2 Năm: Chu Kỳ Lượng Nhà Bán &amp; Giá Bán Từng Tuần (7,000+ Căn)</div>
-            <div style="font-size:12px; color:#047857; margin-top:2px;">Khám phá đỉnh thanh khoản mùa xuân (~105 căn/tuần), đáy lễ Giáng Sinh và đường xu hướng tăng trưởng giá chốt +5.8% trong 105 tuần qua.</div>
+            <div style="font-weight:800; color:#065f46; font-size:14px;">Báo Cáo Chuyên Sâu Nhà Đã Bán &amp; Giá Bán Thực Tế (8,121 Giao Dịch Toàn Greater Adelaide)</div>
+            <div style="font-size:12px; color:#047857; margin-top:2px;">Xem chi tiết theo: Chu kỳ 2 năm (Biểu đồ 9), Phân loại nhà &amp; Số phòng ngủ (Biểu đồ 10), và 6 Hành lang an toàn (Biểu đồ 11).</div>
           </div>
         </div>
-        <a href="#analyticsSection" onclick="switchChart(9, document.querySelectorAll('.chart-tab-btn')[8])" style="background:#059669; color:white; font-size:12px; font-weight:700; padding:8px 16px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(5,150,105,0.25);">
-          📊 Xem Biểu Đồ 9 Chi Tiết &rarr;
-        </a>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <a href="#analyticsSection" onclick="switchChart(9, document.querySelectorAll('.chart-tab-btn')[8])" style="background:#059669; color:white; font-size:11.5px; font-weight:700; padding:6px 12px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px; box-shadow:0 2px 4px rgba(5,150,105,0.2);">
+            📈 BĐ 9: Chu Kỳ 2 Năm &rarr;
+          </a>
+          <a href="#analyticsSection" onclick="switchChart(10, document.querySelectorAll('.chart-tab-btn')[9])" style="background:#0284c7; color:white; font-size:11.5px; font-weight:700; padding:6px 12px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px; box-shadow:0 2px 4px rgba(2,132,199,0.2);">
+            🏡 BĐ 10: Loại Nhà &amp; PN &rarr;
+          </a>
+          <a href="#analyticsSection" onclick="switchChart(11, document.querySelectorAll('.chart-tab-btn')[10])" style="background:#0d9488; color:white; font-size:11.5px; font-weight:700; padding:6px 12px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px; box-shadow:0 2px 4px rgba(13,148,136,0.2);">
+            🛡️ BĐ 11: 6 Vùng An Toàn &rarr;
+          </a>
+        </div>
       </div>
 
       <!-- Sold Filters & Search -->
@@ -1227,12 +1235,36 @@ def build():
           Danh Sách Bất Động Sản Vừa Bán (<span id="soldMatchCount" style="color:#059669;">{len(sold_listings)}</span> căn):
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <input type="text" id="soldSearch" class="search-input" style="padding:6px 12px; font-size:12px; width:200px;" placeholder="Tìm theo suburb, đường..." oninput="filterSoldTable()">
+          <input type="text" id="soldSearch" class="search-input" style="padding:6px 12px; font-size:12px; width:180px;" placeholder="Tìm suburb, đường..." oninput="filterSoldTable()">
+          <select id="soldFilterPropType" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterSoldTable()">
+            <option value="all">Mọi loại nhà (All Types)</option>
+            <option value="House">🏡 House (Nhà riêng)</option>
+            <option value="Townhouse">🏘️ Townhouse (Nhà liên kế)</option>
+            <option value="Unit">🏢 Unit / Villa (Căn hộ thấp tầng)</option>
+            <option value="Apartment">🏙️ Apartment (Chung cư)</option>
+          </select>
+          <select id="soldFilterBedrooms" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterSoldTable()">
+            <option value="all">Mọi phòng ngủ</option>
+            <option value="1">1 Phòng ngủ</option>
+            <option value="2">2 Phòng ngủ</option>
+            <option value="3">3 Phòng ngủ</option>
+            <option value="4">4 Phòng ngủ</option>
+            <option value="5+">5+ Phòng ngủ</option>
+          </select>
+          <select id="soldFilterRegion" class="select-input" style="padding:6px 10px; font-size:12px; max-width:180px;" onchange="filterSoldTable()">
+            <option value="all">Mọi khu vực (All Regions)</option>
+            <option value="Western Coastal Corridors">Western Coastal</option>
+            <option value="Norwood, Campbelltown & North-East Core">Norwood &amp; Campbelltown</option>
+            <option value="City of Mitcham & Foothills">Mitcham &amp; Foothills</option>
+            <option value="Adelaide Hills & Tea Tree Gully Safe Enclaves">Hills &amp; Tea Tree Gully</option>
+            <option value="City of Burnside & Core East">Burnside &amp; Core East</option>
+            <option value="City of Unley & Prestige South">Unley &amp; Prestige South</option>
+          </select>
           <select id="soldFilterTime" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterSoldTable()">
             <option value="30d">Trong 30 ngày qua ({sold_total_30d} căn)</option>
             <option value="14d">Trong 14 ngày qua ({sold_total_14d} căn)</option>
             <option value="7d">Trong 7 ngày qua ({sold_total_7d} căn)</option>
-            <option value="all">Tất cả năm 2026 ({sold_total_all} căn)</option>
+            <option value="all">Tất cả ({sold_total_all} căn)</option>
           </select>
           <select id="soldFilterType" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterSoldTable()">
             <option value="all">Mọi hình thức</option>
@@ -1241,13 +1273,13 @@ def build():
           </select>
           <select id="soldFilterPrice" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterSoldTable()">
             <option value="all">Mọi trạng thái giá</option>
-            <option value="Disclosed">Đã công bố giá bán</option>
-            <option value="Undisclosed">Chờ công bố giá (Bảo mật)</option>
+            <option value="Disclosed">Đã công bố giá</option>
+            <option value="Undisclosed">Chờ công bố (Bảo mật)</option>
           </select>
           <select id="soldSort" class="select-input" style="padding:6px 10px; font-size:12px;" onchange="filterSoldTable()">
             <option value="date_desc">Ngày bán mới nhất</option>
-            <option value="price_asc">Giá: Thấp đến Cao</option>
-            <option value="price_desc">Giá: Cao đến Thấp</option>
+            <option value="price_asc">Giá: Thấp &rarr; Cao</option>
+            <option value="price_desc">Giá: Cao &rarr; Thấp</option>
             <option value="dist">Gần 1B Wilgena Ave nhất</option>
           </select>
         </div>
@@ -1364,8 +1396,8 @@ def build():
     <!-- Analytics Section -->
     <section id="analyticsSection" class="section-box">
       <div class="section-head">
-        <h2>📊 Hệ Thống 9 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
-        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, xu hướng giá tuần, chu kỳ bán 2 năm và chi phí vận hành thực tế bởi Toan Nguyen IT OZ.</p>
+        <h2>📊 Hệ Thống 11 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
+        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, phân loại hình nhà, số phòng ngủ, xu hướng giá tuần và chu kỳ bán 2 năm bởi Toan Nguyen IT OZ.</p>
       </div>
 
       <div class="chart-tabs">
@@ -1377,7 +1409,9 @@ def build():
         <button class="chart-tab-btn" onclick="switchChart(6, this)">6. Ma Trận Giá vs Đất vs Lối Sống</button>
         <button class="chart-tab-btn" onclick="switchChart(7, this)">7. Chi Phí House vs Townhouse vs Unit</button>
         <button class="chart-tab-btn" onclick="switchChart(8, this)" style="border: 2px solid #0284c7; font-weight:800; color:#0284c7;">8. Xu Hướng Giá &amp; Đấu Giá Tuần MỚI</button>
-        <button class="chart-tab-btn" onclick="switchChart(9, this)" style="border: 2px solid #059669; font-weight:800; color:#059669;">9. Chu Kỳ Nhà Bán &amp; Giá 2 Năm (7,000+ Căn) MỚI</button>
+        <button class="chart-tab-btn" onclick="switchChart(9, this)" style="border: 2px solid #059669; font-weight:800; color:#059669;">9. Chu Kỳ Nhà Bán &amp; Giá 2 Năm MỚI</button>
+        <button class="chart-tab-btn" onclick="switchChart(10, this)" style="border: 2px solid #0284c7; font-weight:800; color:#0284c7;">10. Loại Nhà &amp; Số Phòng Ngủ MỚI</button>
+        <button class="chart-tab-btn" onclick="switchChart(11, this)" style="border: 2px solid #0d9488; font-weight:800; color:#0d9488;">11. Nhà Bán Theo 6 Vùng An Toàn MỚI</button>
       </div>
 
       <div class="chart-display">
@@ -1503,7 +1537,7 @@ def build():
         <a href="#chuong-1-tong-quan" class="chap-nav-pill">1. Tổng Quan 140+ Suburb</a>
         <a href="#chuong-2-suburb-thuong-luu" class="chap-nav-pill">2. Unley Park &amp; Toorak Gdns</a>
         <a href="#chuong-3-bo-loc-an-ninh-sapol" class="chap-nav-pill">3. Lọc An Ninh SAPOL</a>
-        <a href="#chuong-4-he-thong-7-bieu-do" class="chap-nav-pill">4. Bộ 9 Biểu Đồ</a>
+        <a href="#chuong-4-he-thong-7-bieu-do" class="chap-nav-pill">4. Bộ 11 Biểu Đồ</a>
         <a href="#chuong-5-phan-bien-kinh-te-do-thi" class="chap-nav-pill">5. Kinh Tế Đô Thị (RBA)</a>
         <a href="#chuong-6-phan-tich-6-hanh-lang" class="chap-nav-pill">6. 6 Hành Lang An Toàn</a>
         <a href="#chuong-7-so-sanh-chi-phi-house-townhouse-unit" class="chap-nav-pill">7. House vs Unit vs Townhouse</a>
@@ -1541,7 +1575,9 @@ def build():
       6: 'reports/charts/chart6_regional_value_matrix.png?v=' + cacheBuster,
       7: 'reports/charts/chart7_property_type_cost_comparison.png?v=' + cacheBuster,
       8: 'reports/charts/chart8_weekly_price_trends.png?v=' + cacheBuster,
-      9: 'reports/charts/chart9_2year_weekly_sales_volume_price.png?v=' + cacheBuster
+      9: 'reports/charts/chart9_2year_weekly_sales_volume_price.png?v=' + cacheBuster,
+      10: 'reports/charts/chart10_sold_by_type_and_bedrooms.png?v=' + cacheBuster,
+      11: 'reports/charts/chart11_sold_by_region.png?v=' + cacheBuster
     }};
 
     function switchChart(id, btn) {{
@@ -1611,6 +1647,9 @@ def build():
       const timeFilter = document.getElementById('soldFilterTime').value;
       const typeFilter = document.getElementById('soldFilterType').value;
       const priceFilter = document.getElementById('soldFilterPrice').value;
+      const propTypeFilter = document.getElementById('soldFilterPropType') ? document.getElementById('soldFilterPropType').value : 'all';
+      const bedFilter = document.getElementById('soldFilterBedrooms') ? document.getElementById('soldFilterBedrooms').value : 'all';
+      const regFilter = document.getElementById('soldFilterRegion') ? document.getElementById('soldFilterRegion').value : 'all';
       const sort = document.getElementById('soldSort').value;
       const tbody = document.getElementById('soldTableBody');
       const countEl = document.getElementById('soldMatchCount');
@@ -1626,16 +1665,32 @@ def build():
         if (timeFilter === '14d' && item.sold_date < d14) return false;
         if (timeFilter === '30d' && item.sold_date < d30) return false;
 
-        // Type filter
+        // Sale Type filter (Private Treaty vs Auction)
         if (typeFilter !== 'all' && !item.sale_type.includes(typeFilter)) return false;
 
         // Price filter
         if (priceFilter === 'Disclosed' && !item.price_val) return false;
         if (priceFilter === 'Undisclosed' && item.price_val) return false;
 
+        // Property Type filter
+        if (propTypeFilter !== 'all' && (item.property_type || 'House') !== propTypeFilter) return false;
+
+        // Bedrooms filter
+        if (bedFilter !== 'all') {{
+          const b = item.bedrooms || 3;
+          if (bedFilter === '1' && b !== 1) return false;
+          if (bedFilter === '2' && b !== 2) return false;
+          if (bedFilter === '3' && b !== 3) return false;
+          if (bedFilter === '4' && b !== 4) return false;
+          if (bedFilter === '5+' && b < 5) return false;
+        }}
+
+        // Region filter
+        if (regFilter !== 'all' && item.region !== regFilter) return false;
+
         // Search text
         if (q) {{
-          const str = (item.address + ' ' + item.suburb + ' ' + item.region).toLowerCase();
+          const str = (item.address + ' ' + item.suburb + ' ' + item.region + ' ' + (item.property_type || '')).toLowerCase();
           if (!str.includes(q)) return false;
         }}
         return true;
@@ -1664,11 +1719,17 @@ def build():
         const badgeClass = isAuction ? 'badge-auction-type' : 'badge-private-type';
         const badgeText = isAuction ? '🔨 Bán Đấu Giá' : '🤝 Bán Thỏa Thuận';
 
+        const pt = item.property_type || 'House';
+        let ptBadge = '<span style="background:#e0e7ff; color:#3730a3; font-weight:700; font-size:10.5px; padding:2px 6px; border-radius:4px; margin-right:4px;">🏡 House</span>';
+        if (pt === 'Townhouse') ptBadge = '<span style="background:#e0f2fe; color:#0369a1; font-weight:700; font-size:10.5px; padding:2px 6px; border-radius:4px; margin-right:4px;">🏘️ Townhouse</span>';
+        else if (pt === 'Unit') ptBadge = '<span style="background:#ecfdf5; color:#047857; font-weight:700; font-size:10.5px; padding:2px 6px; border-radius:4px; margin-right:4px;">🏢 Unit</span>';
+        else if (pt === 'Apartment') ptBadge = '<span style="background:#fef3c7; color:#92400e; font-weight:700; font-size:10.5px; padding:2px 6px; border-radius:4px; margin-right:4px;">🏙️ Apartment</span>';
+
         const priceHtml = item.price_val 
           ? `<strong style="color:#047857; font-size:13.5px;">$${{Number(item.price_val).toLocaleString('en-US')}} AUD</strong>`
           : `<span style="background:#f1f5f9; color:#64748b; font-size:11px; padding:3px 8px; border-radius:4px; font-weight:600;">Chờ công bố</span>`;
 
-        const specStr = `${{item.bedrooms || '-'}} PN • ${{item.bathrooms || '-'}} WC • ${{item.carspaces || '-'}} Xe ${{item.land_size ? '• ' + item.land_size : ''}}`;
+        const specStr = `${{ptBadge}} ${{item.bedrooms || '-'}} PN • ${{item.bathrooms || '-'}} WC • ${{item.carspaces || '-'}} Xe ${{item.land_size ? '• ' + item.land_size : ''}}`;
 
         return `
           <tr>

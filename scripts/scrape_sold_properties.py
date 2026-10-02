@@ -185,6 +185,49 @@ def normalize_address(addr):
         s = s.replace(k, v)
     return ' '.join(s.split())
 
+def classify_property_type(addr, land_str, beds):
+    addr_l = (addr or '').lower()
+    land_l = (land_str or '').lower()
+    b = beds or 3
+    if re.search(r'\b(apt|apartment)\b', addr_l) or re.search(r'^\d{3,}/', addr_l):
+        return 'Apartment'
+    if re.search(r'\b(townhouse|th)\b', addr_l):
+        return 'Townhouse'
+    if re.search(r'\b(unit|villa|flat)\b', addr_l):
+        if b >= 3 and ('m2' in land_l or 'm²' in land_l):
+            return 'Townhouse'
+        return 'Unit'
+    m_slash = re.search(r'^(\d+)[a-z]?/(\d+)', addr_l)
+    if m_slash:
+        unit_num = int(m_slash.group(1))
+        if unit_num >= 100:
+            return 'Apartment'
+        if b <= 2:
+            return 'Unit'
+        elif b == 3:
+            return 'Townhouse'
+        else:
+            return 'House'
+    m_letter = re.search(r'^\d+[a-f]\b', addr_l)
+    if m_letter and b <= 3:
+        if 'm²' in land_l or 'm2' in land_l:
+            m_a = re.search(r'(\d+)', land_l.replace(',', ''))
+            if m_a and int(m_a.group(1)) < 300:
+                return 'Townhouse'
+    if 'm²' in land_l or 'm2' in land_l:
+        m_a = re.search(r'(\d+)', land_l.replace(',', ''))
+        if m_a:
+            area = int(m_a.group(1))
+            if area < 180 and b <= 2:
+                return 'Unit'
+            elif area < 320 and b <= 3:
+                return 'Townhouse'
+            else:
+                return 'House'
+    if b == 1:
+        return 'Unit'
+    return 'House'
+
 def load_known_auctions():
     known_auctions = set()
     if AUCTION_JSON.exists():
@@ -287,12 +330,14 @@ def scrape_suburb_sold(slug, region_name):
                 if len(spec_candidates) >= 3: cars = spec_candidates[2]
                 
                 dist = get_distance(suburb_raw.lower())
+                ptype = classify_property_type(full_addr, land or '', beds or 3)
                 
                 listings.append({
                     'id': href.split('/')[-1],
                     'address': full_addr,
                     'suburb': suburb_raw,
                     'region': region_name,
+                    'property_type': ptype,
                     'sold_date': str(sold_date_obj),
                     'sold_date_formatted': sold_date_obj.strftime("%d/%m/%Y"),
                     'price_val': price_val,
@@ -401,7 +446,7 @@ def main():
     # Save CSV
     fieldnames = [
         'id', 'sold_date', 'sold_date_formatted', 'address', 'suburb', 'region',
-        'sale_type', 'price_status', 'price_val', 'price_str',
+        'property_type', 'sale_type', 'price_status', 'price_val', 'price_str',
         'bedrooms', 'bathrooms', 'carspaces', 'land_size',
         'distance_km_from_wilgena', 'homely_url'
     ]

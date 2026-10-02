@@ -10,7 +10,7 @@
 1. [TỔNG QUAN BỘ DỮ LIỆU TOÀN VÙNG (375 BẤT ĐỘNG SẢN AN TOÀN TRÊN 140+ SUBURB)](#1-tổng-quan-bộ-dữ-liệu-toàn-vùng-375-bất-động-sản-an-toàn-trên-140-suburb)
 2. [LÝ GIẢI BỨC TRANH NGUỒN HÀNG TẠI CÁC SUBURB THƯỢNG LƯU (UNLEY PARK, TOORAK GARDENS, MALVERN)](#2-lý-giải-bức-tranh-nguồn-hàng-tại-các-suburb-thượng-lưu-unley-park-toorak-gardens-malvern)
 3. [BỘ LỌC AN NINH SAPOL: LOẠI TRỪ TRIỆT ĐỂ KHU VỰC TỘI PHẠM & NHÀ Ở XÃ HỘI](#3-bộ-lọc-an-ninh-sapol-loại-trừ-triệt-để-khu-vực-tội-phạm--nhà-ở-xã-hội)
-4. [HỆ THỐNG 9 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM](#4-hệ-thống-9-biểu-đồ-so-sánh-giữa-các-quận-loại-hình--xu-hướng-bán-thực-tế-2-năm)
+4. [HỆ THỐNG 11 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM](#4-hệ-thống-11-biểu-đồ-so-sánh-giữa-các-quận-loại-hình--xu-hướng-bán-thực-tế-2-năm)
 5. [PHẢN BIỆN VĨ MÔ: CẮT GIẢM DI TRÚ & NGUỒN CUNG RÌA CÓ LÀM GIÁ NHÀ GIẢM?](#5-phản-biện-vĩ-mô-cắt-giảm-di-trú--nguồn-cung-rìa-có-làm-giá-nhà-giảm)
 6. [PHÂN TÍCH 6 HÀNH LANG AN TOÀN TỐI ƯU THEO TỪNG HỘI ĐỒNG (COUNCIL)](#6-phân-tích-6-hành-lang-an-toàn-tối-ưu-theo-từng-hội-đồng-council)
 7. [SO SÁNH TOÀN DIỆN CHI PHÍ: HOUSE vs TOWNHOUSE vs APARTMENT vs UNIT](#7-so-sánh-toàn-diện-chi-phí-house-vs-townhouse-vs-apartment-vs-unit)
@@ -77,9 +77,9 @@ Tiêu chí bảo vệ gia đình luôn được đặt lên hàng đầu. Hệ t
 
 ---
 
-## 4. HỆ THỐNG 9 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM
+## 4. HỆ THỐNG 11 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM
 
-Bộ 9 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
+Bộ 11 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
 
 ### 📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park & Toorak Gardens)
 So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
@@ -114,6 +114,42 @@ Phân tích toàn diện hơn 7,000 giao dịch thực tế đã chốt (Bao g�
 - **Biến động giá bán chốt thực tế (Weekly Median Sold Price):** Mức giá chốt trung vị dao động trong khoảng $1.08M - $1.15M AUD, với biên độ liên phần tư IQR 25% - 75% tập trung từ $800k đến $1.45M. Đường xu hướng tuyến tính 2 năm khẳng định mức tăng trưởng tích cực +5.8% (từ ~$1,077k lên ~$1,139k), chứng minh nội lực bền bỉ của các vùng an toàn.
 
 ![Chart 9: 2-Year Weekly Sales Volume and Sold Price History](charts/chart9_2year_weekly_sales_volume_price.png)
+
+### 📊 Biểu đồ 10: Phân Tích Lượng Nhà Đã Bán & Giá Chốt Theo Loại Hình (House, Townhouse, Unit, Apartment) & Số Phòng Ngủ
+Phân tích chi tiết trên toàn bộ 8,121 giao dịch thực tế đã chốt trong khu vực 137 suburb an toàn:
+- **Khối lượng bán theo loại hình (Volume by Property Type):**
+  - **House (Nhà riêng biệt lập):** Chiếm ưu thế tuyệt đối với **5,930 căn (73.0%)** tổng giao dịch.
+  - **Unit / Villa (Căn hộ thấp tầng):** Đứng thứ hai với **1,317 căn (16.2%)**, đóng vai trò phân khúc thanh khoản cao cho người mua nhà lần đầu và người về hưu (downsizers).
+  - **Townhouse (Nhà liên kế hiện đại):** Đạt **769 căn (9.5%)**, giải pháp nhà ở lý tưởng cân bằng giữa diện tích và chi phí bảo trì.
+  - **Apartment (Chung cư cao tầng):** Chiếm **105 căn (1.3%)**, tập trung quanh các trục ven biển (Glenelg, Henley Beach) và ven CBD.
+- **Giá bán chốt trung vị theo loại hình (Median Sold Price by Type):**
+  - **House:** $1,340,000 AUD (Biên độ IQR 25% - 75%: $1.05M – $1.75M). Phù hợp ngân sách nếu tìm kiếm ở các khu vực như Campbelltown, Tea Tree Gully hoặc rìa Foothills.
+  - **Townhouse:** $910,000 AUD (IQR: $760k – $1.12M), hoàn toàn nằm dưới trần ngân sách mục tiêu $1.20M.
+  - **Apartment:** $785,000 AUD (IQR: $550k – $980k).
+  - **Unit:** $650,000 AUD (IQR: $520k – $780k), phân khúc có giá tiếp cận dễ dàng nhất.
+- **Phân bổ theo số phòng ngủ (Volume & Median Price by Bedrooms):**
+  - **3 Phòng ngủ:** Là phân khúc chủ lực với **3,285 căn (40.5%)**, giá trung vị **$1,120,000 AUD** — điểm giao thoa hoàn hảo giữa công năng gia đình và ngưỡng ngân sách $1.2M.
+  - **4 Phòng ngủ:** Đạt **2,405 căn (29.6%)**, giá trung vị **$1,505,000 AUD**.
+  - **2 Phòng ngủ:** Đạt **1,606 căn (19.8%)**, giá trung vị **$710,000 AUD**.
+  - **5+ Phòng ngủ:** Đạt **677 căn (8.3%)**, giá trung vị **$1,700,000 AUD**.
+  - **1 Phòng ngủ:** Đạt **148 căn (1.8%)**, giá trung vị **$500,000 AUD**.
+
+![Chart 10: Sold Volume & Price by Property Type and Bedrooms](charts/chart10_sold_by_type_and_bedrooms.png)
+
+### 📊 Biểu đồ 11: Phân Tích Lượng Nhà Đã Bán & Giá Chốt Theo 6 Hành Lang An Toàn Greater Adelaide
+Đối chiếu chuyên sâu về quy mô thanh khoản, giá bán thực tế và cơ cấu loại hình giữa 6 khu vực tuyển chọn:
+- **Quy mô và giá chốt theo hành lang:**
+  - **Western Coastal Corridors (Holdfast Bay, Charles Sturt):** Dẫn đầu thanh khoản với **1,873 căn đã bán**, giá trung vị **$1,185,000 AUD**.
+  - **Norwood, Campbelltown & North-East Core:** Thanh khoản mạnh thứ hai với **1,523 căn**, giá trung vị **$1,100,000 AUD** (dưới ngưỡng $1.2M).
+  - **City of Mitcham & Foothills:** Đạt **1,403 căn**, giá trung vị **$1,150,000 AUD**.
+  - **Adelaide Hills & Tea Tree Gully Safe Enclaves:** Đạt **1,243 căn**, giá trung vị **$900,000 AUD** — vùng có giá dễ tiếp cận nhất cho nhà đất diện tích lớn.
+  - **City of Burnside & Core East:** Đạt **1,234 căn**, giá trung vị cao nhất toàn vùng **$1,398,000 AUD** (vùng trường điểm và giới thượng lưu).
+  - **City of Unley & Prestige South:** Đạt **845 căn**, giá trung vị **$1,125,000 AUD**.
+- **Cơ cấu loại hình & Giá theo từng phân khúc khu vực:**
+  - Khu vực Hills & TTG có tỷ lệ House lên đến **87%**, rất ít Unit.
+  - Vùng Unley và Western Coastal sở hữu cơ cấu cân bằng với hơn **35% - 40%** giao dịch là Townhouse và Unit/Apartment, mang đến cơ hội mua nhà nội đô đắt giá với mức giá Townhouse chỉ từ $950k - $1.05M và Unit chỉ từ $600k - $700k.
+
+![Chart 11: Sold Volume & Price across 6 Safe Regions](charts/chart11_sold_by_region.png)
 
 ---
 

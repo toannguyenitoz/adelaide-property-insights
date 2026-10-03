@@ -513,6 +513,208 @@ def build():
       border-color: #00875a;
     }}
     
+    .btn-calc {{
+      background: #7c3aed;
+      color: white;
+      border: none;
+      padding: 6px 11px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+    }}
+    .btn-calc:hover {{
+      background: #6d28d9;
+      color: white;
+      box-shadow: 0 2px 6px rgba(124,58,237,0.35);
+    }}
+    .floating-calc-btn {{
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+      color: white;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: 2px solid white;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45);
+      cursor: pointer;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }}
+    .floating-calc-btn:hover {{
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(124, 58, 237, 0.6);
+    }}
+    /* Mortgage Modal Styling */
+    .modal-overlay {{
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      overflow-y: auto;
+    }}
+    .modal-overlay.active {{
+      display: flex;
+    }}
+    .modal-card {{
+      background: white;
+      border-radius: 16px;
+      max-width: 980px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      animation: modalFadeIn 0.2s ease-out;
+    }}
+    @keyframes modalFadeIn {{
+      from {{ opacity: 0; transform: scale(0.96); }}
+      to {{ opacity: 1; transform: scale(1); }}
+    }}
+    .modal-header {{
+      padding: 20px 24px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }}
+    .modal-header h3 {{
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }}
+    .modal-close-btn {{
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      font-size: 22px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }}
+    .modal-close-btn:hover {{
+      background: rgba(255, 255, 255, 0.3);
+    }}
+    .modal-body {{
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      background: #f8fafc;
+    }}
+    @media (max-width: 820px) {{
+      .modal-body {{
+        grid-template-columns: 1fr;
+      }}
+    }}
+    .calc-panel {{
+      background: white;
+      border-radius: 12px;
+      padding: 16px 18px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }}
+    .calc-group {{
+      margin-bottom: 12px;
+    }}
+    .calc-label {{
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }}
+    .calc-input-wrapper {{
+      position: relative;
+      display: flex;
+      align-items: center;
+    }}
+    .calc-input-prefix {{
+      position: absolute;
+      left: 12px;
+      font-weight: 700;
+      color: #64748b;
+      font-size: 14px;
+    }}
+    .calc-input-suffix {{
+      position: absolute;
+      right: 12px;
+      font-weight: 700;
+      color: #64748b;
+      font-size: 12px;
+    }}
+    .calc-input {{
+      width: 100%;
+      padding: 10px 48px 10px 28px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+      outline: none;
+      transition: border-color 0.15s;
+    }}
+    .calc-input:focus {{
+      border-color: #0284c7;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }}
+    .calc-quick-btns {{
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }}
+    .calc-pill {{
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s;
+    }}
+    .calc-pill:hover, .calc-pill.active {{
+      background: #e0f2fe;
+      color: #0284c7;
+      border-color: #0284c7;
+    }}
+
     /* Analytics & Charts Section */
     .section-box {{
       background: white;
@@ -1051,7 +1253,8 @@ def build():
       <a href="#propertySection" class="nav-link">🏡 Tìm Nhà ({total_listings})</a>
       <a href="#soldSection" class="nav-link" style="color:#10b981; font-weight:700;">🤝 Nhà Vừa Bán ({sold_total_30d})</a>
       <a href="#auctionSection" class="nav-link" style="color:#38bdf8;">🔨 Đấu Giá Tuần ({len(auc_listings)})</a>
-      <a href="#analyticsSection" class="nav-link">📊 8 Biểu Đồ</a>
+      <a href="#analyticsSection" class="nav-link">📊 12 Biểu Đồ</a>
+      <a href="javascript:void(0)" onclick="openMortgageModal('Mẫu Dự Toán Tài Chính', 1100000)" class="nav-link" style="color:#c084fc; font-weight:800; display:inline-flex; align-items:center; gap:4px;">🧮 Tính Vay Mua Nhà</a>
       <a href="#economicsSection" class="nav-link">🏛️ Kinh Tế Đô Thị</a>
       <a href="#fullReportSection" class="nav-link nav-link-highlight">📖 Toàn Văn Báo Cáo (10 Chương)</a>
     </div>
@@ -1072,6 +1275,9 @@ def build():
     <div class="hero-buttons">
       <a href="#propertySection" class="hero-btn hero-btn-primary">
         🔍 Khảo Sát {total_listings} Nhà Đang Bán
+      </a>
+      <a href="javascript:void(0)" onclick="openMortgageModal('Mẫu Dự Toán Tài Chính Toàn Vùng', 1100000)" class="hero-btn" style="background:#7c3aed; color:white;">
+        🧮 Bảng Tính Vay &amp; Chi Phí Mua Nhà MỚI
       </a>
       <a href="#soldSection" class="hero-btn" style="background:#10b981; color:white;">
         🤝 Xem {sold_total_30d} Nhà Vừa Bán (Private Treaty + Đấu Giá)
@@ -1564,6 +1770,259 @@ def build():
     <p style="margin-top:6px; opacity:0.75;">Hệ thống chạy tự động mỗi ngày vào lúc 06:00 AM giờ Adelaide qua GitHub Actions.</p>
   </footer>
 
+  <!-- Floating Action Button for Mortgage Calculator -->
+  <button type="button" onclick="openMortgageModal('Mẫu Dự Toán Toàn Vùng', 1100000)" class="floating-calc-btn" title="Mở Bảng Tính Vay Mua Nhà &amp; Chi Phí Ban Đầu">
+    <span>🧮</span>
+    <span>Bảng Tính Vay Mua Nhà</span>
+  </button>
+
+  <!-- Mortgage & Financing Calculator Modal -->
+  <div id="mortgageModal" class="modal-overlay" onclick="closeMortgageModalOnBackdrop(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h3>🧮 Công Cụ Dự Toán Tài Chính &amp; Dòng Tiền Vay Mua Nhà</h3>
+          <div id="modalPropertyContext" style="font-size:12.5px; color:#cbd5e1; margin-top:4px;">
+            Đang tính cho căn nhà: <strong id="modalPropAddress" style="color:white;">Mẫu Dự Toán</strong> | Giá tham chiếu: <strong id="modalPropPrice" style="color:#38bdf8;">$1,100,000 AUD</strong>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeMortgageModal()" title="Đóng">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- LEFT COLUMN: INPUTS -->
+        <div class="calc-panel">
+          <h4 style="font-size:14px; font-weight:800; color:#0f172a; margin-bottom:14px; display:flex; align-items:center; gap:6px;">
+            <span>⚙️</span> Thông Số Khoản Vay &amp; Vốn Tự Có
+          </h4>
+
+          <!-- Purchase Price -->
+          <div class="calc-group">
+            <label class="calc-label">
+              <span>1. Giá mua nhà dự kiến (Purchase Price):</span>
+              <span id="labelPriceFormatted" style="color:#0284c7; font-weight:800;">$1,100,000 AUD</span>
+            </label>
+            <div class="calc-input-wrapper">
+              <span class="calc-input-prefix">$</span>
+              <input type="number" id="calcPrice" class="calc-input" value="1100000" step="10000" min="100000" max="10000000" oninput="onPriceChange()">
+              <span class="calc-input-suffix">AUD</span>
+            </div>
+            <div class="calc-quick-btns">
+              <button type="button" class="calc-pill" onclick="adjustPrice(-50000)">-50k</button>
+              <button type="button" class="calc-pill" onclick="adjustPrice(50000)">+50k</button>
+              <button type="button" class="calc-pill" onclick="setPrice(850000)">$850k</button>
+              <button type="button" class="calc-pill" onclick="setPrice(1000000)">$1.0M</button>
+              <button type="button" class="calc-pill" onclick="setPrice(1100000)">$1.1M</button>
+              <button type="button" class="calc-pill" onclick="setPrice(1200000)">$1.2M (Trần)</button>
+              <button type="button" class="calc-pill" onclick="setPrice(1400000)">$1.4M</button>
+            </div>
+          </div>
+
+          <!-- Cash / Available Deposit -->
+          <div class="calc-group">
+            <label class="calc-label">
+              <span>2. Số tiền vốn tự có hiện có (Available Cash):</span>
+              <span id="labelCashRatio" style="color:#059669; font-weight:800;">20% vốn</span>
+            </label>
+            <div class="calc-input-wrapper">
+              <span class="calc-input-prefix">$</span>
+              <input type="number" id="calcCash" class="calc-input" value="220000" step="5000" min="0" oninput="updateMortgageCalculation()">
+              <span class="calc-input-suffix">AUD</span>
+            </div>
+            <div class="calc-quick-btns">
+              <button type="button" class="calc-pill" onclick="setCashPercent(10)">10% Cọc</button>
+              <button type="button" class="calc-pill" onclick="setCashPercent(15)">15% Cọc</button>
+              <button type="button" class="calc-pill active" onclick="setCashPercent(20)">20% Chuẩn (Miễn LMI)</button>
+              <button type="button" class="calc-pill" onclick="setCashPercent(25)">25% Cọc</button>
+              <button type="button" class="calc-pill" onclick="setCashPercent(30)">30% Cọc</button>
+            </div>
+          </div>
+
+          <!-- Interest Rate -->
+          <div class="calc-group">
+            <label class="calc-label">
+              <span>3. Lãi suất vay ngân hàng (%/năm):</span>
+              <span id="labelRateDisplay" style="color:#7c3aed; font-weight:800;">5.99%/năm</span>
+            </label>
+            <div class="calc-input-wrapper">
+              <input type="number" id="calcRate" class="calc-input" value="5.99" step="0.05" min="1.0" max="15.0" style="padding-left:14px;" oninput="updateMortgageCalculation()">
+              <span class="calc-input-suffix">% / năm</span>
+            </div>
+            <div class="calc-quick-btns">
+              <button type="button" class="calc-pill" onclick="setRate(5.85)">5.85% (Ưu đãi Big 4)</button>
+              <button type="button" class="calc-pill active" onclick="setRate(5.99)">5.99% (Thị trường)</button>
+              <button type="button" class="calc-pill" onclick="setRate(6.25)">6.25% (Cố định)</button>
+              <button type="button" class="calc-pill" onclick="setRate(6.50)">6.50% (Biến đổi)</button>
+            </div>
+          </div>
+
+          <!-- Loan Term & Repayment Type -->
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;" class="calc-group">
+            <div>
+              <label class="calc-label">4. Thời hạn vay:</label>
+              <select id="calcYears" class="calc-input" style="padding-left:12px; cursor:pointer;" onchange="updateMortgageCalculation()">
+                <option value="30" selected>30 năm (Chuẩn)</option>
+                <option value="25">25 năm</option>
+                <option value="20">20 năm</option>
+                <option value="15">15 năm</option>
+              </select>
+            </div>
+            <div>
+              <label class="calc-label">5. Hình thức trả:</label>
+              <select id="calcRepayType" class="calc-input" style="padding-left:12px; cursor:pointer;" onchange="updateMortgageCalculation()">
+                <option value="PI" selected>Gốc + Lãi (P&amp;I)</option>
+                <option value="IO">Chỉ trả lãi (Interest Only)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SA Government Upfront Costs Breakdown -->
+          <div style="background:#f1f5f9; border-radius:10px; padding:14px; margin-top:14px; border:1px solid #cbd5e1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:12.5px; font-weight:800; color:#1e293b;">📋 Chi Phí Dự Kiến Mua Nhà (Nam Úc):</span>
+              <strong id="labelTotalUpfront" style="color:#dc2626; font-size:13px;">$57,485 AUD</strong>
+            </div>
+            
+            <div style="display:flex; justify-content:space-between; font-size:11.5px; color:#475569; padding:3px 0;">
+              <span>• Thuế trước bạ SA (RevenueSA Stamp Duty):</span>
+              <strong id="costStampDuty" style="color:#0f172a;">$48,830</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:11.5px; color:#475569; padding:3px 0;">
+              <span>• Phí trước bạ quyền sử dụng đất SA LTO:</span>
+              <strong id="costLTO" style="color:#0f172a;">$9,365</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:11.5px; color:#475569; padding:3px 0;">
+              <span>• Phí luật sư sang tên (Conveyancing):</span>
+              <strong id="costLegal" style="color:#0f172a;">$1,600</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:11.5px; color:#475569; padding:3px 0;">
+              <span>• Thẩm định nhà &amp; mối mọt (Building &amp; Pest):</span>
+              <strong id="costPest" style="color:#0f172a;">$650</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:11.5px; color:#475569; padding:3px 0;">
+              <span>• Phí hồ sơ &amp; đăng ký thế chấp ngân hàng:</span>
+              <strong id="costMortgageReg" style="color:#0f172a;">$550</strong>
+            </div>
+
+            <label style="display:flex; align-items:center; gap:6px; font-size:11.5px; color:#0369a1; font-weight:600; margin-top:8px; cursor:pointer;">
+              <input type="checkbox" id="calcFirstHome" onchange="updateMortgageCalculation()">
+              <span>Thuộc diện Miễn Thuế Trước Bạ (First Home Buyer nhà mới &le; $650k)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: RESULTS -->
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <!-- 1. Highlight: Repayment Schedules (Weekly, Monthly, Annual) -->
+          <div style="background:linear-gradient(135deg, #065f46 0%, #047857 60%, #059669 100%); color:white; border-radius:12px; padding:20px; box-shadow:0 8px 20px rgba(5, 150, 105, 0.25);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; color:#a7f3d0;">
+                💰 SỐ TIỀN PHẢI TRẢ HÀNG TUẦN (WEEKLY REPAYMENT)
+              </span>
+              <span id="badgeRepayType" style="background:rgba(255,255,255,0.2); padding:2px 8px; border-radius:12px; font-size:11px; font-weight:700;">
+                P&amp;I 30 năm
+              </span>
+            </div>
+
+            <div style="margin: 12px 0 6px 0;">
+              <span id="resWeekly" style="font-size:36px; font-weight:900; letter-spacing:-0.5px; color:#ffffff; text-shadow:0 2px 4px rgba(0,0,0,0.15);">
+                $1,216 AUD
+              </span>
+              <span style="font-size:14px; opacity:0.9; font-weight:600;">/ tuần</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.2);">
+              <div>
+                <div style="font-size:11.5px; color:#a7f3d0;">📅 Trả Mỗi Tháng:</div>
+                <strong id="resMonthly" style="font-size:17px; font-weight:800; color:white;">$5,270 AUD</strong>
+              </div>
+              <div>
+                <div style="font-size:11.5px; color:#a7f3d0;">🗓️ Trả Mỗi Năm:</div>
+                <strong id="resAnnual" style="font-size:17px; font-weight:800; color:white;">$63,245 AUD</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Loan Breakdown & Total Financing Card -->
+          <div class="calc-panel">
+            <h4 style="font-size:13.5px; font-weight:800; color:#0f172a; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between;">
+              <span>🏦 Cơ Cấu Vốn &amp; Khoản Vay Ngân Hàng</span>
+              <span id="resLVRBadge" style="background:#e0f2fe; color:#0369a1; padding:3px 8px; border-radius:6px; font-size:11px; font-weight:700;">
+                LVR: 80.0%
+              </span>
+            </h4>
+
+            <div style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #f1f5f9; font-size:12.5px;">
+              <span style="color:#64748b;">Tổng chi phí cần có (Giá nhà + Thuế phí):</span>
+              <strong id="resTotalAcquisition" style="color:#0f172a;">$1,157,485 AUD</strong>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #f1f5f9; font-size:12.5px;">
+              <span style="color:#64748b;">Vốn tự có (Tiền cọc + Thanh toán ban đầu):</span>
+              <strong id="resCashUsed" style="color:#059669;">$220,000 AUD</strong>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #f1f5f9; font-size:13px;">
+              <span style="font-weight:700; color:#1e293b;">Số tiền cần vay ngân hàng (Loan Amount):</span>
+              <strong id="resLoanAmount" style="color:#1d4ed8; font-size:15px; font-weight:900;">$937,485 AUD</strong>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid #f1f5f9; font-size:12.5px;">
+              <span style="color:#64748b;">Tổng tiền lãi phải trả cả kỳ (Total Interest):</span>
+              <strong id="resTotalInterest" style="color:#d97706;">$1,083,720 AUD</strong>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; padding:5px 0; font-size:12.5px;">
+              <span style="color:#64748b;">Tổng cộng gốc &amp; lãi phải trả suốt 30 năm:</span>
+              <strong id="resTotalRepaid" style="color:#0f172a;">$2,021,205 AUD</strong>
+            </div>
+
+            <!-- Visual Bar: Principal vs Interest -->
+            <div style="margin-top:12px;">
+              <div style="display:flex; justify-content:space-between; font-size:11px; margin-bottom:4px;">
+                <span style="color:#1d4ed8; font-weight:700;">Tiền Gốc: <span id="barPrincipalPct">46%</span></span>
+                <span style="color:#d97706; font-weight:700;">Tiền Lãi: <span id="barInterestPct">54%</span></span>
+              </div>
+              <div style="height:10px; border-radius:5px; background:#f1f5f9; overflow:hidden; display:flex;">
+                <div id="barPrincipal" style="width:46%; background:#2563eb;"></div>
+                <div id="barInterest" style="width:54%; background:#f59e0b;"></div>
+              </div>
+            </div>
+
+            <!-- LMI Warning / Safe Note -->
+            <div id="resLMINote" style="margin-top:10px; font-size:11.5px; border-radius:6px; padding:8px 10px; background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0;">
+              ✅ <strong>Vốn an toàn:</strong> Tiền cọc tương đương &ge; 20% giá trị căn nhà, giúp anh được miễn hoàn toàn bảo hiểm vay thế chấp (LMI - tiết kiệm $15k - $25k).
+            </div>
+          </div>
+
+          <!-- 3. Affordability & Stress Test Card -->
+          <div style="background:#fff; border-radius:12px; padding:16px; border:1px solid #e2e8f0;">
+            <h4 style="font-size:13px; font-weight:800; color:#0f172a; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+              <span>🛡️</span> Thước Đo Khả Năng Chi Trả &amp; Quản Trị Rủi Ro
+            </h4>
+
+            <div style="font-size:12px; color:#475569; line-height:1.5;">
+              • <strong>Thu nhập gia đình khuyến nghị:</strong> Khoảng <strong id="resRecIncomeYear" style="color:#059669;">$210,000 AUD/năm</strong> (trước thuế) để tiền trả góp chiếm dưới ngưỡng an toàn 30% thu nhập gia đình (tránh rủi ro Mortgage Stress theo tiêu chuẩn RBA).
+            </div>
+
+            <div style="font-size:12px; color:#475569; line-height:1.5; margin-top:6px;">
+              • <strong>Kịch bản Lãi suất tăng +1.0% (Stress Test):</strong> Số tiền phải trả sẽ là <strong id="resStressWeekly" style="color:#dc2626;">$1,385 AUD/tuần</strong> (tăng thêm khoảng <span id="resStressDiff">$169/tuần</span>).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="padding:14px 24px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; border-bottom-left-radius:16px; border-bottom-right-radius:16px;">
+        <span style="font-size:11.5px; color:#64748b;">
+          * Công cụ ước tính độc quyền bởi Toan Nguyen IT OZ. Áp dụng bảng biểu thuế RevenueSA 2024-2026.
+        </span>
+        <button type="button" onclick="closeMortgageModal()" style="background:#0f172a; color:white; border:none; padding:8px 18px; border-radius:8px; font-weight:700; font-size:12px; cursor:pointer;">
+          Đóng Bảng Tính
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Client Script for Filtering & Rendering -->
   <script>
     const allProps = {properties_json_str};
@@ -1632,10 +2091,13 @@ def build():
             <td><span class="${{badgeClass}}">${{item.result_label}}</span></td>
             <td style="font-weight:800; color:#1e3a8a; font-size:13.5px;">${{priceStr}}</td>
             <td style="color:#64748b; font-size:12px;">${{item.agency || 'N/A'}}</td>
-            <td>
+            <td style="white-space:nowrap;">
+              <button type="button" onclick="openMortgageModal('${{encodeURIComponent(item.address)}}', ${{item.price || 950000}})" style="background:#7c3aed; color:white; border:none; padding:4px 8px; border-radius:4px; font-weight:700; font-size:11px; cursor:pointer; margin-right:4px;" title="Tính toán chi phí & dòng tiền vay mua">
+                🧮 Vay
+              </button>
               ${{item.domain_url ? `
-                <a href="${{item.domain_url}}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#0284c7; padding:4px 8px; border-radius:4px; font-weight:700; font-size:11px; white-space:nowrap;">
-                  Chi tiết Domain &rarr;
+                <a href="${{item.domain_url}}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#0284c7; padding:4px 8px; border-radius:4px; font-weight:700; font-size:11px; white-space:nowrap; text-decoration:none;">
+                  Domain &rarr;
                 </a>
               ` : '-'}}
             </td>
@@ -1749,9 +2211,12 @@ def build():
             <td style="color:#475569; font-weight:600; font-size:12px;">${{specStr}}</td>
             <td><span class="${{badgeClass}}">${{badgeText}}</span></td>
             <td>${{priceHtml}}</td>
-            <td>
+            <td style="white-space:nowrap;">
+              <button type="button" onclick="openMortgageModal('${{encodeURIComponent(item.address)}}', ${{item.price_val || 1000000}})" style="background:#7c3aed; color:white; border:none; padding:4px 8px; border-radius:4px; font-weight:700; font-size:11px; cursor:pointer; margin-right:4px;" title="Tính toán chi phí & dòng tiền vay mua căn nhà này">
+                🧮 Vay
+              </button>
               <a href="${{item.homely_url}}" target="_blank" rel="noopener noreferrer" style="background:#f1f5f9; border:1px solid #cbd5e1; color:#0284c7; padding:4px 8px; border-radius:4px; font-weight:700; font-size:11px; white-space:nowrap; text-decoration:none;">
-                Xem Hồ Sơ &rarr;
+                Hồ Sơ &rarr;
               </a>
             </td>
           </tr>
@@ -1840,13 +2305,16 @@ def build():
           <div class="card-foot">
             <span class="card-dist">📍 Cách bạn: ${{p.distance_km_from_wilgena}} km</span>
             <div class="btn-group-foot">
+              <button type="button" onclick="openMortgageModal('${{encodeURIComponent(p.address)}}', ${{p.price_min || 1000000}})" class="btn-calc" title="Tính toán chi phí &amp; số tiền trả mỗi tuần/năm cho căn nhà này">
+                🧮 Tính Vay
+              </button>
               ${{p.homely_url ? `
                 <a href="${{p.homely_url}}" target="_blank" rel="noopener noreferrer" class="btn-homely" title="Xem ảnh & chi tiết bài đăng gốc 100% chính xác">
-                  Xem Chi Tiết &rarr;
+                  Chi Tiết &rarr;
                 </a>
               ` : ''}}
               <a href="${{p.google_domain_url || ('https://www.google.com/search?q=' + encodeURIComponent(p.address + ' domain.com.au'))}}" target="_blank" rel="noopener noreferrer" class="btn-domain" title="Tìm bài đăng căn nhà này trên sàn Domain.com.au qua Google">
-                Domain.com.au
+                Domain
               </a>
             </div>
           </div>
@@ -1854,10 +2322,218 @@ def build():
       `).join('');
     }}
 
+    // ==========================================
+    // MORTGAGE & FINANCING CALCULATOR ENGINE
+    // ==========================================
+    function calculateSAStampDuty(val, isFirstHome) {{
+      if (isFirstHome && val <= 650000) return 0;
+      if (val <= 10000) return val * 0.01;
+      if (val <= 20000) return 100 + (val - 10000) * 0.02;
+      if (val <= 30000) return 300 + (val - 20000) * 0.03;
+      if (val <= 50000) return 600 + (val - 30000) * 0.04;
+      if (val <= 100000) return 1400 + (val - 50000) * 0.045;
+      if (val <= 200000) return 3650 + (val - 100000) * 0.05;
+      if (val <= 250000) return 8650 + (val - 200000) * 0.05;
+      if (val <= 300000) return 11150 + (val - 250000) * 0.055;
+      if (val <= 500000) return 13900 + (val - 300000) * 0.055;
+      return 24900 + (val - 500000) * 0.055;
+    }}
+
+    function calculateLTOTransferFee(val) {{
+      if (val <= 50000) return 198;
+      const units = Math.ceil((val - 50000) / 10000);
+      return 198 + units * 96.50;
+    }}
+
+    function openMortgageModal(addressEncoded, price) {{
+      const addr = decodeURIComponent(addressEncoded || 'Căn nhà mẫu');
+      const p = Number(price) > 0 ? Number(price) : 1100000;
+
+      document.getElementById('modalPropAddress').innerText = addr;
+      document.getElementById('modalPropPrice').innerText = '$' + p.toLocaleString('en-US') + ' AUD';
+      document.getElementById('calcPrice').value = p;
+
+      // Default deposit: 20%
+      document.getElementById('calcCash').value = Math.round(p * 0.20);
+
+      updateMortgageCalculation();
+
+      const modal = document.getElementById('mortgageModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }}
+
+    function closeMortgageModal() {{
+      const modal = document.getElementById('mortgageModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }}
+
+    function closeMortgageModalOnBackdrop(e) {{
+      if (e.target.id === 'mortgageModal') {{
+        closeMortgageModal();
+      }}
+    }}
+
+    document.addEventListener('keydown', function(e) {{
+      if (e.key === 'Escape') {{
+        closeMortgageModal();
+      }}
+    }});
+
+    function onPriceChange() {{
+      const p = Math.max(10000, Number(document.getElementById('calcPrice').value) || 0);
+      document.getElementById('calcCash').value = Math.round(p * 0.20);
+      updateMortgageCalculation();
+    }}
+
+    function adjustPrice(delta) {{
+      const el = document.getElementById('calcPrice');
+      let val = (Number(el.value) || 1000000) + delta;
+      if (val < 100000) val = 100000;
+      el.value = val;
+      onPriceChange();
+    }}
+
+    function setPrice(val) {{
+      document.getElementById('calcPrice').value = val;
+      onPriceChange();
+    }}
+
+    function setCashPercent(pct) {{
+      const p = Math.max(10000, Number(document.getElementById('calcPrice').value) || 0);
+      document.getElementById('calcCash').value = Math.round(p * (pct / 100.0));
+      updateMortgageCalculation();
+    }}
+
+    function setRate(val) {{
+      document.getElementById('calcRate').value = val;
+      updateMortgageCalculation();
+    }}
+
+    function updateMortgageCalculation() {{
+      const price = Math.max(10000, Number(document.getElementById('calcPrice').value) || 0);
+      const cash = Math.max(0, Number(document.getElementById('calcCash').value) || 0);
+      const rate = Math.max(0.01, Number(document.getElementById('calcRate').value) || 5.99);
+      const years = Number(document.getElementById('calcYears').value) || 30;
+      const repayType = document.getElementById('calcRepayType').value;
+      const isFirstHome = document.getElementById('calcFirstHome').checked;
+
+      // Update price display labels
+      document.getElementById('labelPriceFormatted').innerText = '$' + price.toLocaleString('en-US') + ' AUD';
+      const cashPct = price > 0 ? ((cash / price) * 100).toFixed(1) : 0;
+      document.getElementById('labelCashRatio').innerText = cashPct + '% giá nhà';
+      document.getElementById('labelRateDisplay').innerText = rate.toFixed(2) + '%/năm';
+
+      // 1. Upfront SA purchase costs
+      const stampDuty = calculateSAStampDuty(price, isFirstHome);
+      const ltoFee = calculateLTOTransferFee(price);
+      const legalFee = 1600;
+      const pestFee = 650;
+      const bankFee = 550;
+      const totalUpfrontFees = stampDuty + ltoFee + legalFee + pestFee + bankFee;
+      const totalAcquisition = price + totalUpfrontFees;
+
+      document.getElementById('costStampDuty').innerText = '$' + Math.round(stampDuty).toLocaleString('en-US');
+      document.getElementById('costLTO').innerText = '$' + Math.round(ltoFee).toLocaleString('en-US');
+      document.getElementById('costLegal').innerText = '$' + legalFee.toLocaleString('en-US');
+      document.getElementById('costPest').innerText = '$' + pestFee.toLocaleString('en-US');
+      document.getElementById('costMortgageReg').innerText = '$' + bankFee.toLocaleString('en-US');
+      document.getElementById('labelTotalUpfront').innerText = '$' + Math.round(totalUpfrontFees).toLocaleString('en-US') + ' AUD';
+
+      // 2. Financing & Loan Amount Required
+      const loanAmount = Math.max(0, totalAcquisition - cash);
+      const lvr = price > 0 ? (loanAmount / price) * 100 : 0;
+
+      document.getElementById('resTotalAcquisition').innerText = '$' + Math.round(totalAcquisition).toLocaleString('en-US') + ' AUD';
+      document.getElementById('resCashUsed').innerText = '$' + Math.round(cash).toLocaleString('en-US') + ' AUD';
+      document.getElementById('resLoanAmount').innerText = '$' + Math.round(loanAmount).toLocaleString('en-US') + ' AUD';
+
+      const lvrBadge = document.getElementById('resLVRBadge');
+      const lmiNote = document.getElementById('resLMINote');
+      lvrBadge.innerText = 'LVR: ' + lvr.toFixed(1) + '%';
+
+      if (lvr <= 80.0) {{
+        lvrBadge.style.background = '#ecfdf5';
+        lvrBadge.style.color = '#047857';
+        lmiNote.style.background = '#ecfdf5';
+        lmiNote.style.color = '#065f46';
+        lmiNote.style.borderColor = '#a7f3d0';
+        lmiNote.innerHTML = '✅ <strong>Vốn an toàn (LVR &le; 80%):</strong> Được miễn phí bảo hiểm rủi ro thế chấp Lenders Mortgage Insurance (LMI), tiết kiệm từ $15,000 – $25,000 AUD.';
+      }} else {{
+        lvrBadge.style.background = '#fef3c7';
+        lvrBadge.style.color = '#b45309';
+        lmiNote.style.background = '#fffbeb';
+        lmiNote.style.color = '#92400e';
+        lmiNote.style.borderColor = '#fcd34d';
+        const estLMI = Math.round(loanAmount * 0.02);
+        lmiNote.innerHTML = '⚠️ <strong>Lưu ý LVR > 80%:</strong> Khoản vay vượt 80% giá trị định giá. Ngân hàng sẽ yêu cầu mua bảo hiểm thế chấp LMI (ước tính ~$' + estLMI.toLocaleString('en-US') + ' AUD) hoặc cần người thân bảo lãnh (Guarantor).';
+      }}
+
+      // 3. Repayment calculations
+      const r = (rate / 100.0) / 12.0;
+      const n = years * 12;
+      let monthly = 0;
+      let annual = 0;
+      let weekly = 0;
+      let totalRepaid = 0;
+      let totalInterest = 0;
+
+      if (loanAmount > 0) {{
+        if (repayType === 'PI') {{
+          monthly = loanAmount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+          totalRepaid = monthly * n;
+          totalInterest = totalRepaid - loanAmount;
+          document.getElementById('badgeRepayType').innerText = 'P&I ' + years + ' năm';
+        }} else {{
+          monthly = loanAmount * r;
+          totalInterest = monthly * n;
+          totalRepaid = loanAmount + totalInterest;
+          document.getElementById('badgeRepayType').innerText = 'Interest Only ' + years + ' năm';
+        }}
+        annual = monthly * 12;
+        weekly = annual / 52;
+      }}
+
+      document.getElementById('resWeekly').innerText = '$' + Math.round(weekly).toLocaleString('en-US') + ' AUD';
+      document.getElementById('resMonthly').innerText = '$' + Math.round(monthly).toLocaleString('en-US') + ' AUD';
+      document.getElementById('resAnnual').innerText = '$' + Math.round(annual).toLocaleString('en-US') + ' AUD';
+      document.getElementById('resTotalInterest').innerText = '$' + Math.round(totalInterest).toLocaleString('en-US') + ' AUD';
+      document.getElementById('resTotalRepaid').innerText = '$' + Math.round(totalRepaid).toLocaleString('en-US') + ' AUD';
+
+      // Visual Breakdown
+      const principalPct = totalRepaid > 0 ? Math.round((loanAmount / totalRepaid) * 100) : 50;
+      const interestPct = totalRepaid > 0 ? (100 - principalPct) : 50;
+      document.getElementById('barPrincipalPct').innerText = principalPct + '%';
+      document.getElementById('barInterestPct').innerText = interestPct + '%';
+      document.getElementById('barPrincipal').style.width = principalPct + '%';
+      document.getElementById('barInterest').style.width = interestPct + '%';
+
+      // Affordability & Stress Test
+      const recIncome = annual > 0 ? Math.round(annual / 0.30) : 0;
+      document.getElementById('resRecIncomeYear').innerText = '$' + recIncome.toLocaleString('en-US') + ' AUD/năm';
+
+      const rateStress = rate + 1.0;
+      const rStress = (rateStress / 100.0) / 12.0;
+      let monthlyStress = 0;
+      if (loanAmount > 0) {{
+        if (repayType === 'PI') {{
+          monthlyStress = loanAmount * (rStress * Math.pow(1 + rStress, n)) / (Math.pow(1 + rStress, n) - 1);
+        }} else {{
+          monthlyStress = loanAmount * rStress;
+        }}
+      }}
+      const weeklyStress = (monthlyStress * 12) / 52;
+      const diffWeekly = weeklyStress - weekly;
+      document.getElementById('resStressWeekly').innerText = '$' + Math.round(weeklyStress).toLocaleString('en-US') + ' AUD/tuần';
+      document.getElementById('resStressDiff').innerText = '+$' + Math.round(diffWeekly).toLocaleString('en-US') + '/tuần';
+    }}
+
     // Initial render
     renderProperties();
     filterSoldTable();
     filterAuctionTable();
+    updateMortgageCalculation();
   </script>
 </body>
 </html>

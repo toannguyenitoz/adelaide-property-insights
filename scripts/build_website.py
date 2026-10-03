@@ -1213,7 +1213,7 @@ def build():
           <span style="font-size:28px;">📊</span>
           <div>
             <div style="font-weight:800; color:#065f46; font-size:14px;">Báo Cáo Chuyên Sâu Nhà Đã Bán &amp; Giá Bán Thực Tế (8,121 Giao Dịch Toàn Greater Adelaide)</div>
-            <div style="font-size:12px; color:#047857; margin-top:2px;">Xem chi tiết theo: Chu kỳ 2 năm (Biểu đồ 9), Phân loại nhà &amp; Số phòng ngủ (Biểu đồ 10), và 6 Hành lang an toàn (Biểu đồ 11).</div>
+            <div style="font-size:12px; color:#047857; margin-top:2px;">Xem chi tiết theo: Chu kỳ 2 năm (BĐ 9), Phân loại nhà &amp; Số PN (BĐ 10), 6 Vùng an toàn (BĐ 11), và Chu kỳ tuần theo Loại nhà &amp; PN (BĐ 12).</div>
           </div>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -1225,6 +1225,9 @@ def build():
           </a>
           <a href="#analyticsSection" onclick="switchChart(11, document.querySelectorAll('.chart-tab-btn')[10])" style="background:#0d9488; color:white; font-size:11.5px; font-weight:700; padding:6px 12px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px; box-shadow:0 2px 4px rgba(13,148,136,0.2);">
             🛡️ BĐ 11: 6 Vùng An Toàn &rarr;
+          </a>
+          <a href="#analyticsSection" onclick="switchChart(12, document.querySelectorAll('.chart-tab-btn')[11])" style="background:#7c3aed; color:white; font-size:11.5px; font-weight:700; padding:6px 12px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px; box-shadow:0 2px 4px rgba(124,58,237,0.2);">
+            📆 BĐ 12: Tuần Loại Nhà &amp; PN &rarr;
           </a>
         </div>
       </div>
@@ -1396,7 +1399,7 @@ def build():
     <!-- Analytics Section -->
     <section id="analyticsSection" class="section-box">
       <div class="section-head">
-        <h2>📊 Hệ Thống 11 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
+        <h2>📊 Hệ Thống 12 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
         <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, phân loại hình nhà, số phòng ngủ, xu hướng giá tuần và chu kỳ bán 2 năm bởi Toan Nguyen IT OZ.</p>
       </div>
 
@@ -1412,6 +1415,7 @@ def build():
         <button class="chart-tab-btn" onclick="switchChart(9, this)" style="border: 2px solid #059669; font-weight:800; color:#059669;">9. Chu Kỳ Nhà Bán &amp; Giá 2 Năm MỚI</button>
         <button class="chart-tab-btn" onclick="switchChart(10, this)" style="border: 2px solid #0284c7; font-weight:800; color:#0284c7;">10. Loại Nhà &amp; Số Phòng Ngủ MỚI</button>
         <button class="chart-tab-btn" onclick="switchChart(11, this)" style="border: 2px solid #0d9488; font-weight:800; color:#0d9488;">11. Nhà Bán Theo 6 Vùng An Toàn MỚI</button>
+        <button class="chart-tab-btn" onclick="switchChart(12, this)" style="border: 2px solid #7c3aed; font-weight:800; color:#7c3aed;">12. Chu Kỳ Tuần: Loại Nhà &amp; Số PN MỚI</button>
       </div>
 
       <div class="chart-display">
@@ -1577,7 +1581,8 @@ def build():
       8: 'reports/charts/chart8_weekly_price_trends.png?v=' + cacheBuster,
       9: 'reports/charts/chart9_2year_weekly_sales_volume_price.png?v=' + cacheBuster,
       10: 'reports/charts/chart10_sold_by_type_and_bedrooms.png?v=' + cacheBuster,
-      11: 'reports/charts/chart11_sold_by_region.png?v=' + cacheBuster
+      11: 'reports/charts/chart11_sold_by_region.png?v=' + cacheBuster,
+      12: 'reports/charts/chart12_weekly_sold_by_type_and_bedrooms.png?v=' + cacheBuster
     }};
 
     function switchChart(id, btn) {{

@@ -10,7 +10,7 @@
 1. [TỔNG QUAN BỘ DỮ LIỆU TOÀN VÙNG (375 BẤT ĐỘNG SẢN AN TOÀN TRÊN 140+ SUBURB)](#1-tổng-quan-bộ-dữ-liệu-toàn-vùng-375-bất-động-sản-an-toàn-trên-140-suburb)
 2. [LÝ GIẢI BỨC TRANH NGUỒN HÀNG TẠI CÁC SUBURB THƯỢNG LƯU (UNLEY PARK, TOORAK GARDENS, MALVERN)](#2-lý-giải-bức-tranh-nguồn-hàng-tại-các-suburb-thượng-lưu-unley-park-toorak-gardens-malvern)
 3. [BỘ LỌC AN NINH SAPOL: LOẠI TRỪ TRIỆT ĐỂ KHU VỰC TỘI PHẠM & NHÀ Ở XÃ HỘI](#3-bộ-lọc-an-ninh-sapol-loại-trừ-triệt-để-khu-vực-tội-phạm--nhà-ở-xã-hội)
-4. [HỆ THỐNG 11 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM](#4-hệ-thống-11-biểu-đồ-so-sánh-giữa-các-quận-loại-hình--xu-hướng-bán-thực-tế-2-năm)
+4. [HỆ THỐNG 12 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM](#4-hệ-thống-12-biểu-đồ-so-sánh-giữa-các-quận-loại-hình--xu-hướng-bán-thực-tế-2-năm)
 5. [PHẢN BIỆN VĨ MÔ: CẮT GIẢM DI TRÚ & NGUỒN CUNG RÌA CÓ LÀM GIÁ NHÀ GIẢM?](#5-phản-biện-vĩ-mô-cắt-giảm-di-trú--nguồn-cung-rìa-có-làm-giá-nhà-giảm)
 6. [PHÂN TÍCH 6 HÀNH LANG AN TOÀN TỐI ƯU THEO TỪNG HỘI ĐỒNG (COUNCIL)](#6-phân-tích-6-hành-lang-an-toàn-tối-ưu-theo-từng-hội-đồng-council)
 7. [SO SÁNH TOÀN DIỆN CHI PHÍ: HOUSE vs TOWNHOUSE vs APARTMENT vs UNIT](#7-so-sánh-toàn-diện-chi-phí-house-vs-townhouse-vs-apartment-vs-unit)
@@ -77,9 +77,9 @@ Tiêu chí bảo vệ gia đình luôn được đặt lên hàng đầu. Hệ t
 
 ---
 
-## 4. HỆ THỐNG 11 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM
+## 4. HỆ THỐNG 12 BIỂU ĐỒ SO SÁNH GIỮA CÁC QUẬN, LOẠI HÌNH & XU HƯỚNG BÁN THỰC TẾ 2 NĂM
 
-Bộ 11 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
+Bộ 12 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:
 
 ### 📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park & Toorak Gardens)
 So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
@@ -150,6 +150,17 @@ Phân tích chi tiết trên toàn bộ 8,121 giao dịch thực tế đã chố
   - Vùng Unley và Western Coastal sở hữu cơ cấu cân bằng với hơn **35% - 40%** giao dịch là Townhouse và Unit/Apartment, mang đến cơ hội mua nhà nội đô đắt giá với mức giá Townhouse chỉ từ $950k - $1.05M và Unit chỉ từ $600k - $700k.
 
 ![Chart 11: Sold Volume & Price across 6 Safe Regions](charts/chart11_sold_by_region.png)
+
+### 📊 Biểu đồ 12: Phân Tích Chu Kỳ Giao Dịch Chốt Bán Theo Tuần (2024 - 2026) Chia Theo Loại Hình & Số Phòng Ngủ
+Bóc tách ma trận chu kỳ thời gian 105 tuần giao dịch liên tục (2 năm) theo từng chủng loại bất động sản và số lượng phòng ngủ:
+- **Chu kỳ thanh khoản theo tuần (Weekly Sales Volume):**
+  - **Theo loại nhà:** Nhà riêng (*House*) áp đảo thanh khoản với 72% tổng số giao dịch toàn thị trường, dao động từ 35 đến đỉnh sóng mùa xuân 80+ căn/tuần. Nhà liên kế (*Townhouse*) duy trì đều đặn 6 - 15 căn/tuần. Căn hộ/Chung cư (*Unit/Apartment*) đạt 10 - 20 căn/tuần.
+  - **Theo số phòng ngủ:** Căn hộ 3 phòng ngủ (*3 BR*) và 4 phòng ngủ (*4 BR*) chiếm hơn 71% khối lượng khớp lệnh, trong đó 3 BR là dòng sản phẩm có thanh khoản cao nhất (25 - 42 căn/tuần). Dòng 2 phòng ngủ duy trì ổn định 10 - 22 căn/tuần. Dòng 5+ phòng ngủ chiếm phân khúc đặc thù (4 - 10 căn/tuần).
+- **Xu hướng biến động giá bán trung vị theo tuần (4-Week Rolling Median Price):**
+  - **Theo loại hình:** Đường giá House dao động quanh $1.25M - $1.45M AUD, vượt nhẹ trần ngân sách trung bình toàn vùng an toàn. Ngược lại, **Townhouse tạo thành vùng giá đệm cực kỳ an toàn và ổn định ở mức $880,000 - $980,000 AUD**, luôn thấp hơn ngân sách mục tiêu $1.2M từ $200k - $300k. Dòng Unit/Apartment neo giá ổn định ở mức $600,000 - $750,000 AUD.
+  - **Theo số phòng ngủ:** Phân khúc 3 phòng ngủ (*3 BR*) liên tục bám sát và giao cắt vùng giá **$1,050,000 - $1,180,000 AUD** — **đây chính là điểm rơi ngọt ngào (sweet spot) hoàn hảo cho ngân sách $1.2M AUD**. Trong khi đó, phân khúc 4 phòng ngủ và 5+ phòng ngủ đòi hỏi ngân sách từ $1.45M đến trên $1.8M AUD.
+
+![Chart 12: Weekly Sold Volume & Price by Property Type and Bedrooms](charts/chart12_weekly_sold_by_type_and_bedrooms.png)
 
 ---
 

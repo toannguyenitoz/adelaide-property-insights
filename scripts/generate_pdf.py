@@ -51,7 +51,8 @@ def prepare_html():
         'chart8_weekly_price_trends.png',
         'chart9_2year_weekly_sales_volume_price.png',
         'chart10_sold_by_type_and_bedrooms.png',
-        'chart11_sold_by_region.png'
+        'chart11_sold_by_region.png',
+        'chart12_weekly_sold_by_type_and_bedrooms.png'
     ]
 
     for c_file in chart_files:

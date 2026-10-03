@@ -62,6 +62,7 @@ jobs:
           python scripts/generate_chart8_weekly_trends.py
           python scripts/generate_chart9_weekly_sales_history.py
           python scripts/generate_charts10_11_sold_breakdown.py
+          python scripts/generate_chart12_weekly_breakdown_type_bed.py
 
       - name: Build Web Dashboard (index.html)
         run: |

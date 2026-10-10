@@ -41,14 +41,16 @@ def get_rendered_report_html():
         '10': 'chuong-10-top-bat-dong-san-form-1'
     }
 
-    # Add id and styling to H2 elements
+    # Add id and styling to H2 elements and partition into chapter blocks
     def replace_h2(match):
         num = match.group(1)
         title = match.group(2)
         slug = slug_map.get(num, f'chuong-{num}')
-        return f'<h2 id="{slug}" class="report-h2"><span class="report-chap-badge">Chương {num}</span> {title}</h2>'
+        return f'</div><div class="report-chapter-block" id="block-{slug}" data-chapter="{num}"><h2 id="{slug}" class="report-h2"><span class="report-chap-badge">Chương {num}</span> {title}</h2>'
 
+    rendered_html = '<div class="report-chapter-block" data-chapter="0">' + rendered_html
     rendered_html = re.sub(r'<h2>(\d+)\.\s*(.*?)</h2>', replace_h2, rendered_html)
+    rendered_html += '</div>'
 
     # Wrap tables in responsive wrapper
     rendered_html = re.sub(
@@ -1742,64 +1744,77 @@ def build():
         </div>
       </div>
 
-      <!-- Comparative Table & Core Insights -->
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:16px; margin-bottom:20px;">
-        <div style="background:white; border-radius:10px; border:1px solid #fde68a; padding:16px;">
-          <h4 style="color:#92400e; font-size:14px; margin:0 0 10px 0; display:flex; align-items:center; gap:6px;">
-            📊 1. So Sánh Biến Động Giá Các Thủ Phủ Úc (Tháng 9/2026)
-          </h4>
-          <table style="width:100%; border-collapse:collapse; font-size:12.5px; text-align:left;">
-            <thead>
-              <tr style="background:#fef3c7; color:#78350f;">
-                <th style="padding:6px 8px; border-bottom:1px solid #fde68a;">Thành Phố / Vùng</th>
-                <th style="padding:6px 8px; border-bottom:1px solid #fde68a; text-align:right;">Tháng 9 (MoM)</th>
-                <th style="padding:6px 8px; border-bottom:1px solid #fde68a; text-align:right;">So Với Đỉnh</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="background:#fff7ed; font-weight:700;">
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">📍 Adelaide</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.6%</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-2.5% (từ T5/26)</td>
-              </tr>
-              <tr>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Sydney</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.3%</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-3.8%</td>
-              </tr>
-              <tr>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Perth</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.3%</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-1.2%</td>
-              </tr>
-              <tr>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Melbourne</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.2%</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-4.6%</td>
-              </tr>
-              <tr>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Brisbane</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.2%</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-1.8%</td>
-              </tr>
-              <tr>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Darwin</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#16a34a;">+0.1%</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">Ổn định</td>
-              </tr>
-              <tr style="background:#f8fafc; font-weight:700;">
-                <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0;">Toàn Nước Úc (National)</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0; text-align:right; color:#dc2626;">-0.2%</td>
-                <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0; text-align:right; color:#dc2626;">-3.3% (từ T3/26)</td>
-              </tr>
-            </tbody>
-          </table>
-          <p style="font-size:11.5px; color:#64748b; margin:8px 0 0 0; line-height:1.4;">
-            * Adelaide, Brisbane, Perth từng dẫn đầu sức đề kháng ở chu kỳ trước, nay đã bắt đầu chịu áp lực điều chỉnh tương tự.
-          </p>
-        </div>
+      <!-- Trang 1: Comparative Table -->
+      <div style="background:white; border-radius:10px; border:1px solid #fde68a; padding:16px; margin-bottom:16px;">
+        <h4 style="color:#92400e; font-size:14px; margin:0 0 10px 0; display:flex; align-items:center; gap:6px;">
+          📊 1. So Sánh Biến Động Giá Các Thủ Phủ Úc (Tháng 9/2026)
+        </h4>
+        <table style="width:100%; border-collapse:collapse; font-size:12.5px; text-align:left;">
+          <thead>
+            <tr style="background:#fef3c7; color:#78350f;">
+              <th style="padding:6px 8px; border-bottom:1px solid #fde68a;">Thành Phố / Vùng</th>
+              <th style="padding:6px 8px; border-bottom:1px solid #fde68a; text-align:right;">Tháng 9 (MoM)</th>
+              <th style="padding:6px 8px; border-bottom:1px solid #fde68a; text-align:right;">So Với Đỉnh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fff7ed; font-weight:700;">
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">📍 Adelaide</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.6%</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-2.5% (từ T5/26)</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Sydney</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.3%</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-3.8%</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Perth</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.3%</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-1.2%</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Melbourne</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.2%</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-4.6%</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Brisbane</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.2%</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-1.8%</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Darwin</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#16a34a;">+0.1%</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">Ổn định</td>
+            </tr>
+            <tr style="background:#f8fafc; font-weight:700;">
+              <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0;">Toàn Nước Úc (National)</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0; text-align:right; color:#dc2626;">-0.2%</td>
+              <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0; text-align:right; color:#dc2626;">-3.3% (từ T3/26)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:11.5px; color:#64748b; margin:8px 0 0 0; line-height:1.4;">
+          * Adelaide, Brisbane, Perth từng dẫn đầu sức đề kháng ở chu kỳ trước, nay đã bắt đầu chịu áp lực điều chỉnh tương tự.
+        </p>
+      </div>
 
-        <div style="background:white; border-radius:10px; border:1px solid #fde68a; padding:16px;">
+      <!-- Lock Banner for Unregistered (Page 1 end) -->
+      <div id="proptrackLockBanner" class="premium-lock-overlay" style="display:none; margin:16px 0; background:linear-gradient(135deg, #fffbeb, #fef3c7); border:2px dashed #f59e0b;">
+        <div style="font-size:36px; margin-bottom:8px;">🔒</div>
+        <h4 style="color:#92400e; font-size:17px; margin:0 0 6px 0; font-weight:800;">Bạn Đang Xem Trang 1 Của Báo Cáo PropTrack</h4>
+        <p style="color:#78350f; max-width:600px; font-size:12.5px; line-height:1.5; margin:0 0 16px 0;">
+          Đăng ký tài khoản miễn phí để mở khóa <strong>Trang 2 &amp; 3</strong>: Phân tích chi tiết 4 đợt tăng lãi suất RBA, khoảng cách kỳ vọng buyer/seller, và 4 chiến lược thực chiến cho First Home Buyers, Buyers, Sellers và Investors.
+        </p>
+        <button type="button" onclick="openAuthModal()" style="background:#d97706; color:white; border:none; padding:10px 22px; border-radius:8px; font-weight:800; font-size:13px; cursor:pointer; box-shadow:0 3px 10px rgba(217,119,6,0.3);">
+          🔑 Đăng Ký Miễn Phí Để Xem Toàn Bộ Trang 2 &amp; 3
+        </button>
+      </div>
+
+      <!-- Trang 2: Extended Content (Hidden when not logged in) -->
+      <div id="proptrackExtendedContent">
+        <div style="background:white; border-radius:10px; border:1px solid #fde68a; padding:16px; margin-bottom:16px;">
           <h4 style="color:#92400e; font-size:14px; margin:0 0 10px 0;">
             📉 2. Nguyên Nhân Khiến Giá Nhà Adelaide Hạ Nhiệt
           </h4>
@@ -1810,46 +1825,46 @@ def build():
             <li><strong>Phân hóa House vs Unit:</strong> Giá House toàn quốc giảm -0.3% MoM (-0.4% YoY), trong khi Units giữ giá phẳng 0.0% (+1.8% YoY) nhờ tính vừa túi tiền (affordability).</li>
           </ul>
         </div>
-      </div>
 
-      <!-- Strategy Pillars for Stakeholders -->
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
-        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #16a34a; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-          <h5 style="color:#15803d; font-size:13.5px; margin:0 0 6px 0;">🎯 First Home Buyers (Mua Nhà Lần Đầu)</h5>
-          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
-            Tận dụng gói <strong>5% Deposit Scheme</strong>, hỗ trợ <strong>$15,000 FHOG</strong> của Nam Úc và miễn Stamp Duty. Đừng chỉ nhìn vào tiền cọc, hãy dùng công cụ bên dưới kiểm tra khả năng trả nợ (Mortgage Stress threshold 30% thu nhập).
-          </p>
+        <!-- Strategy Pillars for Stakeholders -->
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+          <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #16a34a; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+            <h5 style="color:#15803d; font-size:13.5px; margin:0 0 6px 0;">🎯 First Home Buyers (Mua Nhà Lần Đầu)</h5>
+            <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+              Tận dụng gói <strong>5% Deposit Scheme</strong>, hỗ trợ <strong>$15,000 FHOG</strong> của Nam Úc và miễn Stamp Duty. Đừng chỉ nhìn vào tiền cọc, hãy dùng công cụ bên dưới kiểm tra khả năng trả nợ (Mortgage Stress threshold 30% thu nhập).
+            </p>
+          </div>
+
+          <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #2563eb; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+            <h5 style="color:#1d4ed8; font-size:13.5px; margin:0 0 6px 0;">🔑 Người Mua Nhà (Buyers &amp; Upgraders)</h5>
+            <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+              Cán cân đàm phán đang nghiêng về người mua: có nhiều lựa chọn hơn, thời gian xem xét kỹ hợp đồng và thẩm định công trình (building inspection), dễ mặc cả điều khoản thanh toán dài hạn.
+            </p>
+          </div>
+
+          <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #ea580c; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+            <h5 style="color:#c2410c; font-size:13.5px; margin:0 0 6px 0;">🏷️ Người Bán Nhà (Sellers)</h5>
+            <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+              Tránh bẫy định giá neo theo đỉnh cũ khiến nhà bị ứ đọng nhiều tháng. Cần thẩm định giá thực tế theo 30 ngày gần nhất, chỉnh trang hình ảnh và linh hoạt đón nhận các đề nghị mua có điều kiện tài chính tốt.
+            </p>
+          </div>
+
+          <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #7c3aed; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+            <h5 style="color:#6d28d9; font-size:13.5px; margin:0 0 6px 0;">📈 Nhà Đầu Tư (Investors)</h5>
+            <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+              Cơ hội gom bất động sản tại các suburb nội đô có trường điểm và hạ tầng mạnh (vốn trước đây bị tranh mua gay gắt). Ưu tiên dòng tiền cho thuê (Rental Yield) và tỷ lệ trống cực thấp của Adelaide (&lt;1.0%).
+            </p>
+          </div>
         </div>
 
-        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #2563eb; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-          <h5 style="color:#1d4ed8; font-size:13.5px; margin:0 0 6px 0;">🔑 Người Mua Nhà (Buyers &amp; Upgraders)</h5>
-          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
-            Cán cân đàm phán đang nghiêng về người mua: có nhiều lựa chọn hơn, thời gian xem xét kỹ hợp đồng và thẩm định công trình (building inspection), dễ mặc cả điều khoản thanh toán dài hạn.
-          </p>
+        <div style="margin-top:16px; background:#fef3c7; border:1px solid #fde68a; border-radius:8px; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="font-size:12.5px; color:#92400e;">
+            💡 <strong>Bạn muốn tính thử khoản vay cho mức giá trung vị Adelaide $915,000 AUD?</strong>
+          </div>
+          <button onclick="openMortgageModal('Mẫu Giá Trung Vị Adelaide Tháng 9/2026 (PropTrack)', 915000)" style="background:#d97706; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;">
+            🧮 Mở Máy Tính Tài Chính Cho Nhà $915,000
+          </button>
         </div>
-
-        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #ea580c; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-          <h5 style="color:#c2410c; font-size:13.5px; margin:0 0 6px 0;">🏷️ Người Bán Nhà (Sellers)</h5>
-          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
-            Tránh bẫy định giá neo theo đỉnh cũ khiến nhà bị ứ đọng nhiều tháng. Cần thẩm định giá thực tế theo 30 ngày gần nhất, chỉnh trang hình ảnh và linh hoạt đón nhận các đề nghị mua có điều kiện tài chính tốt.
-          </p>
-        </div>
-
-        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #7c3aed; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
-          <h5 style="color:#6d28d9; font-size:13.5px; margin:0 0 6px 0;">📈 Nhà Đầu Tư (Investors)</h5>
-          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
-            Cơ hội gom bất động sản tại các suburb nội đô có trường điểm và hạ tầng mạnh (vốn trước đây bị tranh mua gay gắt). Ưu tiên dòng tiền cho thuê (Rental Yield) và tỷ lệ trống cực thấp của Adelaide (&lt;1.0%).
-          </p>
-        </div>
-      </div>
-
-      <div style="margin-top:16px; background:#fef3c7; border:1px solid #fde68a; border-radius:8px; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-        <div style="font-size:12.5px; color:#92400e;">
-          💡 <strong>Bạn muốn tính thử khoản vay cho mức giá trung vị Adelaide $915,000 AUD?</strong>
-        </div>
-        <button onclick="openMortgageModal('Mẫu Giá Trung Vị Adelaide Tháng 9/2026 (PropTrack)', 915000)" style="background:#d97706; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;">
-          🧮 Mở Máy Tính Tài Chính Cho Nhà $915,000
-        </button>
       </div>
     </section>
 
@@ -1967,7 +1982,7 @@ def build():
       </div>
 
       <!-- Chapter Navigation Pill Bar -->
-      <div class="chapter-nav-bar">
+      <div class="chapter-nav-bar" id="chapterNavBar">
         <a href="#chuong-1-tong-quan" class="chap-nav-pill">1. Tổng Quan 140+ Suburb</a>
         <a href="#chuong-2-suburb-thuong-luu" class="chap-nav-pill">2. Unley Park &amp; Toorak Gdns</a>
         <a href="#chuong-3-bo-loc-an-ninh-sapol" class="chap-nav-pill">3. Lọc An Ninh SAPOL</a>
@@ -1983,6 +1998,22 @@ def build():
       <!-- Rendered Article Body -->
       <div class="report-article-body">
         {report_html}
+        <!-- Lock Banner for Unregistered Users (Hidden when logged in) -->
+        <div id="fullReportLockBanner" class="premium-lock-overlay" style="display:none; margin: 30px 0;">
+          <div class="premium-lock-icon">🔒</div>
+          <h3 style="color:#1e3a8a; font-size:20px; margin:0 0 8px 0;">Nội Dung Dành Riêng Cho Thành Viên Đăng Ký</h3>
+          <p style="color:#475569; max-width:620px; font-size:13.5px; line-height:1.6; margin:0 0 20px 0;">
+            Quý khách đang xem <strong>Trang 1 (Chương 1)</strong> của Báo Cáo. Để mở khóa toàn bộ các <strong>Trang 2 – 18 (Chương 2 đến Chương 10)</strong> bao gồm phân tích chuyên sâu Unley Park &amp; Toorak Gardens, lọc an ninh SAPOL, kinh tế đô thị RBA, so sánh House vs Unit, điện mặt trời Solar và hồ sơ Form 1 — vui lòng đăng ký tài khoản miễn phí.
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+            <button type="button" onclick="openAuthModal()" style="background:#2563eb; color:white; border:none; padding:12px 26px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 14px rgba(37,99,235,0.3);">
+              🔑 Đăng Ký Miễn Phí (15s) Để Đọc Toàn Bộ Báo Cáo
+            </button>
+          </div>
+          <div style="margin-top:12px; font-size:12px; color:#64748b;">
+            * Đăng ký hoàn toàn miễn phí chỉ mất 15 giây.
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2252,9 +2283,9 @@ def build():
     <div class="modal-card" style="max-width: 480px;" onclick="event.stopPropagation()">
       <div class="modal-header">
         <div>
-          <h3 id="authModalTitle">👤 Quản Lý Tài Khoản</h3>
+          <h3 id="authModalTitle">👤 Đăng Nhập / Đăng Ký Thành Viên</h3>
           <div style="font-size:12px; color:#cbd5e1; margin-top:3px;">
-            Đăng ký thành viên để mở khóa toàn bộ 10 chương báo cáo &amp; bộ biểu đồ chuyên sâu
+            Đăng ký tài khoản miễn phí để mở khóa toàn bộ danh sách nhà bán, 12 biểu đồ &amp; trọn vẹn báo cáo
           </div>
         </div>
         <button type="button" class="modal-close-btn" onclick="closeAuthModal()" title="Đóng">&times;</button>
@@ -2293,10 +2324,9 @@ def build():
           </button>
         </form>
 
-        <!-- Quick Demo Hint -->
-        <div style="margin-top:16px; padding:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; font-size:11.5px; color:#166534; line-height:1.5;">
-          💡 <strong>Thành viên có thể đăng ký tài khoản miễn phí</strong> bằng bất kỳ email hợp lệ nào. Hoặc dùng thử tài khoản mẫu:<br>
-          • Email: <code>demo@adelaide-property.com</code> | Mật khẩu: <code>123456</code>
+        <!-- Free Registration Guarantee Notice -->
+        <div style="margin-top:16px; padding:12px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; font-size:11.5px; color:#1e40af; line-height:1.5;">
+          💡 <strong>Đăng ký thành viên hoàn toàn miễn phí 100%</strong> chỉ mất 15 giây. Sau khi đăng ký, hệ thống tự động mở khóa toàn bộ danh sách nhà bán, trọn bộ 12 biểu đồ, các báo cáo đầy đủ và tài liệu tải về.
         </div>
       </div>
 
@@ -2314,9 +2344,10 @@ def build():
         </div>
 
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:20px; font-size:12.5px; color:#334155; line-height:1.6;">
-          <div style="font-weight:700; color:#1e3a8a; margin-bottom:6px;">Quyền lợi thành viên hiện tại:</div>
-          <div>✅ Xem trọn vẹn 10 chương Báo cáo Thị trường Chuyên sâu.</div>
-          <div>✅ Tải 2 Báo cáo bản in PDF (Báo cáo đầy đủ 18 trang &amp; Báo cáo mới tháng 10).</div>
+          <div style="font-weight:700; color:#1e3a8a; margin-bottom:6px;">Quyền lợi thành viên của bạn:</div>
+          <div>✅ Xem toàn bộ danh sách bất động sản đang bán &amp; vừa bán (không giới hạn 5 căn).</div>
+          <div>✅ Xem trọn vẹn 10 chương Báo cáo Thị trường Chuyên sâu &amp; Báo cáo tháng 10.</div>
+          <div>✅ Tải 2 Báo cáo bản in PDF (Bản 18 trang &amp; Bản tháng 10).</div>
           <div>✅ Truy cập tất cả 12 biểu đồ chu kỳ giao dịch 2 năm.</div>
           <div>✅ Sử dụng công cụ mô phỏng đòn bẩy tài chính &amp; Lãi suất Stress.</div>
         </div>
@@ -2363,7 +2394,7 @@ def build():
             </p>
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
               <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~8.0 MB &bull; Định dạng: PDF chuẩn A4</span>
-              <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf" style="padding:6px 14px; font-size:12px;">
+              <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download onclick="return handleDownloadPdf(event)" class="btn-pdf" style="padding:6px 14px; font-size:12px;">
                 📥 Tải Báo Cáo Đầy Đủ
               </a>
             </div>
@@ -2385,7 +2416,7 @@ def build():
             </p>
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
               <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~0.5 MB &bull; Định dạng: PDF chuẩn A4</span>
-              <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download class="badge" style="background:#d97706; color:white; text-decoration:none; padding:7px 14px; border-radius:6px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
+              <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download onclick="return handleDownloadPdf(event)" class="badge" style="background:#d97706; color:white; text-decoration:none; padding:7px 14px; border-radius:6px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
                 📥 Tải Báo Cáo Tháng 10 Mới
               </a>
             </div>
@@ -2426,17 +2457,33 @@ def build():
     }};
 
     // ==========================================
+    // ==========================================
     // USER AUTHENTICATION & ACCESS CONTROL ENGINE
     // ==========================================
     let currentUser = null;
     try {{
       const savedUser = localStorage.getItem('adelaide_user_session');
       if (savedUser) {{
-        currentUser = JSON.parse(savedUser);
+        const parsed = JSON.parse(savedUser);
+        if (parsed.email === 'demo@adelaide-property.com') {{
+          localStorage.removeItem('adelaide_user_session');
+          currentUser = null;
+        }} else {{
+          currentUser = parsed;
+        }}
       }}
     }} catch (e) {{
       console.warn('LocalStorage error:', e);
     }}
+
+    // Clean up demo account from users DB if present
+    try {{
+      let usersDb = JSON.parse(localStorage.getItem('adelaide_users_db') || '[]');
+      if (usersDb.some(u => u.email === 'demo@adelaide-property.com')) {{
+        usersDb = usersDb.filter(u => u.email !== 'demo@adelaide-property.com');
+        localStorage.setItem('adelaide_users_db', JSON.stringify(usersDb));
+      }}
+    }} catch(e) {{}}
 
     function openAuthModal() {{
       const modal = document.getElementById('authModal');
@@ -2490,6 +2537,20 @@ def build():
       }}
     }}
 
+    function handleDownloadPdf(e) {{
+      if (!currentUser) {{
+        if (e) e.preventDefault();
+        openAuthModal();
+        const msgBox = document.getElementById('authMsgBox');
+        msgBox.style.display = 'block';
+        msgBox.style.background = '#eff6ff';
+        msgBox.style.color = '#1d4ed8';
+        msgBox.innerText = '📥 Quý khách vui lòng đăng ký tài khoản thành viên (hoàn toàn miễn phí) để tải tài liệu PDF!';
+        return false;
+      }}
+      return true;
+    }}
+
     let currentAuthTab = 'login';
     function switchAuthTab(tab) {{
       currentAuthTab = tab;
@@ -2534,22 +2595,11 @@ def build():
         return;
       }}
 
-      // Demo/Registered storage
       let users = [];
       try {{
         users = JSON.parse(localStorage.getItem('adelaide_users_db') || '[]');
       }} catch(err) {{
         users = [];
-      }}
-
-      // Default demo account
-      if (!users.some(u => u.email === 'demo@adelaide-property.com')) {{
-        users.push({{
-          name: 'Nhà Đầu Tư Mẫu (VIP)',
-          email: 'demo@adelaide-property.com',
-          pass: '123456',
-          joined: '2026-10-01'
-        }});
       }}
 
       if (currentAuthTab === 'register') {{
@@ -2578,7 +2628,7 @@ def build():
         setTimeout(() => {{
           closeAuthModal();
           updateUserUI();
-        }}, 800);
+        }}, 600);
       }} else {{
         // Login
         const match = users.find(u => u.email === email && u.pass === pass);
@@ -2592,12 +2642,12 @@ def build():
           setTimeout(() => {{
             closeAuthModal();
             updateUserUI();
-          }}, 600);
+          }}, 500);
         }} else {{
           msgBox.style.display = 'block';
           msgBox.style.background = '#fef2f2';
           msgBox.style.color = '#b91c1c';
-          msgBox.innerText = 'Sai email hoặc mật khẩu! (Bạn có thể dùng demo@adelaide-property.com / 123456 hoặc chuyển sang tab Đăng Ký Mới).';
+          msgBox.innerText = 'Email hoặc mật khẩu chưa chính xác! Nếu chưa có tài khoản, vui lòng chọn tab "Đăng Ký Mới" bên trên (miễn phí 100%).';
         }}
       }}
     }}
@@ -2625,47 +2675,101 @@ def build():
         `;
       }}
 
-      // Check Report Section lock
-      const reportArticle = document.querySelector('.report-article-body');
-      let lockOverlay = document.getElementById('reportLockOverlay');
-      if (!currentUser) {{
-        // Show only first chapter and lock the remaining chapters
-        if (!lockOverlay && reportArticle) {{
-          lockOverlay = document.createElement('div');
-          lockOverlay.id = 'reportLockOverlay';
-          lockOverlay.className = 'premium-lock-overlay';
-          lockOverlay.innerHTML = `
-            <div class="premium-lock-icon">🔒</div>
-            <h3 style="color:#1e3a8a; font-size:20px; margin:0 0 8px 0;">Nội Dung Dành Riêng Cho Thành Viên Đăng Ký</h3>
-            <p style="color:#475569; max-width:620px; font-size:13.5px; line-height:1.6; margin:0 0 20px 0;">
-              Chương 2 đến Chương 10 (phân tích chuyên sâu Unley Park/Toorak Gardens, bộ 12 biểu đồ chốt bán, mô hình tài chính Torrens vs Strata, chiến lược thương lượng và hồ sơ Form 1) được bảo vệ độc quyền.
-            </p>
-            <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-              <button onclick="openAuthModal()" style="background:#2563eb; color:white; border:none; padding:12px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 14px rgba(37,99,235,0.3);">
-                🔑 Đăng Nhập / Đăng Ký Miễn Phí Để Mở Khóa Ngay
-              </button>
-            </div>
-            <div style="margin-top:14px; font-size:12px; color:#64748b;">
-              * Đăng ký hoàn toàn miễn phí chỉ mất 15 giây.
-            </div>
-          `;
-          reportArticle.appendChild(lockOverlay);
+      // 1. Chart Tabs Lock State: Only first 3 charts free, 4-12 require login
+      document.querySelectorAll('.chart-tab-btn').forEach((btn, idx) => {{
+        const chartId = idx + 1;
+        const originalText = btn.getAttribute('data-original-text') || btn.innerText.replace(/^🔒 */, '');
+        btn.setAttribute('data-original-text', originalText);
+        if (!currentUser && chartId > 3) {{
+          btn.innerHTML = '🔒 ' + originalText;
+          btn.style.opacity = '0.88';
+        }} else {{
+          btn.innerHTML = originalText;
+          btn.style.opacity = '1';
         }}
-        if (lockOverlay) lockOverlay.style.display = 'flex';
-      }} else {{
-        if (lockOverlay) lockOverlay.style.display = 'none';
+      }});
+
+      // If active chart was locked and user logged out, reset to chart 1
+      const activeBtn = document.querySelector('.chart-tab-btn.active');
+      if (activeBtn) {{
+        const activeIdx = Array.from(document.querySelectorAll('.chart-tab-btn')).indexOf(activeBtn) + 1;
+        if (!currentUser && activeIdx > 3) {{
+          const btn1 = document.querySelectorAll('.chart-tab-btn')[0];
+          if (btn1) switchChart(1, btn1);
+        }}
       }}
+
+      // 2. Full Report (10 Chapters): Only Chapter 1 (Page 1) free, Chapters 2-10 locked
+      const chapterBlocks = document.querySelectorAll('.report-chapter-block');
+      const fullReportLock = document.getElementById('fullReportLockBanner');
+      if (!currentUser) {{
+        chapterBlocks.forEach(blk => {{
+          const c = parseInt(blk.getAttribute('data-chapter') || '0', 10);
+          if (c > 1) {{
+            blk.style.display = 'none';
+          }} else {{
+            blk.style.display = 'block';
+          }}
+        }});
+        if (fullReportLock) fullReportLock.style.display = 'flex';
+      }} else {{
+        chapterBlocks.forEach(blk => {{
+          blk.style.display = 'block';
+        }});
+        if (fullReportLock) fullReportLock.style.display = 'none';
+      }}
+
+      // Chapter Navigation Pills
+      document.querySelectorAll('.chap-nav-pill').forEach((pill, idx) => {{
+        const chapNum = idx + 1;
+        const origText = pill.getAttribute('data-original-text') || pill.innerText.replace(/^🔒 */, '');
+        pill.setAttribute('data-original-text', origText);
+        if (!currentUser && chapNum > 1) {{
+          pill.innerHTML = '🔒 ' + origText;
+          pill.style.opacity = '0.85';
+        }} else {{
+          pill.innerHTML = origText;
+          pill.style.opacity = '1';
+        }}
+        pill.onclick = function(e) {{
+          if (!currentUser && chapNum > 1) {{
+            e.preventDefault();
+            openAuthModal();
+            const msgBox = document.getElementById('authMsgBox');
+            msgBox.style.display = 'block';
+            msgBox.style.background = '#eff6ff';
+            msgBox.style.color = '#1d4ed8';
+            msgBox.innerText = '📖 Chương ' + chapNum + ' thuộc Trang 2 trở đi. Vui lòng đăng ký tài khoản thành viên miễn phí để mở khóa đọc toàn bộ báo cáo!';
+          }}
+        }};
+      }});
+
+      // 3. PropTrack October Report: Page 1 free, Page 2 & Strategies locked
+      const proptrackExt = document.getElementById('proptrackExtendedContent');
+      const proptrackLock = document.getElementById('proptrackLockBanner');
+      if (!currentUser) {{
+        if (proptrackExt) proptrackExt.style.display = 'none';
+        if (proptrackLock) proptrackLock.style.display = 'flex';
+      }} else {{
+        if (proptrackExt) proptrackExt.style.display = 'block';
+        if (proptrackLock) proptrackLock.style.display = 'none';
+      }}
+
+      // 4. Update listings and tables to reflect 5-item vs all items restriction
+      renderProperties();
+      filterSoldTable();
+      filterAuctionTable();
     }}
 
     function switchChart(id, btn) {{
-      // Gate charts 8, 9, 10, 11, 12 for logged-in members
-      if (!currentUser && id >= 8) {{
+      // Gate charts 4 to 12: only 3 charts allowed without registration
+      if (!currentUser && id > 3) {{
         openAuthModal();
         const msgBox = document.getElementById('authMsgBox');
         msgBox.style.display = 'block';
         msgBox.style.background = '#eff6ff';
         msgBox.style.color = '#1d4ed8';
-        msgBox.innerText = '📊 Biểu đồ ' + id + ' (Phân tích chuyên sâu 2 năm & Loại nhà/PN) yêu cầu đăng ký thành viên để xem.';
+        msgBox.innerText = '📊 Biểu đồ ' + id + ' yêu cầu đăng ký tài khoản thành viên để xem. Bạn chỉ có thể xem 3 biểu đồ đầu tiên khi chưa đăng ký!';
         return;
       }}
       document.getElementById('activeChartImg').src = chartMap[id];
@@ -2696,7 +2800,10 @@ def build():
         return;
       }}
 
-      tbody.innerHTML = filtered.map(item => {{
+      const maxAuc = currentUser ? filtered.length : 5;
+      const displayAuction = filtered.slice(0, maxAuc);
+
+      let rowsHtml = displayAuction.map(item => {{
         let badgeClass = 'badge-aupi';
         if (item.result_code === 'AUSD') badgeClass = 'badge-ausd';
         else if (item.result_code === 'AUSP') badgeClass = 'badge-ausp';
@@ -2727,6 +2834,26 @@ def build():
           </tr>
         `;
       }}).join('');
+
+      if (!currentUser && filtered.length > 5) {{
+        rowsHtml += `
+          <tr>
+            <td colspan="6" style="text-align:center; padding:20px 16px; background:#eff6ff; border-top:2px dashed #93c5fd;">
+              <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <span style="font-size:18px;">🔒</span>
+                <span style="color:#1e3a8a; font-size:13px; font-weight:700;">
+                  Bạn đang xem 5 kết quả đấu giá đầu tiên (còn lại ${{filtered.length - 5}} kết quả khác).
+                </span>
+                <button type="button" onclick="openAuthModal()" style="background:#2563eb; color:white; border:none; padding:6px 14px; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;">
+                  🔑 Đăng Ký Miễn Phí Để Xem Tất Cả
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }}
+
+      tbody.innerHTML = rowsHtml;
     }}
 
     // Recently Sold Properties Data & Render
@@ -2804,7 +2931,10 @@ def build():
         return;
       }}
 
-      tbody.innerHTML = filtered.slice(0, 100).map(item => {{
+      const maxSold = currentUser ? 100 : 5;
+      const displaySold = filtered.slice(0, maxSold);
+
+      let rowsHtml = displaySold.map(item => {{
         const isAuction = item.sale_type.includes('Auction') || item.sale_type.includes('Đấu giá');
         const badgeClass = isAuction ? 'badge-auction-type' : 'badge-private-type';
         const badgeText = isAuction ? '🔨 Bán Đấu Giá' : '🤝 Bán Thỏa Thuận';
@@ -2845,6 +2975,26 @@ def build():
           </tr>
         `;
       }}).join('');
+
+      if (!currentUser && filtered.length > 5) {{
+        rowsHtml += `
+          <tr>
+            <td colspan="5" style="text-align:center; padding:20px 16px; background:#eff6ff; border-top:2px dashed #93c5fd;">
+              <div style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;">
+                <span style="font-size:18px;">🔒</span>
+                <span style="color:#1e3a8a; font-size:13px; font-weight:700;">
+                  Bạn đang xem 5 căn nhà vừa bán đầu tiên (còn lại ${{filtered.length - 5}} căn nhà khác).
+                </span>
+                <button type="button" onclick="openAuthModal()" style="background:#2563eb; color:white; border:none; padding:6px 14px; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;">
+                  🔑 Đăng Ký Miễn Phí Để Xem Tất Cả
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }}
+
+      tbody.innerHTML = rowsHtml;
     }}
 
     function setRegion(reg, btn) {{
@@ -2889,7 +3039,10 @@ def build():
         return;
       }}
 
-      grid.innerHTML = filtered.slice(0, 48).map(p => `
+      const maxProps = currentUser ? 48 : 5;
+      const displayProps = filtered.slice(0, maxProps);
+
+      let cardsHtml = displayProps.map(p => `
         <div class="property-card">
           <div class="card-head">
             <div>
@@ -2943,6 +3096,23 @@ def build():
           </div>
         </div>
       `).join('');
+
+      if (!currentUser && filtered.length > 5) {{
+        cardsHtml += `
+          <div class="property-card" style="border: 2px dashed #93c5fd; background: linear-gradient(135deg, #eff6ff, #f8fafc); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 32px 20px; min-height: 280px; box-shadow: 0 4px 15px rgba(37,99,235,0.08);">
+            <div style="font-size: 42px; margin-bottom: 12px;">🔒</div>
+            <h4 style="color: #1e3a8a; font-size: 16px; font-weight: 800; margin: 0 0 6px 0;">Mở Khóa Toàn Bộ ${{filtered.length}} Căn Nhà</h4>
+            <p style="font-size: 12.5px; color: #475569; margin: 0 0 16px 0; line-height: 1.5; max-width: 270px;">
+              Quý khách đang xem <strong>5 căn nhà đầu tiên</strong>. Hãy đăng ký tài khoản miễn phí (chỉ mất 15 giây) để xem toàn bộ <strong>${{filtered.length}}</strong> bất động sản!
+            </p>
+            <button type="button" onclick="openAuthModal()" style="background: #2563eb; color: white; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.25);">
+              🔑 Đăng Ký Miễn Phí Để Mở Khóa
+            </button>
+          </div>
+        `;
+      }}
+
+      grid.innerHTML = cardsHtml;
     }}
 
     // ==========================================

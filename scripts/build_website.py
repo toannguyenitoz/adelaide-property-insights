@@ -1319,7 +1319,7 @@ def build():
           👤 Đăng Nhập / Đăng Ký
         </button>
       </div>
-      <button type="button" onclick="openDownloadModal()" class="btn-pdf" style="border:none; cursor:pointer;">
+      <button type="button" onclick="handleDownloadRequest('modal')" class="btn-pdf" style="border:none; cursor:pointer;">
         📥 Tải Báo Cáo PDF (2 Bản)
       </button>
     </div>
@@ -1339,7 +1339,7 @@ def build():
       <a href="#proptrackSection" class="hero-btn" style="background:#f59e0b; color:#0f172a; font-weight:800;">
         📉 Báo Cáo Tháng 9 (-0.6%) MỚI
       </a>
-      <button type="button" onclick="openDownloadModal()" class="hero-btn" style="background:#0284c7; color:white; border:none; cursor:pointer;">
+      <button type="button" onclick="handleDownloadRequest('modal')" class="hero-btn" style="background:#0284c7; color:white; border:none; cursor:pointer;">
         📥 Tải 2 Báo Cáo PDF MỚI
       </button>
       <a href="javascript:void(0)" onclick="openMortgageModal('Mẫu Dự Toán Tài Chính Toàn Vùng', 1100000)" class="hero-btn" style="background:#7c3aed; color:white;">
@@ -1710,12 +1710,12 @@ def build():
             </p>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download class="badge" style="background:#d97706; color:white; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
+            <button type="button" onclick="handleDownloadRequest('october')" class="badge" style="background:#d97706; color:white; border:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
               📥 Tải Báo Cáo Tháng 10 PDF
-            </a>
-            <a href="reports/proptrack_september_2026_home_price_report.md" target="_blank" class="badge" style="background:#b45309; color:white; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700;">
+            </button>
+            <button type="button" onclick="handleViewMarkdownReport()" class="badge" style="background:#b45309; color:white; border:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer;">
               📄 Xem Toàn Văn MD
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -1971,10 +1971,10 @@ def build():
             <span>🛡️ Độ tin cậy:</span> <strong>100% Thẩm định thực tế</strong>
           </div>
           <div class="report-head-btns">
-            <button type="button" onclick="openDownloadModal()" class="report-action-btn report-btn-pdf" style="border:none; cursor:pointer;">
+            <button type="button" onclick="handleDownloadRequest('modal')" class="report-action-btn report-btn-pdf" style="border:none; cursor:pointer;">
               📥 Tải 2 Báo Cáo PDF
             </button>
-            <button onclick="window.print()" class="report-action-btn report-btn-print">
+            <button type="button" onclick="handlePrintReport()" class="report-action-btn report-btn-print" style="border:none; cursor:pointer;">
               🖨️ In Báo Cáo
             </button>
           </div>
@@ -2283,24 +2283,24 @@ def build():
     <div class="modal-card" style="max-width: 480px;" onclick="event.stopPropagation()">
       <div class="modal-header">
         <div>
-          <h3 id="authModalTitle">👤 Đăng Nhập / Đăng Ký Thành Viên</h3>
+          <h3 id="authModalTitle">📝 Đăng Ký Tài Khoản Miễn Phí</h3>
           <div style="font-size:12px; color:#cbd5e1; margin-top:3px;">
-            Đăng ký tài khoản miễn phí để mở khóa toàn bộ danh sách nhà bán, 12 biểu đồ &amp; trọn vẹn báo cáo
+            Mở khóa toàn bộ 48+ căn nhà bán, 12 biểu đồ &amp; quyền tải trọn bộ báo cáo PDF
           </div>
         </div>
         <button type="button" class="modal-close-btn" onclick="closeAuthModal()" title="Đóng">&times;</button>
       </div>
 
-      <!-- Tab Switch: Login vs Register -->
+      <!-- Tab Switch: Register vs Login -->
       <div style="display:flex; border-bottom:1px solid #e2e8f0; background:#f8fafc;" id="authTabRow">
-        <button type="button" class="auth-tab-btn active" id="tabLoginBtn" onclick="switchAuthTab('login')">🔑 Đăng Nhập</button>
-        <button type="button" class="auth-tab-btn" id="tabRegisterBtn" onclick="switchAuthTab('register')">📝 Đăng Ký Mới</button>
+        <button type="button" class="auth-tab-btn active" id="tabRegisterBtn" onclick="switchAuthTab('register')">📝 Đăng Ký Mới (15s)</button>
+        <button type="button" class="auth-tab-btn" id="tabLoginBtn" onclick="switchAuthTab('login')">🔑 Đăng Nhập</button>
       </div>
 
       <!-- Form Container -->
       <div style="padding: 24px;" id="authFormContainer">
         <!-- Error / Info Box -->
-        <div id="authMsgBox" style="display:none; padding:10px 14px; border-radius:8px; font-size:12.5px; margin-bottom:16px;"></div>
+        <div id="authMsgBox" style="display:none; padding:12px 14px; border-radius:8px; font-size:12.5px; margin-bottom:16px; line-height:1.5;"></div>
 
         <!-- FORM INPUTS -->
         <form id="authForm" onsubmit="handleAuthSubmit(event)">
@@ -2316,17 +2316,22 @@ def build():
 
           <div style="margin-bottom:18px;">
             <label style="display:block; font-size:12px; font-weight:700; color:#334155; margin-bottom:4px;">Mật Khẩu <span style="color:#ef4444;">*</span></label>
-            <input type="password" id="authPassword" class="calc-input" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+            <input type="password" id="authPassword" class="calc-input" placeholder="Tối thiểu 4 ký tự" required minlength="4">
           </div>
 
-          <button type="submit" id="authSubmitBtn" style="width:100%; background:#2563eb; color:white; border:none; padding:12px; border-radius:8px; font-weight:800; font-size:14px; cursor:pointer; box-shadow:0 4px 12px rgba(37,99,235,0.25);">
-            🔑 Đăng Nhập Ngay
+          <button type="submit" id="authSubmitBtn" style="width:100%; background:#059669; color:white; border:none; padding:12px; border-radius:8px; font-weight:800; font-size:14px; cursor:pointer; box-shadow:0 4px 12px rgba(5,150,105,0.25);">
+            📝 Tạo Tài Khoản &amp; Mở Khóa Ngay
           </button>
         </form>
 
-        <!-- Free Registration Guarantee Notice -->
+        <div style="margin-top:14px; text-align:center; font-size:12.5px;" id="authSwitchPrompt">
+          <span id="authSwitchPromptText" style="color:#64748b;">Đã có tài khoản từ trước?</span>
+          <a href="javascript:void(0)" onclick="toggleAuthTab()" id="authSwitchLink" style="color:#2563eb; font-weight:700; text-decoration:underline; margin-left:5px;">Đăng nhập tại đây</a>
+        </div>
+
+        <!-- Guarantee Notice -->
         <div style="margin-top:16px; padding:12px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; font-size:11.5px; color:#1e40af; line-height:1.5;">
-          💡 <strong>Đăng ký thành viên hoàn toàn miễn phí 100%</strong> chỉ mất 15 giây. Sau khi đăng ký, hệ thống tự động mở khóa toàn bộ danh sách nhà bán, trọn bộ 12 biểu đồ, các báo cáo đầy đủ và tài liệu tải về.
+          💡 <strong>Đăng ký hoàn toàn miễn phí 100%</strong> chỉ mất 15 giây. Sau khi đăng ký, hệ thống tự động đăng nhập và mở khóa tức thì: tất cả căn nhà bán, trọn bộ 12 biểu đồ, các báo cáo và quyền tải PDF.
         </div>
       </div>
 
@@ -2346,7 +2351,7 @@ def build():
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:20px; font-size:12.5px; color:#334155; line-height:1.6;">
           <div style="font-weight:700; color:#1e3a8a; margin-bottom:6px;">Quyền lợi thành viên của bạn:</div>
           <div>✅ Xem toàn bộ danh sách bất động sản đang bán &amp; vừa bán (không giới hạn 5 căn).</div>
-          <div>✅ Xem trọn vẹn 10 chương Báo cáo Thị trường Chuyên sâu &amp; Báo cáo tháng 10.</div>
+          <div>✅ Xem trọn vẹn 10 chương Báo cáo Thị trường Toàn diện &amp; Báo cáo tháng 10.</div>
           <div>✅ Tải 2 Báo cáo bản in PDF (Bản 18 trang &amp; Bản tháng 10).</div>
           <div>✅ Truy cập tất cả 12 biểu đồ chu kỳ giao dịch 2 năm.</div>
           <div>✅ Sử dụng công cụ mô phỏng đòn bẩy tài chính &amp; Lãi suất Stress.</div>
@@ -2394,9 +2399,9 @@ def build():
             </p>
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
               <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~8.0 MB &bull; Định dạng: PDF chuẩn A4</span>
-              <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download onclick="return handleDownloadPdf(event)" class="btn-pdf" style="padding:6px 14px; font-size:12px;">
+              <button type="button" onclick="executeDownload('master')" id="modalBtnMaster" class="btn-pdf" style="border:none; cursor:pointer; padding:7px 16px; font-size:12px;">
                 📥 Tải Báo Cáo Đầy Đủ
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -2416,9 +2421,9 @@ def build():
             </p>
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
               <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~0.5 MB &bull; Định dạng: PDF chuẩn A4</span>
-              <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download onclick="return handleDownloadPdf(event)" class="badge" style="background:#d97706; color:white; text-decoration:none; padding:7px 14px; border-radius:6px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
+              <button type="button" onclick="executeDownload('october')" id="modalBtnOctober" class="badge" style="background:#d97706; color:white; border:none; padding:7px 16px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
                 📥 Tải Báo Cáo Tháng 10 Mới
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -2434,7 +2439,6 @@ def build():
       </div>
     </div>
   </div>
-
   <!-- Client Script for Filtering & Rendering -->
   <script>
     const allProps = {properties_json_str};
@@ -2461,20 +2465,24 @@ def build():
     // USER AUTHENTICATION & ACCESS CONTROL ENGINE
     // ==========================================
     let currentUser = null;
-    try {{
-      const savedUser = localStorage.getItem('adelaide_user_session');
-      if (savedUser) {{
-        const parsed = JSON.parse(savedUser);
-        if (parsed.email === 'demo@adelaide-property.com') {{
-          localStorage.removeItem('adelaide_user_session');
-          currentUser = null;
-        }} else {{
-          currentUser = parsed;
+
+    function loadUserSession() {{
+      try {{
+        const raw = localStorage.getItem('adelaide_user_session');
+        if (raw && raw !== 'null' && raw !== 'undefined') {{
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === 'object' && parsed.email && parsed.email !== 'demo@adelaide-property.com') {{
+            currentUser = parsed;
+            return;
+          }}
         }}
+      }} catch (e) {{
+        console.warn('Session parse error:', e);
       }}
-    }} catch (e) {{
-      console.warn('LocalStorage error:', e);
+      currentUser = null;
+      localStorage.removeItem('adelaide_user_session');
     }}
+    loadUserSession();
 
     // Clean up demo account from users DB if present
     try {{
@@ -2485,7 +2493,7 @@ def build():
       }}
     }} catch(e) {{}}
 
-    function openAuthModal() {{
+    function openAuthModal(defaultTab = 'register') {{
       const modal = document.getElementById('authModal');
       const msgBox = document.getElementById('authMsgBox');
       msgBox.style.display = 'none';
@@ -2500,7 +2508,7 @@ def build():
         document.getElementById('authTabRow').style.display = 'flex';
         document.getElementById('authFormContainer').style.display = 'block';
         document.getElementById('authProfileContainer').style.display = 'none';
-        switchAuthTab('login');
+        switchAuthTab(defaultTab);
       }}
 
       modal.classList.add('active');
@@ -2520,6 +2528,10 @@ def build():
     }}
 
     function openDownloadModal() {{
+      if (!currentUser) {{
+        handleDownloadRequest('modal');
+        return;
+      }}
       const modal = document.getElementById('downloadModal');
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -2537,21 +2549,78 @@ def build():
       }}
     }}
 
-    function handleDownloadPdf(e) {{
+    function handleDownloadRequest(target) {{
       if (!currentUser) {{
-        if (e) e.preventDefault();
-        openAuthModal();
+        openAuthModal('register');
         const msgBox = document.getElementById('authMsgBox');
         msgBox.style.display = 'block';
-        msgBox.style.background = '#eff6ff';
-        msgBox.style.color = '#1d4ed8';
-        msgBox.innerText = '📥 Quý khách vui lòng đăng ký tài khoản thành viên (hoàn toàn miễn phí) để tải tài liệu PDF!';
-        return false;
+        msgBox.style.background = '#fef2f2';
+        msgBox.style.border = '1.5px solid #fecaca';
+        msgBox.style.color = '#b91c1c';
+        msgBox.innerHTML = '🔒 <strong>Yêu Cầu Đăng Ký Tài Khoản:</strong><br>Bạn phải đăng nhập hoặc đăng ký thành viên mới có thể tải các bản báo cáo đầy đủ (PDF). Đăng ký hoàn toàn miễn phí chỉ mất 15 giây!';
+        return;
       }}
-      return true;
+
+      if (target === 'october') {{
+        executeDownload('october');
+      }} else {{
+        // Open download modal for member
+        const modal = document.getElementById('downloadModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }}
     }}
 
-    let currentAuthTab = 'login';
+    function handleViewMarkdownReport() {{
+      if (!currentUser) {{
+        openAuthModal('register');
+        const msgBox = document.getElementById('authMsgBox');
+        msgBox.style.display = 'block';
+        msgBox.style.background = '#fef2f2';
+        msgBox.style.border = '1.5px solid #fecaca';
+        msgBox.style.color = '#b91c1c';
+        msgBox.innerHTML = '🔒 <strong>Nội Dung Dành Riêng Cho Thành Viên:</strong><br>Vui lòng đăng ký tài khoản thành viên để đọc toàn văn tài liệu nghiên cứu.';
+        return;
+      }}
+      window.open('reports/proptrack_september_2026_home_price_report.md', '_blank');
+    }}
+
+    function handlePrintReport() {{
+      if (!currentUser) {{
+        openAuthModal('register');
+        const msgBox = document.getElementById('authMsgBox');
+        msgBox.style.display = 'block';
+        msgBox.style.background = '#fef2f2';
+        msgBox.style.border = '1.5px solid #fecaca';
+        msgBox.style.color = '#b91c1c';
+        msgBox.innerHTML = '🔒 <strong>Tính Năng In Toàn Văn:</strong><br>Vui lòng đăng ký tài khoản thành viên để in hoặc lưu trọn bộ 10 chương báo cáo.';
+        return;
+      }}
+      window.print();
+    }}
+
+    function executeDownload(docType) {{
+      if (!currentUser) {{
+        handleDownloadRequest(docType);
+        return;
+      }}
+
+      const fileUrl = docType === 'master' 
+        ? 'reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf'
+        : 'reports/Bao_Cao_Adelaide_Thang_10_2026.pdf';
+      const fileName = docType === 'master'
+        ? 'Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf'
+        : 'Bao_Cao_Adelaide_Thang_10_2026.pdf';
+
+      const a = document.createElement('a');
+      a.href = fileUrl;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }}
+
+    let currentAuthTab = 'register';
     function switchAuthTab(tab) {{
       currentAuthTab = tab;
       const tabLogin = document.getElementById('tabLoginBtn');
@@ -2560,6 +2629,8 @@ def build():
       const submitBtn = document.getElementById('authSubmitBtn');
       const title = document.getElementById('authModalTitle');
       const msgBox = document.getElementById('authMsgBox');
+      const promptText = document.getElementById('authSwitchPromptText');
+      const promptLink = document.getElementById('authSwitchLink');
       msgBox.style.display = 'none';
 
       if (tab === 'login') {{
@@ -2569,13 +2640,25 @@ def build():
         submitBtn.innerHTML = '🔑 Đăng Nhập Ngay';
         submitBtn.style.background = '#2563eb';
         title.innerText = '🔑 Đăng Nhập Thành Viên';
+        if (promptText) promptText.innerText = 'Chưa có tài khoản?';
+        if (promptLink) promptLink.innerText = 'Đăng ký miễn phí ngay (15 giây)';
       }} else {{
         tabReg.classList.add('active');
         tabLogin.classList.remove('active');
         nameGroup.style.display = 'block';
-        submitBtn.innerHTML = '📝 Đăng Ký Tài Khoản Miễn Phí';
+        submitBtn.innerHTML = '📝 Tạo Tài Khoản &amp; Mở Khóa Ngay';
         submitBtn.style.background = '#059669';
-        title.innerText = '📝 Đăng Ký Tài Khoản Mới';
+        title.innerText = '📝 Đăng Ký Tài Khoản Miễn Phí';
+        if (promptText) promptText.innerText = 'Đã có tài khoản từ trước?';
+        if (promptLink) promptLink.innerText = 'Đăng nhập tại đây';
+      }}
+    }}
+
+    function toggleAuthTab() {{
+      if (currentAuthTab === 'register') {{
+        switchAuthTab('login');
+      }} else {{
+        switchAuthTab('register');
       }}
     }}
 
@@ -2587,9 +2670,9 @@ def build():
       const msgBox = document.getElementById('authMsgBox');
 
       if (!email || !pass) {{
-        msgBox.className = '';
         msgBox.style.display = 'block';
         msgBox.style.background = '#fef2f2';
+        msgBox.style.border = '1px solid #fecaca';
         msgBox.style.color = '#b91c1c';
         msgBox.innerText = 'Vui lòng nhập đầy đủ Email và Mật khẩu!';
         return;
@@ -2606,8 +2689,9 @@ def build():
         if (users.some(u => u.email === email)) {{
           msgBox.style.display = 'block';
           msgBox.style.background = '#fef2f2';
+          msgBox.style.border = '1px solid #fecaca';
           msgBox.style.color = '#b91c1c';
-          msgBox.innerText = 'Email này đã được đăng ký. Vui lòng chuyển sang tab Đăng Nhập!';
+          msgBox.innerHTML = 'Email này đã được đăng ký trên thiết bị! Vui lòng <a href="javascript:void(0)" onclick="switchAuthTab(&#39;login&#39;)" style="color:#2563eb; font-weight:700;">bấm vào đây để Đăng Nhập</a>.';
           return;
         }}
         const newUser = {{
@@ -2623,12 +2707,13 @@ def build():
 
         msgBox.style.display = 'block';
         msgBox.style.background = '#f0fdf4';
+        msgBox.style.border = '1px solid #bbf7d0';
         msgBox.style.color = '#15803d';
         msgBox.innerText = '🎉 Đăng ký thành công! Hệ thống đã tự động đăng nhập và mở khóa quyền truy cập.';
         setTimeout(() => {{
           closeAuthModal();
           updateUserUI();
-        }}, 600);
+        }}, 500);
       }} else {{
         // Login
         const match = users.find(u => u.email === email && u.pass === pass);
@@ -2637,17 +2722,19 @@ def build():
           localStorage.setItem('adelaide_user_session', JSON.stringify(currentUser));
           msgBox.style.display = 'block';
           msgBox.style.background = '#f0fdf4';
+          msgBox.style.border = '1px solid #bbf7d0';
           msgBox.style.color = '#15803d';
           msgBox.innerText = '✅ Đăng nhập thành công! Đang kích hoạt toàn bộ báo cáo...';
           setTimeout(() => {{
             closeAuthModal();
             updateUserUI();
-          }}, 500);
+          }}, 400);
         }} else {{
           msgBox.style.display = 'block';
           msgBox.style.background = '#fef2f2';
+          msgBox.style.border = '1px solid #fecaca';
           msgBox.style.color = '#b91c1c';
-          msgBox.innerText = 'Email hoặc mật khẩu chưa chính xác! Nếu chưa có tài khoản, vui lòng chọn tab "Đăng Ký Mới" bên trên (miễn phí 100%).';
+          msgBox.innerHTML = 'Tài khoản chưa tồn tại hoặc sai mật khẩu! Nếu bạn chưa từng đăng ký, hãy <a href="javascript:void(0)" onclick="switchAuthTab(&#39;register&#39;)" style="color:#059669; font-weight:800;">bấm vào đây để Đăng Ký Mới (miễn phí)</a>.';
         }}
       }}
     }}
@@ -2663,13 +2750,13 @@ def build():
       const navSlot = document.getElementById('userNavSlot');
       if (currentUser) {{
         navSlot.innerHTML = `
-          <button type="button" onclick="openAuthModal()" class="user-auth-btn" style="background:#059669; border-color:#34d399; font-weight:800;">
+          <button type="button" onclick="openAuthModal('profile')" class="user-auth-btn" style="background:#059669; border-color:#34d399; font-weight:800;">
             ⭐ ${{currentUser.name || 'Thành Viên VIP'}}
           </button>
         `;
       }} else {{
         navSlot.innerHTML = `
-          <button type="button" onclick="openAuthModal()" class="user-auth-btn" id="navAuthBtn">
+          <button type="button" onclick="openAuthModal('register')" class="user-auth-btn" id="navAuthBtn">
             👤 Đăng Nhập / Đăng Ký
           </button>
         `;
@@ -2734,12 +2821,13 @@ def build():
         pill.onclick = function(e) {{
           if (!currentUser && chapNum > 1) {{
             e.preventDefault();
-            openAuthModal();
+            openAuthModal('register');
             const msgBox = document.getElementById('authMsgBox');
             msgBox.style.display = 'block';
-            msgBox.style.background = '#eff6ff';
-            msgBox.style.color = '#1d4ed8';
-            msgBox.innerText = '📖 Chương ' + chapNum + ' thuộc Trang 2 trở đi. Vui lòng đăng ký tài khoản thành viên miễn phí để mở khóa đọc toàn bộ báo cáo!';
+            msgBox.style.background = '#fef2f2';
+            msgBox.style.border = '1px solid #fecaca';
+            msgBox.style.color = '#b91c1c';
+            msgBox.innerHTML = '📖 <strong>Chương ' + chapNum + ' thuộc Trang 2 trở đi:</strong><br>Vui lòng đăng ký tài khoản thành viên miễn phí để mở khóa đọc toàn bộ 10 chương báo cáo!';
           }}
         }};
       }});
@@ -2755,7 +2843,30 @@ def build():
         if (proptrackLock) proptrackLock.style.display = 'none';
       }}
 
-      // 4. Update listings and tables to reflect 5-item vs all items restriction
+      // 4. Download Modal Button Labels
+      const modalBtnMaster = document.getElementById('modalBtnMaster');
+      const modalBtnOctober = document.getElementById('modalBtnOctober');
+      if (!currentUser) {{
+        if (modalBtnMaster) {{
+          modalBtnMaster.innerHTML = '🔒 Đăng Ký Để Tải (PDF)';
+          modalBtnMaster.style.background = '#475569';
+        }}
+        if (modalBtnOctober) {{
+          modalBtnOctober.innerHTML = '🔒 Đăng Ký Để Tải (PDF)';
+          modalBtnOctober.style.background = '#475569';
+        }}
+      }} else {{
+        if (modalBtnMaster) {{
+          modalBtnMaster.innerHTML = '📥 Tải Báo Cáo Đầy Đủ (PDF)';
+          modalBtnMaster.style.background = '';
+        }}
+        if (modalBtnOctober) {{
+          modalBtnOctober.innerHTML = '📥 Tải Báo Cáo Tháng 10 Mới (PDF)';
+          modalBtnOctober.style.background = '#d97706';
+        }}
+      }}
+
+      // 5. Update listings and tables to reflect 5-item vs all items restriction
       renderProperties();
       filterSoldTable();
       filterAuctionTable();
@@ -2764,18 +2875,20 @@ def build():
     function switchChart(id, btn) {{
       // Gate charts 4 to 12: only 3 charts allowed without registration
       if (!currentUser && id > 3) {{
-        openAuthModal();
+        openAuthModal('register');
         const msgBox = document.getElementById('authMsgBox');
         msgBox.style.display = 'block';
-        msgBox.style.background = '#eff6ff';
-        msgBox.style.color = '#1d4ed8';
-        msgBox.innerText = '📊 Biểu đồ ' + id + ' yêu cầu đăng ký tài khoản thành viên để xem. Bạn chỉ có thể xem 3 biểu đồ đầu tiên khi chưa đăng ký!';
+        msgBox.style.background = '#fef2f2';
+        msgBox.style.border = '1px solid #fecaca';
+        msgBox.style.color = '#b91c1c';
+        msgBox.innerHTML = '📊 <strong>Biểu Đồ Bị Khóa:</strong> Biểu đồ ' + id + ' yêu cầu đăng ký tài khoản thành viên. Quý khách chỉ có thể xem 3 biểu đồ đầu tiên khi chưa đăng ký. Đăng ký hoàn toàn miễn phí!';
         return;
       }}
       document.getElementById('activeChartImg').src = chartMap[id];
       document.querySelectorAll('.chart-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     }}
+
 
     // Auction Listings Data & Render
     const auctionListings = {auction_listings_json_str};

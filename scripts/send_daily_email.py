@@ -42,11 +42,11 @@ def score_property(p):
     else:
         score += 12
 
-    # 2. Distance from Myrtle Bank
+    # 2. Distance from Central Adelaide
     dist = p.get('distance_km_from_wilgena', 99)
     if dist <= 1.5:
         score += 30
-        reasons.append(f"Cực gần trung tâm Myrtle Bank ({dist:.1f} km)")
+        reasons.append(f"Cực gần trung tâm Adelaide ({dist:.1f} km)")
     elif dist <= 3.0:
         score += 22
         reasons.append(f"Vị trí rất gần trung tâm ({dist:.1f} km)")
@@ -290,7 +290,7 @@ def generate_email_html(top_picks, total_scanned, now_str, auction_data=None, so
             <div>🏫 <strong>Trường học:</strong> <span style="color:#1d4ed8; font-weight:700;">{p.get('school_zone', 'N/A')}</span></div>
             <div>🏗️ <strong>Loại hình & Pháp lý:</strong> <span>{p.get('property_type', 'House')}</span></div>
             <div>🔨 <strong>Năm xây dựng:</strong> <span style="color:#059669; font-weight:700;">{p.get('year_built', 'Chưa rõ')}</span></div>
-            <div>📍 <strong>Cự ly:</strong> <span>Cách trung tâm Myrtle Bank ~<strong>{p.get('distance_km_from_wilgena', 'N/A')} km</strong></span></div>
+            <div>📍 <strong>Cự ly:</strong> <span>Cách trung tâm Adelaide ~<strong>{p.get('distance_km_from_wilgena', 'N/A')} km</strong></span></div>
             <div>📅 <strong>Ngày lên website:</strong> <span style="color:#0284c7; font-weight:700;">{p.get('listed_date', '14/09/2026')}</span></div>
           </div>
 

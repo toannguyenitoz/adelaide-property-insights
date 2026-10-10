@@ -85,8 +85,8 @@ Bộ 12 biểu đồ đã được cập nhật toàn bộ trên hệ thống v�
 So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
 ![Chart 1: Median Prices by Suburb](charts/chart1_median_prices.png)
 
-### 📊 Biểu đồ 2: Tương Quan Khoảng Cách Tới Myrtle Bank vs Giá Bán (375 BĐS Toàn Vùng)
-Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh trung tâm Myrtle Bank:
+### 📊 Biểu đồ 2: Tương Quan Khoảng Cách Tới Trung Tâm Adelaide vs Giá Bán (375 BĐS Toàn Vùng)
+Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh trung tâm Adelaide:
 ![Chart 2: Distance vs Price](charts/chart2_distance_vs_price.png)
 
 ### 📊 Biểu đồ 3: Phân Bổ Địa Lý Nguồn Cung Nhà Mới (92.5% Nằm Rìa Xa 40km)

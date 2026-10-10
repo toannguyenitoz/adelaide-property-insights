@@ -131,7 +131,7 @@ ax.annotate('2 Pitfour Rd, Lower Mitcham\n($1.0M - $1.1M, 492m² Land)', xy=(2.6
             fontsize=9, fontweight='bold', bbox=dict(boxstyle="round,pad=0.3", fc="#faf5ff", ec="#7c3aed", lw=1))
 
 ax.axhline(y=1.2, color='#dc2626', linestyle='--', linewidth=1.5, label='Budget Limit ($1.2M)')
-ax.set_xlabel('Distance from Central Myrtle Bank (km)', fontsize=11, fontweight='bold', labelpad=10)
+ax.set_xlabel('Distance from Central Adelaide (km)', fontsize=11, fontweight='bold', labelpad=10)
 ax.set_ylabel('Price Guide / Estimated Price ($M AUD)', fontsize=11, fontweight='bold', labelpad=10)
 ax.set_title('Active 3-Bedroom Properties (< $1.2M): Distance vs Price', fontsize=13, fontweight='bold', pad=15)
 ax.set_ylim(0.65, 1.3)

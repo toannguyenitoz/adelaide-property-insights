@@ -1186,16 +1186,16 @@
           👤 Đăng Nhập / Đăng Ký
         </button>
       </div>
-      <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf">
-        📥 Tải Báo Cáo PDF (18 Trang)
-      </a>
+      <button type="button" onclick="openDownloadModal()" class="btn-pdf" style="border:none; cursor:pointer;">
+        📥 Tải Báo Cáo PDF (2 Bản)
+      </button>
     </div>
   </nav>
 
   <!-- Hero -->
   <header class="hero">
     <div class="hero-badge">
-      🛡️ Dữ Liệu Thực Tế Tuyển Chọn &bull; Loại Trừ Vùng Tội Phạm &bull; Cập nhật lúc 10/10/2026 13:04
+      🛡️ Dữ Liệu Thực Tế Tuyển Chọn &bull; Loại Trừ Vùng Tội Phạm &bull; Cập nhật lúc 10/10/2026 23:50
     </div>
     <h1>CỔNG PHÂN TÍCH BẤT ĐỘNG SẢN AN TOÀN GREATER ADELAIDE</h1>
     <p>Hệ thống tự động quét và thẩm định 228 nhà 3 phòng ngủ có giá dưới $1.2M AUD, đối soát ranh giới trường công lập danh tiếng và chỉ số an ninh cảnh sát SAPOL.</p>
@@ -1204,8 +1204,11 @@
         🔍 Khảo Sát 228 Nhà Đang Bán
       </a>
       <a href="#proptrackSection" class="hero-btn" style="background:#f59e0b; color:#0f172a; font-weight:800;">
-        📉 Báo Cáo Tháng 9: Giá Giảm 0.6% MỚI
+        📉 Báo Cáo Tháng 9 (-0.6%) MỚI
       </a>
+      <button type="button" onclick="openDownloadModal()" class="hero-btn" style="background:#0284c7; color:white; border:none; cursor:pointer;">
+        📥 Tải 2 Báo Cáo PDF MỚI
+      </button>
       <a href="javascript:void(0)" onclick="openMortgageModal('Mẫu Dự Toán Tài Chính Toàn Vùng', 1100000)" class="hero-btn" style="background:#7c3aed; color:white;">
         🧮 Bảng Tính Vay &amp; Chi Phí Mua Nhà MỚI
       </a>
@@ -1285,7 +1288,7 @@
             <option value="Unit">Unit / Villa Trệt</option>
           </select>
           <select id="sortFilter" class="select-input" onchange="renderProperties()">
-            <option value="dist">Gần trung tâm Myrtle Bank nhất</option>
+            <option value="dist">Gần trung tâm Adelaide nhất</option>
             <option value="price_asc">Giá: Thấp đến Cao</option>
             <option value="price_desc">Giá: Cao đến Thấp</option>
           </select>
@@ -1295,7 +1298,7 @@
       <!-- Properties Grid -->
       <div class="grid-header">
         <div class="grid-title">Danh Sách Bất Động Sản An Toàn (<span id="matchCount">228</span> căn phù hợp)</div>
-        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: Trung tâm Myrtle Bank SA 5064</div>
+        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: Trung tâm Adelaide (Adelaide CBD / Core SA)</div>
       </div>
       <div class="property-grid" id="propertyGrid"></div>
     </section>
@@ -1420,7 +1423,7 @@
             <option value="date_desc">Ngày bán mới nhất</option>
             <option value="price_asc">Giá: Thấp &rarr; Cao</option>
             <option value="price_desc">Giá: Cao &rarr; Thấp</option>
-            <option value="dist">Gần trung tâm Myrtle Bank nhất</option>
+            <option value="dist">Gần trung tâm Adelaide nhất</option>
           </select>
         </div>
       </div>
@@ -1443,7 +1446,7 @@
         </table>
       </div>
       <div style="font-size:11.5px; color:#64748b; margin-top:8px; text-align:right;">
-        * Dữ liệu bán từ các đại lý BĐS Nam Úc &amp; Homely. Cập nhật ngày 10/10/2026 13:04.
+        * Dữ liệu bán từ các đại lý BĐS Nam Úc &amp; Homely. Cập nhật ngày 10/10/2026 23:50.
       </div>
     </section>
 
@@ -1573,9 +1576,12 @@
               Chuyên gia kinh tế cao cấp Eleanor Creagh công bố: Tháng giảm thứ 4 liên tiếp, giá hạ -2.5% từ đỉnh tháng 5/2026. Tuy nhiên vẫn <strong>tăng +5.6% so với cùng kỳ năm trước</strong>.
             </p>
           </div>
-          <div style="display:flex; gap:8px;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download class="badge" style="background:#d97706; color:white; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
+              📥 Tải Báo Cáo Tháng 10 PDF
+            </a>
             <a href="reports/proptrack_september_2026_home_price_report.md" target="_blank" class="badge" style="background:#b45309; color:white; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700;">
-              📄 Xem Tài Liệu Toàn Văn MD
+              📄 Xem Toàn Văn MD
             </a>
           </div>
         </div>
@@ -1810,7 +1816,7 @@
             <span>✍️ Tác giả:</span> <strong>TOAN NGUYEN IT OZ</strong>
           </div>
           <div class="report-meta-item">
-            <span>📅 Cập nhật:</span> <strong>10/10/2026 13:04</strong>
+            <span>📅 Cập nhật:</span> <strong>10/10/2026 23:50</strong>
           </div>
           <div class="report-meta-item">
             <span>⏱️ Thời lượng đọc:</span> <strong>~18 phút (10 Chương)</strong>
@@ -1819,9 +1825,9 @@
             <span>🛡️ Độ tin cậy:</span> <strong>100% Thẩm định thực tế</strong>
           </div>
           <div class="report-head-btns">
-            <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="report-action-btn report-btn-pdf">
-              📥 Tải File PDF (18 Trang)
-            </a>
+            <button type="button" onclick="openDownloadModal()" class="report-action-btn report-btn-pdf" style="border:none; cursor:pointer;">
+              📥 Tải 2 Báo Cáo PDF
+            </button>
             <button onclick="window.print()" class="report-action-btn report-btn-print">
               🖨️ In Báo Cáo
             </button>
@@ -1938,30 +1944,30 @@
 <p>Bộ 12 biểu đồ đã được cập nhật toàn bộ trên hệ thống và hiển thị trực tiếp trên Dashboard web:</p>
 <h3>📊 Biểu đồ 1: Giá Trung Vị Toàn Vùng vs Ngưỡng Ngân Sách $1.2M (Bao gồm Unley Park &amp; Toorak Gardens)</h3>
 <p>So sánh tương quan giữa mặt bằng giá chung của các vùng ngoại ô thượng lưu với ngưỡng trần ngân sách $1.2M AUD:
-<img src="reports/charts/chart1_median_prices.png?v=1791637474" alt="Chart 1: Median Prices by Suburb" /></p>
-<h3>📊 Biểu đồ 2: Tương Quan Khoảng Cách Tới Myrtle Bank vs Giá Bán (375 BĐS Toàn Vùng)</h3>
-<p>Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh trung tâm Myrtle Bank:
-<img src="reports/charts/chart2_distance_vs_price.png?v=1791637474" alt="Chart 2: Distance vs Price" /></p>
+<img src="reports/charts/chart1_median_prices.png?v=1791638415" alt="Chart 1: Median Prices by Suburb" /></p>
+<h3>📊 Biểu đồ 2: Tương Quan Khoảng Cách Tới Trung Tâm Adelaide vs Giá Bán (375 BĐS Toàn Vùng)</h3>
+<p>Phân bổ 375 căn nhà theo cự ly từ 0.8km đến 20km quanh trung tâm Adelaide:
+<img src="reports/charts/chart2_distance_vs_price.png?v=1791638415" alt="Chart 2: Distance vs Price" /></p>
 <h3>📊 Biểu đồ 3: Phân Bổ Địa Lý Nguồn Cung Nhà Mới (92.5% Nằm Rìa Xa 40km)</h3>
-<p><img src="reports/charts/chart3_housing_supply_distribution.png?v=1791637474" alt="Chart 3: Housing Supply Distribution" /></p>
+<p><img src="reports/charts/chart3_housing_supply_distribution.png?v=1791638415" alt="Chart 3: Housing Supply Distribution" /></p>
 <h3>📊 Biểu đồ 4: Phân Hóa Tác Động Cắt Giảm Nhập Cư (CBD vs Vùng Trường Điểm)</h3>
-<p><img src="reports/charts/chart4_immigration_impact_analysis.png?v=1791637474" alt="Chart 4: Immigration Impact Analysis" /></p>
+<p><img src="reports/charts/chart4_immigration_impact_analysis.png?v=1791638415" alt="Chart 4: Immigration Impact Analysis" /></p>
 <h3>📊 Biểu đồ 5: Thước Đo Tỷ Lệ Tội Phạm SAPOL (Khu Vực Chọn vs Vùng Bị Loại Trừ)</h3>
-<p><img src="reports/charts/chart5_safety_index_comparison_v2.png?v=1791637474" alt="Chart 5: Safety Index Comparison" /></p>
+<p><img src="reports/charts/chart5_safety_index_comparison_v2.png?v=1791638415" alt="Chart 5: Safety Index Comparison" /></p>
 <h3>📊 Biểu đồ 6: Ma Trận Cân Bằng Giá vs Đất vs Lối Sống Trên Các Hội Đồng An Toàn</h3>
-<p><img src="reports/charts/chart6_regional_value_matrix.png?v=1791637474" alt="Chart 6: Regional Value Matrix" /></p>
+<p><img src="reports/charts/chart6_regional_value_matrix.png?v=1791638415" alt="Chart 6: Regional Value Matrix" /></p>
 <h3>📊 Biểu đồ 7: So Sánh Chi Phí Vận Hàng Hàng Năm &amp; Tạo Dựng Tài Sản 10 Năm (House vs Townhouse vs Unit)</h3>
-<p><img src="reports/charts/chart7_property_type_cost_comparison.png?v=1791637474" alt="Chart 7: Property Type Cost Comparison" /></p>
+<p><img src="reports/charts/chart7_property_type_cost_comparison.png?v=1791638415" alt="Chart 7: Property Type Cost Comparison" /></p>
 <h3>📊 Biểu đồ 8: Xu Hướng Giá Rao Bán &amp; Tình Hình Đấu Giá Hàng Tuần (Domain Weekly Clearance Rate)</h3>
 <p>Biểu đồ theo dõi giá trung vị qua các tuần và tỷ lệ chốt thành công tại các phiên đấu giá chính thức của Domain tại Adelaide:
-<img src="reports/charts/chart8_weekly_price_trends.png?v=1791637474" alt="Chart 8: Weekly Price Trends and Domain Auction Clearance" /></p>
+<img src="reports/charts/chart8_weekly_price_trends.png?v=1791638415" alt="Chart 8: Weekly Price Trends and Domain Auction Clearance" /></p>
 <h3>📊 Biểu đồ 9: Lịch Sử Lượng Nhà Bán &amp; Giá Bán Từng Tuần Suốt 2 Năm (2024 - 2026) Trên 137 Suburb An Toàn</h3>
 <p>Phân tích toàn diện hơn 7,000 giao dịch thực tế đã chốt (Bao gồm cả Bán thỏa thuận Private Treaty và Đấu giá Auction) qua 105 tuần liên tục:</p>
 <ul>
 <li><strong>Khối lượng bán theo tuần (Weekly Sales Volume):</strong> Thể hiện rõ nét tính chu kỳ mùa vụ của bất động sản Adelaide. Đỉnh điểm thanh khoản rơi vào Mùa Xuân (tháng 10 - 11 hàng năm đạt ~100 - 105 căn/tuần), chạm đáy vào kỳ nghỉ lễ Giáng Sinh &amp; Tết Dương Lịch (~20 - 30 căn/tuần), và giữ ổn định ở mức 70 - 80 căn/tuần xuyên suốt năm 2026.</li>
 <li><strong>Biến động giá bán chốt thực tế (Weekly Median Sold Price):</strong> Mức giá chốt trung vị dao động trong khoảng $1.08M - $1.15M AUD, với biên độ liên phần tư IQR 25% - 75% tập trung từ $800k đến $1.45M. Đường xu hướng tuyến tính 2 năm khẳng định mức tăng trưởng tích cực +5.8% (từ ~$1,077k lên ~$1,139k), chứng minh nội lực bền bỉ của các vùng an toàn.</li>
 </ul>
-<p><img src="reports/charts/chart9_2year_weekly_sales_volume_price.png?v=1791637474" alt="Chart 9: 2-Year Weekly Sales Volume and Sold Price History" /></p>
+<p><img src="reports/charts/chart9_2year_weekly_sales_volume_price.png?v=1791638415" alt="Chart 9: 2-Year Weekly Sales Volume and Sold Price History" /></p>
 <h3>📊 Biểu đồ 10: Phân Tích Lượng Nhà Đã Bán &amp; Giá Chốt Theo Loại Hình (House, Townhouse, Unit, Apartment) &amp; Số Phòng Ngủ</h3>
 <p>Phân tích chi tiết trên toàn bộ 8,121 giao dịch thực tế đã chốt trong khu vực 137 suburb an toàn:</p>
 <ul>
@@ -1991,7 +1997,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="reports/charts/chart10_sold_by_type_and_bedrooms.png?v=1791637474" alt="Chart 10: Sold Volume &amp; Price by Property Type and Bedrooms" /></p>
+<p><img src="reports/charts/chart10_sold_by_type_and_bedrooms.png?v=1791638415" alt="Chart 10: Sold Volume &amp; Price by Property Type and Bedrooms" /></p>
 <h3>📊 Biểu đồ 11: Phân Tích Lượng Nhà Đã Bán &amp; Giá Chốt Theo 6 Hành Lang An Toàn Greater Adelaide</h3>
 <p>Đối chiếu chuyên sâu về quy mô thanh khoản, giá bán thực tế và cơ cấu loại hình giữa 6 khu vực tuyển chọn:</p>
 <ul>
@@ -2012,7 +2018,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="reports/charts/chart11_sold_by_region.png?v=1791637474" alt="Chart 11: Sold Volume &amp; Price across 6 Safe Regions" /></p>
+<p><img src="reports/charts/chart11_sold_by_region.png?v=1791638415" alt="Chart 11: Sold Volume &amp; Price across 6 Safe Regions" /></p>
 <h3>📊 Biểu đồ 12: Phân Tích Chu Kỳ Giao Dịch Chốt Bán Theo Tuần (2024 - 2026) Chia Theo Loại Hình &amp; Số Phòng Ngủ</h3>
 <p>Bóc tách ma trận chu kỳ thời gian 105 tuần giao dịch liên tục (2 năm) theo từng chủng loại bất động sản và số lượng phòng ngủ:</p>
 <ul>
@@ -2029,7 +2035,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="reports/charts/chart12_weekly_sold_by_type_and_bedrooms.png?v=1791637474" alt="Chart 12: Weekly Sold Volume &amp; Price by Property Type and Bedrooms" /></p>
+<p><img src="reports/charts/chart12_weekly_sold_by_type_and_bedrooms.png?v=1791638415" alt="Chart 12: Weekly Sold Volume &amp; Price by Property Type and Bedrooms" /></p>
 <hr />
 <h2 id="chuong-5-phan-bien-kinh-te-do-thi" class="report-h2"><span class="report-chap-badge">Chương 5</span> PHẢN BIỆN KINH TẾ ĐÔ THỊ HỌC: TẠI SAO CUNG NGOẠI Ô TĂNG LẠI LÀM GIÁ ĐẤT NỘI ĐÔ TĂNG? CƠ SỞ KHOA HỌC TỪ RBA &amp; MÔ HÌNH KINH TẾ ĐÔ THỊ</h2>
 <p>Một thắc mắc kinh điển và rất sắc bén của nhà đầu tư: <em>&quot;Theo quy luật cung cầu cơ bản, khi nguồn cung nhà ở ngoại ô tăng vọt (hàng chục ngàn lô đất mới được giải phóng), tại sao giá nhà nội đô không giảm mà ngược lại còn tăng mạnh?&quot;</em></p>
@@ -2589,7 +2595,7 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:20px; font-size:12.5px; color:#334155; line-height:1.6;">
           <div style="font-weight:700; color:#1e3a8a; margin-bottom:6px;">Quyền lợi thành viên hiện tại:</div>
           <div>✅ Xem trọn vẹn 10 chương Báo cáo Thị trường Chuyên sâu.</div>
-          <div>✅ Tải báo cáo phân tích bản in PDF (18 trang).</div>
+          <div>✅ Tải 2 Báo cáo bản in PDF (Báo cáo đầy đủ 18 trang &amp; Báo cáo mới tháng 10).</div>
           <div>✅ Truy cập tất cả 12 biểu đồ chu kỳ giao dịch 2 năm.</div>
           <div>✅ Sử dụng công cụ mô phỏng đòn bẩy tài chính &amp; Lãi suất Stress.</div>
         </div>
@@ -2601,6 +2607,76 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
 
       <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:flex-end;">
         <button type="button" onclick="closeAuthModal()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; cursor:pointer;">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Document Download Center Modal -->
+  <div id="downloadModal" class="modal-overlay" onclick="closeDownloadModalOnBackdrop(event)">
+    <div class="modal-card" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h3>📥 Trung Tâm Tải Báo Cáo &amp; Tài Liệu PDF</h3>
+          <div style="font-size:12px; color:#cbd5e1; margin-top:3px;">
+            Đầy đủ 2 tài liệu nghiên cứu chuyên sâu về thị trường Greater Adelaide do Toan Nguyen IT OZ phát hành
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeDownloadModal()" title="Đóng">&times;</button>
+      </div>
+
+      <div style="padding: 24px;">
+        <!-- Doc 1: Master Report -->
+        <div style="background:#ffffff; border:1.5px solid #bfdbfe; border-radius:12px; padding:18px; margin-bottom:16px; box-shadow:0 3px 10px rgba(37,99,235,0.06); display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:48px; height:48px; border-radius:10px; background:#eff6ff; color:#1d4ed8; font-size:24px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            📘
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; flex-wrap:wrap; gap:6px;">
+              <h4 style="margin:0; font-size:15px; color:#1e3a8a;">1. Báo Cáo Thị Trường Toàn Diện (10 Chương)</h4>
+              <span style="background:#dbeafe; color:#1d4ed8; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:4px;">BẢN ĐẦY ĐỦ 18 TRANG</span>
+            </div>
+            <p style="font-size:12.5px; color:#475569; margin:0 0 10px 0; line-height:1.5;">
+              Khảo sát 140+ suburb, đối soát an ninh SAPOL, nghiên cứu kinh tế đô thị RBA, so sánh chi phí House/Townhouse/Unit, phân tích Solar và hồ sơ thẩm định Form 1.
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~8.0 MB &bull; Định dạng: PDF chuẩn A4</span>
+              <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf" style="padding:6px 14px; font-size:12px;">
+                📥 Tải Báo Cáo Đầy Đủ
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doc 2: October Latest Report -->
+        <div style="background:#ffffff; border:1.5px solid #fde68a; border-radius:12px; padding:18px; box-shadow:0 3px 10px rgba(217,119,6,0.06); display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:48px; height:48px; border-radius:10px; background:#fffbeb; color:#b45309; font-size:24px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            📉
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; flex-wrap:wrap; gap:6px;">
+              <h4 style="margin:0; font-size:15px; color:#92400e;">2. Báo Cáo Mới Tháng 10/2026: Giá Nhà Giảm -0.6%</h4>
+              <span style="background:#fef3c7; color:#92400e; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:4px;">MỚI PHÁT HÀNH</span>
+            </div>
+            <p style="font-size:12.5px; color:#475569; margin:0 0 10px 0; line-height:1.5;">
+              Dữ liệu chính thức PropTrack / realestate.com.au (Eleanor Creagh). Phân tích đợt giảm mạnh nhất trong các thủ phủ Úc (-0.6% MoM, YoY +5.6%, Median $915k AUD) và chiến lược cho người mua/bán.
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~0.5 MB &bull; Định dạng: PDF chuẩn A4</span>
+              <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download class="badge" style="background:#d97706; color:white; text-decoration:none; padding:7px 14px; border-radius:6px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
+                📥 Tải Báo Cáo Tháng 10 Mới
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:11.5px; color:#64748b;">
+          * Bản quyền báo cáo thuộc về Toan Nguyen IT OZ (toannguyenitoz@gmail.com).
+        </span>
+        <button type="button" onclick="closeDownloadModal()" style="background:#0f172a; color:white; border:none; padding:7px 16px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;">
           Đóng
         </button>
       </div>
@@ -2672,6 +2748,24 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
     function closeAuthModalOnBackdrop(e) {
       if (e.target.id === 'authModal') {
         closeAuthModal();
+      }
+    }
+
+    function openDownloadModal() {
+      const modal = document.getElementById('downloadModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDownloadModal() {
+      const modal = document.getElementById('downloadModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeDownloadModalOnBackdrop(e) {
+      if (e.target.id === 'downloadModal') {
+        closeDownloadModal();
       }
     }
 
@@ -3014,7 +3108,7 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
               </span>
               <br>
               <strong style="color:#0f172a; font-size:13px;">${item.address}</strong>
-              <div style="font-size:11px; color:#64748b; margin-top:2px;">${item.region} &bull; Cách Myrtle Bank ${item.distance_km_from_wilgena} km</div>
+              <div style="font-size:11px; color:#64748b; margin-top:2px;">${item.region} &bull; Cách trung tâm Adelaide ${item.distance_km_from_wilgena} km</div>
             </td>
             <td style="color:#475569; font-weight:600; font-size:12px;">${specStr}</td>
             <td><span class="${badgeClass}">${badgeText}</span></td>
@@ -3111,7 +3205,7 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
             </div>
           </div>
           <div class="card-foot">
-            <span class="card-dist">📍 Cách Myrtle Bank: ${p.distance_km_from_wilgena} km</span>
+            <span class="card-dist">📍 Cách trung tâm Adelaide: ${p.distance_km_from_wilgena} km</span>
             <div class="btn-group-foot">
               <button type="button" onclick="openMortgageModal('${encodeURIComponent(p.address)}', ${p.price_min || 1000000})" class="btn-calc" title="Tính toán chi phí &amp; số tiền trả mỗi tuần/năm cho căn nhà này">
                 🧮 Tính Vay
@@ -3186,6 +3280,8 @@ Khoảng cách di chuyển của người ở rìa tăng lên gấp đôi. Do đ
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeMortgageModal();
+        closeAuthModal();
+        closeDownloadModal();
       }
     });
 

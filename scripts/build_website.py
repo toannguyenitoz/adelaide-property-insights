@@ -1317,9 +1317,9 @@ def build():
           👤 Đăng Nhập / Đăng Ký
         </button>
       </div>
-      <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf">
-        📥 Tải Báo Cáo PDF (18 Trang)
-      </a>
+      <button type="button" onclick="openDownloadModal()" class="btn-pdf" style="border:none; cursor:pointer;">
+        📥 Tải Báo Cáo PDF (2 Bản)
+      </button>
     </div>
   </nav>
 
@@ -1335,8 +1335,11 @@ def build():
         🔍 Khảo Sát {total_listings} Nhà Đang Bán
       </a>
       <a href="#proptrackSection" class="hero-btn" style="background:#f59e0b; color:#0f172a; font-weight:800;">
-        📉 Báo Cáo Tháng 9: Giá Giảm 0.6% MỚI
+        📉 Báo Cáo Tháng 9 (-0.6%) MỚI
       </a>
+      <button type="button" onclick="openDownloadModal()" class="hero-btn" style="background:#0284c7; color:white; border:none; cursor:pointer;">
+        📥 Tải 2 Báo Cáo PDF MỚI
+      </button>
       <a href="javascript:void(0)" onclick="openMortgageModal('Mẫu Dự Toán Tài Chính Toàn Vùng', 1100000)" class="hero-btn" style="background:#7c3aed; color:white;">
         🧮 Bảng Tính Vay &amp; Chi Phí Mua Nhà MỚI
       </a>
@@ -1416,7 +1419,7 @@ def build():
             <option value="Unit">Unit / Villa Trệt</option>
           </select>
           <select id="sortFilter" class="select-input" onchange="renderProperties()">
-            <option value="dist">Gần trung tâm Myrtle Bank nhất</option>
+            <option value="dist">Gần trung tâm Adelaide nhất</option>
             <option value="price_asc">Giá: Thấp đến Cao</option>
             <option value="price_desc">Giá: Cao đến Thấp</option>
           </select>
@@ -1426,7 +1429,7 @@ def build():
       <!-- Properties Grid -->
       <div class="grid-header">
         <div class="grid-title">Danh Sách Bất Động Sản An Toàn (<span id="matchCount">{total_listings}</span> căn phù hợp)</div>
-        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: Trung tâm Myrtle Bank SA 5064</div>
+        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: Trung tâm Adelaide (Adelaide CBD / Core SA)</div>
       </div>
       <div class="property-grid" id="propertyGrid"></div>
     </section>
@@ -1551,7 +1554,7 @@ def build():
             <option value="date_desc">Ngày bán mới nhất</option>
             <option value="price_asc">Giá: Thấp &rarr; Cao</option>
             <option value="price_desc">Giá: Cao &rarr; Thấp</option>
-            <option value="dist">Gần trung tâm Myrtle Bank nhất</option>
+            <option value="dist">Gần trung tâm Adelaide nhất</option>
           </select>
         </div>
       </div>
@@ -1704,9 +1707,12 @@ def build():
               Chuyên gia kinh tế cao cấp Eleanor Creagh công bố: Tháng giảm thứ 4 liên tiếp, giá hạ -2.5% từ đỉnh tháng 5/2026. Tuy nhiên vẫn <strong>tăng +5.6% so với cùng kỳ năm trước</strong>.
             </p>
           </div>
-          <div style="display:flex; gap:8px;">
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download class="badge" style="background:#d97706; color:white; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
+              📥 Tải Báo Cáo Tháng 10 PDF
+            </a>
             <a href="reports/proptrack_september_2026_home_price_report.md" target="_blank" class="badge" style="background:#b45309; color:white; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700;">
-              📄 Xem Tài Liệu Toàn Văn MD
+              📄 Xem Toàn Văn MD
             </a>
           </div>
         </div>
@@ -1950,9 +1956,9 @@ def build():
             <span>🛡️ Độ tin cậy:</span> <strong>100% Thẩm định thực tế</strong>
           </div>
           <div class="report-head-btns">
-            <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="report-action-btn report-btn-pdf">
-              📥 Tải File PDF (18 Trang)
-            </a>
+            <button type="button" onclick="openDownloadModal()" class="report-action-btn report-btn-pdf" style="border:none; cursor:pointer;">
+              📥 Tải 2 Báo Cáo PDF
+            </button>
             <button onclick="window.print()" class="report-action-btn report-btn-print">
               🖨️ In Báo Cáo
             </button>
@@ -2310,7 +2316,7 @@ def build():
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:20px; font-size:12.5px; color:#334155; line-height:1.6;">
           <div style="font-weight:700; color:#1e3a8a; margin-bottom:6px;">Quyền lợi thành viên hiện tại:</div>
           <div>✅ Xem trọn vẹn 10 chương Báo cáo Thị trường Chuyên sâu.</div>
-          <div>✅ Tải báo cáo phân tích bản in PDF (18 trang).</div>
+          <div>✅ Tải 2 Báo cáo bản in PDF (Báo cáo đầy đủ 18 trang &amp; Báo cáo mới tháng 10).</div>
           <div>✅ Truy cập tất cả 12 biểu đồ chu kỳ giao dịch 2 năm.</div>
           <div>✅ Sử dụng công cụ mô phỏng đòn bẩy tài chính &amp; Lãi suất Stress.</div>
         </div>
@@ -2322,6 +2328,76 @@ def build():
 
       <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:flex-end;">
         <button type="button" onclick="closeAuthModal()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; cursor:pointer;">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Document Download Center Modal -->
+  <div id="downloadModal" class="modal-overlay" onclick="closeDownloadModalOnBackdrop(event)">
+    <div class="modal-card" style="max-width: 620px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h3>📥 Trung Tâm Tải Báo Cáo &amp; Tài Liệu PDF</h3>
+          <div style="font-size:12px; color:#cbd5e1; margin-top:3px;">
+            Đầy đủ 2 tài liệu nghiên cứu chuyên sâu về thị trường Greater Adelaide do Toan Nguyen IT OZ phát hành
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeDownloadModal()" title="Đóng">&times;</button>
+      </div>
+
+      <div style="padding: 24px;">
+        <!-- Doc 1: Master Report -->
+        <div style="background:#ffffff; border:1.5px solid #bfdbfe; border-radius:12px; padding:18px; margin-bottom:16px; box-shadow:0 3px 10px rgba(37,99,235,0.06); display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:48px; height:48px; border-radius:10px; background:#eff6ff; color:#1d4ed8; font-size:24px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            📘
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; flex-wrap:wrap; gap:6px;">
+              <h4 style="margin:0; font-size:15px; color:#1e3a8a;">1. Báo Cáo Thị Trường Toàn Diện (10 Chương)</h4>
+              <span style="background:#dbeafe; color:#1d4ed8; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:4px;">BẢN ĐẦY ĐỦ 18 TRANG</span>
+            </div>
+            <p style="font-size:12.5px; color:#475569; margin:0 0 10px 0; line-height:1.5;">
+              Khảo sát 140+ suburb, đối soát an ninh SAPOL, nghiên cứu kinh tế đô thị RBA, so sánh chi phí House/Townhouse/Unit, phân tích Solar và hồ sơ thẩm định Form 1.
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~8.0 MB &bull; Định dạng: PDF chuẩn A4</span>
+              <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf" style="padding:6px 14px; font-size:12px;">
+                📥 Tải Báo Cáo Đầy Đủ
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doc 2: October Latest Report -->
+        <div style="background:#ffffff; border:1.5px solid #fde68a; border-radius:12px; padding:18px; box-shadow:0 3px 10px rgba(217,119,6,0.06); display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:48px; height:48px; border-radius:10px; background:#fffbeb; color:#b45309; font-size:24px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            📉
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; flex-wrap:wrap; gap:6px;">
+              <h4 style="margin:0; font-size:15px; color:#92400e;">2. Báo Cáo Mới Tháng 10/2026: Giá Nhà Giảm -0.6%</h4>
+              <span style="background:#fef3c7; color:#92400e; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:4px;">MỚI PHÁT HÀNH</span>
+            </div>
+            <p style="font-size:12.5px; color:#475569; margin:0 0 10px 0; line-height:1.5;">
+              Dữ liệu chính thức PropTrack / realestate.com.au (Eleanor Creagh). Phân tích đợt giảm mạnh nhất trong các thủ phủ Úc (-0.6% MoM, YoY +5.6%, Median $915k AUD) và chiến lược cho người mua/bán.
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <span style="font-size:11.5px; color:#64748b;">Dung lượng: ~0.5 MB &bull; Định dạng: PDF chuẩn A4</span>
+              <a href="reports/Bao_Cao_Adelaide_Thang_10_2026.pdf" download class="badge" style="background:#d97706; color:white; text-decoration:none; padding:7px 14px; border-radius:6px; font-size:12px; font-weight:700; box-shadow:0 2px 6px rgba(217,119,6,0.3);">
+                📥 Tải Báo Cáo Tháng 10 Mới
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:11.5px; color:#64748b;">
+          * Bản quyền báo cáo thuộc về Toan Nguyen IT OZ (toannguyenitoz@gmail.com).
+        </span>
+        <button type="button" onclick="closeDownloadModal()" style="background:#0f172a; color:white; border:none; padding:7px 16px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;">
           Đóng
         </button>
       </div>
@@ -2393,6 +2469,24 @@ def build():
     function closeAuthModalOnBackdrop(e) {{
       if (e.target.id === 'authModal') {{
         closeAuthModal();
+      }}
+    }}
+
+    function openDownloadModal() {{
+      const modal = document.getElementById('downloadModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }}
+
+    function closeDownloadModal() {{
+      const modal = document.getElementById('downloadModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }}
+
+    function closeDownloadModalOnBackdrop(e) {{
+      if (e.target.id === 'downloadModal') {{
+        closeDownloadModal();
       }}
     }}
 
@@ -2735,7 +2829,7 @@ def build():
               </span>
               <br>
               <strong style="color:#0f172a; font-size:13px;">${{item.address}}</strong>
-              <div style="font-size:11px; color:#64748b; margin-top:2px;">${{item.region}} &bull; Cách Myrtle Bank ${{item.distance_km_from_wilgena}} km</div>
+              <div style="font-size:11px; color:#64748b; margin-top:2px;">${{item.region}} &bull; Cách trung tâm Adelaide ${{item.distance_km_from_wilgena}} km</div>
             </td>
             <td style="color:#475569; font-weight:600; font-size:12px;">${{specStr}}</td>
             <td><span class="${{badgeClass}}">${{badgeText}}</span></td>
@@ -2832,7 +2926,7 @@ def build():
             </div>
           </div>
           <div class="card-foot">
-            <span class="card-dist">📍 Cách Myrtle Bank: ${{p.distance_km_from_wilgena}} km</span>
+            <span class="card-dist">📍 Cách trung tâm Adelaide: ${{p.distance_km_from_wilgena}} km</span>
             <div class="btn-group-foot">
               <button type="button" onclick="openMortgageModal('${{encodeURIComponent(p.address)}}', ${{p.price_min || 1000000}})" class="btn-calc" title="Tính toán chi phí &amp; số tiền trả mỗi tuần/năm cho căn nhà này">
                 🧮 Tính Vay
@@ -2907,6 +3001,8 @@ def build():
     document.addEventListener('keydown', function(e) {{
       if (e.key === 'Escape') {{
         closeMortgageModal();
+        closeAuthModal();
+        closeDownloadModal();
       }}
     }});
 

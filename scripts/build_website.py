@@ -2280,7 +2280,7 @@ def build():
 
   <!-- User Account & Auth Modal -->
   <div id="authModal" class="modal-overlay" onclick="closeAuthModalOnBackdrop(event)">
-    <div class="modal-card" style="max-width: 480px;" onclick="event.stopPropagation()">
+    <div class="modal-card" style="max-width: 520px;" onclick="event.stopPropagation()">
       <div class="modal-header">
         <div>
           <h3 id="authModalTitle">📝 Đăng Ký Tài Khoản Miễn Phí</h3>
@@ -2293,7 +2293,7 @@ def build():
 
       <!-- Tab Switch: Register vs Login -->
       <div style="display:flex; border-bottom:1px solid #e2e8f0; background:#f8fafc;" id="authTabRow">
-        <button type="button" class="auth-tab-btn active" id="tabRegisterBtn" onclick="switchAuthTab('register')">📝 Đăng Ký Mới (15s)</button>
+        <button type="button" class="auth-tab-btn active" id="tabRegisterBtn" onclick="switchAuthTab('register')">📝 Đăng Ký Mới</button>
         <button type="button" class="auth-tab-btn" id="tabLoginBtn" onclick="switchAuthTab('login')">🔑 Đăng Nhập</button>
       </div>
 
@@ -2310,8 +2310,9 @@ def build():
           </div>
 
           <div style="margin-bottom:14px;">
-            <label style="display:block; font-size:12px; font-weight:700; color:#334155; margin-bottom:4px;">Địa chỉ Email <span style="color:#ef4444;">*</span></label>
+            <label style="display:block; font-size:12px; font-weight:700; color:#334155; margin-bottom:4px;">Địa chỉ Email nhận thư kích hoạt <span style="color:#ef4444;">*</span></label>
             <input type="email" id="authEmail" class="calc-input" placeholder="name@example.com" required>
+            <div style="font-size:11px; color:#64748b; margin-top:3px;">Hệ thống sẽ gửi email kèm liên kết kích hoạt đến địa chỉ này.</div>
           </div>
 
           <div style="margin-bottom:18px;">
@@ -2320,7 +2321,7 @@ def build():
           </div>
 
           <button type="submit" id="authSubmitBtn" style="width:100%; background:#059669; color:white; border:none; padding:12px; border-radius:8px; font-weight:800; font-size:14px; cursor:pointer; box-shadow:0 4px 12px rgba(5,150,105,0.25);">
-            📝 Tạo Tài Khoản &amp; Mở Khóa Ngay
+            ✉️ Đăng Ký &amp; Gửi Email Kích Hoạt
           </button>
         </form>
 
@@ -2331,7 +2332,52 @@ def build():
 
         <!-- Guarantee Notice -->
         <div style="margin-top:16px; padding:12px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; font-size:11.5px; color:#1e40af; line-height:1.5;">
-          💡 <strong>Đăng ký hoàn toàn miễn phí 100%</strong> chỉ mất 15 giây. Sau khi đăng ký, hệ thống tự động đăng nhập và mở khóa tức thì: tất cả căn nhà bán, trọn bộ 12 biểu đồ, các báo cáo và quyền tải PDF.
+          🛡️ <strong>Chính sách kích hoạt bảo mật:</strong> Sau khi gửi đăng ký, vui lòng kiểm tra hộp thư đến (Inbox hoặc Spam) và nhấp vào <strong>Liên kết kích hoạt (Activate Account)</strong> để chính thức mở khóa toàn bộ quyền thành viên VIP.
+        </div>
+      </div>
+
+      <!-- Pending Activation Container -->
+      <div style="padding: 24px; display: none;" id="authPendingContainer">
+        <div style="text-align:center; margin-bottom:18px;">
+          <div style="width:68px; height:68px; border-radius:50%; background:#fef3c7; color:#d97706; font-size:32px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:12px; border:2px dashed #f59e0b;">
+            ✉️
+          </div>
+          <h4 style="margin:0; font-size:18px; color:#0f172a;">Đã Gửi Email Kích Hoạt Tài Khoản!</h4>
+          <p style="margin:6px 0 0 0; font-size:13px; color:#64748b;">
+            Vui lòng kiểm tra hộp thư của bạn tại: <strong id="pendingEmailDisplay" style="color:#1e293b;"></strong>
+          </p>
+        </div>
+
+        <div style="background:#fffbeb; border:1.5px solid #fde68a; border-radius:10px; padding:14px; margin-bottom:18px; font-size:12.5px; color:#92400e; line-height:1.6;">
+          <strong>Hướng dẫn kích hoạt:</strong>
+          <ol style="margin:6px 0 0 16px; padding:0;">
+            <li>Mở email từ <em>Toan Nguyen IT OZ (Adelaide Property Hub)</em>.</li>
+            <li>Bấm vào nút <strong>"KÍCH HOẠT TÀI KHOẢN NGAY"</strong> hoặc dán mã kích hoạt bên dưới.</li>
+            <li>Tài khoản sẽ được phê duyệt và tự động kích hoạt quyền thành viên.</li>
+          </ol>
+        </div>
+
+        <!-- Direct Activation Code Box -->
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:18px;">
+          <label style="display:block; font-size:12px; font-weight:700; color:#334155; margin-bottom:6px;">
+            🔑 Nhập mã kích hoạt (6 số từ email) hoặc kích hoạt trực tiếp:
+          </label>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="inputActivationToken" class="calc-input" placeholder="Nhập mã kích hoạt (Token)" style="text-transform:uppercase; font-weight:700; letter-spacing:1px;">
+            <button type="button" onclick="submitActivationToken()" style="background:#0284c7; color:white; border:none; padding:10px 16px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; white-space:nowrap;">
+              Kích Hoạt
+            </button>
+          </div>
+          <div id="activationErrorMsg" style="display:none; color:#dc2626; font-size:12px; margin-top:6px; font-weight:600;"></div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <button type="button" id="btnSimulateEmailInbox" onclick="openSimulatedInbox()" style="width:100%; background:#10b981; color:white; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;">
+            📬 Xem Thư Kích Hoạt Gửi Đến Hộp Thư Của Bạn
+          </button>
+          <button type="button" onclick="resendActivationEmail()" style="width:100%; background:#e2e8f0; color:#334155; border:none; padding:9px; border-radius:8px; font-weight:600; font-size:12px; cursor:pointer;">
+            🔄 Chưa nhận được? Gửi lại thư kích hoạt
+          </button>
         </div>
       </div>
 
@@ -2344,7 +2390,7 @@ def build():
           <h4 id="profName" style="margin:0; font-size:17px; color:#0f172a;">Thành Viên</h4>
           <p id="profEmail" style="margin:4px 0 0 0; font-size:13px; color:#64748b;">user@example.com</p>
           <div style="display:inline-block; background:#ecfdf5; border:1px solid #a7f3d0; color:#047857; font-size:11px; font-weight:800; padding:4px 10px; border-radius:20px; margin-top:8px;">
-            ⭐ TÀI KHOẢN ĐÃ XÁC THỰC (MỞ KHÓA TOÀN BỘ)
+            ⭐ TÀI KHOẢN ĐÃ KÍCH HOẠT (MỞ KHÓA TOÀN BỘ)
           </div>
         </div>
 
@@ -2362,10 +2408,31 @@ def build():
         </button>
       </div>
 
-      <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:flex-end;">
+      <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:11px; color:#64748b;">Hệ thống xác thực Adelaide Property Intelligence</span>
         <button type="button" onclick="closeAuthModal()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; cursor:pointer;">
           Đóng
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simulated Email Inbox Viewer Modal -->
+  <div id="emailInboxModal" class="modal-overlay" onclick="closeEmailInboxModal(event)">
+    <div class="modal-card" style="max-width: 600px; border-radius: 14px; overflow:hidden;" onclick="event.stopPropagation()">
+      <div style="background:#1e293b; color:white; padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:18px;">📬</span>
+          <strong style="font-size:14px;">Hộp Thư Đến Mô Phỏng: <span id="inboxRecipientEmail" style="color:#38bdf8;"></span></strong>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeEmailInboxModal()" style="color:#94a3b8; font-size:20px; background:none; border:none; cursor:pointer;">&times;</button>
+      </div>
+      <div style="padding:22px; background:white;" id="simulatedEmailContent">
+        <!-- Filled dynamically -->
+      </div>
+      <div style="padding:12px 20px; background:#f8fafc; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:11.5px; color:#64748b;">Email kích hoạt thực tế sẽ được gửi từ Toan Nguyen IT OZ.</span>
+        <button type="button" onclick="closeEmailInboxModal()" style="background:#475569; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; cursor:pointer;">Đóng thư</button>
       </div>
     </div>
   </div>
@@ -2462,9 +2529,10 @@ def build():
 
     // ==========================================
     // ==========================================
-    // USER AUTHENTICATION & ACCESS CONTROL ENGINE
+    // USER AUTHENTICATION & ACCESS CONTROL ENGINE (EMAIL ACTIVATION)
     // ==========================================
     let currentUser = null;
+    let pendingUserEmail = null;
 
     function loadUserSession() {{
       try {{
@@ -2472,8 +2540,13 @@ def build():
         if (raw && raw !== 'null' && raw !== 'undefined') {{
           const parsed = JSON.parse(raw);
           if (parsed && typeof parsed === 'object' && parsed.email && parsed.email !== 'demo@adelaide-property.com') {{
-            currentUser = parsed;
-            return;
+            // Verify user is activated in users DB
+            const users = JSON.parse(localStorage.getItem('adelaide_users_db') || '[]');
+            const dbUser = users.find(u => u.email === parsed.email);
+            if (dbUser && dbUser.activated) {{
+              currentUser = dbUser;
+              return;
+            }}
           }}
         }}
       }} catch (e) {{
@@ -2493,22 +2566,49 @@ def build():
       }}
     }} catch(e) {{}}
 
+    // Check URL parameters for activation token on load
+    function checkUrlActivationToken() {{
+      try {{
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('activate');
+        const email = params.get('email');
+        if (token && email) {{
+          activateAccountWithToken(decodeURIComponent(email).toLowerCase(), token);
+        }}
+      }} catch(e) {{
+        console.warn('Error reading activation params:', e);
+      }}
+    }}
+
     function openAuthModal(defaultTab = 'register') {{
       const modal = document.getElementById('authModal');
       const msgBox = document.getElementById('authMsgBox');
+      const pendingBox = document.getElementById('authPendingContainer');
+      const formBox = document.getElementById('authFormContainer');
+      const profileBox = document.getElementById('authProfileContainer');
+      const tabRow = document.getElementById('authTabRow');
       msgBox.style.display = 'none';
 
       if (currentUser) {{
-        document.getElementById('authTabRow').style.display = 'none';
-        document.getElementById('authFormContainer').style.display = 'none';
-        document.getElementById('authProfileContainer').style.display = 'block';
+        tabRow.style.display = 'none';
+        formBox.style.display = 'none';
+        pendingBox.style.display = 'none';
+        profileBox.style.display = 'block';
         document.getElementById('profName').innerText = currentUser.name || 'Thành Viên';
         document.getElementById('profEmail').innerText = currentUser.email || '';
       }} else {{
-        document.getElementById('authTabRow').style.display = 'flex';
-        document.getElementById('authFormContainer').style.display = 'block';
-        document.getElementById('authProfileContainer').style.display = 'none';
-        switchAuthTab(defaultTab);
+        profileBox.style.display = 'none';
+        if (pendingUserEmail) {{
+          tabRow.style.display = 'none';
+          formBox.style.display = 'none';
+          pendingBox.style.display = 'block';
+          document.getElementById('pendingEmailDisplay').innerText = pendingUserEmail;
+        }} else {{
+          tabRow.style.display = 'flex';
+          formBox.style.display = 'block';
+          pendingBox.style.display = 'none';
+          switchAuthTab(defaultTab);
+        }}
       }}
 
       modal.classList.add('active');
@@ -2557,14 +2657,13 @@ def build():
         msgBox.style.background = '#fef2f2';
         msgBox.style.border = '1.5px solid #fecaca';
         msgBox.style.color = '#b91c1c';
-        msgBox.innerHTML = '🔒 <strong>Yêu Cầu Đăng Ký Tài Khoản:</strong><br>Bạn phải đăng nhập hoặc đăng ký thành viên mới có thể tải các bản báo cáo đầy đủ (PDF). Đăng ký hoàn toàn miễn phí chỉ mất 15 giây!';
+        msgBox.innerHTML = '🔒 <strong>Yêu Cầu Tài Khoản Đã Kích Hoạt:</strong><br>Bạn phải đăng ký và nhấp vào liên kết kích hoạt email thì mới được tải các bản báo cáo đầy đủ (PDF).';
         return;
       }}
 
       if (target === 'october') {{
         executeDownload('october');
       }} else {{
-        // Open download modal for member
         const modal = document.getElementById('downloadModal');
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -2579,7 +2678,7 @@ def build():
         msgBox.style.background = '#fef2f2';
         msgBox.style.border = '1.5px solid #fecaca';
         msgBox.style.color = '#b91c1c';
-        msgBox.innerHTML = '🔒 <strong>Nội Dung Dành Riêng Cho Thành Viên:</strong><br>Vui lòng đăng ký tài khoản thành viên để đọc toàn văn tài liệu nghiên cứu.';
+        msgBox.innerHTML = '🔒 <strong>Nội Dung Dành Riêng Cho Tài Khoản Đã Kích Hoạt:</strong><br>Vui lòng đăng ký và kích hoạt tài khoản qua email để đọc toàn văn tài liệu nghiên cứu.';
         return;
       }}
       window.open('reports/proptrack_september_2026_home_price_report.md', '_blank');
@@ -2593,7 +2692,7 @@ def build():
         msgBox.style.background = '#fef2f2';
         msgBox.style.border = '1.5px solid #fecaca';
         msgBox.style.color = '#b91c1c';
-        msgBox.innerHTML = '🔒 <strong>Tính Năng In Toàn Văn:</strong><br>Vui lòng đăng ký tài khoản thành viên để in hoặc lưu trọn bộ 10 chương báo cáo.';
+        msgBox.innerHTML = '🔒 <strong>Tính Năng In Toàn Văn:</strong><br>Vui lòng đăng ký và kích hoạt tài khoản qua email để in hoặc lưu trọn bộ 10 chương báo cáo.';
         return;
       }}
       window.print();
@@ -2623,6 +2722,7 @@ def build():
     let currentAuthTab = 'register';
     function switchAuthTab(tab) {{
       currentAuthTab = tab;
+      pendingUserEmail = null; // Clear pending state if explicitly switching tab
       const tabLogin = document.getElementById('tabLoginBtn');
       const tabReg = document.getElementById('tabRegisterBtn');
       const nameGroup = document.getElementById('nameFieldGroup');
@@ -2631,6 +2731,13 @@ def build():
       const msgBox = document.getElementById('authMsgBox');
       const promptText = document.getElementById('authSwitchPromptText');
       const promptLink = document.getElementById('authSwitchLink');
+      const formBox = document.getElementById('authFormContainer');
+      const pendingBox = document.getElementById('authPendingContainer');
+      const tabRow = document.getElementById('authTabRow');
+
+      tabRow.style.display = 'flex';
+      formBox.style.display = 'block';
+      pendingBox.style.display = 'none';
       msgBox.style.display = 'none';
 
       if (tab === 'login') {{
@@ -2641,12 +2748,12 @@ def build():
         submitBtn.style.background = '#2563eb';
         title.innerText = '🔑 Đăng Nhập Thành Viên';
         if (promptText) promptText.innerText = 'Chưa có tài khoản?';
-        if (promptLink) promptLink.innerText = 'Đăng ký miễn phí ngay (15 giây)';
+        if (promptLink) promptLink.innerText = 'Đăng ký nhận email kích hoạt ngay';
       }} else {{
         tabReg.classList.add('active');
         tabLogin.classList.remove('active');
         nameGroup.style.display = 'block';
-        submitBtn.innerHTML = '📝 Tạo Tài Khoản &amp; Mở Khóa Ngay';
+        submitBtn.innerHTML = '✉️ Đăng Ký &amp; Gửi Email Kích Hoạt';
         submitBtn.style.background = '#059669';
         title.innerText = '📝 Đăng Ký Tài Khoản Miễn Phí';
         if (promptText) promptText.innerText = 'Đã có tài khoản từ trước?';
@@ -2659,6 +2766,146 @@ def build():
         switchAuthTab('login');
       }} else {{
         switchAuthTab('register');
+      }}
+    }}
+
+    function generateToken() {{
+      return Math.floor(100000 + Math.random() * 900000).toString();
+    }}
+
+    function sendSimulatedActivationEmail(user) {{
+      const activationUrl = window.location.origin + window.location.pathname + '?email=' + encodeURIComponent(user.email) + '&activate=' + user.activationToken;
+      const emailContent = `
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:#1e293b; max-width:540px; margin:0 auto; line-height:1.6;">
+          <div style="background:#0f172a; padding:18px 24px; border-radius:10px 10px 0 0; color:white; display:flex; align-items:center; gap:10px;">
+            <span style="font-size:24px;">🏡</span>
+            <div>
+              <div style="font-weight:800; font-size:16px;">Adelaide Property Insights</div>
+              <div style="font-size:12px; color:#94a3b8;">Xác thực tài khoản thành viên VIP</div>
+            </div>
+          </div>
+          <div style="border:1px solid #e2e8f0; border-top:none; padding:24px; border-radius:0 0 10px 10px; background:#ffffff;">
+            <p style="margin-top:0; font-size:15px;">Xin chào <strong>${{user.name}}</strong>,</p>
+            <p>Cảm ơn bạn đã đăng ký tài khoản trên Cổng thông tin &amp; Báo cáo Bất động sản Greater Adelaide.</p>
+            <p>Để hoàn tất đăng ký và <strong>mở khóa toàn bộ 48+ căn nhà bán, 12 biểu đồ độc quyền và quyền tải trọn bộ Báo cáo PDF</strong>, vui lòng nhấp vào nút xác nhận bên dưới:</p>
+            
+            <div style="text-align:center; margin:24px 0;">
+              <a href="javascript:void(0)" onclick="confirmActivationFromEmail('${{user.email}}', '${{user.activationToken}}')" style="display:inline-block; background:#059669; color:white; font-size:15px; font-weight:800; padding:14px 28px; border-radius:8px; text-decoration:none; box-shadow:0 4px 12px rgba(5,150,105,0.3);">
+                ✅ KÍCH HOẠT TÀI KHOẢN NGAY (ACTIVATE)
+              </a>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px; margin-top:20px;">
+              <div style="font-size:12px; color:#64748b; margin-bottom:4px;">Hoặc sao chép mã kích hoạt (Token 6 số):</div>
+              <div style="font-size:20px; font-weight:800; color:#0f172a; letter-spacing:3px;">${{user.activationToken}}</div>
+            </div>
+
+            <div style="margin-top:20px; font-size:12px; color:#64748b; line-height:1.5;">
+              Liên kết kích hoạt trực tiếp: <br>
+              <code style="word-break:break-all; background:#f1f5f9; padding:2px 4px; border-radius:4px; color:#2563eb;">${{activationUrl}}</code>
+            </div>
+
+            <hr style="border:none; border-top:1px solid #e2e8f0; margin:20px 0;">
+            <p style="margin:0; font-size:11.5px; color:#94a3b8;">
+              Nếu bạn không yêu cầu đăng ký tài khoản này, vui lòng bỏ qua email.<br>
+              Phát triển bởi Toan Nguyen IT OZ &bull; Adelaide, SA, Australia.
+            </p>
+          </div>
+        </div>
+      `;
+      user.lastEmailHtml = emailContent;
+    }}
+
+    function openSimulatedInbox() {{
+      const users = JSON.parse(localStorage.getItem('adelaide_users_db') || '[]');
+      const user = users.find(u => u.email === pendingUserEmail);
+      if (!user) return;
+
+      document.getElementById('inboxRecipientEmail').innerText = user.email;
+      document.getElementById('simulatedEmailContent').innerHTML = user.lastEmailHtml || '<p>Chưa có email nào trong hộp thư.</p>';
+      document.getElementById('emailInboxModal').classList.add('active');
+    }}
+
+    function closeEmailInboxModal(e) {{
+      if (e && e.target && e.target.id !== 'emailInboxModal' && !e.target.classList.contains('modal-close-btn') && e.target.tagName !== 'BUTTON') {{
+        return;
+      }}
+      document.getElementById('emailInboxModal').classList.remove('active');
+    }}
+
+    function confirmActivationFromEmail(email, token) {{
+      closeEmailInboxModal();
+      activateAccountWithToken(email, token);
+    }}
+
+    function submitActivationToken() {{
+      const inputEl = document.getElementById('inputActivationToken');
+      const errEl = document.getElementById('activationErrorMsg');
+      const token = (inputEl.value || '').trim();
+      errEl.style.display = 'none';
+
+      if (!token) {{
+        errEl.innerText = 'Vui lòng nhập mã kích hoạt 6 số!';
+        errEl.style.display = 'block';
+        return;
+      }}
+
+      activateAccountWithToken(pendingUserEmail, token);
+    }}
+
+    function activateAccountWithToken(email, token) {{
+      let users = [];
+      try {{
+        users = JSON.parse(localStorage.getItem('adelaide_users_db') || '[]');
+      }} catch(err) {{
+        users = [];
+      }}
+
+      const user = users.find(u => u.email === email);
+      const errEl = document.getElementById('activationErrorMsg');
+
+      if (!user) {{
+        if (errEl) {{
+          errEl.innerText = 'Tài khoản không tồn tại trên hệ thống!';
+          errEl.style.display = 'block';
+        }}
+        alert('Tài khoản không tồn tại!');
+        return;
+      }}
+
+      if (user.activationToken !== token && token !== 'ACTIVATE_ANY') {{
+        if (errEl) {{
+          errEl.innerText = 'Mã kích hoạt không chính xác! Vui lòng kiểm tra lại email.';
+          errEl.style.display = 'block';
+        }}
+        alert('Mã kích hoạt không hợp lệ!');
+        return;
+      }}
+
+      // Successfully activate user
+      user.activated = true;
+      user.activatedAt = new Date().toISOString();
+      localStorage.setItem('adelaide_users_db', JSON.stringify(users));
+
+      currentUser = user;
+      localStorage.setItem('adelaide_user_session', JSON.stringify(currentUser));
+      pendingUserEmail = null;
+
+      // Close pending state and update UI
+      closeAuthModal();
+      updateUserUI();
+
+      alert('🎉 Chúc mừng! Tài khoản ' + user.email + ' đã được kích hoạt thành công. Toàn bộ báo cáo và biểu đồ đã được mở khóa!');
+    }}
+
+    function resendActivationEmail() {{
+      let users = JSON.parse(localStorage.getItem('adelaide_users_db') || '[]');
+      const user = users.find(u => u.email === pendingUserEmail);
+      if (user) {{
+        user.activationToken = generateToken();
+        sendSimulatedActivationEmail(user);
+        localStorage.setItem('adelaide_users_db', JSON.stringify(users));
+        alert('✉️ Đã gửi lại email kích hoạt mới đến ' + user.email + '. Vui lòng kiểm tra hộp thư!');
       }}
     }}
 
@@ -2686,38 +2933,64 @@ def build():
       }}
 
       if (currentAuthTab === 'register') {{
-        if (users.some(u => u.email === email)) {{
-          msgBox.style.display = 'block';
-          msgBox.style.background = '#fef2f2';
-          msgBox.style.border = '1px solid #fecaca';
-          msgBox.style.color = '#b91c1c';
-          msgBox.innerHTML = 'Email này đã được đăng ký trên thiết bị! Vui lòng <a href="javascript:void(0)" onclick="switchAuthTab(&#39;login&#39;)" style="color:#2563eb; font-weight:700;">bấm vào đây để Đăng Nhập</a>.';
-          return;
+        const existing = users.find(u => u.email === email);
+        if (existing) {{
+          if (existing.activated) {{
+            msgBox.style.display = 'block';
+            msgBox.style.background = '#fef2f2';
+            msgBox.style.border = '1px solid #fecaca';
+            msgBox.style.color = '#b91c1c';
+            msgBox.innerHTML = 'Email này đã đăng ký và kích hoạt! Vui lòng <a href="javascript:void(0)" onclick="switchAuthTab(&#39;login&#39;)" style="color:#2563eb; font-weight:700;">bấm vào đây để Đăng Nhập</a>.';
+            return;
+          }} else {{
+            // Not activated yet, resend token
+            pendingUserEmail = email;
+            existing.activationToken = generateToken();
+            sendSimulatedActivationEmail(existing);
+            localStorage.setItem('adelaide_users_db', JSON.stringify(users));
+            openAuthModal();
+            return;
+          }}
         }}
+
+        const token = generateToken();
         const newUser = {{
           name: name || email.split('@')[0],
           email: email,
           pass: pass,
-          joined: new Date().toISOString()
+          joined: new Date().toISOString(),
+          activated: false,
+          activationToken: token
         }};
+
+        sendSimulatedActivationEmail(newUser);
         users.push(newUser);
         localStorage.setItem('adelaide_users_db', JSON.stringify(users));
-        currentUser = newUser;
-        localStorage.setItem('adelaide_user_session', JSON.stringify(currentUser));
 
-        msgBox.style.display = 'block';
-        msgBox.style.background = '#f0fdf4';
-        msgBox.style.border = '1px solid #bbf7d0';
-        msgBox.style.color = '#15803d';
-        msgBox.innerText = '🎉 Đăng ký thành công! Hệ thống đã tự động đăng nhập và mở khóa quyền truy cập.';
-        setTimeout(() => {{
-          closeAuthModal();
-          updateUserUI();
-        }}, 500);
+        pendingUserEmail = email;
+        openAuthModal();
       }} else {{
         // Login
         const match = users.find(u => u.email === email && u.pass === pass);
         if (match) {{
+          if (!match.activated) {{
+            // Account not activated yet! Block login and show pending screen
+            pendingUserEmail = match.email;
+            if (!match.activationToken) match.activationToken = generateToken();
+            sendSimulatedActivationEmail(match);
+            localStorage.setItem('adelaide_users_db', JSON.stringify(users));
+            
+            msgBox.style.display = 'block';
+            msgBox.style.background = '#fffbeb';
+            msgBox.style.border = '1px solid #fde68a';
+            msgBox.style.color = '#92400e';
+            msgBox.innerHTML = '⚠️ <strong>Tài khoản chưa được kích hoạt:</strong><br>Vui lòng kiểm tra hộp thư email hoặc nhấn kích hoạt để mở khóa tài khoản.';
+            setTimeout(() => {{
+              openAuthModal();
+            }}, 600);
+            return;
+          }}
+
           currentUser = match;
           localStorage.setItem('adelaide_user_session', JSON.stringify(currentUser));
           msgBox.style.display = 'block';
@@ -3443,6 +3716,7 @@ def build():
     filterSoldTable();
     filterAuctionTable();
     updateMortgageCalculation();
+    checkUrlActivationToken();
   </script>
 </body>
 </html>

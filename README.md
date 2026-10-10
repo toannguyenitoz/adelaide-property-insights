@@ -9,8 +9,8 @@ Hệ thống thu thập, phân tích và giám sát thị trường bất độn
    - 3 Phòng ngủ (3 Bedrooms)
    - Ngân sách $\le \.2\text{M}$ AUD
    - Không nằm trong Adelaide CBD (5000)
-   - Bán kính xung quanh 1B Wilgena Ave, Myrtle Bank SA 5064 và các vành đai uy tín (Eastern Suburbs, Mitcham Foothills, Coastal West, Adelaide Hills, Tea Tree Gully Safe Pockets).
-3. **Phân tích định giá & Học khu**: Tính toán cự ly tới Myrtle Bank, phân tích top School Zones (Glenunga International High, Unley High, Norwood International, Henley High, Brighton Secondary).
+   - Bán kính xung quanh trung tâm Myrtle Bank SA 5064 và các vành đai uy tín (Eastern Suburbs, Mitcham Foothills, Coastal West, Adelaide Hills, Tea Tree Gully Safe Pockets).
+3. **Phân tích định giá & Học khu**: Tính toán cự ly tới trung tâm đô thị Myrtle Bank, phân tích top School Zones (Glenunga International High, Unley High, Norwood International, Henley High, Brighton Secondary).
 4. **Mô hình tài chính toàn diện**:
    - Holding costs (Council Rates, SA Water, ESL, Land Tax)
    - Pháp lý quyền sở hữu (Torrens Title vs Community vs Strata)

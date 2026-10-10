@@ -78,7 +78,7 @@ REGIONS_CONFIG = {
     ]
 }
 
-# Suburb Coordinates Map for exact distance from 1B Wilgena Ave, Myrtle Bank
+# Suburb Coordinates Map for exact distance from Central Myrtle Bank
 SUBURB_COORDS = {
     # Burnside
     'myrtle bank': (-34.9567, 138.6345), 'glenunga': (-34.9472, 138.6394),

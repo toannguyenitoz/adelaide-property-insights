@@ -556,6 +556,58 @@ def build():
       transform: translateY(-3px) scale(1.03);
       box-shadow: 0 12px 30px rgba(124, 58, 237, 0.6);
     }}
+    /* User Auth & Premium Lock Styling */
+    .user-auth-btn {{
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }}
+    .user-auth-btn:hover {{
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
+    }}
+    .premium-lock-overlay {{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.96), rgba(239, 246, 255, 0.96));
+      border: 2px dashed #93c5fd;
+      border-radius: 12px;
+      padding: 40px 24px;
+      text-align: center;
+      margin: 20px 0;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+    }}
+    .premium-lock-icon {{
+      font-size: 42px;
+      margin-bottom: 12px;
+    }}
+    .auth-tab-btn {{
+      flex: 1;
+      padding: 10px;
+      background: #f1f5f9;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s;
+    }}
+    .auth-tab-btn.active {{
+      background: white;
+      color: #1e3a8a;
+      border-bottom: 2px solid #2563eb;
+    }}
     /* Mortgage Modal Styling */
     .modal-overlay {{
       display: none;
@@ -1260,6 +1312,11 @@ def build():
       <a href="#fullReportSection" class="nav-link nav-link-highlight">📖 Toàn Văn Báo Cáo (10 Chương)</a>
     </div>
     <div class="nav-actions">
+      <div id="userNavSlot" style="display:inline-flex; align-items:center; gap:8px;">
+        <button type="button" onclick="openAuthModal()" class="user-auth-btn" id="navAuthBtn">
+          👤 Đăng Nhập / Đăng Ký
+        </button>
+      </div>
       <a href="reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf" download class="btn-pdf">
         📥 Tải Báo Cáo PDF (18 Trang)
       </a>
@@ -1359,7 +1416,7 @@ def build():
             <option value="Unit">Unit / Villa Trệt</option>
           </select>
           <select id="sortFilter" class="select-input" onchange="renderProperties()">
-            <option value="dist">Gần 1B Wilgena Ave nhất</option>
+            <option value="dist">Gần trung tâm Myrtle Bank nhất</option>
             <option value="price_asc">Giá: Thấp đến Cao</option>
             <option value="price_desc">Giá: Cao đến Thấp</option>
           </select>
@@ -1369,9 +1426,10 @@ def build():
       <!-- Properties Grid -->
       <div class="grid-header">
         <div class="grid-title">Danh Sách Bất Động Sản An Toàn (<span id="matchCount">{total_listings}</span> căn phù hợp)</div>
-        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: 1B Wilgena Ave, Myrtle Bank SA 5064</div>
+        <div style="font-size:12px; color:var(--slate-600);">Tâm điểm: Trung tâm Myrtle Bank SA 5064</div>
       </div>
       <div class="property-grid" id="propertyGrid"></div>
+    </section>
     <!-- Recently Sold Properties Section (Private Treaty + Auction) -->
     <section id="soldSection" class="section-box" style="border: 2px solid #059669; background: #ffffff;">
       <div class="section-head" style="border-bottom: 2px solid #d1fae5; padding-bottom: 14px; margin-bottom: 18px;">
@@ -1493,7 +1551,7 @@ def build():
             <option value="date_desc">Ngày bán mới nhất</option>
             <option value="price_asc">Giá: Thấp &rarr; Cao</option>
             <option value="price_desc">Giá: Cao &rarr; Thấp</option>
-            <option value="dist">Gần 1B Wilgena Ave nhất</option>
+            <option value="dist">Gần trung tâm Myrtle Bank nhất</option>
           </select>
         </div>
       </div>
@@ -2183,6 +2241,93 @@ def build():
     </div>
   </div>
 
+  <!-- User Account & Auth Modal -->
+  <div id="authModal" class="modal-overlay" onclick="closeAuthModalOnBackdrop(event)">
+    <div class="modal-card" style="max-width: 480px;" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <h3 id="authModalTitle">👤 Quản Lý Tài Khoản</h3>
+          <div style="font-size:12px; color:#cbd5e1; margin-top:3px;">
+            Đăng ký thành viên để mở khóa toàn bộ 10 chương báo cáo &amp; bộ biểu đồ chuyên sâu
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeAuthModal()" title="Đóng">&times;</button>
+      </div>
+
+      <!-- Tab Switch: Login vs Register -->
+      <div style="display:flex; border-bottom:1px solid #e2e8f0; background:#f8fafc;" id="authTabRow">
+        <button type="button" class="auth-tab-btn active" id="tabLoginBtn" onclick="switchAuthTab('login')">🔑 Đăng Nhập</button>
+        <button type="button" class="auth-tab-btn" id="tabRegisterBtn" onclick="switchAuthTab('register')">📝 Đăng Ký Mới</button>
+      </div>
+
+      <!-- Form Container -->
+      <div style="padding: 24px;" id="authFormContainer">
+        <!-- Error / Info Box -->
+        <div id="authMsgBox" style="display:none; padding:10px 14px; border-radius:8px; font-size:12.5px; margin-bottom:16px;"></div>
+
+        <!-- FORM INPUTS -->
+        <form id="authForm" onsubmit="handleAuthSubmit(event)">
+          <div style="margin-bottom:14px;" id="nameFieldGroup">
+            <label style="display:block; font-size:12px; font-weight:700; color:#334155; margin-bottom:4px;">Họ và Tên</label>
+            <input type="text" id="authName" class="calc-input" placeholder="Ví dụ: Nguyễn Văn A">
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-size:12px; font-weight:700; color:#334155; margin-bottom:4px;">Địa chỉ Email <span style="color:#ef4444;">*</span></label>
+            <input type="email" id="authEmail" class="calc-input" placeholder="name@example.com" required>
+          </div>
+
+          <div style="margin-bottom:18px;">
+            <label style="display:block; font-size:12px; font-weight:700; color:#334155; margin-bottom:4px;">Mật Khẩu <span style="color:#ef4444;">*</span></label>
+            <input type="password" id="authPassword" class="calc-input" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+          </div>
+
+          <button type="submit" id="authSubmitBtn" style="width:100%; background:#2563eb; color:white; border:none; padding:12px; border-radius:8px; font-weight:800; font-size:14px; cursor:pointer; box-shadow:0 4px 12px rgba(37,99,235,0.25);">
+            🔑 Đăng Nhập Ngay
+          </button>
+        </form>
+
+        <!-- Quick Demo Hint -->
+        <div style="margin-top:16px; padding:12px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; font-size:11.5px; color:#166534; line-height:1.5;">
+          💡 <strong>Thành viên có thể đăng ký tài khoản miễn phí</strong> bằng bất kỳ email hợp lệ nào. Hoặc dùng thử tài khoản mẫu:<br>
+          • Email: <code>demo@adelaide-property.com</code> | Mật khẩu: <code>123456</code>
+        </div>
+      </div>
+
+      <!-- Logged In Profile State -->
+      <div style="padding:24px; display:none;" id="authProfileContainer">
+        <div style="text-align:center; margin-bottom:20px;">
+          <div style="width:64px; height:64px; border-radius:50%; background:#dbeafe; color:#1d4ed8; font-size:28px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;">
+            👤
+          </div>
+          <h4 id="profName" style="margin:0; font-size:17px; color:#0f172a;">Thành Viên</h4>
+          <p id="profEmail" style="margin:4px 0 0 0; font-size:13px; color:#64748b;">user@example.com</p>
+          <div style="display:inline-block; background:#ecfdf5; border:1px solid #a7f3d0; color:#047857; font-size:11px; font-weight:800; padding:4px 10px; border-radius:20px; margin-top:8px;">
+            ⭐ TÀI KHOẢN ĐÃ XÁC THỰC (MỞ KHÓA TOÀN BỘ)
+          </div>
+        </div>
+
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:20px; font-size:12.5px; color:#334155; line-height:1.6;">
+          <div style="font-weight:700; color:#1e3a8a; margin-bottom:6px;">Quyền lợi thành viên hiện tại:</div>
+          <div>✅ Xem trọn vẹn 10 chương Báo cáo Thị trường Chuyên sâu.</div>
+          <div>✅ Tải báo cáo phân tích bản in PDF (18 trang).</div>
+          <div>✅ Truy cập tất cả 12 biểu đồ chu kỳ giao dịch 2 năm.</div>
+          <div>✅ Sử dụng công cụ mô phỏng đòn bẩy tài chính &amp; Lãi suất Stress.</div>
+        </div>
+
+        <button type="button" onclick="logoutUser()" style="width:100%; background:#ef4444; color:white; border:none; padding:10px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;">
+          🚪 Đăng Xuất Khỏi Thiết Bị
+        </button>
+      </div>
+
+      <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:flex-end;">
+        <button type="button" onclick="closeAuthModal()" style="background:#64748b; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; cursor:pointer;">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Client Script for Filtering & Rendering -->
   <script>
     const allProps = {properties_json_str};
@@ -2204,7 +2349,231 @@ def build():
       12: 'reports/charts/chart12_weekly_sold_by_type_and_bedrooms.png?v=' + cacheBuster
     }};
 
+    // ==========================================
+    // USER AUTHENTICATION & ACCESS CONTROL ENGINE
+    // ==========================================
+    let currentUser = null;
+    try {{
+      const savedUser = localStorage.getItem('adelaide_user_session');
+      if (savedUser) {{
+        currentUser = JSON.parse(savedUser);
+      }}
+    }} catch (e) {{
+      console.warn('LocalStorage error:', e);
+    }}
+
+    function openAuthModal() {{
+      const modal = document.getElementById('authModal');
+      const msgBox = document.getElementById('authMsgBox');
+      msgBox.style.display = 'none';
+
+      if (currentUser) {{
+        document.getElementById('authTabRow').style.display = 'none';
+        document.getElementById('authFormContainer').style.display = 'none';
+        document.getElementById('authProfileContainer').style.display = 'block';
+        document.getElementById('profName').innerText = currentUser.name || 'Thành Viên';
+        document.getElementById('profEmail').innerText = currentUser.email || '';
+      }} else {{
+        document.getElementById('authTabRow').style.display = 'flex';
+        document.getElementById('authFormContainer').style.display = 'block';
+        document.getElementById('authProfileContainer').style.display = 'none';
+        switchAuthTab('login');
+      }}
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }}
+
+    function closeAuthModal() {{
+      const modal = document.getElementById('authModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }}
+
+    function closeAuthModalOnBackdrop(e) {{
+      if (e.target.id === 'authModal') {{
+        closeAuthModal();
+      }}
+    }}
+
+    let currentAuthTab = 'login';
+    function switchAuthTab(tab) {{
+      currentAuthTab = tab;
+      const tabLogin = document.getElementById('tabLoginBtn');
+      const tabReg = document.getElementById('tabRegisterBtn');
+      const nameGroup = document.getElementById('nameFieldGroup');
+      const submitBtn = document.getElementById('authSubmitBtn');
+      const title = document.getElementById('authModalTitle');
+      const msgBox = document.getElementById('authMsgBox');
+      msgBox.style.display = 'none';
+
+      if (tab === 'login') {{
+        tabLogin.classList.add('active');
+        tabReg.classList.remove('active');
+        nameGroup.style.display = 'none';
+        submitBtn.innerHTML = '🔑 Đăng Nhập Ngay';
+        submitBtn.style.background = '#2563eb';
+        title.innerText = '🔑 Đăng Nhập Thành Viên';
+      }} else {{
+        tabReg.classList.add('active');
+        tabLogin.classList.remove('active');
+        nameGroup.style.display = 'block';
+        submitBtn.innerHTML = '📝 Đăng Ký Tài Khoản Miễn Phí';
+        submitBtn.style.background = '#059669';
+        title.innerText = '📝 Đăng Ký Tài Khoản Mới';
+      }}
+    }}
+
+    function handleAuthSubmit(e) {{
+      e.preventDefault();
+      const email = (document.getElementById('authEmail').value || '').trim().toLowerCase();
+      const pass = (document.getElementById('authPassword').value || '').trim();
+      const name = (document.getElementById('authName').value || '').trim();
+      const msgBox = document.getElementById('authMsgBox');
+
+      if (!email || !pass) {{
+        msgBox.className = '';
+        msgBox.style.display = 'block';
+        msgBox.style.background = '#fef2f2';
+        msgBox.style.color = '#b91c1c';
+        msgBox.innerText = 'Vui lòng nhập đầy đủ Email và Mật khẩu!';
+        return;
+      }}
+
+      // Demo/Registered storage
+      let users = [];
+      try {{
+        users = JSON.parse(localStorage.getItem('adelaide_users_db') || '[]');
+      }} catch(err) {{
+        users = [];
+      }}
+
+      // Default demo account
+      if (!users.some(u => u.email === 'demo@adelaide-property.com')) {{
+        users.push({{
+          name: 'Nhà Đầu Tư Mẫu (VIP)',
+          email: 'demo@adelaide-property.com',
+          pass: '123456',
+          joined: '2026-10-01'
+        }});
+      }}
+
+      if (currentAuthTab === 'register') {{
+        if (users.some(u => u.email === email)) {{
+          msgBox.style.display = 'block';
+          msgBox.style.background = '#fef2f2';
+          msgBox.style.color = '#b91c1c';
+          msgBox.innerText = 'Email này đã được đăng ký. Vui lòng chuyển sang tab Đăng Nhập!';
+          return;
+        }}
+        const newUser = {{
+          name: name || email.split('@')[0],
+          email: email,
+          pass: pass,
+          joined: new Date().toISOString()
+        }};
+        users.push(newUser);
+        localStorage.setItem('adelaide_users_db', JSON.stringify(users));
+        currentUser = newUser;
+        localStorage.setItem('adelaide_user_session', JSON.stringify(currentUser));
+
+        msgBox.style.display = 'block';
+        msgBox.style.background = '#f0fdf4';
+        msgBox.style.color = '#15803d';
+        msgBox.innerText = '🎉 Đăng ký thành công! Hệ thống đã tự động đăng nhập và mở khóa quyền truy cập.';
+        setTimeout(() => {{
+          closeAuthModal();
+          updateUserUI();
+        }}, 800);
+      }} else {{
+        // Login
+        const match = users.find(u => u.email === email && u.pass === pass);
+        if (match) {{
+          currentUser = match;
+          localStorage.setItem('adelaide_user_session', JSON.stringify(currentUser));
+          msgBox.style.display = 'block';
+          msgBox.style.background = '#f0fdf4';
+          msgBox.style.color = '#15803d';
+          msgBox.innerText = '✅ Đăng nhập thành công! Đang kích hoạt toàn bộ báo cáo...';
+          setTimeout(() => {{
+            closeAuthModal();
+            updateUserUI();
+          }}, 600);
+        }} else {{
+          msgBox.style.display = 'block';
+          msgBox.style.background = '#fef2f2';
+          msgBox.style.color = '#b91c1c';
+          msgBox.innerText = 'Sai email hoặc mật khẩu! (Bạn có thể dùng demo@adelaide-property.com / 123456 hoặc chuyển sang tab Đăng Ký Mới).';
+        }}
+      }}
+    }}
+
+    function logoutUser() {{
+      currentUser = null;
+      localStorage.removeItem('adelaide_user_session');
+      closeAuthModal();
+      updateUserUI();
+    }}
+
+    function updateUserUI() {{
+      const navSlot = document.getElementById('userNavSlot');
+      if (currentUser) {{
+        navSlot.innerHTML = `
+          <button type="button" onclick="openAuthModal()" class="user-auth-btn" style="background:#059669; border-color:#34d399; font-weight:800;">
+            ⭐ ${{currentUser.name || 'Thành Viên VIP'}}
+          </button>
+        `;
+      }} else {{
+        navSlot.innerHTML = `
+          <button type="button" onclick="openAuthModal()" class="user-auth-btn" id="navAuthBtn">
+            👤 Đăng Nhập / Đăng Ký
+          </button>
+        `;
+      }}
+
+      // Check Report Section lock
+      const reportArticle = document.querySelector('.report-article-body');
+      let lockOverlay = document.getElementById('reportLockOverlay');
+      if (!currentUser) {{
+        // Show only first chapter and lock the remaining chapters
+        if (!lockOverlay && reportArticle) {{
+          lockOverlay = document.createElement('div');
+          lockOverlay.id = 'reportLockOverlay';
+          lockOverlay.className = 'premium-lock-overlay';
+          lockOverlay.innerHTML = `
+            <div class="premium-lock-icon">🔒</div>
+            <h3 style="color:#1e3a8a; font-size:20px; margin:0 0 8px 0;">Nội Dung Dành Riêng Cho Thành Viên Đăng Ký</h3>
+            <p style="color:#475569; max-width:620px; font-size:13.5px; line-height:1.6; margin:0 0 20px 0;">
+              Chương 2 đến Chương 10 (phân tích chuyên sâu Unley Park/Toorak Gardens, bộ 12 biểu đồ chốt bán, mô hình tài chính Torrens vs Strata, chiến lược thương lượng và hồ sơ Form 1) được bảo vệ độc quyền.
+            </p>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+              <button onclick="openAuthModal()" style="background:#2563eb; color:white; border:none; padding:12px 24px; border-radius:8px; font-weight:800; font-size:13.5px; cursor:pointer; box-shadow:0 4px 14px rgba(37,99,235,0.3);">
+                🔑 Đăng Nhập / Đăng Ký Miễn Phí Để Mở Khóa Ngay
+              </button>
+            </div>
+            <div style="margin-top:14px; font-size:12px; color:#64748b;">
+              * Đăng ký hoàn toàn miễn phí chỉ mất 15 giây.
+            </div>
+          `;
+          reportArticle.appendChild(lockOverlay);
+        }}
+        if (lockOverlay) lockOverlay.style.display = 'flex';
+      }} else {{
+        if (lockOverlay) lockOverlay.style.display = 'none';
+      }}
+    }}
+
     function switchChart(id, btn) {{
+      // Gate charts 8, 9, 10, 11, 12 for logged-in members
+      if (!currentUser && id >= 8) {{
+        openAuthModal();
+        const msgBox = document.getElementById('authMsgBox');
+        msgBox.style.display = 'block';
+        msgBox.style.background = '#eff6ff';
+        msgBox.style.color = '#1d4ed8';
+        msgBox.innerText = '📊 Biểu đồ ' + id + ' (Phân tích chuyên sâu 2 năm & Loại nhà/PN) yêu cầu đăng ký thành viên để xem.';
+        return;
+      }}
       document.getElementById('activeChartImg').src = chartMap[id];
       document.querySelectorAll('.chart-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -2366,7 +2735,7 @@ def build():
               </span>
               <br>
               <strong style="color:#0f172a; font-size:13px;">${{item.address}}</strong>
-              <div style="font-size:11px; color:#64748b; margin-top:2px;">${{item.region}} &bull; Cách bạn ${{item.distance_km_from_wilgena}} km</div>
+              <div style="font-size:11px; color:#64748b; margin-top:2px;">${{item.region}} &bull; Cách Myrtle Bank ${{item.distance_km_from_wilgena}} km</div>
             </td>
             <td style="color:#475569; font-weight:600; font-size:12px;">${{specStr}}</td>
             <td><span class="${{badgeClass}}">${{badgeText}}</span></td>
@@ -2463,7 +2832,7 @@ def build():
             </div>
           </div>
           <div class="card-foot">
-            <span class="card-dist">📍 Cách bạn: ${{p.distance_km_from_wilgena}} km</span>
+            <span class="card-dist">📍 Cách Myrtle Bank: ${{p.distance_km_from_wilgena}} km</span>
             <div class="btn-group-foot">
               <button type="button" onclick="openMortgageModal('${{encodeURIComponent(p.address)}}', ${{p.price_min || 1000000}})" class="btn-calc" title="Tính toán chi phí &amp; số tiền trả mỗi tuần/năm cho căn nhà này">
                 🧮 Tính Vay
@@ -2690,6 +3059,7 @@ def build():
     }}
 
     // Initial render
+    updateUserUI();
     renderProperties();
     filterSoldTable();
     filterAuctionTable();

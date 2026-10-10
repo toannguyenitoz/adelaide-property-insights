@@ -1253,6 +1253,7 @@ def build():
       <a href="#propertySection" class="nav-link">🏡 Tìm Nhà ({total_listings})</a>
       <a href="#soldSection" class="nav-link" style="color:#10b981; font-weight:700;">🤝 Nhà Vừa Bán ({sold_total_30d})</a>
       <a href="#auctionSection" class="nav-link" style="color:#38bdf8;">🔨 Đấu Giá Tuần ({len(auc_listings)})</a>
+      <a href="#proptrackSection" class="nav-link" style="color:#f59e0b; font-weight:800;">📉 Báo Cáo Tháng 9 (-0.6%)</a>
       <a href="#analyticsSection" class="nav-link">📊 12 Biểu Đồ</a>
       <a href="javascript:void(0)" onclick="openMortgageModal('Mẫu Dự Toán Tài Chính', 1100000)" class="nav-link" style="color:#c084fc; font-weight:800; display:inline-flex; align-items:center; gap:4px;">🧮 Tính Vay Mua Nhà</a>
       <a href="#economicsSection" class="nav-link">🏛️ Kinh Tế Đô Thị</a>
@@ -1275,6 +1276,9 @@ def build():
     <div class="hero-buttons">
       <a href="#propertySection" class="hero-btn hero-btn-primary">
         🔍 Khảo Sát {total_listings} Nhà Đang Bán
+      </a>
+      <a href="#proptrackSection" class="hero-btn" style="background:#f59e0b; color:#0f172a; font-weight:800;">
+        📉 Báo Cáo Tháng 9: Giá Giảm 0.6% MỚI
       </a>
       <a href="javascript:void(0)" onclick="openMortgageModal('Mẫu Dự Toán Tài Chính Toàn Vùng', 1100000)" class="hero-btn" style="background:#7c3aed; color:white;">
         🧮 Bảng Tính Vay &amp; Chi Phí Mua Nhà MỚI
@@ -1626,6 +1630,162 @@ def build():
 
       <div class="chart-display">
         <img id="activeChartImg" src="reports/charts/chart1_median_prices.png" alt="Adelaide Real Estate Chart" class="chart-img">
+      </div>
+    </section>
+
+    <!-- PropTrack September 2026 Official Home Price Report Section -->
+    <section id="proptrackSection" class="section-box" style="border: 2px solid #f59e0b; background: linear-gradient(to bottom, #ffffff, #fffbeb);">
+      <div class="section-head" style="border-bottom: 2px solid #fde68a; padding-bottom: 14px; margin-bottom: 18px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div style="display:inline-block; background:#d97706; color:white; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">
+              Báo Cáo Chính Thức &bull; PropTrack / realestate.com.au (01/10/2026)
+            </div>
+            <h2 style="color:#92400e; font-size:23px; margin:0 0 6px 0;">📉 Adelaide Giảm Giá Nhà Mạnh Nhất Toàn Úc Tháng 9/2026 (-0.6%)</h2>
+            <p style="font-size:13.5px; color:#451a03; font-weight:500; margin:0;">
+              Chuyên gia kinh tế cao cấp Eleanor Creagh công bố: Tháng giảm thứ 4 liên tiếp, giá hạ -2.5% từ đỉnh tháng 5/2026. Tuy nhiên vẫn <strong>tăng +5.6% so với cùng kỳ năm trước</strong>.
+            </p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <a href="reports/proptrack_september_2026_home_price_report.md" target="_blank" class="badge" style="background:#b45309; color:white; text-decoration:none; padding:8px 14px; border-radius:8px; font-size:12px; font-weight:700;">
+              📄 Xem Tài Liệu Toàn Văn MD
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin-bottom:20px;">
+        <div style="background:white; border:1px solid #fde68a; border-radius:10px; padding:14px; box-shadow:0 2px 5px rgba(217,119,6,0.06); text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#92400e; text-transform:uppercase;">Biến Động Tháng 9/2026</div>
+          <div style="font-size:26px; font-weight:900; color:#dc2626; margin:4px 0;">-0.6%</div>
+          <div style="font-size:11.5px; color:#78350f;">Mức giảm mạnh nhất trong các thủ phủ Úc</div>
+        </div>
+        <div style="background:white; border:1px solid #fde68a; border-radius:10px; padding:14px; box-shadow:0 2px 5px rgba(217,119,6,0.06); text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#92400e; text-transform:uppercase;">So Với Đỉnh (Tháng 5/2026)</div>
+          <div style="font-size:26px; font-weight:900; color:#ea580c; margin:4px 0;">-2.5%</div>
+          <div style="font-size:11.5px; color:#78350f;">Tháng giảm thứ 4 liên tiếp (chu kỳ hạ nhiệt)</div>
+        </div>
+        <div style="background:white; border:1px solid #fde68a; border-radius:10px; padding:14px; box-shadow:0 2px 5px rgba(217,119,6,0.06); text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#92400e; text-transform:uppercase;">Tăng Trưởng 12 Tháng (YoY)</div>
+          <div style="font-size:26px; font-weight:900; color:#16a34a; margin:4px 0;">+5.6%</div>
+          <div style="font-size:11.5px; color:#78350f;">Vẫn duy trì đà tăng trung hạn rất vững chắc</div>
+        </div>
+        <div style="background:white; border:1px solid #fde68a; border-radius:10px; padding:14px; box-shadow:0 2px 5px rgba(217,119,6,0.06); text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#92400e; text-transform:uppercase;">Giá Trung Vị Toàn Vùng</div>
+          <div style="font-size:26px; font-weight:900; color:#2563eb; margin:4px 0;">$915,000</div>
+          <div style="font-size:11.5px; color:#78350f;">Mức giá trung bình nhà ở Adelaide</div>
+        </div>
+      </div>
+
+      <!-- Comparative Table & Core Insights -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:16px; margin-bottom:20px;">
+        <div style="background:white; border-radius:10px; border:1px solid #fde68a; padding:16px;">
+          <h4 style="color:#92400e; font-size:14px; margin:0 0 10px 0; display:flex; align-items:center; gap:6px;">
+            📊 1. So Sánh Biến Động Giá Các Thủ Phủ Úc (Tháng 9/2026)
+          </h4>
+          <table style="width:100%; border-collapse:collapse; font-size:12.5px; text-align:left;">
+            <thead>
+              <tr style="background:#fef3c7; color:#78350f;">
+                <th style="padding:6px 8px; border-bottom:1px solid #fde68a;">Thành Phố / Vùng</th>
+                <th style="padding:6px 8px; border-bottom:1px solid #fde68a; text-align:right;">Tháng 9 (MoM)</th>
+                <th style="padding:6px 8px; border-bottom:1px solid #fde68a; text-align:right;">So Với Đỉnh</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#fff7ed; font-weight:700;">
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">📍 Adelaide</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.6%</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-2.5% (từ T5/26)</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Sydney</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.3%</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-3.8%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Perth</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.3%</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-1.2%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Melbourne</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.2%</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-4.6%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Brisbane</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#dc2626;">-0.2%</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">-1.8%</td>
+              </tr>
+              <tr>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6;">Darwin</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#16a34a;">+0.1%</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #f3f4f6; text-align:right; color:#475569;">Ổn định</td>
+              </tr>
+              <tr style="background:#f8fafc; font-weight:700;">
+                <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0;">Toàn Nước Úc (National)</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0; text-align:right; color:#dc2626;">-0.2%</td>
+                <td style="padding:6px 8px; border-bottom:1px solid #e2e8f0; text-align:right; color:#dc2626;">-3.3% (từ T3/26)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:11.5px; color:#64748b; margin:8px 0 0 0; line-height:1.4;">
+            * Adelaide, Brisbane, Perth từng dẫn đầu sức đề kháng ở chu kỳ trước, nay đã bắt đầu chịu áp lực điều chỉnh tương tự.
+          </p>
+        </div>
+
+        <div style="background:white; border-radius:10px; border:1px solid #fde68a; padding:16px;">
+          <h4 style="color:#92400e; font-size:14px; margin:0 0 10px 0;">
+            📉 2. Nguyên Nhân Khiến Giá Nhà Adelaide Hạ Nhiệt
+          </h4>
+          <ul style="font-size:12.5px; color:#475569; margin:0; padding-left:18px; line-height:1.6;">
+            <li><strong>Lãi suất RBA cao (4.60%):</strong> 4 đợt tăng lãi suất trong năm 2026 làm giảm khoảng 15% hạn mức vay tối đa của các hộ gia đình. Ngân sách $800k trước đây nay bị co hẹp còn khoảng $680k-$710k.</li>
+            <li><strong>Mùa Bán Mùa Xuân (Spring Selling) hạ nhiệt:</strong> Tỷ lệ đấu giá thành công (Clearance Rate) ở mức yếu, thời gian rao bán (Days on Market) kéo dài hơn.</li>
+            <li><strong>Khoảng cách kỳ vọng (Expectation Gap):</strong> Người bán vẫn neo theo giá đỉnh quý 1/2026, trong khi người mua thận trọng tính toán dòng tiền trả góp hàng tháng.</li>
+            <li><strong>Phân hóa House vs Unit:</strong> Giá House toàn quốc giảm -0.3% MoM (-0.4% YoY), trong khi Units giữ giá phẳng 0.0% (+1.8% YoY) nhờ tính vừa túi tiền (affordability).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Strategy Pillars for Stakeholders -->
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #16a34a; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+          <h5 style="color:#15803d; font-size:13.5px; margin:0 0 6px 0;">🎯 First Home Buyers (Mua Nhà Lần Đầu)</h5>
+          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+            Tận dụng gói <strong>5% Deposit Scheme</strong>, hỗ trợ <strong>$15,000 FHOG</strong> của Nam Úc và miễn Stamp Duty. Đừng chỉ nhìn vào tiền cọc, hãy dùng công cụ bên dưới kiểm tra khả năng trả nợ (Mortgage Stress threshold 30% thu nhập).
+          </p>
+        </div>
+
+        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #2563eb; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+          <h5 style="color:#1d4ed8; font-size:13.5px; margin:0 0 6px 0;">🔑 Người Mua Nhà (Buyers &amp; Upgraders)</h5>
+          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+            Cán cân đàm phán đang nghiêng về người mua: có nhiều lựa chọn hơn, thời gian xem xét kỹ hợp đồng và thẩm định công trình (building inspection), dễ mặc cả điều khoản thanh toán dài hạn.
+          </p>
+        </div>
+
+        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #ea580c; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+          <h5 style="color:#c2410c; font-size:13.5px; margin:0 0 6px 0;">🏷️ Người Bán Nhà (Sellers)</h5>
+          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+            Tránh bẫy định giá neo theo đỉnh cũ khiến nhà bị ứ đọng nhiều tháng. Cần thẩm định giá thực tế theo 30 ngày gần nhất, chỉnh trang hình ảnh và linh hoạt đón nhận các đề nghị mua có điều kiện tài chính tốt.
+          </p>
+        </div>
+
+        <div style="background:white; padding:14px; border-radius:8px; border-left:4px solid #7c3aed; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+          <h5 style="color:#6d28d9; font-size:13.5px; margin:0 0 6px 0;">📈 Nhà Đầu Tư (Investors)</h5>
+          <p style="font-size:12px; color:#475569; margin:0; line-height:1.5;">
+            Cơ hội gom bất động sản tại các suburb nội đô có trường điểm và hạ tầng mạnh (vốn trước đây bị tranh mua gay gắt). Ưu tiên dòng tiền cho thuê (Rental Yield) và tỷ lệ trống cực thấp của Adelaide (&lt;1.0%).
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:16px; background:#fef3c7; border:1px solid #fde68a; border-radius:8px; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div style="font-size:12.5px; color:#92400e;">
+          💡 <strong>Bạn muốn tính thử khoản vay cho mức giá trung vị Adelaide $915,000 AUD?</strong>
+        </div>
+        <button onclick="openMortgageModal('Mẫu Giá Trung Vị Adelaide Tháng 9/2026 (PropTrack)', 915000)" style="background:#d97706; color:white; border:none; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;">
+          🧮 Mở Máy Tính Tài Chính Cho Nhà $915,000
+        </button>
       </div>
     </section>
 

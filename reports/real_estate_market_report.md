@@ -263,11 +263,19 @@ Dưới góc nhìn kinh tế học vi mô đơn giản (thị trường đồng 
 
 ## 9. ĐÁNH GIÁ CHIẾN LƯỢC: NÊN MUA BÂY GIỜ HAY ĐỢI THỊ TRƯỜNG ĐIỀU CHỈNH?
 
-### 🎯 KHUYẾN NGHỊ TỪ CHUYÊN GIA TOAN NGUYEN IT OZ: 👉 **NÊN MUA NGAY.**
+### 📊 BÁO CÁO CẬP NHẬT MỚI NHẤT (PROPTRACK / REALESTATE.COM.AU – THÁNG 9/2026):
+Theo báo cáo chính thống *PropTrack Home Price Report* của Chuyên gia Kinh tế trưởng Eleanor Creagh (REA Group, công bố ngày 01/10/2026):
+* **Giá nhà Adelaide giảm -0.6% trong tháng 9/2026:** Mức giảm lớn nhất trong số các thủ phủ của Australia (so với Sydney -0.3%, Perth -0.3%, Melbourne -0.2%, Brisbane -0.2%, Darwin +0.1%, toàn quốc -0.2%).
+* **Tháng giảm thứ 4 liên tiếp:** Đưa mặt bằng giá nhà Adelaide xuống thấp hơn **2.5% so với mức đỉnh lịch sử tháng 5/2026**.
+* **Tăng trưởng hàng năm vẫn rất bền vững (+5.6% YoY):** Mức giá trung vị toàn thị trường đạt **$915,000 AUD**. Điều này chứng minh thị trường đang trong **pha điều chỉnh kỹ thuật lành mạnh (Healthy Correction)** do sức ép lãi suất RBA 4.60%, hoàn toàn không phải là một đợt suy thoái dài hạn.
+* **Sự phân hóa House vs Unit:** Trên toàn quốc, giá nhà riêng (Houses) giảm -0.3% MoM (-0.4% YoY) do rào cản tài chính lớn; trong khi căn hộ/nhà liên kế (Units/Townhouses) đi ngang 0.0% MoM và vẫn tăng **+1.8% YoY** nhờ ưu thế vừa túi tiền (Affordability Advantage).
 
-1. **Lãi suất đang tạo cơ hội đàm phán tốt nhất:** Lãi suất hiện tại đang ở mức đỉnh chu kỳ, hạn chế sự tham gia ồ ạt của các nhà đầu tư đầu cơ, tạo điều kiện cho người mua ở thực có thời gian chọn lọc và đàm phán giá hợp lý với người bán.
-2. **Kỳ vọng cắt giảm lãi suất của RBA:** Dự kiến vào cuối năm 2026 / đầu 2027 khi RBA bắt đầu lộ trình nới lỏng tiền tệ, dòng tiền sẽ đổ dồn vào các khu vực an toàn, đẩy giá vượt ngưỡng $1.2M hiện tại.
-3. **Khả năng tiếp cận nhà nội đô sẽ ngày càng hẹp lại:** Nếu chờ đợi thêm 6-12 tháng, với cùng ngân sách $1.2M, bạn sẽ buộc phải mua xa hơn 15 - 20km hoặc chuyển sang căn hộ 2 phòng ngủ.
+### 🎯 KHUYẾN NGHỊ TỪ CHUYÊN GIA TOAN NGUYEN IT OZ: 👉 **NÊN MUA NGAY TRONG GIAI ĐOẠN ĐIỀU CHỈNH NÀY.**
+
+1. **Cán cân đàm phán đã nghiêng hẳn về Người Mua (Buyer's Market Edge):** Sau hơn 3 năm người bán làm giá và áp đảo, đây là lần đầu tiên người mua có quyền ép giá, thương lượng giảm từ **3% – 6%** so với giá niêm yết, đồng thời có thể chèn các điều khoản bảo vệ an toàn: Được thẩm định nhà (Subject to Building & Pest) và duyệt vay ngân hàng (Subject to Finance).
+2. **Kỳ vọng RBA kết thúc chu kỳ tăng lãi suất:** Dự kiến vào cuối năm 2026 / đầu 2027 khi RBA dừng tăng lãi suất và chuẩn bị lộ trình nới lỏng, dòng tiền sẽ lập tức đổ ngược trở lại các quận an toàn nội đô, đẩy giá bật tăng vượt đỉnh $1.2M.
+3. **Cơ hội vàng cho phân khúc Townhouse & Nhà an toàn dưới $1.2M:** Người mua có sẵn 20% vốn tự có (tránh bảo hiểm LMI) nên tận dụng mức chiết khấu hiện tại của các căn nhà vừa bị "Passed In" tại đấu giá để chốt giao dịch với giá hời.
+4. **Khả năng tiếp cận nhà nội đô sẽ ngày càng hẹp lại:** Đất đai tại các vùng an toàn có trường điểm (Burnside, Unley, Mitcham, Campbelltown) là nguồn tài nguyên hữu hạn tuyệt đối. Chờ đợi thêm 6-12 tháng khi lãi suất hạ nhiệt sẽ khiến anh chị phải đối mặt với làn sóng cạnh tranh khốc liệt trở lại.
 
 ---
 

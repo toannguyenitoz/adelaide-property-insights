@@ -83,7 +83,7 @@ def prepare_master_html():
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Báo Cáo Bất Động Sản Greater Adelaide - Toan Nguyen IT OZ</title>
+<title>Báo Cáo Bất Động Sản Greater Adelaide - Toan Nguyen In OZ</title>
 <style>
   @page {{ size: A4; }}
   body {{
@@ -225,11 +225,11 @@ def prepare_master_html():
 <body>
 
 <div class="brand-cover">
-  <div class="brand-logo-text">TOAN NGUYEN IT OZ</div>
+  <div class="brand-logo-text">TOAN NGUYEN IN OZ</div>
   <div style="font-size: 15.5px; font-weight: 700; margin-top: 6px;">BÁO CÁO PHÂN TÍCH BẤT ĐỘNG SẢN GREATER ADELAIDE (KHU VỰC AN TOÀN)</div>
   <div class="brand-badge">🛡️ Tuyển Chọn 5 Hành Lang An Toàn &bull; Loại Trừ Vùng Tội Phạm Cao &bull; Dưới $1.2M AUD</div>
   <div style="font-size: 10.5px; opacity: 0.85; margin-top: 8px;">
-    Tiêu chí: 3 Phòng ngủ | An toàn chuẩn SAPOL | Pháp lý Vĩnh viễn | Phí Strata &amp; Chi phí Vận hành | Năng lượng Solar | Thẩm định: Toan Nguyen IT OZ
+    Tiêu chí: 3 Phòng ngủ | An toàn chuẩn SAPOL | Pháp lý Vĩnh viễn | Phí Strata &amp; Chi phí Vận hành | Năng lượng Solar | Thẩm định: Toan Nguyen In OZ
   </div>
 </div>
 
@@ -270,7 +270,7 @@ def prepare_september_html():
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Báo Cáo Giá Nhà Adelaide Tháng 10/2026 - PropTrack & Toan Nguyen IT OZ</title>
+<title>Báo Cáo Giá Nhà Adelaide Tháng 10/2026 - PropTrack & Toan Nguyen In OZ</title>
 <style>
   @page {{ size: A4; }}
   body {{
@@ -397,11 +397,11 @@ def prepare_september_html():
 <body>
 
 <div class="brand-cover">
-  <div class="brand-logo-text">PROPTRACK &bull; REALESTATE.COM.AU &bull; TOAN NGUYEN IT OZ</div>
+  <div class="brand-logo-text">PROPTRACK &bull; REALESTATE.COM.AU &bull; TOAN NGUYEN IN OZ</div>
   <div style="font-size: 15.5px; font-weight: 700; margin-top: 6px;">BÁO CÁO GIÁ NHÀ ADELAIDE THÁNG 10/2026 (SỐ LIỆU THÁNG 9)</div>
   <div class="brand-badge">📉 Giá Nhà Adelaide Giảm -0.6% &bull; Lớn Nhất Toàn Úc &bull; Tăng Trưởng YoY +5.6%</div>
   <div style="font-size: 10.5px; opacity: 0.9; margin-top: 8px;">
-    Tác giả: Eleanor Creagh (Senior Economist, REA Group) &bull; Đối soát &amp; Bản quyền phân tích: Toan Nguyen IT OZ (Adelaide Property Insights)
+    Tác giả: Eleanor Creagh (Senior Economist, REA Group) &bull; Đối soát &amp; Bản quyền phân tích: Toan Nguyen In OZ (Adelaide Property Insights)
   </div>
 </div>
 
@@ -425,7 +425,7 @@ async def generate_single_pdf(html_path, target_pdf, doc_title):
         header_template = f'''
         <div style="font-family: -apple-system, sans-serif; font-size: 7.5px; color: #64748b; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 14mm; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px;">
           <style>div, span {{ font-size: 7.5px; font-family: -apple-system, sans-serif; }}</style>
-          <span style="font-weight: 700; color: #1e3a8a; letter-spacing: 0.5px;">TOAN NGUYEN IT OZ</span>
+          <span style="font-weight: 700; color: #1e3a8a; letter-spacing: 0.5px;">TOAN NGUYEN IN OZ</span>
           <span>{doc_title}</span>
         </div>
         '''
@@ -433,7 +433,7 @@ async def generate_single_pdf(html_path, target_pdf, doc_title):
         footer_template = '''
         <div style="font-family: -apple-system, sans-serif; font-size: 7.5px; color: #94a3b8; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0 14mm; border-top: 1px solid #e2e8f0; padding-top: 3px;">
           <style>div, span { font-size: 7.5px; font-family: -apple-system, sans-serif; }</style>
-          <span>Thẩm định độc lập bởi <strong>Toan Nguyen IT OZ</strong> &bull; Confidential &amp; Proprietary</span>
+          <span>Thẩm định độc lập bởi <strong>Toan Nguyen In OZ</strong> &bull; Confidential &amp; Proprietary</span>
           <span>Trang <span class="pageNumber"></span> / <span class="totalPages"></span></span>
         </div>
         '''

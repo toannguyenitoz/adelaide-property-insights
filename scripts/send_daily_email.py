@@ -328,7 +328,7 @@ def generate_email_html(top_picks, total_scanned, now_str, auction_data=None, so
         🛡️ BẢN TIN THẨM ĐỊNH TỰ ĐỘNG HÀNG NGÀY &bull; 06:00 AM ACST
       </div>
       <h1 style="margin:0 0 8px 0; font-size:22px; font-weight:800; letter-spacing:-0.5px; color:#ffffff;">
-        TOAN NGUYEN IT OZ
+        TOAN NGUYEN IN OZ
       </h1>
       <p style="margin:0 0 12px 0; font-size:14px; color:#93c5fd; font-weight:500;">
         Top {len(top_picks)} Bất Động Sản Đáng Mua Nhất Adelaide Hôm Nay
@@ -342,7 +342,7 @@ def generate_email_html(top_picks, total_scanned, now_str, auction_data=None, so
     <div style="background:#ffffff; border-radius:10px; border:1px solid #e2e8f0; padding:18px 20px; margin-bottom:22px; font-size:13px; line-height:1.6; color:#475569;">
       <p style="margin-top:0;">Xin chào anh chị,</p>
       <p>
-        Hệ thống trí tuệ nhân tạo của <strong>Toan Nguyen IT OZ</strong> đã hoàn tất quét thị trường sáng nay. Trong tổng số <strong>{total_scanned} căn nhà 3 phòng ngủ</strong> đang rao bán dưới trần ngân sách <strong>$1.2M AUD</strong> trên toàn Greater Adelaide, hệ thống đã chạy thuật toán lọc sạch 100% rủi ro tội phạm SAPOL, kiểm tra ranh giới trường học danh tiếng và chọn ra <strong>{len(top_picks)} căn nhà được đánh giá ổn nhất</strong> cho gia đình:
+        Hệ thống trí tuệ nhân tạo của <strong>Toan Nguyen In OZ</strong> đã hoàn tất quét thị trường sáng nay. Trong tổng số <strong>{total_scanned} căn nhà 3 phòng ngủ</strong> đang rao bán dưới trần ngân sách <strong>$1.2M AUD</strong> trên toàn Greater Adelaide, hệ thống đã chạy thuật toán lọc sạch 100% rủi ro tội phạm SAPOL, kiểm tra ranh giới trường học danh tiếng và chọn ra <strong>{len(top_picks)} căn nhà được đánh giá ổn nhất</strong> cho gia đình:
       </p>
       <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
         <span style="background:#eff6ff; color:#1d4ed8; font-size:11px; font-weight:700; padding:4px 10px; border-radius:6px;">🏫 Ưu tiên Zone GIHS & Unley</span>
@@ -382,9 +382,9 @@ def generate_email_html(top_picks, total_scanned, now_str, auction_data=None, so
 
     <!-- Footer -->
     <div style="text-align:center; font-size:11.5px; color:#94a3b8; line-height:1.6; padding:15px 0; border-top:1px solid #e2e8f0;">
-      <div>Bản tin bất động sản độc quyền phát triển bởi <strong>Toan Nguyen IT OZ</strong></div>
+      <div>Bản tin bất động sản độc quyền phát triển bởi <strong>Toan Nguyen In OZ</strong></div>
       <div>Email liên hệ: <a href="mailto:toannguyenitoz@gmail.com" style="color:#0284c7; text-decoration:none;">toannguyenitoz@gmail.com</a></div>
-      <div style="margin-top:6px; color:#cbd5e1;">© 2026 Toan Nguyen IT OZ. Mọi quyền được bảo lưu. Dữ liệu được tổng hợp tự động mỗi sáng lúc 06:00 AM ACST.</div>
+      <div style="margin-top:6px; color:#cbd5e1;">© 2026 Toan Nguyen In OZ. Mọi quyền được bảo lưu. Dữ liệu được tổng hợp tự động mỗi sáng lúc 06:00 AM ACST.</div>
     </div>
 
   </div>
@@ -414,7 +414,7 @@ def send_email(subject, html_content, recipients, smtp_server, smtp_port, smtp_u
         try:
             msg = MIMEMultipart('alternative')
             msg['Subject'] = subject
-            msg['From'] = f"Toan Nguyen IT OZ <{smtp_user}>"
+            msg['From'] = f"Toan Nguyen In OZ <{smtp_user}>"
             msg['To'] = r
             part = MIMEText(html_content, 'html', 'utf-8')
             msg.attach(part)
@@ -435,7 +435,7 @@ def send_via_resend(subject, html_content, recipients, resend_api_key, resend_fr
     import urllib.request
     import json
 
-    sender = resend_from or "Toan Nguyen IT OZ <onboarding@resend.dev>"
+    sender = resend_from or "Toan Nguyen In OZ <onboarding@resend.dev>"
     url = "https://api.resend.com/emails"
 
     # Note: On free/trial tier with onboarding@resend.dev, Resend restricts to registered account email.
@@ -565,7 +565,7 @@ def main():
     else:
         recipients = DEFAULT_RECIPIENTS
 
-    subject = f"[Toan Nguyen IT OZ] 🏡 Top {len(top_picks)} Nhà Đáng Mua Nhất Adelaide Hôm Nay ({datetime.datetime.now().strftime('%d/%m')})"
+    subject = f"[Toan Nguyen In OZ] 🏡 Top {len(top_picks)} Nhà Đáng Mua Nhất Adelaide Hôm Nay ({datetime.datetime.now().strftime('%d/%m')})"
 
     if dry_run or (not resend_api_key and (not smtp_user or not smtp_pass)):
         print("\n=== DRY RUN / NO EMAIL CREDENTIALS ===")

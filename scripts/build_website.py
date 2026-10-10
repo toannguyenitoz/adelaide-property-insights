@@ -136,7 +136,7 @@ def build():
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toan Nguyen IT OZ | Cổng Thông Tin Bất Động Sản Greater Adelaide</title>
+  <title>Toan Nguyen In OZ | Cổng Thông Tin Bất Động Sản Greater Adelaide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1299,7 +1299,7 @@ def build():
   <nav class="navbar">
     <a href="#" class="nav-brand" style="text-decoration:none;">
       <div>
-        <span class="brand-title">TOAN NGUYEN IT OZ</span>
+        <span class="brand-title">TOAN NGUYEN IN OZ</span>
         <span class="brand-sub">Adelaide Real Estate Intelligence &bull; Daily Automated Updates @ 6:00 AM ACST</span>
       </div>
     </a>
@@ -1673,7 +1673,7 @@ def build():
     <section id="analyticsSection" class="section-box">
       <div class="section-head">
         <h2>📊 Hệ Thống 12 Biểu Đồ Thẩm Định Thị Trường Adelaide</h2>
-        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, phân loại hình nhà, số phòng ngủ, xu hướng giá tuần và chu kỳ bán 2 năm bởi Toan Nguyen IT OZ.</p>
+        <p style="font-size:12.5px; color:var(--slate-600);">Dữ liệu độc quyền phân tích rủi ro, cung cầu, phân loại hình nhà, số phòng ngủ, xu hướng giá tuần và chu kỳ bán 2 năm bởi Toan Nguyen In OZ.</p>
       </div>
 
       <div class="chart-tabs">
@@ -1959,7 +1959,7 @@ def build():
         </p>
         <div class="report-meta-row">
           <div class="report-meta-item">
-            <span>✍️ Tác giả:</span> <strong>TOAN NGUYEN IT OZ</strong>
+            <span>✍️ Tác giả:</span> <strong>TOAN NGUYEN IN OZ</strong>
           </div>
           <div class="report-meta-item">
             <span>📅 Cập nhật:</span> <strong>{now_str}</strong>
@@ -2020,9 +2020,27 @@ def build():
   </main>
 
   <!-- Footer -->
+
+  <div class="container" style="max-width:1200px; margin:30px auto 0 auto; padding:0 20px;">
+    <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 12px; padding: 20px 24px; font-size: 12.5px; color: #92400e; line-height: 1.7; box-shadow: 0 2px 8px rgba(245,158,11,0.08);">
+      <div style="font-size: 14px; font-weight: 800; color: #b45309; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+        ⚠️ TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM PHÁP LÝ (GENERAL DISCLAIMER)
+      </div>
+      <p style="margin: 0 0 8px 0;">
+        Toàn bộ nội dung, dữ liệu, bảng tính và báo cáo trên trang web này được tạo bởi <strong>Toan Nguyen In OZ</strong> với tư cách là một người dùng cá nhân nhằm mục đích <strong>cung cấp thông tin tham khảo, tổng hợp và nghiên cứu học tập phi thương mại</strong>, thu thập từ các nguồn dữ liệu công khai (Domain, Realestate.com.au, PropTrack, SAPOL, v.v.).
+      </p>
+      <p style="margin: 0 0 8px 0;">
+        <strong>Đây hoàn toàn KHÔNG phải là lời khuyên tài chính (Financial Advice), tư vấn đầu tư bất động sản, định giá chuyên nghiệp hay dịch vụ môi giới thế chấp / tín dụng (Mortgage Broker / Real Estate Broker) theo quy định của pháp luật Úc (Australian Law / ASIC).</strong> Tác giả không sở hữu giấy phép dịch vụ tài chính Úc (AFSL) hay giấy phép môi giới tín dụng (ACL).
+      </p>
+      <p style="margin: 0;">
+        Các số liệu tính toán chi phí, thuế trước bạ (Stamp Duty) và khoản vay chỉ mang tính chất minh họa ước tính sơ bộ. Thị trường bất động sản luôn biến động và tiềm ẩn rủi ro. Người mua và nhà đầu tư cần chủ động tự nghiên cứu kỹ lưỡng (Do Your Own Due Diligence) và tham khảo ý kiến của các chuyên gia có chứng chỉ hành nghề được cấp phép tại Úc (như Mortgage Broker, Financial Planner, Conveyancer/Solicitor) trước khi đưa ra bất kỳ quyết định tài chính nào.
+      </p>
+    </div>
+  </div>
+
   <footer>
-    <p>Bản quyền báo cáo & hệ thống tự động hóa &copy; 2026 <strong>Toan Nguyen IT OZ</strong> (toannguyenitoz@gmail.com).</p>
-    <p style="margin-top:6px; opacity:0.75;">Hệ thống chạy tự động mỗi ngày vào lúc 06:00 AM giờ Adelaide qua GitHub Actions.</p>
+    <p>Dữ liệu tổng hợp tham khảo &copy; 2026 <strong>Toan Nguyen In OZ</strong> (toannguyenitoz@gmail.com).</p>
+    <p style="margin-top:6px; opacity:0.75;">Hệ thống chạy tự động tổng hợp thông tin công khai vào lúc 06:00 AM giờ Adelaide qua GitHub Actions.</p>
   </footer>
 
   <!-- Floating Action Button for Mortgage Calculator -->
@@ -2269,7 +2287,7 @@ def build():
 
       <div class="modal-footer" style="padding:14px 24px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; border-bottom-left-radius:16px; border-bottom-right-radius:16px;">
         <span style="font-size:11.5px; color:#64748b;">
-          * Công cụ ước tính độc quyền bởi Toan Nguyen IT OZ. Áp dụng bảng biểu thuế RevenueSA 2024-2026.
+          * Công cụ mô phỏng tham khảo cá nhân bởi Toan Nguyen In OZ. Không phải tư vấn tài chính. Áp dụng bảng biểu thuế RevenueSA 2024-2026.
         </span>
         <button type="button" onclick="closeMortgageModal()" style="background:#0f172a; color:white; border:none; padding:8px 18px; border-radius:8px; font-weight:700; font-size:12px; cursor:pointer;">
           Đóng Bảng Tính
@@ -2351,7 +2369,7 @@ def build():
         <div style="background:#fffbeb; border:1.5px solid #fde68a; border-radius:10px; padding:14px; margin-bottom:18px; font-size:12.5px; color:#92400e; line-height:1.6;">
           <strong>Hướng dẫn kích hoạt:</strong>
           <ol style="margin:6px 0 0 16px; padding:0;">
-            <li>Mở email từ <em>Toan Nguyen IT OZ (Adelaide Property Hub)</em>.</li>
+            <li>Mở email từ <em>Toan Nguyen In OZ (Adelaide Property Hub)</em>.</li>
             <li>Bấm vào nút <strong>"KÍCH HOẠT TÀI KHOẢN NGAY"</strong> hoặc dán mã kích hoạt bên dưới.</li>
             <li>Tài khoản sẽ được phê duyệt và tự động kích hoạt quyền thành viên.</li>
           </ol>
@@ -2431,7 +2449,7 @@ def build():
         <!-- Filled dynamically -->
       </div>
       <div style="padding:12px 20px; background:#f8fafc; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:11.5px; color:#64748b;">Email kích hoạt thực tế sẽ được gửi từ Toan Nguyen IT OZ.</span>
+        <span style="font-size:11.5px; color:#64748b;">Email kích hoạt thực tế sẽ được gửi từ Toan Nguyen In OZ.</span>
         <button type="button" onclick="closeEmailInboxModal()" style="background:#475569; color:white; border:none; padding:6px 14px; border-radius:6px; font-size:12px; cursor:pointer;">Đóng thư</button>
       </div>
     </div>
@@ -2444,7 +2462,7 @@ def build():
         <div>
           <h3>📥 Trung Tâm Tải Báo Cáo &amp; Tài Liệu PDF</h3>
           <div style="font-size:12px; color:#cbd5e1; margin-top:3px;">
-            Đầy đủ 2 tài liệu nghiên cứu chuyên sâu về thị trường Greater Adelaide do Toan Nguyen IT OZ phát hành
+            Đầy đủ 2 tài liệu nghiên cứu chuyên sâu về thị trường Greater Adelaide do Toan Nguyen In OZ phát hành
           </div>
         </div>
         <button type="button" class="modal-close-btn" onclick="closeDownloadModal()" title="Đóng">&times;</button>
@@ -2498,7 +2516,7 @@ def build():
 
       <div class="modal-footer" style="padding:12px 20px; background:#f1f5f9; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
         <span style="font-size:11.5px; color:#64748b;">
-          * Bản quyền báo cáo thuộc về Toan Nguyen IT OZ (toannguyenitoz@gmail.com).
+          * Bản quyền báo cáo thuộc về Toan Nguyen In OZ (toannguyenitoz@gmail.com).
         </span>
         <button type="button" onclick="closeDownloadModal()" style="background:#0f172a; color:white; border:none; padding:7px 16px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer;">
           Đóng
@@ -2808,7 +2826,7 @@ def build():
             <hr style="border:none; border-top:1px solid #e2e8f0; margin:20px 0;">
             <p style="margin:0; font-size:11.5px; color:#94a3b8;">
               Nếu bạn không yêu cầu đăng ký tài khoản này, vui lòng bỏ qua email.<br>
-              Phát triển bởi Toan Nguyen IT OZ &bull; Adelaide, SA, Australia.
+              Phát triển bởi Toan Nguyen In OZ &bull; Adelaide, SA, Australia.
             </p>
           </div>
         </div>

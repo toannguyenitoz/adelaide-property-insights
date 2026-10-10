@@ -2,7 +2,7 @@
 ## Khảo Sát Toàn Diện 140+ Suburb: Bổ Sung Toorak Gardens, Unley Park, Malvern, Hyde Park, Tusmore & Lọc Sạch Rủi Ro Tội Phạm
 
 *Cập nhật chuyên sâu: So sánh Chi phí House vs Townhouse vs Apartment vs Unit, Khảo sát Toàn bộ các Suburb Cao Cấp (Unley Park, Toorak Gardens, Malvern...), Phân tích An ninh SAPOL & Bộ 7 Biểu đồ Toàn cảnh*  
-*Thương hiệu tư vấn & thẩm định độc lập: **TOAN NGUYEN IT OZ***
+*Thương hiệu tư vấn & thẩm định độc lập: **TOAN NGUYEN IN OZ***
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## 1. TỔNG QUAN BỘ DỮ LIỆU TOÀN VÙNG (375 BẤT ĐỘNG SẢN AN TOÀN TRÊN 140+ SUBURB)
 
-Nhằm đảm bảo **tính toàn vẹn tuyệt đối và không bỏ sót bất kỳ vùng ngoại ô nào**, hệ thống phân tích của **Toan Nguyen IT OZ** đã mở rộng quy mô quét lên **1,297 tin đăng** chào bán thực tế, bao phủ toàn diện **139 vùng ngoại ô** thuộc tất cả các Hội đồng danh giá nhất Greater Adelaide:
+Nhằm đảm bảo **tính toàn vẹn tuyệt đối và không bỏ sót bất kỳ vùng ngoại ô nào**, hệ thống phân tích của **Toan Nguyen In OZ** đã mở rộng quy mô quét lên **1,297 tin đăng** chào bán thực tế, bao phủ toàn diện **139 vùng ngoại ô** thuộc tất cả các Hội đồng danh giá nhất Greater Adelaide:
 
 - **Tổng số bất động sản 3 phòng ngủ an toàn dưới $1.2M AUD được thẩm định:** **375 căn nhà**.
 - **Độ phủ địa lý phân theo 6 phân vùng hành chính:**
@@ -270,7 +270,7 @@ Theo báo cáo chính thống *PropTrack Home Price Report* của Chuyên gia Ki
 * **Tăng trưởng hàng năm vẫn rất bền vững (+5.6% YoY):** Mức giá trung vị toàn thị trường đạt **$915,000 AUD**. Điều này chứng minh thị trường đang trong **pha điều chỉnh kỹ thuật lành mạnh (Healthy Correction)** do sức ép lãi suất RBA 4.60%, hoàn toàn không phải là một đợt suy thoái dài hạn.
 * **Sự phân hóa House vs Unit:** Trên toàn quốc, giá nhà riêng (Houses) giảm -0.3% MoM (-0.4% YoY) do rào cản tài chính lớn; trong khi căn hộ/nhà liên kế (Units/Townhouses) đi ngang 0.0% MoM và vẫn tăng **+1.8% YoY** nhờ ưu thế vừa túi tiền (Affordability Advantage).
 
-### 🎯 KHUYẾN NGHỊ TỪ CHUYÊN GIA TOAN NGUYEN IT OZ: 👉 **NÊN MUA NGAY TRONG GIAI ĐOẠN ĐIỀU CHỈNH NÀY.**
+### 🎯 KHUYẾN NGHỊ TỪ CHUYÊN GIA TOAN NGUYEN IN OZ: 👉 **NÊN MUA NGAY TRONG GIAI ĐOẠN ĐIỀU CHỈNH NÀY.**
 
 1. **Cán cân đàm phán đã nghiêng hẳn về Người Mua (Buyer's Market Edge):** Sau hơn 3 năm người bán làm giá và áp đảo, đây là lần đầu tiên người mua có quyền ép giá, thương lượng giảm từ **3% – 6%** so với giá niêm yết, đồng thời có thể chèn các điều khoản bảo vệ an toàn: Được thẩm định nhà (Subject to Building & Pest) và duyệt vay ngân hàng (Subject to Finance).
 2. **Kỳ vọng RBA kết thúc chu kỳ tăng lãi suất:** Dự kiến vào cuối năm 2026 / đầu 2027 khi RBA dừng tăng lãi suất và chuẩn bị lộ trình nới lỏng, dòng tiền sẽ lập tức đổ ngược trở lại các quận an toàn nội đô, đẩy giá bật tăng vượt đỉnh $1.2M.
@@ -304,4 +304,4 @@ Theo báo cáo chính thống *PropTrack Home Price Report* của Chuyên gia Ki
 - **Ranh giới trường học:** Luôn tra cứu chính xác địa chỉ từng căn tại cổng thông tin education.sa.gov.au trước khi đặt cọc (Cooling-off 2 ngày làm việc theo luật Nam Úc).
 
 ---
-*Báo cáo được hoàn thiện và bảo chứng độc quyền bởi Toan Nguyen IT OZ (toannguyenitoz@gmail.com).*
+*Báo cáo được hoàn thiện và bảo chứng độc quyền bởi Toan Nguyen In OZ (toannguyenitoz@gmail.com).*

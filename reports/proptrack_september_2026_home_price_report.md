@@ -2,7 +2,7 @@
 ## CHUYÊN ĐỀ ĐẶC BIỆT: GIÁ NHÀ ADELAIDE GIẢM 0.6% – MẠNH NHẤT TRONG CÁC THỦ PHỦ ÚC: ĐIỀU CHỈNH KỸ THUẬT HAY BƯỚC VÀO CHU KỲ SUY THOÁI MỚI?
 
 *Nguồn dữ liệu chính thống: PropTrack / realestate.com.au Home Price Report (Tháng 9/2026) – Tác giả: Chuyên gia Kinh tế trưởng Eleanor Creagh (REA Group), công bố ngày 01/10/2026*  
-*Đơn vị phân tích & đối soát thực địa: **TOAN NGUYEN IT OZ (Adelaide Property Insights)***  
+*Đơn vị phân tích & đối soát thực địa: **TOAN NGUYEN IN OZ (Adelaide Property Insights)***  
 *Thời gian phát hành: 10/10/2026*
 
 ---
@@ -144,5 +144,5 @@ Dựa trên dữ liệu 137 suburb an toàn và bộ lọc tội phạm SAPOL, d
 
 ---
 
-*Bản quyền phân tích thuộc về **TOAN NGUYEN IT OZ***  
+*Bản quyền phân tích thuộc về **TOAN NGUYEN IN OZ***  
 *Hệ thống Cổng Thông Tin Bất Động Sản Greater Adelaide: [https://toannguyenitoz.github.io/adelaide-property-insights/](https://toannguyenitoz.github.io/adelaide-property-insights/)*

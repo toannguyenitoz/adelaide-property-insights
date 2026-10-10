@@ -1,5 +1,5 @@
 # 🏡 Adelaide Property Intelligence & Real Estate Dashboard
-### Developed & Curated by Toan Nguyen IT OZ (toannguyenitoz@gmail.com)
+### Developed & Curated by Toan Nguyen In OZ (toannguyenitoz@gmail.com)
 
 Hệ thống thu thập, phân tích và giám sát thị trường bất động sản Greater Adelaide tự động.
 
@@ -37,4 +37,4 @@ Tải báo cáo PDF hoàn chỉnh:
 📄 **[Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf](reports/Bao_Cao_Bat_Dong_San_Greater_Adelaide_Toan_Nguyen_IT_OZ_v2.pdf)**
 
 ---
-© 2026 Toan Nguyen IT OZ. All rights reserved.
+© 2026 Toan Nguyen In OZ. All rights reserved.
